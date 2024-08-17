@@ -5,12 +5,12 @@
 [ext_resource type="Script" path="res://scripts/navmesh_updater.gd" id="3_1x3hi"]
 [ext_resource type="PackedScene" uid="uid://ci8ldm6uxfv0i" path="res://scenes/player.tscn" id="4_w6ypc"]
 [ext_resource type="Texture2D" uid="uid://bsl2t6vuw1kqn" path="res://textures/objects/box.png" id="5_jaqdb"]
-[ext_resource type="Script" path="res://scripts/shelf_data.gd" id="7_pmk36"]
+[ext_resource type="Script" path="res://scripts/objects/shelf_data.gd" id="7_pmk36"]
 [ext_resource type="Texture2D" uid="uid://bf5eidgwt1hqa" path="res://textures/shelf.png" id="8_7gi2q"]
 [ext_resource type="Texture2D" uid="uid://c0lujqem7fj3o" path="res://textures/counter.png" id="9_plbmk"]
-[ext_resource type="Script" path="res://scenes/box.gd" id="10_nqw5v"]
+[ext_resource type="Script" path="res://scripts/objects/boxes/box.gd" id="10_nqw5v"]
 [ext_resource type="Texture2D" uid="uid://d0kb1dfig6cwr" path="res://textures/objects/products/shelved_canned_food.png" id="10_oleb0"]
-[ext_resource type="Script" path="res://scenes/Boxtimer.gd" id="11_r5rb0"]
+[ext_resource type="Script" path="res://scripts/objects/boxes/Boxtimer.gd" id="11_r5rb0"]
 [ext_resource type="PackedScene" uid="uid://biophta5et6p7" path="res://scenes/characters/shopping_ai.tscn" id="12_08vip"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_jhmfy"]
@@ -59,6 +59,7 @@ script = ExtResource("3_1x3hi")
 
 [node name="HoldBox" type="Sprite2D" parent="Player"]
 visible = false
+z_index = 2
 position = Vector2(3, 1)
 scale = Vector2(0.804688, 0.75)
 texture = ExtResource("5_jaqdb")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://cr8g2ewri4sld"]
 
-[ext_resource type="Script" path="res://scripts/shelf_data.gd" id="1_46c5h"]
+[ext_resource type="Script" path="res://scripts/objects/shelf_data.gd" id="1_46c5h"]
 [ext_resource type="Texture2D" uid="uid://cr5ayvghqy7os" path="res://textures/objects/shelf_atlas.tres" id="2_6s0dw"]
 [ext_resource type="Texture2D" uid="uid://vymidhl6oc3v" path="res://textures/objects/products/shelved_canned_food_atlas.tres" id="3_g0vos"]
 [ext_resource type="Script" path="res://scripts/objects/products/shelved_items.gd" id="4_2icbu"]
