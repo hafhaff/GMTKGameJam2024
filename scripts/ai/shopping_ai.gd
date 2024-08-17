@@ -46,7 +46,6 @@ func _physics_process(_delta):
 
 #Temporary, will get refactored when the shop is finished
 func _generateTarget():
-	printt("kitty ", itemsHeld, itemsNeeded)
 	if itemsHeld < itemsNeeded:
 		target = _selectShelf()
 		if target == null:
