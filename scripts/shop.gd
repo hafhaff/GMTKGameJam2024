@@ -24,8 +24,12 @@ func _registerCounter(counter: Counter):
 	shopCounters[position] = counter
 	_handleEmptyCounter(counter)
 
-func _handleEmptyCounter(counter: Counter):
-	if counter.counterEmpty:
+func _handleEmptyCounter(counter: Counter, forced: bool = false):
+	if forced:
+		if !emptyCounters.has(counter):
+			emptyCounters.push_back(counter)
+			return
+	if !emptyCounters.has(counter):
 		emptyCounters.push_back(counter)
 	else:
 		emptyCounters.erase(counter)

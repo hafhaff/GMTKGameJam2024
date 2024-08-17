@@ -3,7 +3,6 @@ extends Node2D
 class_name Counter
 
 var waitList: Array[ShoppingAI]
-var counterEmpty: bool = true
 var itemGlobalLocal: ItemGlobal = ItemGlobal.new()	#This is retarded
 
 @onready var interactPos: Vector2 = $InteractPos.global_position
@@ -32,8 +31,7 @@ func _checkShopperDistance():
 				_updateWaitingLine(x)
 
 func _changeEmptyState(isEmpty: bool):
-	counterEmpty = isEmpty
-	global_shop._handleEmptyCounter(self)
+	global_shop._handleEmptyCounter(self, isEmpty)
 
 func _on_body_entered(body):
 	if body is Player:
