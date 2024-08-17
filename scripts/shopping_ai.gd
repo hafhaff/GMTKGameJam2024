@@ -9,6 +9,7 @@ class_name ShoppingAI
 @onready var shoppingTimer: Timer = $Timer
 @onready var navigation: NavigationAgent2D = $NavigationAgent2D
 
+
 var target: Node2D = null
 var itemsNeeded: int = 0
 var itemsHeld: int = 0
@@ -16,6 +17,7 @@ var shelves: Array[Node]
 var counters: Array[Node]
 
 func _ready():
+
 	shoppingTimer.connect("timeout", _generateTarget)
 	shelves = shelfHolder.get_children()
 	counters = counterHolder.get_children()
