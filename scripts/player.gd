@@ -17,16 +17,22 @@ func _physics_process(_delta):
 	velocity = direction * speed
 	move_and_slide()
 	
-	if action1:
+	if action1 and not canUnload:
 		print(self.global_position)
 		dropBox()
+		
+	
+		
 
 
+func getShelf(shelf):
+	return shelf
 	
 func dropBox():
 	if heldItem == null: 
 		pass
 	else: 
+		$HoldBox.visible = false
 		heldItem.disablePickup()
 		heldItem.position = self.global_position
 		print (heldItem.position)
@@ -37,6 +43,7 @@ func dropBox():
 		
 
 func pickUpBox (box):
+	$HoldBox.visible = true
 	box.hideSprite()
 	box.disablePickup()
 	heldItem = box

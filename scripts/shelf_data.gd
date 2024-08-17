@@ -31,10 +31,8 @@ func replaceItem (item, num):
 func _on_interact_shape_body_entered(body):
 	if body == $"../../Player":
 		$"../../Player".canUnload = true
-	pass # Replace with function body.
 	
 
-
-
 func _on_interact_shape_body_exited(body):
-	pass # Replace with function body.
+	if body == $"../../Player":
+		$"../../Player".canUnload = false
