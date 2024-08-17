@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=4 uid="uid://de1beg5m18qmu"]
+[gd_scene load_steps=17 format=4 uid="uid://de1beg5m18qmu"]
 
 [ext_resource type="Texture2D" uid="uid://c0hl6hvpgglh7" path="res://textures/gmtk_floor.png" id="1_dsxfx"]
 [ext_resource type="Texture2D" uid="uid://kic3mm885h61" path="res://textures/gmtk_wall.png" id="2_de84h"]
 [ext_resource type="Script" path="res://scripts/navmesh_updater.gd" id="3_t70eu"]
 [ext_resource type="PackedScene" uid="uid://biophta5et6p7" path="res://scenes/characters/shopping_ai.tscn" id="4_en2wn"]
 [ext_resource type="PackedScene" uid="uid://dn0lkdgorj8pf" path="res://scenes/objects/counter.tscn" id="5_ijqlb"]
+[ext_resource type="PackedScene" uid="uid://cr8g2ewri4sld" path="res://scenes/objects/shelf_copy.tscn" id="5_pqu51"]
 [ext_resource type="PackedScene" uid="uid://bed0fmavm0x6e" path="res://scenes/characters/kitty_display.tscn" id="5_s4hfu"]
 [ext_resource type="PackedScene" uid="uid://ctvqfkk37kel" path="res://scenes/objects/shelf.tscn" id="6_6demk"]
 [ext_resource type="Script" path="res://scripts/ai/cashier_ai.gd" id="8_18l1u"]
@@ -58,6 +59,9 @@ script = ExtResource("3_t70eu")
 position = Vector2(81, 81)
 
 [node name="ShelfHolder" type="Node" parent="."]
+
+[node name="Shelf12" parent="ShelfHolder" instance=ExtResource("5_pqu51")]
+position = Vector2(252, 110)
 
 [node name="Shelf" parent="ShelfHolder" instance=ExtResource("6_6demk")]
 position = Vector2(332, 100)
