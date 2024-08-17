@@ -11,16 +11,17 @@ y_sort_enabled = true
 script = ExtResource("1_ek76o")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(16, 16)
 texture = ExtResource("2_10oq4")
 
 [node name="InteractPos" type="Node2D" parent="."]
-position = Vector2(0, 19)
+position = Vector2(16, 35)
 
 [node name="CashierPos" type="Node2D" parent="."]
-position = Vector2(0, 4)
+position = Vector2(16, 20)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 4.5)
+position = Vector2(16, 20.5)
 shape = SubResource("RectangleShape2D_mmn8d")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
