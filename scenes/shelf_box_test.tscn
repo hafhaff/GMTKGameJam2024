@@ -1,15 +1,13 @@
-[gd_scene load_steps=20 format=4 uid="uid://brtvbijnkdufn"]
+[gd_scene load_steps=16 format=4 uid="uid://brtvbijnkdufn"]
 
 [ext_resource type="Texture2D" uid="uid://c0hl6hvpgglh7" path="res://textures/gmtk_floor.png" id="1_7ut3h"]
 [ext_resource type="Texture2D" uid="uid://kic3mm885h61" path="res://textures/gmtk_wall.png" id="2_g6vya"]
 [ext_resource type="Script" path="res://scripts/navmesh_updater.gd" id="3_1x3hi"]
 [ext_resource type="PackedScene" uid="uid://ci8ldm6uxfv0i" path="res://scenes/player.tscn" id="4_w6ypc"]
 [ext_resource type="Texture2D" uid="uid://bsl2t6vuw1kqn" path="res://textures/objects/box.png" id="5_jaqdb"]
-[ext_resource type="Script" path="res://scripts/objects/shelf_data.gd" id="7_pmk36"]
-[ext_resource type="Texture2D" uid="uid://bf5eidgwt1hqa" path="res://textures/shelf.png" id="8_7gi2q"]
+[ext_resource type="PackedScene" uid="uid://ctvqfkk37kel" path="res://scenes/objects/shelf.tscn" id="6_6735k"]
 [ext_resource type="Texture2D" uid="uid://c0lujqem7fj3o" path="res://textures/counter.png" id="9_plbmk"]
 [ext_resource type="Script" path="res://scripts/objects/boxes/box.gd" id="10_nqw5v"]
-[ext_resource type="Texture2D" uid="uid://d0kb1dfig6cwr" path="res://textures/objects/products/shelved_canned_food.png" id="10_oleb0"]
 [ext_resource type="Script" path="res://scripts/objects/boxes/Boxtimer.gd" id="11_r5rb0"]
 [ext_resource type="PackedScene" uid="uid://biophta5et6p7" path="res://scenes/characters/shopping_ai.tscn" id="12_08vip"]
 
@@ -38,12 +36,6 @@ navigation_layer_0/layers = 1
 sources/3 = SubResource("TileSetAtlasSource_5texf")
 sources/4 = SubResource("TileSetAtlasSource_opt03")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kqj1n"]
-size = Vector2(28, 17)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_yhb2b"]
-radius = 21.0238
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x8lv1"]
 size = Vector2(10.5, 10)
 
@@ -70,86 +62,8 @@ frame = 3
 metadata/itemNum = 0
 metadata/itemName = ""
 
-[node name="Shelf" type="Area2D" parent="ShelfHolder"]
-position = Vector2(316, 90)
-script = ExtResource("7_pmk36")
-
-[node name="Sprite2D" type="Sprite2D" parent="ShelfHolder/Shelf"]
-texture = ExtResource("8_7gi2q")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ShelfHolder/Shelf"]
-position = Vector2(0, 0.5)
-shape = SubResource("RectangleShape2D_kqj1n")
-
-[node name="InteractShape" type="Area2D" parent="ShelfHolder/Shelf"]
-
-[node name="InteractArea" type="CollisionShape2D" parent="ShelfHolder/Shelf/InteractShape"]
-position = Vector2(2, 17)
-shape = SubResource("CircleShape2D_yhb2b")
-
-[node name="Objects" type="Node" parent="ShelfHolder/Shelf"]
-
-[node name="Item1" type="Sprite2D" parent="ShelfHolder/Shelf/Objects"]
-visible = false
-position = Vector2(321, 85)
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("10_oleb0")
-hframes = 4
-vframes = 2
-
-[node name="Item2" type="Sprite2D" parent="ShelfHolder/Shelf/Objects"]
-visible = false
-position = Vector2(321, 94)
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("10_oleb0")
-hframes = 4
-vframes = 2
-frame = 4
-
-[node name="Item3-4" type="Sprite2D" parent="ShelfHolder/Shelf/Objects"]
-visible = false
-position = Vector2(308, 94)
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("10_oleb0")
-hframes = 6
-vframes = 2
-frame = 10
-
-[node name="Item4-4" type="Sprite2D" parent="ShelfHolder/Shelf/Objects"]
-visible = false
-position = Vector2(322, 100)
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("10_oleb0")
-hframes = 4
-vframes = 2
-frame = 7
-
-[node name="Item4-5" type="Sprite2D" parent="ShelfHolder/Shelf/Objects"]
-visible = false
-position = Vector2(317, 100)
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("10_oleb0")
-hframes = 4
-vframes = 2
-frame = 5
-
-[node name="Item4-6" type="Sprite2D" parent="ShelfHolder/Shelf/Objects"]
-visible = false
-position = Vector2(305, 97)
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("10_oleb0")
-hframes = 4
-vframes = 2
-frame = 3
-
-[node name="Item4-7" type="Sprite2D" parent="ShelfHolder/Shelf/Objects"]
-visible = false
-position = Vector2(311.1, 88)
-scale = Vector2(0.591666, 0.6)
-texture = ExtResource("10_oleb0")
-hframes = 4
-vframes = 2
-frame = 6
+[node name="Shelf" parent="ShelfHolder" instance=ExtResource("6_6735k")]
+position = Vector2(320, 66)
 
 [node name="CounterHolder" type="Node" parent="."]
 
@@ -222,9 +136,8 @@ shape = SubResource("RectangleShape2D_x8lv1")
 metadata/_edit_lock_ = true
 
 [node name="Shopping AI" parent="." instance=ExtResource("12_08vip")]
+position = Vector2(126, 66)
 
-[connection signal="body_entered" from="ShelfHolder/Shelf/InteractShape" to="ShelfHolder/Shelf" method="_on_interact_shape_body_entered"]
-[connection signal="body_exited" from="ShelfHolder/Shelf/InteractShape" to="ShelfHolder/Shelf" method="_on_interact_shape_body_exited"]
 [connection signal="body_entered" from="BoxHolder/Box1" to="BoxHolder/Box1" method="_on_body_entered"]
 [connection signal="timeout" from="BoxHolder/Box1/Timer" to="Player" method="_on_timer_timeout"]
 [connection signal="timeout" from="BoxHolder/Box1/Timer" to="BoxHolder/Box1" method="_on_timer_timeout"]
