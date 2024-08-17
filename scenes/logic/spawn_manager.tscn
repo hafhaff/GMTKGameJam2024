@@ -11,4 +11,8 @@ shoppingAI = ExtResource("2_ma1es")
 [node name="Spawn Timer" type="Timer" parent="."]
 one_shot = true
 
+[node name="Camera Switch Timer" type="Timer" parent="."]
+wait_time = 14.0
+
 [connection signal="timeout" from="Spawn Timer" to="." method="_on_spawn_timer_timeout"]
+[connection signal="timeout" from="Camera Switch Timer" to="." method="_switchCamera"]
