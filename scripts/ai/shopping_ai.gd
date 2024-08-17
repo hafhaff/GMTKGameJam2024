@@ -18,6 +18,8 @@ var itemsHeld: Dictionary = {}
 var itemsTotal: int = 0
 var waitForCheckout: bool = false
 
+signal leavingShop(shoppingAI)
+
 func _ready():
 	shelves.shuffle()
 	shoppingTimer.connect("timeout", _generateTarget)
@@ -29,6 +31,7 @@ func _physics_process(_delta):
 	if navigation.is_navigation_finished():
 		kittyDisplay.is_walking = false
 		if navigation.target_position == spawnPos:
+			leavingShop.emit(self)
 			queue_free()
 		if waitForCheckout:
 			return
