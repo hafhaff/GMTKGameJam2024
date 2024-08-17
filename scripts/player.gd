@@ -11,6 +11,7 @@ var heldItem : Node
 var counter: Counter
 var heldItemNum
 var canUnload
+var curShelf : Shelf = null
 
 var zoom_speed = Vector2(0.3000001, 0.3000001)
 
@@ -36,13 +37,43 @@ func _physics_process(_delta):
 		dropBox()
 	if action1 and counter != null:
 		counter._checkShopperDistance()
+	if action1 and canUnload:
+		fillShelf()
 
-func fillPart():
-	pass
+func fillShelf():
+	print("filling shelf")
+	if canUnload and heldItem is box:
+		print("items in box before fill:")
+		print(getNumInBox())
+		print("items in shelf:")
+		print(curShelf.itemNum)
+		var itemsToPutIn = curShelf.maxItemCount-curShelf.itemNum
+		curShelf.fill(getNumInBox(), getBoxItem())
+		if getNumInBox() <= itemsToPutIn:
+			deleteEmptyBox()
+		else:
+			print("items in box after fill:")
+			setNumInBox(getNumInBox()-itemsToPutIn)
+			print(getNumInBox())
 
 func getShelf(shelf):
 	return shelf
 	
+func setNumInBox(num):
+	heldItem.itemNum = num
+
+func getNumInBox():
+	if heldItem != null:
+		return heldItem.itemNum
+	
+func getBoxItem():
+	if heldItem != null:
+		return heldItem.itemType
+
+func deleteEmptyBox():
+	$HoldBox.visible = false
+	heldItem = null
+
 func dropBox():
 	if heldItem == null: 
 		pass

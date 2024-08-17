@@ -3,24 +3,57 @@ extends Node2D
 class_name Shelf
 
 var maxItemCount = 12
-var itemNum
-var itemType: ItemGlobal.FoodTypes
+@export var itemNum = 0
+@export var itemType: ItemGlobal.FoodTypes
 var location
 
 var interactPos: Vector2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	fillWithRandom()	#For debugging n stuff, remove later
+	#fillWithRandom()	#For debugging n stuff, remove later
 	global_position = floor(global_position/32)*32	#Important for the tilemap, BUT we'll handle placement differently later
 	global_shop._registerShelf(self)	#Important, don't remove
 	interactPos = $InteractPos.global_position
+	$ShelvedItems.updateStockSprite()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+	
+func getSpaceLeft():
+	return maxItemCount - itemNum
 
-#ONLY USE TO REPLACE
+func fill(numItems, itemType):
+	if itemType == self.itemType:
+		if getSpaceLeft() <= numItems:
+			self.itemNum = maxItemCount
+			$ShelvedItems.updateStockSprite()
+			return true
+		else:
+			self.itemNum += numItems
+			$ShelvedItems.updateStockSprite()
+			return true
+	else:
+		$ShelvedItems.updateStockSprite()
+		return false
+		
+#use 1 as num  items taken if you want one at a time
+func take(numItemsTaken, itemType): 
+	if itemType == self.itemType:
+		if numItemsTaken <= self.itemNum:
+			self.itemNum -= numItemsTaken
+			$ShelvedItems.updateStockSprite()
+			return true
+		else:
+			self.itemNum = 0
+			$ShelvedItems.updateStockSprite()
+			return false
+	else: 
+		$ShelvedItems.updateStockSprite()
+		return false
+
+#ONLY USE TO REPLACE with no protection
 func setItem(newItem): 
 	itemType = newItem
 	
@@ -39,8 +72,11 @@ func fillWithRandom():
 func _on_interact_shape_body_entered(body):
 	if body is Player:
 		body.canUnload = true
+		body.curShelf = self
+		
 	
 
 func _on_interact_shape_body_exited(body):
 	if body is Player:
 		body.canUnload = false
+		body.curShelf = null
