@@ -7,8 +7,6 @@ extends Sprite2D
 # Below that 1st stage
 # 0%, Nothing
 
-@export var debug_percentage: float
-
 func _process(delta: float) -> void:
 	if not shelf.itemNum == 0:
 		visible = true
