@@ -41,8 +41,10 @@ tile_set = SubResource("TileSet_vde8b")
 rendering_quadrant_size = 32
 script = ExtResource("3_54bk2")
 
-[node name="Shopping AI" parent="." instance=ExtResource("7_a8lbj")]
+[node name="Shopping AI" parent="." node_paths=PackedStringArray("shelfHolder", "counterHolder") instance=ExtResource("7_a8lbj")]
 position = Vector2(84, 83)
+shelfHolder = NodePath("../ShelfHolder")
+counterHolder = NodePath("../CounterHolder")
 
 [node name="Player" parent="." instance=ExtResource("6_xjrtd")]
 
