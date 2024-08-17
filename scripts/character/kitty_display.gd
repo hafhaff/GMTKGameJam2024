@@ -37,8 +37,8 @@ func _process(delta: float) -> void:
 		if is_walking:
 			animation_player.play("kitty_walk")
 		else:
+			all_sprites.rotation = 0
 			animation_player.play("kitty_idle")
-			
 		set_flipped(is_flipped)
 
 ## I think this one explains itself
