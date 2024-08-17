@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://ci8ldm6uxfv0i" path="res://scenes/player.tscn" id="9_akcb2"]
 [ext_resource type="PackedScene" uid="uid://duc186117kn0h" path="res://scenes/logic/spawn_manager.tscn" id="9_n4gvh"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ixqty"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rklfp"]
 texture = ExtResource("1_dsxfx")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
@@ -21,13 +21,13 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)])
 agent_radius = 0.0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ucrl5"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_75tk3"]
 texture = ExtResource("1_dsxfx")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jhmfy")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rqtsb"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j8w48"]
 texture = ExtResource("2_de84h")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
@@ -37,9 +37,9 @@ texture_region_size = Vector2i(32, 32)
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 navigation_layer_0/layers = 1
-sources/3 = SubResource("TileSetAtlasSource_ucrl5")
-sources/4 = SubResource("TileSetAtlasSource_rqtsb")
-sources/0 = SubResource("TileSetAtlasSource_ixqty")
+sources/3 = SubResource("TileSetAtlasSource_75tk3")
+sources/4 = SubResource("TileSetAtlasSource_j8w48")
+sources/0 = SubResource("TileSetAtlasSource_rklfp")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qa1wj"]
 radius = 4.0
