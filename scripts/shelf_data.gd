@@ -7,12 +7,14 @@ var itemNum
 var itemType: ItemGlobal.FoodTypes
 var location
 
-@onready var interactPos: Vector2 = $InteractPos.global_position
+var interactPos: Vector2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	fillWithRandom()	#For debugging n stuff, remove later
+	global_position = floor(global_position/32)*32	#Important for the tilemap, BUT we'll handle placement differently later
 	global_shop._registerShelf(self)	#Important, don't remove
+	interactPos = $InteractPos.global_position
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
