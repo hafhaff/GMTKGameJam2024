@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://dn0lkdgorj8pf"]
+
+[ext_resource type="Script" path="res://scripts/counter.gd" id="1_ek76o"]
+[ext_resource type="Texture2D" uid="uid://c0lujqem7fj3o" path="res://textures/counter.png" id="2_10oq4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mmn8d"]
+size = Vector2(28, 23)
+
+[node name="Counter" type="Area2D"]
+y_sort_enabled = true
+script = ExtResource("1_ek76o")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_10oq4")
+
+[node name="InteractPos" type="Node2D" parent="."]
+position = Vector2(0, 19)
+
+[node name="ClerkPos" type="Node2D" parent="."]
+position = Vector2(0, 4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4.5)
+shape = SubResource("RectangleShape2D_mmn8d")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
