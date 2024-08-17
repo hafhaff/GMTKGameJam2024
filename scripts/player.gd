@@ -20,10 +20,9 @@ func _physics_process(_delta):
 	if action1 and not canUnload:
 		print(self.global_position)
 		dropBox()
-		
-	
-		
 
+func fillPart():
+	pass
 
 func getShelf(shelf):
 	return shelf
