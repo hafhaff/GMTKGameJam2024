@@ -7,7 +7,6 @@
 radius = 4.0
 
 [node name="Cashier AI" type="CharacterBody2D"]
-position = Vector2(144, 50)
 script = ExtResource("1_l2gmu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -21,5 +20,4 @@ path_desired_distance = 1.0
 target_desired_distance = 1.0
 path_postprocessing = 1
 simplify_path = true
-avoidance_enabled = true
 debug_enabled = true

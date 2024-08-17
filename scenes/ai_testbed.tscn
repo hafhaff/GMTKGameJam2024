@@ -121,6 +121,7 @@ zoom_min = Vector2(0.2, 0.2)
 zoom_max = Vector2(15, 15)
 
 [node name="Cashier AI" parent="." instance=ExtResource("7_0418u")]
+position = Vector2(593, 222)
 
 [node name="Spawn Manager" parent="." instance=ExtResource("9_n4gvh")]
 
