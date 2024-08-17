@@ -13,7 +13,7 @@ func _ready():
 	add_child(lookForCounterTimer)
 	lookForCounterTimer.one_shot = true
 	lookForCounterTimer.connect("timeout", _lookForJob)
-	lookForCounterTimer.start(3)
+	lookForCounterTimer.start(randf_range(1, 4))
 	add_child(jobTimer)
 	jobTimer.one_shot = true
 	jobTimer.connect("timeout", _jobInteract)
