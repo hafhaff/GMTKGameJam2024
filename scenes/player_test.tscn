@@ -1,13 +1,12 @@
-[gd_scene load_steps=14 format=4 uid="uid://ucd887khy117"]
+[gd_scene load_steps=12 format=4 uid="uid://ucd887khy117"]
 
 [ext_resource type="Texture2D" uid="uid://c0hl6hvpgglh7" path="res://textures/gmtk_floor.png" id="1_7ihwg"]
 [ext_resource type="Texture2D" uid="uid://kic3mm885h61" path="res://textures/gmtk_wall.png" id="2_h1x4s"]
 [ext_resource type="Script" path="res://scripts/navmesh_updater.gd" id="3_54bk2"]
-[ext_resource type="Script" path="res://scripts/ai/shopping_ai.gd" id="4_vyk0b"]
-[ext_resource type="Texture2D" uid="uid://cxxa5mom7krui" path="res://textures/kitty.png" id="5_vubqg"]
 [ext_resource type="Texture2D" uid="uid://bf5eidgwt1hqa" path="res://textures/shelf.png" id="6_wnh0l"]
-[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="6_xjrtd"]
+[ext_resource type="PackedScene" uid="uid://ci8ldm6uxfv0i" path="res://scenes/player.tscn" id="6_xjrtd"]
 [ext_resource type="Texture2D" uid="uid://c0lujqem7fj3o" path="res://textures/counter.png" id="7_612me"]
+[ext_resource type="PackedScene" uid="uid://biophta5et6p7" path="res://scenes/characters/shopping_ai.tscn" id="7_a8lbj"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_jhmfy"]
 vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
@@ -34,9 +33,6 @@ navigation_layer_0/layers = 1
 sources/3 = SubResource("TileSetAtlasSource_tmhts")
 sources/4 = SubResource("TileSetAtlasSource_k7o1r")
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_8fbhx"]
-radius = 5.0
-
 [node name="PlayerTest" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -45,24 +41,8 @@ tile_set = SubResource("TileSet_vde8b")
 rendering_quadrant_size = 32
 script = ExtResource("3_54bk2")
 
-[node name="AI" type="CharacterBody2D" parent="." node_paths=PackedStringArray("shelfHolder", "counterHolder")]
-position = Vector2(86, 84)
-script = ExtResource("4_vyk0b")
-shelfHolder = NodePath("../ShelfHolder")
-counterHolder = NodePath("../CounterHolder")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AI"]
-position = Vector2(0, 6)
-shape = SubResource("CircleShape2D_8fbhx")
-
-[node name="Sprite2D" type="Sprite2D" parent="AI"]
-texture = ExtResource("5_vubqg")
-
-[node name="Timer" type="Timer" parent="AI"]
-one_shot = true
-
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="AI"]
-path_postprocessing = 1
+[node name="Shopping AI" parent="." instance=ExtResource("7_a8lbj")]
+position = Vector2(84, 83)
 
 [node name="Player" parent="." instance=ExtResource("6_xjrtd")]
 
