@@ -1,0 +1,104 @@
+[gd_scene load_steps=7 format=3 uid="uid://bed0fmavm0x6e"]
+
+[ext_resource type="Texture2D" uid="uid://pild65lobbfl" path="res://textures/characters/kitty/kitty_face_atlas.tres" id="1_wxyyb"]
+[ext_resource type="Texture2D" uid="uid://xq6od1oywawu" path="res://textures/characters/kitty/kitty_base_atlas.tres" id="2_yraf8"]
+
+[sub_resource type="Animation" id="Animation_bvyix"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprites:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_74dcx"]
+resource_name = "kitty_idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 0.5, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 0.95), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_a82eo"]
+resource_name = "kitty_walk"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [0.0872665, -0.0872665]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprites:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.499317, 0.733333, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 0.95), Vector2(1, 1), Vector2(1, 0.95), Vector2(1, 0.988441)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iuylb"]
+_data = {
+"RESET": SubResource("Animation_bvyix"),
+"kitty_idle": SubResource("Animation_74dcx"),
+"kitty_walk": SubResource("Animation_a82eo")
+}
+
+[node name="KittyDisplay" type="Node2D"]
+
+[node name="Sprites" type="Node2D" parent="."]
+
+[node name="Outfit" type="Sprite2D" parent="Sprites"]
+scale = Vector2(1, 1)
+
+[node name="Face" type="Sprite2D" parent="Sprites"]
+z_index = 5
+position = Vector2(0, -16)
+texture = ExtResource("1_wxyyb")
+
+[node name="Base" type="Sprite2D" parent="Sprites"]
+position = Vector2(0, -16)
+texture = ExtResource("2_yraf8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_iuylb")
+}
+autoplay = "kitty_idle"
