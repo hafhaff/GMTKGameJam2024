@@ -1,99 +1,42 @@
-[gd_scene load_steps=6 format=3 uid="uid://ctvqfkk37kel"]
+[gd_scene load_steps=7 format=3 uid="uid://cr8g2ewri4sld"]
 
 [ext_resource type="Script" path="res://scripts/objects/shelf_data.gd" id="1_eyxpy"]
-[ext_resource type="Texture2D" uid="uid://bf5eidgwt1hqa" path="res://textures/shelf.png" id="2_hnkig"]
-[ext_resource type="Texture2D" uid="uid://d0kb1dfig6cwr" path="res://textures/objects/products/shelved_canned_food.png" id="3_oqswe"]
+[ext_resource type="Texture2D" uid="uid://cr5ayvghqy7os" path="res://textures/objects/shelf_atlas.tres" id="2_m12bv"]
+[ext_resource type="Texture2D" uid="uid://vymidhl6oc3v" path="res://textures/objects/products/shelved_canned_food_atlas.tres" id="3_uuvon"]
+[ext_resource type="Script" path="res://scripts/objects/products/shelved_items.gd" id="4_g2kmi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kqj1n"]
-size = Vector2(28, 9)
+size = Vector2(32, 5)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yhb2b"]
-radius = 21.0238
+radius = 16.0
 
 [node name="Shelf" type="StaticBody2D"]
 script = ExtResource("1_eyxpy")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(16, 16)
-texture = ExtResource("2_hnkig")
+texture = ExtResource("2_m12bv")
+
+[node name="ShelvedItems" type="Sprite2D" parent="."]
+position = Vector2(16, 16)
+texture = ExtResource("3_uuvon")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 32)
+script = ExtResource("4_g2kmi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(16, 25.5)
+position = Vector2(16, 29.5)
 shape = SubResource("RectangleShape2D_kqj1n")
 
 [node name="InteractShape" type="Area2D" parent="."]
-position = Vector2(16, 16)
+position = Vector2(16, 32)
 
 [node name="InteractArea" type="CollisionShape2D" parent="InteractShape"]
-position = Vector2(2, 17)
 shape = SubResource("CircleShape2D_yhb2b")
 
 [node name="InteractPos" type="Node2D" parent="."]
-position = Vector2(16, 33)
-
-[node name="Objects" type="Node" parent="."]
-
-[node name="Item1" type="Sprite2D" parent="Objects"]
-visible = false
-position = Vector2(321, 85)
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("3_oqswe")
-hframes = 4
-vframes = 2
-
-[node name="Item2" type="Sprite2D" parent="Objects"]
-visible = false
-position = Vector2(321, 94)
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("3_oqswe")
-hframes = 4
-vframes = 2
-frame = 4
-
-[node name="Item3-4" type="Sprite2D" parent="Objects"]
-visible = false
-position = Vector2(308, 94)
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("3_oqswe")
-hframes = 6
-vframes = 2
-frame = 10
-
-[node name="Item4-4" type="Sprite2D" parent="Objects"]
-visible = false
-position = Vector2(322, 100)
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("3_oqswe")
-hframes = 4
-vframes = 2
-frame = 7
-
-[node name="Item4-5" type="Sprite2D" parent="Objects"]
-visible = false
-position = Vector2(317, 100)
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("3_oqswe")
-hframes = 4
-vframes = 2
-frame = 5
-
-[node name="Item4-6" type="Sprite2D" parent="Objects"]
-visible = false
-position = Vector2(305, 97)
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("3_oqswe")
-hframes = 4
-vframes = 2
-frame = 3
-
-[node name="Item4-7" type="Sprite2D" parent="Objects"]
-visible = false
-position = Vector2(311.1, 88)
-scale = Vector2(0.591666, 0.6)
-texture = ExtResource("3_oqswe")
-hframes = 4
-vframes = 2
-frame = 6
+position = Vector2(16, 34)
 
 [connection signal="body_entered" from="InteractShape" to="." method="_on_interact_shape_body_entered"]
 [connection signal="body_exited" from="InteractShape" to="." method="_on_interact_shape_body_exited"]
