@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://de1beg5m18qmu"]
+[gd_scene load_steps=15 format=4 uid="uid://de1beg5m18qmu"]
 
 [ext_resource type="Texture2D" uid="uid://c0hl6hvpgglh7" path="res://textures/gmtk_floor.png" id="1_dsxfx"]
 [ext_resource type="Texture2D" uid="uid://kic3mm885h61" path="res://textures/gmtk_wall.png" id="2_de84h"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bed0fmavm0x6e" path="res://scenes/characters/kitty_display.tscn" id="5_s4hfu"]
 [ext_resource type="PackedScene" uid="uid://ctvqfkk37kel" path="res://scenes/objects/shelf.tscn" id="6_6demk"]
 [ext_resource type="Script" path="res://scripts/counter.gd" id="7_g7rs7"]
+[ext_resource type="PackedScene" uid="uid://ci8ldm6uxfv0i" path="res://scenes/player.tscn" id="9_akcb2"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_jhmfy"]
 vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
@@ -66,8 +67,6 @@ simplify_path = true
 avoidance_enabled = true
 radius = 5.0
 
-[node name="Camera2D" type="Camera2D" parent="AI"]
-
 [node name="KittyDisplay" parent="AI" instance=ExtResource("5_s4hfu")]
 position = Vector2(0, 9)
 
@@ -115,3 +114,12 @@ script = ExtResource("7_g7rs7")
 
 [node name="Sprite2D" type="Sprite2D" parent="CounterHolder/Counter"]
 texture = ExtResource("5_h66c7")
+
+[node name="CheckoutPos" type="Node2D" parent="CounterHolder/Counter"]
+position = Vector2(0, 18)
+
+[node name="ClerkPos" type="Node2D" parent="CounterHolder/Counter"]
+position = Vector2(0, 3)
+
+[node name="Player" parent="." instance=ExtResource("9_akcb2")]
+position = Vector2(231, 162)
