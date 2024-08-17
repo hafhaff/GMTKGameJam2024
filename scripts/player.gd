@@ -6,6 +6,7 @@ class_name Player
 @export var pickUpCoolDown = 0.3
 
 var heldItem : Node
+var counter: Counter
 var heldItemNum
 var canUnload
 
@@ -27,6 +28,8 @@ func _physics_process(_delta):
 	if action1 and not canUnload:
 		print(self.global_position)
 		dropBox()
+	if action1 and counter != null:
+		counter._checkShopperDistance()
 
 func fillPart():
 	pass
