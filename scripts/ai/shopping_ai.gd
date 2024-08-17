@@ -16,6 +16,7 @@ var itemType: ItemGlobal.FoodTypes
 var itemsHeld: int = 0
 var shelves: Array[Node]
 var counters: Array[Node]
+var waitForCheckout: bool = true
 
 func _ready():
 	shoppingTimer.connect("timeout", _generateTarget)
@@ -26,6 +27,8 @@ func _ready():
 func _process(_delta):
 	if navigation.is_navigation_finished():
 		kittyDisplay.is_walking = false
+		if waitForCheckout:
+			return
 		if target == null:
 			return
 		itemsHeld += 1
@@ -41,6 +44,7 @@ func _process(_delta):
 		kittyDisplay.is_flipped = true
 	move_and_slide()
 
+#Temporary, will get refactored when the shop is finished
 func _generateTarget():
 	if itemsHeld < itemsNeeded:
 		target = shelves.pick_random()
@@ -48,7 +52,9 @@ func _generateTarget():
 			shoppingTimer.start(10)
 			return
 	else:
+		waitForCheckout = true
 		target = counters.pick_random()
+		target._addToWaitList(self)
 		itemsNeeded = randi_range(1,3)
 		itemsHeld = 0
 		itemType = randi_range(0, ItemGlobal.FoodTypes.size() - 1) as ItemGlobal.FoodTypes
@@ -62,3 +68,6 @@ func _selectShelf() -> Shelf:
 			return shelf
 	
 	return null
+
+func _checkout():
+	waitForCheckout = false
