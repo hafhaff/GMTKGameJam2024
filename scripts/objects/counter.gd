@@ -28,7 +28,7 @@ func _checkShopperDistance():
 				total += waitList[0].shoppingList[item] * itemGlobalLocal.FoodValues[item].sellPrice
 			global_shop._addKitcoin(total)
 			waitList.remove_at(0)
-			for x in range(waitList.size()-1):
+			for x in range(waitList.size()):
 				_updateWaitingLine(x)
 
 func _changeEmptyState(isEmpty: bool):
@@ -48,4 +48,5 @@ func _on_body_exited(body):
 			body.counter = null
 
 func _updateWaitingLine(_position: int):
+	printt("updating waiting queue AI position", _position, interactPos + Vector2(-20 * _position, 0))
 	waitList[_position].navigation.target_position = interactPos + Vector2(-20 * _position, 0)
