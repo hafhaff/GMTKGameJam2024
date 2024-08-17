@@ -23,8 +23,9 @@ func _ready():
 	shelves = shelfHolder.get_children()
 	counters = counterHolder.get_children()
 	_generateTarget()
+	kittyDisplay.randomize_look()
 
-func _process(_delta):
+func _physics_process(_delta):
 	if navigation.is_navigation_finished():
 		kittyDisplay.is_walking = false
 		if waitForCheckout:
@@ -38,10 +39,7 @@ func _process(_delta):
 	
 	var nextPos: Vector2 = navigation.get_next_path_position()
 	velocity = global_position.direction_to(nextPos) * speed
-	if velocity.x > 0:
-		kittyDisplay.is_flipped = false
-	else:
-		kittyDisplay.is_flipped = true
+	kittyDisplay.is_flipped = velocity.x < 0
 	move_and_slide()
 
 #Temporary, will get refactored when the shop is finished
