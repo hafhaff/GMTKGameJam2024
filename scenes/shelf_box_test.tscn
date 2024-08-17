@@ -1,18 +1,17 @@
-[gd_scene load_steps=22 format=4 uid="uid://brtvbijnkdufn"]
+[gd_scene load_steps=20 format=4 uid="uid://brtvbijnkdufn"]
 
 [ext_resource type="Texture2D" uid="uid://c0hl6hvpgglh7" path="res://textures/gmtk_floor.png" id="1_7ut3h"]
 [ext_resource type="Texture2D" uid="uid://kic3mm885h61" path="res://textures/gmtk_wall.png" id="2_g6vya"]
 [ext_resource type="Script" path="res://scripts/navmesh_updater.gd" id="3_1x3hi"]
-[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="4_w6ypc"]
+[ext_resource type="PackedScene" uid="uid://ci8ldm6uxfv0i" path="res://scenes/player.tscn" id="4_w6ypc"]
 [ext_resource type="Texture2D" uid="uid://bsl2t6vuw1kqn" path="res://textures/objects/box.png" id="5_jaqdb"]
-[ext_resource type="Texture2D" uid="uid://cxxa5mom7krui" path="res://textures/kitty.png" id="6_1p4sy"]
-[ext_resource type="Script" path="res://scripts/ai/shopping_ai.gd" id="6_3u4h8"]
 [ext_resource type="Script" path="res://scripts/shelf_data.gd" id="7_pmk36"]
 [ext_resource type="Texture2D" uid="uid://bf5eidgwt1hqa" path="res://textures/shelf.png" id="8_7gi2q"]
 [ext_resource type="Texture2D" uid="uid://c0lujqem7fj3o" path="res://textures/counter.png" id="9_plbmk"]
 [ext_resource type="Script" path="res://scenes/box.gd" id="10_nqw5v"]
 [ext_resource type="Texture2D" uid="uid://d0kb1dfig6cwr" path="res://textures/objects/products/shelved_canned_food.png" id="10_oleb0"]
 [ext_resource type="Script" path="res://scenes/Boxtimer.gd" id="11_r5rb0"]
+[ext_resource type="PackedScene" uid="uid://biophta5et6p7" path="res://scenes/characters/shopping_ai.tscn" id="12_08vip"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_jhmfy"]
 vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
@@ -39,9 +38,6 @@ navigation_layer_0/layers = 1
 sources/3 = SubResource("TileSetAtlasSource_5texf")
 sources/4 = SubResource("TileSetAtlasSource_opt03")
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_sef5c"]
-radius = 5.0
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kqj1n"]
 size = Vector2(28, 17)
 
@@ -62,30 +58,12 @@ script = ExtResource("3_1x3hi")
 [node name="Player" parent="." instance=ExtResource("4_w6ypc")]
 
 [node name="HoldBox" type="Sprite2D" parent="Player"]
+visible = false
 position = Vector2(3, 1)
 scale = Vector2(0.804688, 0.75)
 texture = ExtResource("5_jaqdb")
 hframes = 4
 frame = 3
-
-[node name="AI" type="CharacterBody2D" parent="." node_paths=PackedStringArray("shelfHolder", "counterHolder")]
-position = Vector2(86, 84)
-script = ExtResource("6_3u4h8")
-shelfHolder = NodePath("../ShelfHolder")
-counterHolder = NodePath("../CounterHolder")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AI"]
-position = Vector2(0, 6)
-shape = SubResource("CircleShape2D_sef5c")
-
-[node name="Sprite2D" type="Sprite2D" parent="AI"]
-texture = ExtResource("6_1p4sy")
-
-[node name="Timer" type="Timer" parent="AI"]
-one_shot = true
-
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="AI"]
-path_postprocessing = 1
 
 [node name="ShelfHolder" type="Node" parent="."]
 metadata/itemNum = 0
@@ -241,6 +219,8 @@ hframes = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BoxHolder/Box2"]
 shape = SubResource("RectangleShape2D_x8lv1")
 metadata/_edit_lock_ = true
+
+[node name="Shopping AI" parent="." instance=ExtResource("12_08vip")]
 
 [connection signal="body_entered" from="ShelfHolder/Shelf/InteractShape" to="ShelfHolder/Shelf" method="_on_interact_shape_body_entered"]
 [connection signal="body_exited" from="ShelfHolder/Shelf/InteractShape" to="ShelfHolder/Shelf" method="_on_interact_shape_body_exited"]
