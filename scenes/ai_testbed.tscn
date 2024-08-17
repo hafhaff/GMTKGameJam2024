@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://de1beg5m18qmu"]
+[gd_scene load_steps=15 format=4 uid="uid://de1beg5m18qmu"]
 
 [ext_resource type="Texture2D" uid="uid://c0hl6hvpgglh7" path="res://textures/gmtk_floor.png" id="1_dsxfx"]
 [ext_resource type="Texture2D" uid="uid://kic3mm885h61" path="res://textures/gmtk_wall.png" id="2_de84h"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b0ic68c7v5ojg" path="res://scenes/characters/cashier_ai.tscn" id="7_0418u"]
 [ext_resource type="PackedScene" uid="uid://ci8ldm6uxfv0i" path="res://scenes/player.tscn" id="9_akcb2"]
 [ext_resource type="PackedScene" uid="uid://duc186117kn0h" path="res://scenes/logic/spawn_manager.tscn" id="9_n4gvh"]
+[ext_resource type="PackedScene" uid="uid://du8832mjcy7sc" path="res://scenes/ui/currency_display.tscn" id="9_nwyhr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rklfp"]
 texture = ExtResource("1_dsxfx")
@@ -113,3 +114,5 @@ zoom_max = Vector2(15, 15)
 [node name="Cashier AI" parent="." instance=ExtResource("7_0418u")]
 
 [node name="Spawn Manager" parent="." instance=ExtResource("9_n4gvh")]
+
+[node name="Currency Display" parent="." instance=ExtResource("9_nwyhr")]

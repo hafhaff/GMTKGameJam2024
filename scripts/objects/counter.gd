@@ -4,6 +4,7 @@ class_name Counter
 
 var waitList: Array[ShoppingAI]
 var counterEmpty: bool = true
+var itemGlobalLocal: ItemGlobal = ItemGlobal.new()	#This is retarded
 
 @onready var interactPos: Vector2 = $InteractPos.global_position
 @onready var cashierPos: Vector2 = $CashierPos.global_position
@@ -21,6 +22,10 @@ func _checkShopperDistance():
 	
 	if interactPos.distance_squared_to(waitList[0].global_position) < 100:
 		if waitList[0]._checkout():
+			var total:float = 0
+			for item in waitList[0].shoppingList:
+				total += waitList[0].shoppingList[item] * itemGlobalLocal.FoodValues[item].sellPrice
+			global_shop._addKitcoin(total)
 			waitList.remove_at(0)
 
 func _changeEmptyState(isEmpty: bool):
