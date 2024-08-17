@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://du8832mjcy7sc"]
+
+[ext_resource type="Script" path="res://scripts/ui/currency_display.gd" id="1_mhgm4"]
+
+[node name="Currency Display" type="CanvasLayer"]
+script = ExtResource("1_mhgm4")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+text = "123456 Kitcoin"
