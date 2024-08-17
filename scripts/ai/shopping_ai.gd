@@ -10,18 +10,18 @@ class_name ShoppingAI
 @onready var navigation: NavigationAgent2D = $NavigationAgent2D
 @onready var kittyDisplay: KittyDisplay = $KittyDisplay
 @onready var spawnPos: Vector2 = self.global_position
+@onready var shelves: Array = global_shop.shopShelves.values().duplicate()
 
 var target: Node2D = null
-var itemsNeeded: int = 0
-var itemType: ItemGlobal.FoodTypes
-var itemsHeld: int = 0
+var shoppingList: Dictionary = {}
+var itemsHeld: Dictionary = {}
+var itemsTotal: int = 0
 var waitForCheckout: bool = false
 
 func _ready():
+	shelves.shuffle()
 	shoppingTimer.connect("timeout", _generateTarget)
-	itemsNeeded = randi_range(1,3)
-	itemsHeld = 0
-	itemType = randi_range(0, ItemGlobal.FoodTypes.size() - 1) as ItemGlobal.FoodTypes
+	_generateShoppingList()
 	_generateTarget()
 	kittyDisplay.randomize_look()
 
@@ -34,7 +34,8 @@ func _physics_process(_delta):
 			return
 		if target == null:
 			return
-		itemsHeld += 0 if target is Counter else 1
+		if target is Shelf:
+			itemsHeld[target.itemType] += 1
 		target = null
 		shoppingTimer.start(1.5)
 		return
@@ -46,7 +47,7 @@ func _physics_process(_delta):
 
 #Temporary, will get refactored when the shop is finished
 func _generateTarget():
-	if itemsHeld < itemsNeeded:
+	if !_shoppingDone():
 		target = _selectShelf()
 		if target == null:
 			shoppingTimer.start(3)
@@ -63,10 +64,12 @@ func _generateTarget():
 	navigation.target_position = target.interactPos
 
 func _selectShelf() -> Shelf:
-	for shelf in global_shop.shopShelves:
-		if global_shop.shopShelves[shelf].itemType == itemType:
-			return global_shop.shopShelves[shelf]
-	
+	for item in itemsHeld:
+		if itemsHeld[item] == shoppingList[item]:
+			continue
+		for shelf in shelves:
+			if shelf.itemType == item:
+				return shelf
 	return null
 
 func _selectClosestCounter():
@@ -80,10 +83,25 @@ func _selectClosestCounter():
 	return _counters[0]
 
 func _checkout() -> bool:
-	itemsHeld -= 1
-	print("Kitty checkout left", itemsHeld)
-	if itemsHeld < 0:
+	itemsTotal -= 1
+	if itemsTotal < 0:
 		waitForCheckout = false
 		navigation.target_position = spawnPos
 		return true
 	return false
+
+func _generateShoppingList():
+	itemsTotal = randi_range(0,6)
+	for x in range(itemsTotal):
+		var key: ItemGlobal.FoodTypes = randi_range(0, ItemGlobal.FoodTypes.size() - 1) as ItemGlobal.FoodTypes
+		if shoppingList.has(key):
+			shoppingList[key] = shoppingList[key] + 1
+		else:
+			shoppingList[key] = 1
+			itemsHeld[key] = 0
+
+func _shoppingDone() -> bool:
+	for key in itemsHeld:
+		if itemsHeld[key] != shoppingList[key]:
+			return false
+	return true
