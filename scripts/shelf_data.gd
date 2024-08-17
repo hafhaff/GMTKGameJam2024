@@ -34,10 +34,10 @@ func fillWithRandom():
 	itemNum = maxItemCount
 
 func _on_interact_shape_body_entered(body):
-	if body == $"../../Player":
-		$"../../Player".canUnload = true
+	if body is Player:
+		body.canUnload = true
 	
 
 func _on_interact_shape_body_exited(body):
-	if body == $"../../Player":
-		$"../../Player".canUnload = false
+	if body is Player:
+		body.canUnload = false
