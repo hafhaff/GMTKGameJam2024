@@ -1,12 +1,11 @@
-[gd_scene load_steps=16 format=4 uid="uid://de1beg5m18qmu"]
+[gd_scene load_steps=14 format=4 uid="uid://de1beg5m18qmu"]
 
 [ext_resource type="Texture2D" uid="uid://c0hl6hvpgglh7" path="res://textures/gmtk_floor.png" id="1_dsxfx"]
 [ext_resource type="Texture2D" uid="uid://kic3mm885h61" path="res://textures/gmtk_wall.png" id="2_de84h"]
 [ext_resource type="Script" path="res://scripts/navmesh_updater.gd" id="3_t70eu"]
 [ext_resource type="PackedScene" uid="uid://cr8g2ewri4sld" path="res://scenes/objects/shelf.tscn" id="4_pgnvs"]
 [ext_resource type="PackedScene" uid="uid://dn0lkdgorj8pf" path="res://scenes/objects/counter.tscn" id="5_ijqlb"]
-[ext_resource type="PackedScene" uid="uid://bed0fmavm0x6e" path="res://scenes/characters/kitty_display.tscn" id="5_s4hfu"]
-[ext_resource type="Script" path="res://scripts/ai/cashier_ai.gd" id="8_18l1u"]
+[ext_resource type="PackedScene" uid="uid://b0ic68c7v5ojg" path="res://scenes/characters/cashier_ai.tscn" id="7_0418u"]
 [ext_resource type="PackedScene" uid="uid://ci8ldm6uxfv0i" path="res://scenes/player.tscn" id="9_akcb2"]
 [ext_resource type="PackedScene" uid="uid://duc186117kn0h" path="res://scenes/logic/spawn_manager.tscn" id="9_n4gvh"]
 
@@ -40,9 +39,6 @@ navigation_layer_0/layers = 1
 sources/3 = SubResource("TileSetAtlasSource_ucrl5")
 sources/4 = SubResource("TileSetAtlasSource_rqtsb")
 sources/0 = SubResource("TileSetAtlasSource_ixqty")
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_qa1wj"]
-radius = 4.0
 
 [node name="ai_testbed" type="Node2D"]
 y_sort_enabled = true
@@ -114,22 +110,6 @@ position = Vector2(231, 162)
 zoom_min = Vector2(0.2, 0.2)
 zoom_max = Vector2(15, 15)
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-position = Vector2(144, 50)
-script = ExtResource("8_18l1u")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-shape = SubResource("CircleShape2D_qa1wj")
-
-[node name="KittyDisplay" parent="CharacterBody2D" instance=ExtResource("5_s4hfu")]
-position = Vector2(0, 9)
-
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="CharacterBody2D"]
-path_desired_distance = 1.0
-target_desired_distance = 1.0
-path_postprocessing = 1
-simplify_path = true
-avoidance_enabled = true
-debug_enabled = true
+[node name="Cashier AI" parent="." instance=ExtResource("7_0418u")]
 
 [node name="Spawn Manager" parent="." instance=ExtResource("9_n4gvh")]
