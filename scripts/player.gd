@@ -2,10 +2,10 @@ extends CharacterBody2D
 
 class_name Player
 
-@export var speed: float = 100
+@export var speed: float = 150
 @export var pickUpCoolDown = 0.3
-@export var zoom_min = Vector2(0.5000001, 0.5000001)
-@export var zoom_max = Vector2(6.0000001, 6.0000001)
+@export var zoom_min = Vector2(2.00001, 2.00001)
+@export var zoom_max = Vector2(5.00001, 5.00001)
 
 var heldItem : Node
 var counter: Counter
@@ -13,7 +13,7 @@ var heldItemNum
 var canUnload
 var curShelf : Shelf = null
 
-var zoom_speed = Vector2(0.3000001, 0.3000001)
+var zoom_speed = Vector2(0.300001, 0.300001)
 
 @onready var camera = $Camera2D
 @onready var kittyDisplay: KittyDisplay = $KittyDisplay
@@ -98,13 +98,13 @@ func pickUpBox (box):
 	
 
 func _input(event: InputEvent):
-	if event is InputEventMouseButton:
+	if event is InputEventMouseButton or Input:
 		if event.is_pressed():
-			if event.button_index == MOUSE_BUTTON_WHEEL_UP:
+			if event.is_action_pressed('zoom_out'):
 				if camera.zoom > zoom_min:
 					camera.zoom -= zoom_speed
-			if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-				if camera.zoom < zoom_min:
+			if event.is_action_pressed('zoom_in'):
+				if camera.zoom < zoom_max:
 					camera.zoom += zoom_speed
-	pass
+				
 	
