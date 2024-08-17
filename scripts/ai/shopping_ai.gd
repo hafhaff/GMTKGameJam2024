@@ -45,13 +45,16 @@ func _physics_process(_delta):
 #Temporary, will get refactored when the shop is finished
 func _generateTarget():
 	if itemsHeld < itemsNeeded:
-		target = shelves.pick_random()
+		target = _selectShelf()
 		if target == null:
 			shoppingTimer.start(10)
 			return
 	else:
+		target = _selectClosestCounter()
+		if target == null:
+			shoppingTimer.start(3)
+			return
 		waitForCheckout = true
-		target = counters.pick_random()
 		target._addToWaitList(self)
 		itemsNeeded = randi_range(1,3)
 		itemsHeld = 0
@@ -61,11 +64,21 @@ func _generateTarget():
 	navigation.target_position = target.global_position
 
 func _selectShelf() -> Shelf:
-	for shelf in shelves:
-		if shelf.itemType == itemType:
-			return shelf
+	for shelf in global_shop.shopShelves:
+		if global_shop.shopShelves[shelf].itemType == itemType:
+			return global_shop.shopShelves[shelf]
 	
 	return null
+
+func _selectClosestCounter():
+	if global_shop.shopCounters.size() == 0:
+		return null
+	
+	var _counters: Array = global_shop.shopCounters.values()
+	if _counters.size() == 1:
+		return _counters[0]
+	_counters.sort_custom(func(a, b): return global_position.distance_squared_to(a.global_position) > global_position.distance_squared_to(b.global_position))
+	return _counters[0]
 
 func _checkout():
 	waitForCheckout = false
