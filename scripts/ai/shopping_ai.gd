@@ -9,25 +9,27 @@ class_name ShoppingAI
 @onready var shoppingTimer: Timer = $Timer
 @onready var navigation: NavigationAgent2D = $NavigationAgent2D
 @onready var kittyDisplay: KittyDisplay = $KittyDisplay
+@onready var spawnPos: Vector2 = self.global_position
 
 var target: Node2D = null
 var itemsNeeded: int = 0
 var itemType: ItemGlobal.FoodTypes
 var itemsHeld: int = 0
-var shelves: Array[Node]
-var counters: Array[Node]
-var waitForCheckout: bool = true
+var waitForCheckout: bool = false
 
 func _ready():
 	shoppingTimer.connect("timeout", _generateTarget)
-	shelves = shelfHolder.get_children()
-	counters = counterHolder.get_children()
+	itemsNeeded = randi_range(1,3)
+	itemsHeld = 0
+	itemType = randi_range(0, ItemGlobal.FoodTypes.size() - 1) as ItemGlobal.FoodTypes
 	_generateTarget()
 	kittyDisplay.randomize_look()
 
 func _physics_process(_delta):
 	if navigation.is_navigation_finished():
 		kittyDisplay.is_walking = false
+		if navigation.target_position == spawnPos:
+			queue_free()
 		if waitForCheckout:
 			return
 		if target == null:
@@ -57,9 +59,6 @@ func _generateTarget():
 			return
 		waitForCheckout = true
 		target._addToWaitList(self)
-		itemsNeeded = randi_range(1,3)
-		itemsHeld = 0
-		itemType = randi_range(0, ItemGlobal.FoodTypes.size() - 1) as ItemGlobal.FoodTypes
 
 	kittyDisplay.is_walking = true
 	navigation.target_position = target.interactPos
@@ -81,5 +80,11 @@ func _selectClosestCounter():
 	_counters.sort_custom(func(a, b): return global_position.distance_squared_to(a.global_position) > global_position.distance_squared_to(b.global_position))
 	return _counters[0]
 
-func _checkout():
-	waitForCheckout = false
+func _checkout() -> bool:
+	itemsHeld -= 1
+	print("Kitty checkout left", itemsHeld)
+	if itemsHeld < 0:
+		waitForCheckout = false
+		navigation.target_position = spawnPos
+		return true
+	return false
