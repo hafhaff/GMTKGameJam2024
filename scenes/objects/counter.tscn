@@ -16,7 +16,7 @@ texture = ExtResource("2_10oq4")
 [node name="InteractPos" type="Node2D" parent="."]
 position = Vector2(0, 19)
 
-[node name="ClerkPos" type="Node2D" parent="."]
+[node name="CashierPos" type="Node2D" parent="."]
 position = Vector2(0, 4)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
