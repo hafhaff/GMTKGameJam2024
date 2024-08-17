@@ -12,6 +12,7 @@ size = Vector2(32, 5)
 radius = 16.0
 
 [node name="Shelf" type="StaticBody2D"]
+position = Vector2(16, 16)
 script = ExtResource("1_46c5h")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -22,7 +23,6 @@ texture = ExtResource("3_g0vos")
 region_enabled = true
 region_rect = Rect2(0, 0, 32, 32)
 script = ExtResource("4_2icbu")
-debug_percentage = 0.9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 13.5)
