@@ -3,10 +3,10 @@
 [ext_resource type="Texture2D" uid="uid://c0hl6hvpgglh7" path="res://textures/gmtk_floor.png" id="1_dsxfx"]
 [ext_resource type="Texture2D" uid="uid://kic3mm885h61" path="res://textures/gmtk_wall.png" id="2_de84h"]
 [ext_resource type="Script" path="res://scripts/navmesh_updater.gd" id="3_t70eu"]
-[ext_resource type="Texture2D" uid="uid://cxxa5mom7krui" path="res://textures/kitty.png" id="3_vuoit"]
 [ext_resource type="Script" path="res://scripts/ai/shopping_ai.gd" id="3_ya63n"]
-[ext_resource type="Texture2D" uid="uid://bf5eidgwt1hqa" path="res://textures/shelf.png" id="4_5lsr1"]
 [ext_resource type="Texture2D" uid="uid://c0lujqem7fj3o" path="res://textures/counter.png" id="5_h66c7"]
+[ext_resource type="PackedScene" uid="uid://bed0fmavm0x6e" path="res://scenes/characters/kitty_display.tscn" id="5_s4hfu"]
+[ext_resource type="PackedScene" uid="uid://ctvqfkk37kel" path="res://scenes/objects/shelf.tscn" id="6_6demk"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_jhmfy"]
 vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
@@ -34,7 +34,7 @@ sources/3 = SubResource("TileSetAtlasSource_ucrl5")
 sources/4 = SubResource("TileSetAtlasSource_rqtsb")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vuoy1"]
-radius = 5.0
+radius = 4.0
 
 [node name="ai_testbed" type="Node2D"]
 y_sort_enabled = true
@@ -54,98 +54,56 @@ shelfHolder = NodePath("../ShelfHolder")
 counterHolder = NodePath("../CounterHolder")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AI"]
-position = Vector2(0, 6)
 shape = SubResource("CircleShape2D_vuoy1")
-
-[node name="Sprite2D" type="Sprite2D" parent="AI"]
-texture = ExtResource("3_vuoit")
 
 [node name="Timer" type="Timer" parent="AI"]
 one_shot = true
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="AI"]
 path_postprocessing = 1
+simplify_path = true
+avoidance_enabled = true
+radius = 5.0
 
 [node name="Camera2D" type="Camera2D" parent="AI"]
 
+[node name="KittyDisplay" parent="AI" instance=ExtResource("5_s4hfu")]
+position = Vector2(0, 9)
+
 [node name="ShelfHolder" type="Node" parent="."]
 
-[node name="Shelf" type="Node2D" parent="ShelfHolder"]
-y_sort_enabled = true
-position = Vector2(316, 90)
+[node name="Shelf" parent="ShelfHolder" instance=ExtResource("6_6demk")]
+position = Vector2(332, 100)
 
-[node name="Sprite2D" type="Sprite2D" parent="ShelfHolder/Shelf"]
-texture = ExtResource("4_5lsr1")
+[node name="Shelf2" parent="ShelfHolder" instance=ExtResource("6_6demk")]
+position = Vector2(301, 349)
 
-[node name="Shelf2" type="Node2D" parent="ShelfHolder"]
-y_sort_enabled = true
-position = Vector2(163, 260)
+[node name="Shelf3" parent="ShelfHolder" instance=ExtResource("6_6demk")]
+position = Vector2(203, 581)
 
-[node name="Sprite2D" type="Sprite2D" parent="ShelfHolder/Shelf2"]
-texture = ExtResource("4_5lsr1")
+[node name="Shelf4" parent="ShelfHolder" instance=ExtResource("6_6demk")]
+position = Vector2(575, 451)
 
-[node name="Shelf3" type="Node2D" parent="ShelfHolder"]
-y_sort_enabled = true
-position = Vector2(212, 568)
+[node name="Shelf5" parent="ShelfHolder" instance=ExtResource("6_6demk")]
+position = Vector2(810, 594)
 
-[node name="Sprite2D" type="Sprite2D" parent="ShelfHolder/Shelf3"]
-texture = ExtResource("4_5lsr1")
+[node name="Shelf6" parent="ShelfHolder" instance=ExtResource("6_6demk")]
+position = Vector2(982, 533)
 
-[node name="Shelf4" type="Node2D" parent="ShelfHolder"]
-y_sort_enabled = true
-position = Vector2(426, 419)
+[node name="Shelf7" parent="ShelfHolder" instance=ExtResource("6_6demk")]
+position = Vector2(1026, 384)
 
-[node name="Sprite2D" type="Sprite2D" parent="ShelfHolder/Shelf4"]
-texture = ExtResource("4_5lsr1")
+[node name="Shelf8" parent="ShelfHolder" instance=ExtResource("6_6demk")]
+position = Vector2(944, 264)
 
-[node name="Shelf5" type="Node2D" parent="ShelfHolder"]
-y_sort_enabled = true
-position = Vector2(597, 607)
+[node name="Shelf9" parent="ShelfHolder" instance=ExtResource("6_6demk")]
+position = Vector2(726, 107)
 
-[node name="Sprite2D" type="Sprite2D" parent="ShelfHolder/Shelf5"]
-texture = ExtResource("4_5lsr1")
+[node name="Shelf10" parent="ShelfHolder" instance=ExtResource("6_6demk")]
+position = Vector2(1073, 68)
 
-[node name="Shelf6" type="Node2D" parent="ShelfHolder"]
-y_sort_enabled = true
-position = Vector2(831, 597)
-
-[node name="Sprite2D" type="Sprite2D" parent="ShelfHolder/Shelf6"]
-texture = ExtResource("4_5lsr1")
-
-[node name="Shelf7" type="Node2D" parent="ShelfHolder"]
-y_sort_enabled = true
-position = Vector2(1010, 531)
-
-[node name="Sprite2D" type="Sprite2D" parent="ShelfHolder/Shelf7"]
-texture = ExtResource("4_5lsr1")
-
-[node name="Shelf8" type="Node2D" parent="ShelfHolder"]
-y_sort_enabled = true
-position = Vector2(974, 394)
-
-[node name="Sprite2D" type="Sprite2D" parent="ShelfHolder/Shelf8"]
-texture = ExtResource("4_5lsr1")
-
-[node name="Shelf9" type="Node2D" parent="ShelfHolder"]
-y_sort_enabled = true
-position = Vector2(966, 267)
-
-[node name="Sprite2D" type="Sprite2D" parent="ShelfHolder/Shelf9"]
-texture = ExtResource("4_5lsr1")
-
-[node name="Shelf10" type="Node2D" parent="ShelfHolder"]
-y_sort_enabled = true
-position = Vector2(1021, 158)
-
-[node name="Sprite2D" type="Sprite2D" parent="ShelfHolder/Shelf10"]
-texture = ExtResource("4_5lsr1")
-
-[node name="Shelf11" type="Node2D" parent="ShelfHolder"]
-y_sort_enabled = true
-position = Vector2(671, 73)
-
-[node name="Sprite2D" type="Sprite2D" parent="ShelfHolder/Shelf11"]
-texture = ExtResource("4_5lsr1")
+[node name="Shelf11" parent="ShelfHolder" instance=ExtResource("6_6demk")]
+position = Vector2(70, 159)
 
 [node name="CounterHolder" type="Node" parent="."]
 
