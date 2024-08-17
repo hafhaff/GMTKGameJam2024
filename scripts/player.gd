@@ -72,6 +72,7 @@ func getBoxItem():
 
 func deleteEmptyBox():
 	$HoldBox.visible = false
+	heldItem.queue_free()
 	heldItem = null
 
 func dropBox():

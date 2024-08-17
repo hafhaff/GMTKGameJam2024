@@ -113,6 +113,9 @@ position = Vector2(79, 144)
 [node name="Box2" parent="BoxHolder" instance=ExtResource("8_y7pdv")]
 position = Vector2(165, 72)
 
+[node name="Box3" parent="BoxHolder" instance=ExtResource("8_y7pdv")]
+position = Vector2(346, 97)
+
 [node name="Player" parent="." instance=ExtResource("6_jduk4")]
 position = Vector2(231, 162)
 zoom_min = Vector2(0.2, 0.2)
