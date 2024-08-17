@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 class_name Shelf
 
@@ -11,7 +11,7 @@ var location
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	fillWithRandom()	#For debugging n stuff, remove later
-
+	global_shop._registerShelf(self)	#Important, don't remove
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -28,7 +28,7 @@ func replaceItem (item, num):
 	itemNum = num
 	itemType = itemType
 
-#Need this so I can move forward with the AI
+#Need this so I can move forward with the AI. Will be depricated real fast ~Hullahopp
 func fillWithRandom():
 	itemType = randi_range(0, ItemGlobal.FoodTypes.size() - 1) as ItemGlobal.FoodTypes
 	itemNum = maxItemCount

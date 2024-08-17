@@ -11,6 +11,7 @@ func _ready():
 	checkoutAutoTimer.one_shot = false
 	checkoutAutoTimer.connect("timeout", _checkShopperDistance)
 	checkoutAutoTimer.start(3)
+	global_shop._registerCounter(self)
 
 func _addToWaitList(shoppingAI: ShoppingAI):
 	waitList.push_back(shoppingAI)
