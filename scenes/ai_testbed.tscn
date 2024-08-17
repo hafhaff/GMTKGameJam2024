@@ -111,6 +111,8 @@ position = Vector2(593, 275)
 
 [node name="Player" parent="." instance=ExtResource("9_akcb2")]
 position = Vector2(231, 162)
+zoom_min = Vector2(0.2, 0.2)
+zoom_max = Vector2(15, 15)
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 position = Vector2(144, 50)
