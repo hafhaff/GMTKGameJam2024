@@ -10,7 +10,7 @@ var location
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	fillWithRandom()	#For debugging n stuff, remove later
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -27,6 +27,11 @@ func addItems (num):
 func replaceItem (item, num):
 	itemNum = num
 	itemType = itemType
+
+#Need this so I can move forward with the AI
+func fillWithRandom():
+	itemType = ItemGlobal.FoodTypes.find_key(randi_range(0, ItemGlobal.FoodTypes.size() - 1))
+	itemNum = maxItemCount
 
 func _on_interact_shape_body_entered(body):
 	if body == $"../../Player":
