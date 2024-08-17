@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://de1beg5m18qmu"]
+[gd_scene load_steps=16 format=4 uid="uid://de1beg5m18qmu"]
 
 [ext_resource type="Texture2D" uid="uid://c0hl6hvpgglh7" path="res://textures/gmtk_floor.png" id="1_dsxfx"]
 [ext_resource type="Texture2D" uid="uid://kic3mm885h61" path="res://textures/gmtk_wall.png" id="2_de84h"]
@@ -37,6 +37,9 @@ sources/4 = SubResource("TileSetAtlasSource_rqtsb")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vuoy1"]
 radius = 4.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mmn8d"]
+size = Vector2(28, 23)
 
 [node name="ai_testbed" type="Node2D"]
 y_sort_enabled = true
@@ -107,7 +110,7 @@ position = Vector2(70, 159)
 
 [node name="CounterHolder" type="Node" parent="."]
 
-[node name="Counter" type="Node2D" parent="CounterHolder"]
+[node name="Counter" type="Area2D" parent="CounterHolder"]
 y_sort_enabled = true
 position = Vector2(654, 332)
 script = ExtResource("7_g7rs7")
@@ -121,5 +124,11 @@ position = Vector2(0, 18)
 [node name="ClerkPos" type="Node2D" parent="CounterHolder/Counter"]
 position = Vector2(0, 3)
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CounterHolder/Counter"]
+position = Vector2(0, 4.5)
+shape = SubResource("RectangleShape2D_mmn8d")
+
 [node name="Player" parent="." instance=ExtResource("9_akcb2")]
 position = Vector2(231, 162)
+
+[connection signal="body_entered" from="CounterHolder/Counter" to="CounterHolder/Counter" method="_on_body_entered"]
