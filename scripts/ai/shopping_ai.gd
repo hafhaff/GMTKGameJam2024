@@ -47,7 +47,7 @@ func _generateTarget():
 	if itemsHeld < itemsNeeded:
 		target = _selectShelf()
 		if target == null:
-			shoppingTimer.start(10)
+			shoppingTimer.start(3)
 			return
 	else:
 		target = _selectClosestCounter()
