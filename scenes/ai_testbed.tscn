@@ -132,3 +132,4 @@ shape = SubResource("RectangleShape2D_mmn8d")
 position = Vector2(231, 162)
 
 [connection signal="body_entered" from="CounterHolder/Counter" to="CounterHolder/Counter" method="_on_body_entered"]
+[connection signal="body_exited" from="CounterHolder/Counter" to="CounterHolder/Counter" method="_on_body_exited"]
