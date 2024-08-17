@@ -53,33 +53,33 @@ func _generateTarget():
 			shoppingTimer.start(3)
 			return
 	else:
-		target = _selectClosestCounter()
+		target = _selectShortestCounter()
 		if target == null:
 			shoppingTimer.start(3)
 			return
 		waitForCheckout = true
-		target._addToWaitList(self)
+		target._addToWaitList(self)	#Handles navigation target setting
 
 	kittyDisplay.is_walking = true
-	navigation.target_position = target.interactPos
 
 func _selectShelf() -> Shelf:
 	for item in itemsHeld:
 		if itemsHeld[item] == shoppingList[item]:
 			continue
 		for shelf in shelves:
-			if shelf.itemType == item:
+			if shelf.itemType == item && shelf.itemNum > 0:
+				navigation.target_position = shelf.interactPos
 				return shelf
 	return null
 
-func _selectClosestCounter():
+func _selectShortestCounter():
 	if global_shop.shopCounters.size() == 0:
 		return null
 	
 	var _counters: Array = global_shop.shopCounters.values()
 	if _counters.size() == 1:
 		return _counters[0]
-	_counters.sort_custom(func(a, b): return global_position.distance_squared_to(a.global_position) > global_position.distance_squared_to(b.global_position))
+	_counters.sort_custom(func(a, b): return a.waitList.size() > b.waitList.size())
 	return _counters[0]
 
 func _checkout() -> bool:
@@ -91,7 +91,7 @@ func _checkout() -> bool:
 	return false
 
 func _generateShoppingList():
-	itemsTotal = randi_range(0,6)
+	itemsTotal = randi_range(1,6)
 	for x in range(itemsTotal):
 		var key: ItemGlobal.FoodTypes = randi_range(0, ItemGlobal.FoodTypes.size() - 1) as ItemGlobal.FoodTypes
 		if shoppingList.has(key):
