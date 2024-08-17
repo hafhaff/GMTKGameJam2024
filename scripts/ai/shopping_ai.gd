@@ -32,7 +32,7 @@ func _physics_process(_delta):
 			return
 		if target == null:
 			return
-		itemsHeld += 1
+		itemsHeld += 0 if target is Counter else 1
 		target = null
 		shoppingTimer.start(1.5)
 		return
@@ -44,6 +44,7 @@ func _physics_process(_delta):
 
 #Temporary, will get refactored when the shop is finished
 func _generateTarget():
+	printt("kitty ", itemsHeld, itemsNeeded)
 	if itemsHeld < itemsNeeded:
 		target = _selectShelf()
 		if target == null:
@@ -61,7 +62,7 @@ func _generateTarget():
 		itemType = randi_range(0, ItemGlobal.FoodTypes.size() - 1) as ItemGlobal.FoodTypes
 
 	kittyDisplay.is_walking = true
-	navigation.target_position = target.global_position
+	navigation.target_position = target.interactPos
 
 func _selectShelf() -> Shelf:
 	for shelf in global_shop.shopShelves:
