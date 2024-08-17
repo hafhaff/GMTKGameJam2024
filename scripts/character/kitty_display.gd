@@ -5,7 +5,7 @@ class_name KittyDisplay
 
 enum KittyColor {SCRATCH, BLACK, WHITE, TUXEDO, CALICO, BROWNIE, BLUE, SILVER, POINT, GRAY}
 enum KittyFace {NEUTRAL, ANGRY, ANNOYED, EXCITED, ROCK}
-enum KittyRole {CUSTOMER, CASHIER, RESTOCKER}
+enum KittyRole {CUSTOMER, CASHIER, RESTOCKER, PLAYER}
 
 @export var kitty_color: KittyColor
 @export var kitty_face: KittyFace
@@ -32,6 +32,7 @@ func _process(delta: float) -> void:
 	if Engine.is_editor_hint():
 		set_color(kitty_color)
 		set_face(kitty_face)
+		set_role(kitty_role)
 	
 	if not Engine.is_editor_hint():
 		if is_walking:
@@ -51,7 +52,7 @@ func set_face(index: int) -> void:
 
 ## And finally this one, not fully functioning yet
 func set_role(index:int) -> void:
-	pass
+	outfit.region_rect.position.x = (index * 32)
 
 ## This is what you asked for sir Hullahpop
 func randomize_look() -> void:
