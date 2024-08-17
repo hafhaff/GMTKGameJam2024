@@ -13,11 +13,39 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+	
+func getItemName():
+	print(itemName)
 
+func disablePickup():
+	get_node("CollisionShape2D").disabled = true
+	
+func enablePickup():
+	get_node("CollisionShape2D").disabled = false
 
+func pickUpCoolDown():
+	$Timer.start()
+	
+
+func hideSprite():
+	self.hide()
+	
+func showSprite():
+	self.show()
+	
+func getName():
+	return itemName
+
+#autobox pickup
 func _on_body_entered(body):
-	if body == $"../../Player":
-		print("bruh")
+	if body == $"../../Player" && $"../../Player".heldItem == null:
+		$"../../Player".pickUpBox(self) 
 		
 	else: 
 		pass # Replace with function body.
+
+
+func _on_timer_timeout():
+	print("can pick up now")
+	self.enablePickup()
+	pass # Replace with function body.

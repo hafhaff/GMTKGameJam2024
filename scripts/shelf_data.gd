@@ -2,9 +2,11 @@ extends Node
 
 class_name Shelf
 
+var maxItemCount = 12
 var itemNum
 var itemName
 var location
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -25,6 +27,14 @@ func addItems (num):
 func replaceItem (item, num):
 	itemNum = num
 	itemName = itemName
-		
+
+func _on_interact_shape_body_entered(body):
+	if body == $"../../Player":
+		$"../../Player".canUnload = true
+	pass # Replace with function body.
 	
-	
+
+
+
+func _on_interact_shape_body_exited(body):
+	pass # Replace with function body.
