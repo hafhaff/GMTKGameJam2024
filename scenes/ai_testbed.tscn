@@ -61,7 +61,7 @@ position = Vector2(81, 81)
 [node name="ShelfHolder" type="Node" parent="."]
 
 [node name="Shelf12" parent="ShelfHolder" instance=ExtResource("5_pqu51")]
-position = Vector2(252, 110)
+position = Vector2(160, 128)
 
 [node name="Shelf" parent="ShelfHolder" instance=ExtResource("6_6demk")]
 position = Vector2(332, 100)

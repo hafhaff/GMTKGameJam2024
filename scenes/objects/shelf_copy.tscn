@@ -12,30 +12,31 @@ size = Vector2(32, 5)
 radius = 16.0
 
 [node name="Shelf" type="StaticBody2D"]
-position = Vector2(16, 16)
 script = ExtResource("1_46c5h")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(16, 16)
 texture = ExtResource("2_6s0dw")
 
 [node name="ShelvedItems" type="Sprite2D" parent="."]
+position = Vector2(16, 16)
 texture = ExtResource("3_g0vos")
 region_enabled = true
 region_rect = Rect2(0, 0, 32, 32)
 script = ExtResource("4_2icbu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 13.5)
+position = Vector2(16, 29.5)
 shape = SubResource("RectangleShape2D_kqj1n")
 
 [node name="InteractShape" type="Area2D" parent="."]
-position = Vector2(0, 16)
+position = Vector2(16, 32)
 
 [node name="InteractArea" type="CollisionShape2D" parent="InteractShape"]
 shape = SubResource("CircleShape2D_yhb2b")
 
 [node name="InteractPos" type="Node2D" parent="."]
-position = Vector2(0, 18)
+position = Vector2(16, 34)
 
 [connection signal="body_entered" from="InteractShape" to="." method="_on_interact_shape_body_entered"]
 [connection signal="body_exited" from="InteractShape" to="." method="_on_interact_shape_body_exited"]
