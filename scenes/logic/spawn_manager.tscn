@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://duc186117kn0h"]
+
+[ext_resource type="Script" path="res://scripts/ai/spawn_manager.gd" id="1_6rnd5"]
+[ext_resource type="PackedScene" uid="uid://biophta5et6p7" path="res://scenes/characters/shopping_ai.tscn" id="2_ma1es"]
+
+[node name="Spawn Manager" type="Node2D"]
+position = Vector2(80, 80)
+script = ExtResource("1_6rnd5")
+shoppingAI = ExtResource("2_ma1es")
+
+[node name="Spawn Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Spawn Timer" to="." method="_on_spawn_timer_timeout"]

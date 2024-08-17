@@ -1,15 +1,14 @@
-[gd_scene load_steps=17 format=4 uid="uid://de1beg5m18qmu"]
+[gd_scene load_steps=16 format=4 uid="uid://de1beg5m18qmu"]
 
 [ext_resource type="Texture2D" uid="uid://c0hl6hvpgglh7" path="res://textures/gmtk_floor.png" id="1_dsxfx"]
 [ext_resource type="Texture2D" uid="uid://kic3mm885h61" path="res://textures/gmtk_wall.png" id="2_de84h"]
 [ext_resource type="Script" path="res://scripts/navmesh_updater.gd" id="3_t70eu"]
-[ext_resource type="PackedScene" uid="uid://biophta5et6p7" path="res://scenes/characters/shopping_ai.tscn" id="4_en2wn"]
 [ext_resource type="PackedScene" uid="uid://dn0lkdgorj8pf" path="res://scenes/objects/counter.tscn" id="5_ijqlb"]
 [ext_resource type="PackedScene" uid="uid://cr8g2ewri4sld" path="res://scenes/objects/shelf_copy.tscn" id="5_pqu51"]
 [ext_resource type="PackedScene" uid="uid://bed0fmavm0x6e" path="res://scenes/characters/kitty_display.tscn" id="5_s4hfu"]
-[ext_resource type="PackedScene" uid="uid://ctvqfkk37kel" path="res://scenes/objects/shelf.tscn" id="6_6demk"]
 [ext_resource type="Script" path="res://scripts/ai/cashier_ai.gd" id="8_18l1u"]
 [ext_resource type="PackedScene" uid="uid://ci8ldm6uxfv0i" path="res://scenes/player.tscn" id="9_akcb2"]
+[ext_resource type="PackedScene" uid="uid://duc186117kn0h" path="res://scenes/logic/spawn_manager.tscn" id="9_n4gvh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ixqty"]
 texture = ExtResource("1_dsxfx")
@@ -55,46 +54,55 @@ rendering_quadrant_size = 32
 navigation_visibility_mode = 1
 script = ExtResource("3_t70eu")
 
-[node name="Shopping AI" parent="." instance=ExtResource("4_en2wn")]
-position = Vector2(81, 81)
-
 [node name="ShelfHolder" type="Node" parent="."]
 
+[node name="Shelf" parent="ShelfHolder" instance=ExtResource("5_pqu51")]
+position = Vector2(194, 192)
+
+[node name="Shelf2" parent="ShelfHolder" instance=ExtResource("5_pqu51")]
+position = Vector2(545, 128)
+
+[node name="Shelf3" parent="ShelfHolder" instance=ExtResource("5_pqu51")]
+position = Vector2(178, 88)
+
+[node name="Shelf4" parent="ShelfHolder" instance=ExtResource("5_pqu51")]
+position = Vector2(174, 530)
+
+[node name="Shelf5" parent="ShelfHolder" instance=ExtResource("5_pqu51")]
+position = Vector2(301, 402)
+
+[node name="Shelf6" parent="ShelfHolder" instance=ExtResource("5_pqu51")]
+position = Vector2(689, 368)
+
+[node name="Shelf7" parent="ShelfHolder" instance=ExtResource("5_pqu51")]
+position = Vector2(851, 273)
+
+[node name="Shelf8" parent="ShelfHolder" instance=ExtResource("5_pqu51")]
+position = Vector2(849, 466)
+
+[node name="Shelf9" parent="ShelfHolder" instance=ExtResource("5_pqu51")]
+position = Vector2(1042, 401)
+
+[node name="Shelf10" parent="ShelfHolder" instance=ExtResource("5_pqu51")]
+position = Vector2(1078, 147)
+
+[node name="Shelf11" parent="ShelfHolder" instance=ExtResource("5_pqu51")]
+position = Vector2(971, 48)
+
 [node name="Shelf12" parent="ShelfHolder" instance=ExtResource("5_pqu51")]
-position = Vector2(160, 128)
+position = Vector2(724, 52)
 
-[node name="Shelf" parent="ShelfHolder" instance=ExtResource("6_6demk")]
-position = Vector2(332, 100)
+[node name="Shelf13" parent="ShelfHolder" instance=ExtResource("5_pqu51")]
+position = Vector2(654, 561)
 
-[node name="Shelf2" parent="ShelfHolder" instance=ExtResource("6_6demk")]
-position = Vector2(301, 349)
+[node name="Shelf14" parent="ShelfHolder" instance=ExtResource("5_pqu51")]
+position = Vector2(465, 559)
 
-[node name="Shelf3" parent="ShelfHolder" instance=ExtResource("6_6demk")]
-position = Vector2(203, 581)
+[node name="Shelf15" parent="ShelfHolder" instance=ExtResource("5_pqu51")]
+position = Vector2(77, 593)
 
-[node name="Shelf4" parent="ShelfHolder" instance=ExtResource("6_6demk")]
-position = Vector2(575, 451)
-
-[node name="Shelf5" parent="ShelfHolder" instance=ExtResource("6_6demk")]
-position = Vector2(810, 594)
-
-[node name="Shelf6" parent="ShelfHolder" instance=ExtResource("6_6demk")]
-position = Vector2(982, 533)
-
-[node name="Shelf7" parent="ShelfHolder" instance=ExtResource("6_6demk")]
-position = Vector2(1026, 384)
-
-[node name="Shelf8" parent="ShelfHolder" instance=ExtResource("6_6demk")]
-position = Vector2(944, 264)
-
-[node name="Shelf9" parent="ShelfHolder" instance=ExtResource("6_6demk")]
-position = Vector2(726, 107)
-
-[node name="Shelf10" parent="ShelfHolder" instance=ExtResource("6_6demk")]
-position = Vector2(1073, 68)
-
-[node name="Shelf11" parent="ShelfHolder" instance=ExtResource("6_6demk")]
-position = Vector2(70, 159)
+[node name="Shelf16" parent="ShelfHolder" instance=ExtResource("5_pqu51")]
+position = Vector2(82, 241)
 
 [node name="CounterHolder" type="Node" parent="."]
 
@@ -121,3 +129,5 @@ path_postprocessing = 1
 simplify_path = true
 avoidance_enabled = true
 debug_enabled = true
+
+[node name="Spawn Manager" parent="." instance=ExtResource("9_n4gvh")]
