@@ -25,8 +25,13 @@ func _changeEmptyState(isEmpty: bool):
 	global_shop._handleEmptyCounter(self)
 
 func _on_body_entered(body):
-	print(body is Player)
 	if body is Player:
 		_changeEmptyState(false)
 		if body.counter != self:
 			body.counter = self
+
+func _on_body_exited(body):
+	if body is Player:
+		_changeEmptyState(true)
+		if body.counter == self:
+			body.counter = null
