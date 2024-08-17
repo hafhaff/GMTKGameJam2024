@@ -3,10 +3,10 @@
 [ext_resource type="Texture2D" uid="uid://c0hl6hvpgglh7" path="res://textures/gmtk_floor.png" id="1_7ihwg"]
 [ext_resource type="Texture2D" uid="uid://kic3mm885h61" path="res://textures/gmtk_wall.png" id="2_h1x4s"]
 [ext_resource type="Script" path="res://scripts/navmesh_updater.gd" id="3_54bk2"]
-[ext_resource type="Script" path="res://scripts/shopping_ai.gd" id="4_vyk0b"]
+[ext_resource type="Script" path="res://scripts/ai/shopping_ai.gd" id="4_vyk0b"]
 [ext_resource type="Texture2D" uid="uid://cxxa5mom7krui" path="res://textures/kitty.png" id="5_vubqg"]
 [ext_resource type="Texture2D" uid="uid://bf5eidgwt1hqa" path="res://textures/shelf.png" id="6_wnh0l"]
-[ext_resource type="PackedScene" uid="uid://b8rnlaputxukt" path="res://scenes/player.tscn" id="6_xjrtd"]
+[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="6_xjrtd"]
 [ext_resource type="Texture2D" uid="uid://c0lujqem7fj3o" path="res://textures/counter.png" id="7_612me"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_jhmfy"]

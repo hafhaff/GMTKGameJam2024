@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://b8rnlaputxukt"]
+[gd_scene load_steps=4 format=3 uid="uid://ci8ldm6uxfv0i"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_7xdi6"]
-[ext_resource type="Texture2D" uid="uid://cxxa5mom7krui" path="res://textures/kitty.png" id="2_pnr6h"]
+[ext_resource type="PackedScene" uid="uid://bed0fmavm0x6e" path="res://scenes/characters/kitty_display.tscn" id="2_h6ns5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_doxln"]
 size = Vector2(14, 10)
@@ -9,10 +9,10 @@ size = Vector2(14, 10)
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_7xdi6")
 
-[node name="PlayerImage" type="Sprite2D" parent="."]
-texture = ExtResource("2_pnr6h")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_doxln")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="KittyDisplay" parent="." instance=ExtResource("2_h6ns5")]
+position = Vector2(0, 16)
