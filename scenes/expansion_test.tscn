@@ -47,5 +47,3 @@ position = Vector2(51, 247)
 
 [node name="Player" parent="." instance=ExtResource("6_20d4p")]
 position = Vector2(62, 134)
-zoom_min = Vector2(0.2, 0.2)
-zoom_max = Vector2(15, 15)
