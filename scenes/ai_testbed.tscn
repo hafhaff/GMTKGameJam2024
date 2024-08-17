@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://de1beg5m18qmu"]
+[gd_scene load_steps=14 format=4 uid="uid://de1beg5m18qmu"]
 
 [ext_resource type="Texture2D" uid="uid://c0hl6hvpgglh7" path="res://textures/gmtk_floor.png" id="1_dsxfx"]
 [ext_resource type="Texture2D" uid="uid://kic3mm885h61" path="res://textures/gmtk_wall.png" id="2_de84h"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c0lujqem7fj3o" path="res://textures/counter.png" id="5_h66c7"]
 [ext_resource type="PackedScene" uid="uid://bed0fmavm0x6e" path="res://scenes/characters/kitty_display.tscn" id="5_s4hfu"]
 [ext_resource type="PackedScene" uid="uid://ctvqfkk37kel" path="res://scenes/objects/shelf.tscn" id="6_6demk"]
+[ext_resource type="Script" path="res://scripts/counter.gd" id="7_g7rs7"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_jhmfy"]
 vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
@@ -110,34 +111,7 @@ position = Vector2(70, 159)
 [node name="Counter" type="Node2D" parent="CounterHolder"]
 y_sort_enabled = true
 position = Vector2(654, 332)
+script = ExtResource("7_g7rs7")
 
 [node name="Sprite2D" type="Sprite2D" parent="CounterHolder/Counter"]
-texture = ExtResource("5_h66c7")
-
-[node name="Counter2" type="Node2D" parent="CounterHolder"]
-y_sort_enabled = true
-position = Vector2(222, 153)
-
-[node name="Sprite2D" type="Sprite2D" parent="CounterHolder/Counter2"]
-texture = ExtResource("5_h66c7")
-
-[node name="Counter3" type="Node2D" parent="CounterHolder"]
-y_sort_enabled = true
-position = Vector2(69, 509)
-
-[node name="Sprite2D" type="Sprite2D" parent="CounterHolder/Counter3"]
-texture = ExtResource("5_h66c7")
-
-[node name="Counter4" type="Node2D" parent="CounterHolder"]
-y_sort_enabled = true
-position = Vector2(831, 439)
-
-[node name="Sprite2D" type="Sprite2D" parent="CounterHolder/Counter4"]
-texture = ExtResource("5_h66c7")
-
-[node name="Counter5" type="Node2D" parent="CounterHolder"]
-y_sort_enabled = true
-position = Vector2(974, 61)
-
-[node name="Sprite2D" type="Sprite2D" parent="CounterHolder/Counter5"]
 texture = ExtResource("5_h66c7")
