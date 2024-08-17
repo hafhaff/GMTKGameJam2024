@@ -17,6 +17,7 @@ var shoppingList: Dictionary = {}
 var itemsHeld: Dictionary = {}
 var itemsTotal: int = 0
 var waitForCheckout: bool = false
+var attachedCamera: Camera2D	#For the experimental main menu
 
 signal leavingShop(shoppingAI)
 
@@ -82,7 +83,7 @@ func _selectShortestCounter():
 	var _counters: Array = global_shop.shopCounters.values()
 	if _counters.size() == 1:
 		return _counters[0]
-	_counters.sort_custom(func(a, b): return a.waitList.size() > b.waitList.size())
+	_counters.sort_custom(func(a, b): return a.waitList.size() < b.waitList.size())
 	return _counters[0]
 
 func _checkout() -> bool:
