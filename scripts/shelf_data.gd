@@ -30,7 +30,7 @@ func replaceItem (item, num):
 
 #Need this so I can move forward with the AI
 func fillWithRandom():
-	itemType = ItemGlobal.FoodTypes.find_key(randi_range(0, ItemGlobal.FoodTypes.size() - 1))
+	itemType = randi_range(0, ItemGlobal.FoodTypes.size() - 1)
 	itemNum = maxItemCount
 
 func _on_interact_shape_body_entered(body):
