@@ -5,6 +5,9 @@ class_name Counter
 var waitList: Array[ShoppingAI]
 var counterEmpty: bool = true
 
+@onready var interactPos: Vector2 = $InteractPos.global_position
+@onready var clerkPos: Vector2 = $ClerkPos.global_position
+
 func _ready():
 	global_shop._registerCounter(self)
 
@@ -16,7 +19,7 @@ func _checkShopperDistance():
 	if waitList.size() == 0:
 		return
 	
-	if global_position.distance_squared_to(waitList[0].global_position) < 100:
+	if interactPos.distance_squared_to(waitList[0].global_position) < 100:
 		waitList[0]._checkout()
 		waitList.remove_at(0)
 
