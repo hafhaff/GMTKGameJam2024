@@ -5,12 +5,13 @@
 [ext_resource type="Texture2D" uid="uid://bsl2t6vuw1kqn" path="res://textures/objects/box.png" id="3_jq1b1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_doxln"]
-size = Vector2(14, 10)
+size = Vector2(16, 10)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_7xdi6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 11)
 shape = SubResource("RectangleShape2D_doxln")
 
 [node name="Camera2D" type="Camera2D" parent="."]
