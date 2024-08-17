@@ -7,9 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://bsl2t6vuw1kqn" path="res://textures/objects/box.png" id="5_jaqdb"]
 [ext_resource type="PackedScene" uid="uid://cr8g2ewri4sld" path="res://scenes/objects/shelf.tscn" id="6_6735k"]
 [ext_resource type="Texture2D" uid="uid://c0lujqem7fj3o" path="res://textures/counter.png" id="9_plbmk"]
+[ext_resource type="PackedScene" uid="uid://duc186117kn0h" path="res://scenes/logic/spawn_manager.tscn" id="10_7xcyv"]
 [ext_resource type="Script" path="res://scripts/objects/boxes/box.gd" id="10_nqw5v"]
 [ext_resource type="Script" path="res://scripts/objects/boxes/Boxtimer.gd" id="11_r5rb0"]
-[ext_resource type="PackedScene" uid="uid://biophta5et6p7" path="res://scenes/characters/shopping_ai.tscn" id="12_08vip"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_jhmfy"]
 vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
@@ -48,6 +48,7 @@ rendering_quadrant_size = 32
 script = ExtResource("3_1x3hi")
 
 [node name="Player" parent="." instance=ExtResource("4_w6ypc")]
+position = Vector2(20, 12)
 
 [node name="HoldBox" type="Sprite2D" parent="Player"]
 visible = false
@@ -64,6 +65,12 @@ metadata/itemName = ""
 
 [node name="Shelf" parent="ShelfHolder" instance=ExtResource("6_6735k")]
 position = Vector2(354, 115)
+
+[node name="Shelf2" parent="ShelfHolder" instance=ExtResource("6_6735k")]
+position = Vector2(409, 46)
+
+[node name="Shelf3" parent="ShelfHolder" instance=ExtResource("6_6735k")]
+position = Vector2(54, 112)
 
 [node name="CounterHolder" type="Node" parent="."]
 
@@ -135,10 +142,8 @@ hframes = 4
 shape = SubResource("RectangleShape2D_x8lv1")
 metadata/_edit_lock_ = true
 
-[node name="Shopping AI" parent="." node_paths=PackedStringArray("shelfHolder", "counterHolder") instance=ExtResource("12_08vip")]
-position = Vector2(126, 66)
-shelfHolder = NodePath("../ShelfHolder")
-counterHolder = NodePath("../CounterHolder")
+[node name="Spawn Manager" parent="." instance=ExtResource("10_7xcyv")]
+position = Vector2(309, 86)
 
 [connection signal="body_entered" from="BoxHolder/Box1" to="BoxHolder/Box1" method="_on_body_entered"]
 [connection signal="timeout" from="BoxHolder/Box1/Timer" to="Player" method="_on_timer_timeout"]
