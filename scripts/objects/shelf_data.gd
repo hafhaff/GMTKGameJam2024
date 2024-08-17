@@ -5,13 +5,15 @@ class_name Shelf
 var maxItemCount = 12
 @export var itemNum = 0
 @export var itemType: ItemGlobal.FoodTypes
+@export var optionalAutoFill: bool = false
 var location
 
 var interactPos: Vector2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#fillWithRandom()	#For debugging n stuff, remove later
+	if optionalAutoFill:
+		fillWithRandom()	#For debugging n stuff, remove later
 	global_position = floor(global_position/32)*32	#Important for the tilemap, BUT we'll handle placement differently later
 	global_shop._registerShelf(self)	#Important, don't remove
 	interactPos = $InteractPos.global_position
