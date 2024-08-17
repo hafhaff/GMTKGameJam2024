@@ -44,6 +44,7 @@ position = Vector2(40, 269)
 
 [node name="Box3" parent="BoxHolder" instance=ExtResource("5_qmdru")]
 position = Vector2(51, 247)
+itemType = 1
 
 [node name="Player" parent="." instance=ExtResource("6_20d4p")]
 position = Vector2(62, 134)

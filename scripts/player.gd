@@ -49,12 +49,17 @@ func fillShelf():
 		print(curShelf.itemNum)
 		var itemsToPutIn = curShelf.maxItemCount-curShelf.itemNum
 		curShelf.fill(getNumInBox(), getBoxItem())
-		if getNumInBox() <= itemsToPutIn:
-			deleteEmptyBox()
-		else:
-			print("items in box after fill:")
-			setNumInBox(getNumInBox()-itemsToPutIn)
-			print(getNumInBox())
+		
+		if curShelf.itemType != getBoxItem():
+			pass
+		
+		else: 
+			if getNumInBox() <= itemsToPutIn:
+				deleteEmptyBox()
+			else:
+				print("items in box after fill:")
+				setNumInBox(getNumInBox()-itemsToPutIn)
+				print(getNumInBox())
 
 func getShelf(shelf):
 	return shelf
