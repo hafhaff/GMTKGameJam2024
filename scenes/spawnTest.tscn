@@ -1,13 +1,16 @@
-[gd_scene load_steps=14 format=4 uid="uid://brtvbijnkdufn"]
+[gd_scene load_steps=18 format=4 uid="uid://brtvbijnkdufn"]
 
 [ext_resource type="Texture2D" uid="uid://c0hl6hvpgglh7" path="res://textures/gmtk_floor.png" id="1_rhyei"]
 [ext_resource type="Texture2D" uid="uid://kic3mm885h61" path="res://textures/gmtk_wall.png" id="2_vnjmh"]
 [ext_resource type="Script" path="res://scripts/navmesh_updater.gd" id="3_5xbg3"]
 [ext_resource type="Script" path="res://scripts/shopping_ai.gd" id="4_qjxgi"]
+[ext_resource type="PackedScene" uid="uid://b8rnlaputxukt" path="res://scenes/player.tscn" id="4_u6yj4"]
 [ext_resource type="Texture2D" uid="uid://cxxa5mom7krui" path="res://textures/kitty.png" id="5_xbf41"]
 [ext_resource type="Script" path="res://scripts/shelf_data.gd" id="6_1mtnr"]
 [ext_resource type="Texture2D" uid="uid://bf5eidgwt1hqa" path="res://textures/shelf.png" id="6_7rwlp"]
 [ext_resource type="Texture2D" uid="uid://c0lujqem7fj3o" path="res://textures/counter.png" id="7_oghqo"]
+[ext_resource type="Script" path="res://scenes/box.gd" id="10_eugsv"]
+[ext_resource type="Texture2D" uid="uid://hnpypiil78wy" path="res://icon.svg" id="11_ktec7"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_jhmfy"]
 vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
@@ -37,6 +40,9 @@ sources/4 = SubResource("TileSetAtlasSource_opt03")
 [sub_resource type="CircleShape2D" id="CircleShape2D_sef5c"]
 radius = 5.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x8lv1"]
+size = Vector2(10.5, 10)
+
 [node name="SpawnTest" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -44,6 +50,9 @@ tile_map_data = PackedByteArray("AAAAAAAABAAAAAAAAAAAAAEABAAAAAAAAAAAAAIABAAAAAA
 tile_set = SubResource("TileSet_1l64p")
 rendering_quadrant_size = 32
 script = ExtResource("3_5xbg3")
+
+[node name="Player" parent="." instance=ExtResource("4_u6yj4")]
+position = Vector2(14, 4)
 
 [node name="AI" type="CharacterBody2D" parent="." node_paths=PackedStringArray("shelfHolder", "counterHolder")]
 position = Vector2(86, 84)
@@ -136,3 +145,21 @@ position = Vector2(974, 61)
 
 [node name="Sprite2D" type="Sprite2D" parent="CounterHolder/Counter5"]
 texture = ExtResource("7_oghqo")
+
+[node name="BoxHolder" type="Node" parent="."]
+
+[node name="Box1" type="Area2D" parent="BoxHolder"]
+script = ExtResource("10_eugsv")
+itemName = "food"
+
+[node name="Sprite2D" type="Sprite2D" parent="BoxHolder/Box1"]
+position = Vector2(121, 85)
+scale = Vector2(0.0859376, 0.0781251)
+texture = ExtResource("11_ktec7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BoxHolder/Box1"]
+position = Vector2(120.75, 85)
+shape = SubResource("RectangleShape2D_x8lv1")
+
+[connection signal="body_entered" from="BoxHolder/Box1" to="Player" method="_on_box_1_body_entered"]
+[connection signal="body_entered" from="BoxHolder/Box1" to="BoxHolder/Box1" method="_on_body_entered"]
