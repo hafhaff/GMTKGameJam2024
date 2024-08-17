@@ -9,14 +9,19 @@ var heldItem : Node
 var heldItemNum
 var canUnload
 
+@onready var kittyDisplay: KittyDisplay = $KittyDisplay
+
 func _ready():
 	position = Vector2(100, 100)
 	heldItem = null
+	kittyDisplay.randomize_look()
 
 func _physics_process(_delta):
 	var action1 = Input.is_action_just_pressed("Action1")
 	var direction = Input.get_vector("left", "right", "up", "down")
 	velocity = direction * speed
+	kittyDisplay.is_flipped = velocity.x < 0
+	kittyDisplay.is_walking = direction != Vector2.ZERO
 	move_and_slide()
 	
 	if action1 and not canUnload:
