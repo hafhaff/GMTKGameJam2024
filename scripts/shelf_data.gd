@@ -4,7 +4,7 @@ class_name Shelf
 
 var maxItemCount = 12
 var itemNum
-var itemName
+var itemType: ItemGlobal.FoodTypes
 var location
 
 
@@ -19,14 +19,14 @@ func _process(delta):
 
 #ONLY USE TO REPLACE
 func setItem(newItem): 
-	itemName = newItem
+	itemType = newItem
 	
 func addItems (num):
 	itemNum += num
 	
 func replaceItem (item, num):
 	itemNum = num
-	itemName = itemName
+	itemType = itemType
 
 func _on_interact_shape_body_entered(body):
 	if body == $"../../Player":

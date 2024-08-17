@@ -3,7 +3,7 @@ extends Node2D
 class_name box
 	
 @export var itemNum = 10
-@export var itemName : String
+@export var itemType : ItemGlobal.FoodTypes
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -15,7 +15,7 @@ func _process(delta):
 	pass
 	
 func getItemName():
-	print(itemName)
+	print(itemType)
 
 func disablePickup():
 	get_node("CollisionShape2D").disabled = true
@@ -33,8 +33,8 @@ func hideSprite():
 func showSprite():
 	self.show()
 	
-func getName():
-	return itemName
+func getName() -> ItemGlobal.FoodTypes:
+	return itemType
 
 #autobox pickup
 func _on_body_entered(body):
