@@ -7,6 +7,7 @@ var itemNum
 var itemType: ItemGlobal.FoodTypes
 var location
 
+@onready var interactPos: Vector2 = $InteractPos.global_position
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
