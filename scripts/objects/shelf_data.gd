@@ -34,6 +34,18 @@ func fill(numItems, itemType):
 			self.itemNum += numItems
 			$ShelvedItems.updateStockSprite()
 			return true
+			
+	if self.itemNum == 0:
+		self.itemType = itemType
+		if getSpaceLeft() <= numItems:
+			self.itemNum = maxItemCount
+			$ShelvedItems.updateStockSprite()
+			return true
+		else:
+			self.itemNum += numItems
+			$ShelvedItems.updateStockSprite()
+			return true
+	
 	else:
 		$ShelvedItems.updateStockSprite()
 		return false

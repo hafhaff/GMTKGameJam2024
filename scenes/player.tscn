@@ -15,6 +15,7 @@ position = Vector2(0, 11)
 shape = SubResource("RectangleShape2D_doxln")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
 
 [node name="KittyDisplay" parent="." instance=ExtResource("2_h6ns5")]
 position = Vector2(0, 16)
