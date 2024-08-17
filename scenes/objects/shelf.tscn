@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://d0kb1dfig6cwr" path="res://textures/objects/products/shelved_canned_food.png" id="3_oqswe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kqj1n"]
-size = Vector2(28, 17)
+size = Vector2(28, 9)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yhb2b"]
 radius = 21.0238
@@ -14,20 +14,22 @@ radius = 21.0238
 script = ExtResource("1_eyxpy")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(16, 16)
 texture = ExtResource("2_hnkig")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0.5)
+position = Vector2(16, 25.5)
 shape = SubResource("RectangleShape2D_kqj1n")
 
 [node name="InteractShape" type="Area2D" parent="."]
+position = Vector2(16, 16)
 
 [node name="InteractArea" type="CollisionShape2D" parent="InteractShape"]
 position = Vector2(2, 17)
 shape = SubResource("CircleShape2D_yhb2b")
 
 [node name="InteractPos" type="Node2D" parent="."]
-position = Vector2(0, 17)
+position = Vector2(16, 33)
 
 [node name="Objects" type="Node" parent="."]
 
