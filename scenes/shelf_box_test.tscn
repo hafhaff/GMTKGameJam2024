@@ -50,7 +50,7 @@ script = ExtResource("3_1x3hi")
 [node name="Player" parent="." instance=ExtResource("4_w6ypc")]
 position = Vector2(20, 12)
 
-[node name="HoldBox" type="Sprite2D" parent="Player"]
+[node name="HoldBox2" type="Sprite2D" parent="Player"]
 visible = false
 z_index = 2
 position = Vector2(3, 1)
@@ -64,13 +64,11 @@ metadata/itemNum = 0
 metadata/itemName = ""
 
 [node name="Shelf" parent="ShelfHolder" instance=ExtResource("6_6735k")]
-position = Vector2(354, 115)
+position = Vector2(313, 48)
 
 [node name="Shelf2" parent="ShelfHolder" instance=ExtResource("6_6735k")]
-position = Vector2(409, 46)
-
-[node name="Shelf3" parent="ShelfHolder" instance=ExtResource("6_6735k")]
-position = Vector2(54, 112)
+position = Vector2(230, 81)
+itemNum = 8
 
 [node name="CounterHolder" type="Node" parent="."]
 

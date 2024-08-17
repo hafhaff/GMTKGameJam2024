@@ -53,6 +53,7 @@ script = ExtResource("3_mnngl")
 
 [node name="Shelf" parent="ShelfHolder" instance=ExtResource("4_lhvea")]
 position = Vector2(239, 113)
+itemNum = 6
 
 [node name="Shelf2" parent="ShelfHolder" instance=ExtResource("4_lhvea")]
 position = Vector2(558, 82)
@@ -104,13 +105,6 @@ position = Vector2(689, 436)
 [node name="Counter" parent="CounterHolder" instance=ExtResource("5_wlf3k")]
 position = Vector2(593, 275)
 
-[node name="Player" parent="." instance=ExtResource("6_jduk4")]
-position = Vector2(231, 162)
-zoom_min = Vector2(0.2, 0.2)
-zoom_max = Vector2(15, 15)
-
-[node name="Spawn Manager" parent="." instance=ExtResource("7_o1fdl")]
-
 [node name="BoxHolder" type="Node" parent="."]
 
 [node name="Box1" parent="BoxHolder" instance=ExtResource("8_y7pdv")]
@@ -118,3 +112,10 @@ position = Vector2(79, 144)
 
 [node name="Box2" parent="BoxHolder" instance=ExtResource("8_y7pdv")]
 position = Vector2(165, 72)
+
+[node name="Player" parent="." instance=ExtResource("6_jduk4")]
+position = Vector2(231, 162)
+zoom_min = Vector2(0.2, 0.2)
+zoom_max = Vector2(15, 15)
+
+[node name="Spawn Manager" parent="." instance=ExtResource("7_o1fdl")]
