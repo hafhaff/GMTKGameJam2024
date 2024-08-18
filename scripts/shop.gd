@@ -57,10 +57,19 @@ func _addBox(_box: box):
 	if !boxes[_box.itemType].has(_box):
 		boxes[_box.itemType].push_back(_box)
 		_box.connect("selfYeet", _removeBox)
+		_box.connect("pickUp", _removeBox)
 
 func _removeBox(_box: box):
 	if boxes[_box.itemType].has(_box):
 		boxes[_box.itemType].erase(_box)
+
+func _handleBoxPickup(_box: box, pickedUp: bool):
+	#In our list, but picked up, we remove from our list
+	if boxes[_box.itemType].has(_box) && pickedUp:
+		boxes[_box.itemType].erase(_box)
+	#Not in our list, but dropped, we add to our list
+	elif !boxes[_box.itemType].has(_box) && !pickedUp:
+		boxes[_box.itemType].push_back(_box)
 
 func _addKitcoin(addition: float):
 	kitcoins += addition

@@ -6,6 +6,7 @@ class_name box
 @export var itemType : ItemGlobal.FoodTypes
 
 signal selfYeet(box)	#Called on self destruction
+signal pickedUp(box, bool)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -21,9 +22,11 @@ func getItemName():
 
 func disablePickup():
 	get_node("CollisionShape2D").disabled = true
+	pickedUp.emit(self, true)
 	
 func enablePickup():
 	get_node("CollisionShape2D").disabled = false
+	pickedUp.emit(self, false)
 
 func pickUpCoolDown():
 	$Timer.start()
