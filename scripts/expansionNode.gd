@@ -55,6 +55,8 @@ func expand():
 		updateNodePosition()
 		print("new chunk up")
 		
+		global_shop.chunkNum = chunksExpand + global_shop.chunkNum 
+		
 		for i in chunksExpand:
 			
 			$"../TileMapLayer".newChunk(startX, startY)
@@ -77,6 +79,9 @@ func expand():
 		updateNodePosition()
 		print("new chunk up")
 		#chunksExpand = chunksExpand + 1 
+		
+		global_shop.chunkNum = chunksExpand + global_shop.chunkNum 
+		
 		for i in chunksExpand:
 			
 			
@@ -102,6 +107,9 @@ func expand():
 		updateNodePosition()
 		print("new chunk up")
 		#chunksExpand =+ 1
+		
+		global_shop.chunkNum = chunksExpand + global_shop.chunkNum 
+		
 		for i in chunksExpand:
 			
 			
@@ -131,6 +139,9 @@ func expand():
 		updateNodePosition()
 		print("new chunk up")
 		#chunksExpand =+ 1
+		
+		global_shop.chunkNum = chunksExpand + global_shop.chunkNum 
+		
 		for i in chunksExpand:
 			
 			$"../TileMapLayer".newChunk(startX, startY)
