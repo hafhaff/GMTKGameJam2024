@@ -58,7 +58,7 @@ func _addBox(box: Box):
 		box.connect("selfYeet", _removeBox)
 		box.connect("pickedUp", _removeBox)
 
-func _removeBox(box: Box):
+func _removeBox(box: Box, _pickedUp: bool = false):
 	if boxes[box.itemType].has(box):
 		boxes[box.itemType].erase(box)
 
