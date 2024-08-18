@@ -21,7 +21,7 @@ func _ready():
 	global_shop._registerShelf(self)	#Important, don't remove
 	interactPos = $InteractPos.global_position
 	$ShelvedItems.updateStockSprite()
-	# global_shop._handleEmptyShelf(self)
+	global_shop._handleEmptyShelf(self)
 	shelved_items.update_product_type(itemType)
 	shelved_items.updateStockSprite()
 
