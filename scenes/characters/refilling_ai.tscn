@@ -8,6 +8,8 @@
 radius = 4.0
 
 [node name="Refilling AI" type="CharacterBody2D"]
+z_index = 1
+y_sort_enabled = true
 collision_layer = 2
 script = ExtResource("1_16otg")
 speed = 75.0

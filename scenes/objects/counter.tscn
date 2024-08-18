@@ -7,6 +7,7 @@
 size = Vector2(28, 23)
 
 [node name="Counter" type="Area2D"]
+z_index = 1
 y_sort_enabled = true
 script = ExtResource("1_ek76o")
 

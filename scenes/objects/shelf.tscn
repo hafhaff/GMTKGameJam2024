@@ -37,6 +37,7 @@ shape = SubResource("RectangleShape2D_kqj1n")
 
 [node name="InteractShape" type="Area2D" parent="."]
 position = Vector2(16, 32)
+collision_mask = 3
 
 [node name="InteractArea" type="CollisionShape2D" parent="InteractShape"]
 shape = SubResource("CircleShape2D_yhb2b")
