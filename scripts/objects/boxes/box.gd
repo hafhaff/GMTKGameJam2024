@@ -11,11 +11,10 @@ class_name Box
 signal selfYeet(Box)	#Called on self destruction
 signal pickedUp(Box, bool)
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	global_shop._addBox(self)
+	if not Engine.is_editor_hint():
+		global_shop._addBox(self)
 	
-	# Set display
 	update_box_type()
 	
 func getItemName():

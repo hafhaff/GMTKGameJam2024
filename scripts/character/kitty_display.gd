@@ -32,11 +32,6 @@ func _ready() -> void:
 	set_role(kitty_role)
 
 func _process(delta: float) -> void:
-	if Engine.is_editor_hint():
-		set_color(kitty_color)
-		set_face(kitty_face)
-		set_role(kitty_role)
-	
 	if not Engine.is_editor_hint():
 		animation_player.speed_scale = animation_speed
 		if is_walking:

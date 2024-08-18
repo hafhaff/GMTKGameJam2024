@@ -20,6 +20,8 @@ script = ExtResource("1_eyxpy")
 position = Vector2(16, 32)
 texture = ExtResource("2_m12bv")
 offset = Vector2(0, -16)
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 32)
 
 [node name="ShelvedItems" type="Sprite2D" parent="."]
 position = Vector2(16, 32)

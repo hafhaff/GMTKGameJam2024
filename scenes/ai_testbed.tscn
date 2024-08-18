@@ -121,7 +121,6 @@ itemType = 1
 position = Vector2(593, 275)
 
 [node name="Player" parent="." instance=ExtResource("9_akcb2")]
-y_sort_enabled = true
 position = Vector2(231, 162)
 zoom_min = Vector2(0.2, 0.2)
 zoom_max = Vector2(15, 15)
