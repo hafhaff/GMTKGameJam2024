@@ -96,7 +96,7 @@ kitty_role = 4
 texture = ExtResource("2_yraf8")
 offset = Vector2(0, -16)
 region_enabled = true
-region_rect = Rect2(160, 0, 32, 32)
+region_rect = Rect2(96, 0, 32, 32)
 
 [node name="Outfit" type="Sprite2D" parent="Sprites"]
 texture = ExtResource("2_ppmw7")

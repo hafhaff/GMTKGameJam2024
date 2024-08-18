@@ -5,6 +5,7 @@ class_name Shelf
 var maxItemCount = 12
 @export var itemNum = 0
 @export var itemType: ItemGlobal.FoodTypes
+@export var supportedItems: Array = [ItemGlobal.FoodTypes.CANNED]
 @export var optionalAutoFill: bool = false
 var location
 
