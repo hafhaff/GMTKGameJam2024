@@ -12,6 +12,8 @@ y_sort_enabled = true
 script = ExtResource("1_ek76o")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+y_sort_enabled = true
 position = Vector2(16, 16)
 texture = ExtResource("2_10oq4")
 
