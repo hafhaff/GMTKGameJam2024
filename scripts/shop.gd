@@ -8,6 +8,7 @@ var shopCounters: Dictionary = {}	#dictionary
 var emptyCounters: Array[Counter] = []
 var tileMap: NavmeshUpdater = null
 var kitcoins: float = 100.0
+var chunkNum = 1
 
 signal kitcoinUpdated(float)
 
@@ -44,4 +45,7 @@ func _removeKitcoin(addition: float):
 	
 func getKitcoin():
 	return kitcoins
+
+func addChunkNum(num):
+	chunkNum += num
 	

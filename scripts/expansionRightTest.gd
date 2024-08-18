@@ -30,5 +30,6 @@ func rightExpansion(body):
 		price = price * numExpansions
 		expand()
 		numExpansions = numExpansions + 1
+		global_shop.addChunkNum(1)
 	else:
 		pass # Replace with function body.

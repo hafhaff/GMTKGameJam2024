@@ -35,5 +35,6 @@ func _on_body_entered(body):
 		price = price * numExpansions
 		expand()
 		numExpansions = numExpansions + 1
+		global_shop.addChunkNum(1)
 	else:
 		pass
