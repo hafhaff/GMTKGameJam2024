@@ -7,6 +7,7 @@ extends Node
 
 @export var selections: Array[PackedScene]
 @export var selectionDisplay: SelectionDisplay
+@export var hiringMenu: Node
 
 var visible = true
 var largeKittenHidePos: Vector2 = Vector2(-130, 784)	#Yup, shit's hardcoded
@@ -37,7 +38,8 @@ func _process(_delta):
 func _input(event: InputEvent):
 	if event.is_pressed():
 		if event.is_action_pressed('construction'):
-			_toggleDisplay()
+			if hiringMenu != null && !hiringMenu.visible:
+				_toggleDisplay()
 		if event.is_action_pressed('construct'):
 			_build()
 		if event.is_action_pressed('construction_next'):

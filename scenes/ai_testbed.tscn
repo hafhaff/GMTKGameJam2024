@@ -182,13 +182,15 @@ position = Vector2(400, 211)
 [node name="Refilling AI3" parent="." instance=ExtResource("11_u6mje")]
 position = Vector2(451, 231)
 
-[node name="CanvasLayer" parent="." node_paths=PackedStringArray("selectionDisplay") instance=ExtResource("12_gfxdq")]
+[node name="CanvasLayer" parent="." node_paths=PackedStringArray("selectionDisplay", "hiringMenu") instance=ExtResource("12_gfxdq")]
 selectionDisplay = NodePath("../SelectionDisplay")
+hiringMenu = NodePath("../CanvasLayer2")
 
 [node name="SelectionDisplay" parent="." instance=ExtResource("13_ynf2t")]
 
-[node name="CanvasLayer2" parent="." node_paths=PackedStringArray("selectionDisplay") instance=ExtResource("13_rpqky")]
+[node name="CanvasLayer2" parent="." node_paths=PackedStringArray("selectionDisplay", "constructionMenu") instance=ExtResource("13_rpqky")]
 selectionDisplay = NodePath("../KittyDisplay")
+constructionMenu = NodePath("../CanvasLayer")
 
 [node name="KittyDisplay" parent="." instance=ExtResource("14_ld5hc")]
 z_index = 10
