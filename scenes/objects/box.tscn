@@ -5,9 +5,11 @@
 [ext_resource type="Texture2D" uid="uid://bsl2t6vuw1kqn" path="res://textures/objects/box.png" id="3_yyfyc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x8lv1"]
-size = Vector2(12, 8)
+size = Vector2(12, 9)
 
 [node name="Box1" type="Area2D"]
+z_index = 1
+y_sort_enabled = true
 script = ExtResource("1_woa8u")
 
 [node name="Timer" type="Timer" parent="."]
@@ -15,12 +17,12 @@ wait_time = 0.552
 script = ExtResource("2_sv5o5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1.66893e-06, -9)
 texture = ExtResource("3_yyfyc")
+offset = Vector2(0, -16)
 hframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2)
+position = Vector2(0, -4.5)
 shape = SubResource("RectangleShape2D_x8lv1")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
