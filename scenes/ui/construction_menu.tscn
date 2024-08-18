@@ -1,19 +1,79 @@
-[gd_scene load_steps=5 format=3 uid="uid://dg3u5q8y8c1yu"]
+[gd_scene load_steps=9 format=3 uid="uid://dg3u5q8y8c1yu"]
 
 [ext_resource type="PackedScene" uid="uid://bed0fmavm0x6e" path="res://scenes/characters/kitty_display.tscn" id="1_1iyvu"]
 [ext_resource type="Script" path="res://scripts/ui/construction_menu.gd" id="1_72s44"]
 [ext_resource type="PackedScene" uid="uid://bhmvcfjqippet" path="res://scenes/characters/ui_constrution_ai.tscn" id="2_jok27"]
 [ext_resource type="PackedScene" uid="uid://cr8g2ewri4sld" path="res://scenes/objects/shelf.tscn" id="2_ya0r4"]
+[ext_resource type="PackedScene" uid="uid://dn0lkdgorj8pf" path="res://scenes/objects/counter.tscn" id="3_6y21a"]
+[ext_resource type="Texture2D" uid="uid://cr5ayvghqy7os" path="res://textures/objects/shelf_atlas.tres" id="5_3gime"]
+
+[sub_resource type="Animation" id="Animation_qye6q"]
+resource_name = "default"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.499317, 0.733333, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 0.95), Vector2(1, 1), Vector2(1, 0.95), Vector2(1, 0.988441)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [0.0872665, -0.0872665]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Prev:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0333333, 0.266666, 0.5, 0.766666, 1.03333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(0.5, 0.475), Vector2(0.5, 0.5), Vector2(0.5, 0.475), Vector2(0.5, 0.494)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Next:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.466667, 0.733333, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(0.5, 0.475), Vector2(0.5, 0.5), Vector2(0.5, 0.475), Vector2(0.5, 0.494)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_njnam"]
+_data = {
+"default": SubResource("Animation_qye6q")
+}
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_72s44")
-selections = Array[PackedScene]([ExtResource("2_ya0r4")])
+selections = Array[PackedScene]([ExtResource("2_ya0r4"), ExtResource("3_6y21a")])
 
 [node name="KittyDisplay" parent="." instance=ExtResource("1_1iyvu")]
 position = Vector2(-130, 784)
 scale = Vector2(16, 16)
 kitty_color = 9
 kitty_face = 2
+kitty_role = 4
 animation_speed = 1
 
 [node name="Construction Kitties" type="Node" parent="."]
@@ -47,3 +107,37 @@ position = Vector2(269, 768)
 
 [node name="UI Constrution AI10" parent="Construction Kitties" instance=ExtResource("2_jok27")]
 position = Vector2(269, 768)
+
+[node name="SelectionPositioning" type="Node2D" parent="."]
+position = Vector2(620, 593)
+scale = Vector2(3, 3)
+
+[node name="Sprite2D" type="Sprite2D" parent="SelectionPositioning"]
+rotation = 0.0872665
+texture = ExtResource("5_3gime")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 32)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SelectionPositioning"]
+libraries = {
+"": SubResource("AnimationLibrary_njnam")
+}
+autoplay = "default"
+
+[node name="Prev" type="Label" parent="SelectionPositioning"]
+offset_left = -32.3333
+offset_top = -11.0
+offset_right = -19.3333
+offset_bottom = 38.0
+scale = Vector2(0.5, 0.496875)
+text = "<
+Q"
+
+[node name="Next" type="Label" parent="SelectionPositioning"]
+offset_left = 27.6667
+offset_top = -11.0
+offset_right = 37.6667
+offset_bottom = 38.0
+scale = Vector2(0.5, 0.5)
+text = ">
+E"

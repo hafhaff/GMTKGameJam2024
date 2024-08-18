@@ -1,10 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://e13u0v8yrlfv"]
+[gd_scene load_steps=6 format=3 uid="uid://e13u0v8yrlfv"]
 
 [ext_resource type="Script" path="res://scripts/ui/selection_display.gd" id="1_36jgg"]
 [ext_resource type="Texture2D" uid="uid://cr5ayvghqy7os" path="res://textures/objects/shelf_atlas.tres" id="1_apwyr"]
+[ext_resource type="PackedScene" uid="uid://cr8g2ewri4sld" path="res://scenes/objects/shelf.tscn" id="2_sndmh"]
+[ext_resource type="PackedScene" uid="uid://dn0lkdgorj8pf" path="res://scenes/objects/counter.tscn" id="4_pbijb"]
+[ext_resource type="Texture2D" uid="uid://c0lujqem7fj3o" path="res://textures/counter.png" id="5_kud6x"]
 
 [node name="SelectionDisplay" type="Node2D"]
 script = ExtResource("1_36jgg")
+selectionSprites = {
+ExtResource("2_sndmh"): ExtResource("1_apwyr"),
+ExtResource("4_pbijb"): ExtResource("5_kud6x")
+}
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(16, 16)
