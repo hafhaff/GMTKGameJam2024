@@ -5,7 +5,7 @@ class_name Shelf
 var maxItemCount = 12
 @export var itemNum = 0
 @export var itemType: ItemGlobal.FoodTypes
-@export var supportedItems: Array = [ItemGlobal.FoodTypes.CANNED]
+@export var supportedItems: Array = [ItemGlobal.FoodTypes.CANNED, ItemGlobal.FoodTypes.CEREAL]
 @export var optionalAutoFill: bool = false
 var location
 
@@ -32,16 +32,28 @@ func _process(delta):
 func getSpaceLeft():
 	return maxItemCount - itemNum
 
+# Check if item is supported
+func is_supported(itemType) -> bool:
+	var is_supporting: bool = false
+	
+	for i in supportedItems.size() - 1:
+		if itemType == supportedItems[i]:
+			is_supporting = true
+	
+	return is_supporting
+
 func fill(numItems, itemType) -> int:
-	
-	
 	var remainingItems = numItems
 	
 	if self.itemNum <= 0:
-		
 		# If there's 0 items, ignore item type
 		self.itemType = itemType
+		
+		var itemsToBeAdded
+		
 		self.itemNum += remainingItems
+		if self.itemNum > maxItemCount:
+			remainingItems += self.itemNum - maxItemCount
 		remainingItems -= self.itemNum
 			
 		# Set visuals
@@ -67,24 +79,6 @@ func fill(numItems, itemType) -> int:
 			global_shop._handleEmptyShelf(self)
 			$ShelvedItems.updateStockSprite()
 	return remainingItems
-	
-	#Why is this code repeated? ~Hullahopp
-	if self.itemNum == 0:
-		self.itemType = itemType
-		if getSpaceLeft() <= numItems:
-			self.itemNum = maxItemCount
-			global_shop._handleEmptyShelf(self)
-			$ShelvedItems.updateStockSprite()
-			return true
-		else:
-			self.itemNum += numItems
-			global_shop._handleEmptyShelf(self)
-			$ShelvedItems.updateStockSprite()
-			return true
-	
-	else:
-		$ShelvedItems.updateStockSprite()
-		return false
 		
 #use 1 as num  items taken if you want one at a time
 func take(numItemsTaken, itemType): 

@@ -11,7 +11,7 @@ var heldItem : Node
 var counter: Counter
 var heldItemNum
 var canUnload
-var curShelf : Shelf = null
+var curShelf: Shelf = null
 
 var zoom_speed = Vector2(0.300001, 0.300001)
 
@@ -43,7 +43,7 @@ func _physics_process(_delta):
 
 func fillShelf():
 	print("filling shelf")
-	if canUnload and heldItem is Box:
+	if canUnload and heldItem is Box and curShelf.is_supported(getBoxItem()):
 		#You can use printt instead or print ~Hullahopp
 		print("items in Box before fill:", getNumInBox())
 		print("items in shelf:", curShelf.itemNum)
@@ -60,6 +60,8 @@ func fillShelf():
 		else:
 			deleteEmptyBox()
 			print("Success, complete fill")
+	
+	print(curShelf.is_supported(getBoxItem()))
 
 func getShelf(shelf):
 	return shelf
@@ -94,11 +96,13 @@ func dropBox():
 		print("dropping")
 		
 
-func pickUpBox (Box):
+func pickUpBox (box: Box):
+	heldItem = box
+	$HoldBox.update_box_type(getBoxItem())
 	$HoldBox.visible = true
-	Box.hideSprite()
-	Box.disablePickup()
-	heldItem = Box
+	box.hideSprite()
+	box.disablePickup()
+	
 	print(heldItem.getName())
 	
 
