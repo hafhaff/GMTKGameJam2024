@@ -6,7 +6,7 @@ class_name Box
 @export var itemNum = 10
 @export var itemType : ItemGlobal.FoodTypes
 
-@onready var base: Sprite2D = $Base
+@onready var box_display: BoxDisplay = $BoxDisplay
 
 signal selfYeet(Box)	#Called on self destruction
 signal pickedUp(Box, bool)
@@ -14,13 +14,14 @@ signal pickedUp(Box, bool)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	global_shop._addBox(self)
-	update_box_type(self.itemType)
+	
+	# Set display
+	update_box_type()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	#update box type in editor
 	if Engine.is_editor_hint():
-		update_box_type(self.itemType)
+		update_box_type()
 	
 func getItemName():
 	print(itemType)
@@ -62,6 +63,6 @@ func removeSelf():
 	selfYeet.emit(self)
 	queue_free()
 
-# Customization
-func update_box_type(index: int) -> void:
-	base.region_rect.position.x = index * 32 
+# Change the texture to the current type
+func update_box_type():
+	box_display.itemType = self.itemType
