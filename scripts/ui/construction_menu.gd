@@ -72,6 +72,8 @@ func _build():
 	_spriteSetup(constPos as Vector2i, constPos as Vector2i)
 
 func _spriteSetup(pos: Vector2i, parentPos: Vector2i):
+	if !global_shop.shopShelves.has(pos):
+		return
 	var left: Vector2i = Vector2i(pos.x -1, pos.y)
 	var right: Vector2i = Vector2i(pos.x +1, pos.y)
 	if global_shop.shopShelves.has(left):
