@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/objects/boxes/box.gd" id="1_woa8u"]
 [ext_resource type="Script" path="res://scripts/objects/boxes/Boxtimer.gd" id="2_sv5o5"]
-[ext_resource type="PackedScene" path="res://scenes/objects/box_display.tscn" id="3_27jt8"]
+[ext_resource type="PackedScene" uid="uid://bbvoxcvfwybuw" path="res://scenes/objects/box_display.tscn" id="3_27jt8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x8lv1"]
 size = Vector2(12, 9)

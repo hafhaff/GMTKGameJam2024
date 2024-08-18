@@ -17,6 +17,7 @@ func _ready():
 	kittyDisplay.randomize_look()
 	kittyDisplay.set_role(kittyDisplay.KittyRole.RESTOCKER)
 	global_shop.connect("newEmptyShelf", _setShelf)
+	lookForEmptyShelf.start(randf_range(1,4))
 
 func _physics_process(_delta):
 	if target == null:
@@ -52,12 +53,14 @@ func _setShelf(_shelf: Shelf) -> bool:
 	target = _boxes[0]
 	target.connect("pickedUp", _lostTarget)
 	navigation.target_position = target.global_position
+	global_shop._handleEmptyShelf(shelf)
 	return true
 
 func _lostTarget(_box: Box, _pickedUp: bool):
 	print("Lost target")
 	target.disconnect("pickedUp", _lostTarget)
 	if !navigation.is_navigation_finished():
+		global_shop._handleEmptyShelf(shelf)
 		shelf = null
 		target = null
 

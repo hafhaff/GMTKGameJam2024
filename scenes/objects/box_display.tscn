@@ -46,13 +46,14 @@ animations = [{
 }]
 
 [node name="BoxDisplay" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_wi8ng")
 
 [node name="Base" type="Sprite2D" parent="."]
 texture = ExtResource("2_mnjq3")
 offset = Vector2(0, -16)
 region_enabled = true
-region_rect = Rect2(0, 0, 32, 32)
+region_rect = Rect2(0, 2, 32, 32)
 
 [node name="Opening" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_iwrfm")

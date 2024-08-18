@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" path="res://scripts/ai/refilling_ai.gd" id="1_16otg"]
 [ext_resource type="PackedScene" uid="uid://bed0fmavm0x6e" path="res://scenes/characters/kitty_display.tscn" id="1_bp1wb"]
-[ext_resource type="Texture2D" uid="uid://bsl2t6vuw1kqn" path="res://textures/objects/box.png" id="2_nlj1s"]
+[ext_resource type="Texture2D" uid="uid://ssanlg5le5ay" path="res://textures/objects/box/box_base_atlas.tres" id="3_b723i"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tc1sj"]
 radius = 4.0
 
 [node name="Refilling AI" type="CharacterBody2D"]
-collision_mask = 2
+collision_layer = 2
 script = ExtResource("1_16otg")
 speed = 75.0
 
@@ -20,15 +20,16 @@ position = Vector2(0, 9)
 
 [node name="SearchTimer" type="Timer" parent="."]
 wait_time = 3.0
-autostart = true
 
 [node name="HoldBox" type="Sprite2D" parent="."]
 visible = false
-z_index = 4
-position = Vector2(3, -8)
-texture = ExtResource("2_nlj1s")
-hframes = 4
-frame = 3
+z_index = 1
+y_sort_enabled = true
+position = Vector2(3, 10)
+texture = ExtResource("3_b723i")
+offset = Vector2(0, -16)
+region_enabled = true
+region_rect = Rect2(0, 2, 32, 32)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 5.0

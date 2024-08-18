@@ -9,7 +9,7 @@ func _ready():
 
 func _removeNavmeshFromTile(vector: Vector2i):
 	print("Removing navmesh")
-	set_cell(vector, 0, Vector2i(4,3))
+	set_cell(vector, 0, Vector2i(0,0))
 
 func _addNavmeshToTile(vector: Vector2i):
-	set_cell(vector, 1, Vector2i(4,3))
+	set_cell(vector, 1, Vector2i(0,0))

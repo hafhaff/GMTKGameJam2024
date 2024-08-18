@@ -126,7 +126,7 @@ zoom_min = Vector2(0.2, 0.2)
 zoom_max = Vector2(15, 15)
 
 [node name="Cashier AI" parent="." instance=ExtResource("7_0418u")]
-position = Vector2(427, 272)
+position = Vector2(563, 224)
 
 [node name="Spawn Manager" parent="." instance=ExtResource("9_n4gvh")]
 
@@ -206,6 +206,12 @@ itemType = 1
 
 [node name="Refilling AI" parent="." instance=ExtResource("11_u6mje")]
 position = Vector2(431, 178)
+
+[node name="Refilling AI2" parent="." instance=ExtResource("11_u6mje")]
+position = Vector2(400, 211)
+
+[node name="Refilling AI3" parent="." instance=ExtResource("11_u6mje")]
+position = Vector2(451, 231)
 
 [node name="CanvasLayer" parent="." node_paths=PackedStringArray("selectionDisplay") instance=ExtResource("12_gfxdq")]
 selectionDisplay = NodePath("../SelectionDisplay")
