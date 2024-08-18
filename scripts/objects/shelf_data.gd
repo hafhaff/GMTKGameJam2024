@@ -21,7 +21,7 @@ func _ready():
 	global_shop._registerShelf(self)	#Important, don't remove
 	interactPos = $InteractPos.global_position
 	$ShelvedItems.updateStockSprite()
-	global_shop._handleEmptyShelf(self)
+	# global_shop._handleEmptyShelf(self)
 	shelved_items.update_product_type(itemType)
 	shelved_items.updateStockSprite()
 
@@ -63,8 +63,6 @@ func fill(numItems, itemType) -> int:
 		# This will be used for logic handled by the player/AI
 		
 	elif itemType == self.itemType:
-		
-		
 		if getSpaceLeft() < remainingItems:
 			
 			remainingItems -= getSpaceLeft()
@@ -78,6 +76,7 @@ func fill(numItems, itemType) -> int:
 			
 			global_shop._handleEmptyShelf(self)
 			$ShelvedItems.updateStockSprite()
+	
 	return remainingItems
 		
 #use 1 as num  items taken if you want one at a time
