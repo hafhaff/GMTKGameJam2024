@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://clsegmf75ckjy"]
+[gd_scene load_steps=13 format=4 uid="uid://clsegmf75ckjy"]
 
 [ext_resource type="TileSet" uid="uid://cpf2j2rvdkkd1" path="res://textures/tilemaps/building_tiles.tres" id="1_nfa3s"]
 [ext_resource type="Script" path="res://scripts/expansionMap.gd" id="2_i6fl6"]
@@ -9,6 +9,8 @@
 [ext_resource type="Script" path="res://scripts/expansionNode.gd" id="7_nk6tk"]
 [ext_resource type="Texture2D" uid="uid://hnpypiil78wy" path="res://icon.svg" id="8_d2idq"]
 [ext_resource type="PackedScene" uid="uid://du8832mjcy7sc" path="res://scenes/ui/currency_display.tscn" id="10_7w4tk"]
+[ext_resource type="PackedScene" uid="uid://dg3u5q8y8c1yu" path="res://scenes/ui/construction_menu.tscn" id="10_54oqk"]
+[ext_resource type="PackedScene" uid="uid://e13u0v8yrlfv" path="res://scenes/ui/selection_display.tscn" id="11_eptom"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h6lwn"]
 size = Vector2(11, 9)
@@ -120,6 +122,11 @@ texture = ExtResource("8_d2idq")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="UpExpand"]
 position = Vector2(159, 6)
 shape = SubResource("RectangleShape2D_h6lwn")
+
+[node name="CanvasLayer" parent="." node_paths=PackedStringArray("selectionDisplay") instance=ExtResource("10_54oqk")]
+selectionDisplay = NodePath("../SelectionDisplay")
+
+[node name="SelectionDisplay" parent="." instance=ExtResource("11_eptom")]
 
 [connection signal="body_entered" from="RightExpand" to="RightExpand" method="rightExpansion"]
 [connection signal="body_entered" from="DownExpand" to="DownExpand" method="rightExpansion"]

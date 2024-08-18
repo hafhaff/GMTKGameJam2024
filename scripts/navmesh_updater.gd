@@ -2,7 +2,7 @@ extends TileMapLayer
 
 class_name NavmeshUpdater
 
-@onready var tileDataPolygon: NavigationPolygon = get_cell_tile_data(Vector2(1,1)).get_navigation_polygon(0)
+#@onready var tileDataPolygon: NavigationPolygon = get_cell_tile_data(Vector2(1,1)).get_navigation_polygon(0)
 
 func _ready():
 	global_shop._registerTilemap(self)
