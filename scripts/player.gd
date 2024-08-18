@@ -43,6 +43,7 @@ func _physics_process(_delta):
 func fillShelf():
 	print("filling shelf")
 	if canUnload and heldItem is box:
+		#You can use printt instead or print ~Hullahopp
 		print("items in box before fill:")
 		print(getNumInBox())
 		print("items in shelf:")
@@ -77,7 +78,7 @@ func getBoxItem():
 
 func deleteEmptyBox():
 	$HoldBox.visible = false
-	heldItem.queue_free()
+	heldItem.removeSelf()
 	heldItem = null
 
 func dropBox():

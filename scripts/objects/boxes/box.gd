@@ -48,3 +48,6 @@ func _on_body_entered(body):
 func _on_timer_timeout():
 	self.enablePickup()
 	pass # Replace with function body.
+
+func removeSelf():
+	queue_free()
