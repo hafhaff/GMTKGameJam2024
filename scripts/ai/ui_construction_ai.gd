@@ -7,13 +7,15 @@ var moveY: float = 718
 var forcedHidden: bool
 var spawnPosition: Vector2 = Vector2(269, 718)
 
+@export var kittyRole: KittyDisplay.KittyRole = KittyDisplay.KittyRole.CONSTRUCTION
+
 @onready var kittyDisplay: KittyDisplay = $KittyDisplay
 @onready var movementTimer: Timer = $Timer
 @onready var desiredPosition: Vector2 = self.global_position
 
 func _ready():
 	kittyDisplay.randomize_look()
-	kittyDisplay.set_role(KittyDisplay.KittyRole.CONSTRUCTION)
+	kittyDisplay.set_role(kittyRole)
 	set_physics_process(false)
 	_generateDesiredPosition()
 
@@ -47,7 +49,7 @@ func _hideKitty(mustHide: bool):
 		set_physics_process(false)
 	else:
 		kittyDisplay.randomize_look()
-		kittyDisplay.set_role(KittyDisplay.KittyRole.CONSTRUCTION)
+		kittyDisplay.set_role(kittyRole)
 		tween.connect("finished", _tweenFinished)
 
 func _tweenFinished():

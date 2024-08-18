@@ -52,7 +52,7 @@ func _physics_process(_delta):
 	move_and_slide()
 
 #Temporary, will get refactored when the shop is finished
-func _generateTarget(): 
+func _generateTarget():
 	if !_shoppingDone():
 		target = _selectShelf()
 		if target == null:

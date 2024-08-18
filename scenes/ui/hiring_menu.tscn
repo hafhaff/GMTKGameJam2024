@@ -1,0 +1,212 @@
+[gd_scene load_steps=8 format=3 uid="uid://mwdwlaqsblh8"]
+
+[ext_resource type="Script" path="res://scripts/ui/hiring_menu.gd" id="1_dky4c"]
+[ext_resource type="PackedScene" uid="uid://b0ic68c7v5ojg" path="res://scenes/characters/cashier_ai.tscn" id="2_yhpgu"]
+[ext_resource type="Script" path="res://scripts/ai/ui_construction_ai.gd" id="3_4byee"]
+[ext_resource type="PackedScene" uid="uid://d3pmwvyul36cy" path="res://scenes/characters/refilling_ai.tscn" id="3_6o8xj"]
+[ext_resource type="PackedScene" uid="uid://bed0fmavm0x6e" path="res://scenes/characters/kitty_display.tscn" id="4_ojvef"]
+
+[sub_resource type="Animation" id="Animation_qye6q"]
+resource_name = "default"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Prev:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 0.266666, 0.5, 0.766666, 1.03333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(0.5, 0.475), Vector2(0.5, 0.5), Vector2(0.5, 0.475), Vector2(0.5, 0.494)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Next:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.466667, 0.733333, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(0.5, 0.475), Vector2(0.5, 0.5), Vector2(0.5, 0.475), Vector2(0.5, 0.494)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_njnam"]
+_data = {
+"default": SubResource("Animation_qye6q")
+}
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_dky4c")
+selections = Array[PackedScene]([ExtResource("2_yhpgu"), ExtResource("3_6o8xj")])
+
+[node name="KittyDisplay" parent="." instance=ExtResource("4_ojvef")]
+position = Vector2(-130, 784)
+scale = Vector2(16, 16)
+kitty_color = 3
+kitty_face = 4
+kitty_role = 3
+animation_speed = 1
+
+[node name="Construction Kitties" type="Node" parent="."]
+
+[node name="UI Constrution AI" type="CharacterBody2D" parent="Construction Kitties"]
+position = Vector2(269, 768)
+scale = Vector2(2, 2)
+script = ExtResource("3_4byee")
+kittyRole = 1
+
+[node name="KittyDisplay" parent="Construction Kitties/UI Constrution AI" instance=ExtResource("4_ojvef")]
+kitty_role = 1
+
+[node name="Timer" type="Timer" parent="Construction Kitties/UI Constrution AI"]
+one_shot = true
+
+[node name="UI Constrution AI2" type="CharacterBody2D" parent="Construction Kitties"]
+position = Vector2(269, 768)
+scale = Vector2(2, 2)
+script = ExtResource("3_4byee")
+kittyRole = 1
+
+[node name="KittyDisplay" parent="Construction Kitties/UI Constrution AI2" instance=ExtResource("4_ojvef")]
+kitty_role = 1
+
+[node name="Timer" type="Timer" parent="Construction Kitties/UI Constrution AI2"]
+one_shot = true
+
+[node name="UI Constrution AI3" type="CharacterBody2D" parent="Construction Kitties"]
+position = Vector2(269, 768)
+scale = Vector2(2, 2)
+script = ExtResource("3_4byee")
+kittyRole = 1
+
+[node name="KittyDisplay" parent="Construction Kitties/UI Constrution AI3" instance=ExtResource("4_ojvef")]
+kitty_role = 1
+
+[node name="Timer" type="Timer" parent="Construction Kitties/UI Constrution AI3"]
+one_shot = true
+
+[node name="UI Constrution AI4" type="CharacterBody2D" parent="Construction Kitties"]
+position = Vector2(269, 768)
+scale = Vector2(2, 2)
+script = ExtResource("3_4byee")
+kittyRole = 2
+
+[node name="KittyDisplay" parent="Construction Kitties/UI Constrution AI4" instance=ExtResource("4_ojvef")]
+kitty_role = 1
+
+[node name="Timer" type="Timer" parent="Construction Kitties/UI Constrution AI4"]
+one_shot = true
+
+[node name="UI Constrution AI5" type="CharacterBody2D" parent="Construction Kitties"]
+position = Vector2(269, 768)
+scale = Vector2(2, 2)
+script = ExtResource("3_4byee")
+kittyRole = 2
+
+[node name="KittyDisplay" parent="Construction Kitties/UI Constrution AI5" instance=ExtResource("4_ojvef")]
+kitty_role = 1
+
+[node name="Timer" type="Timer" parent="Construction Kitties/UI Constrution AI5"]
+one_shot = true
+
+[node name="UI Constrution AI6" type="CharacterBody2D" parent="Construction Kitties"]
+position = Vector2(269, 768)
+scale = Vector2(2, 2)
+script = ExtResource("3_4byee")
+kittyRole = 2
+
+[node name="KittyDisplay" parent="Construction Kitties/UI Constrution AI6" instance=ExtResource("4_ojvef")]
+kitty_role = 1
+
+[node name="Timer" type="Timer" parent="Construction Kitties/UI Constrution AI6"]
+one_shot = true
+
+[node name="UI Constrution AI7" type="CharacterBody2D" parent="Construction Kitties"]
+position = Vector2(269, 768)
+scale = Vector2(2, 2)
+script = ExtResource("3_4byee")
+kittyRole = 3
+
+[node name="KittyDisplay" parent="Construction Kitties/UI Constrution AI7" instance=ExtResource("4_ojvef")]
+kitty_role = 1
+
+[node name="Timer" type="Timer" parent="Construction Kitties/UI Constrution AI7"]
+one_shot = true
+
+[node name="UI Constrution AI8" type="CharacterBody2D" parent="Construction Kitties"]
+position = Vector2(269, 768)
+scale = Vector2(2, 2)
+script = ExtResource("3_4byee")
+kittyRole = 3
+
+[node name="KittyDisplay" parent="Construction Kitties/UI Constrution AI8" instance=ExtResource("4_ojvef")]
+kitty_role = 1
+
+[node name="Timer" type="Timer" parent="Construction Kitties/UI Constrution AI8"]
+one_shot = true
+
+[node name="UI Constrution AI9" type="CharacterBody2D" parent="Construction Kitties"]
+position = Vector2(269, 768)
+scale = Vector2(2, 2)
+script = ExtResource("3_4byee")
+kittyRole = 3
+
+[node name="KittyDisplay" parent="Construction Kitties/UI Constrution AI9" instance=ExtResource("4_ojvef")]
+kitty_role = 1
+
+[node name="Timer" type="Timer" parent="Construction Kitties/UI Constrution AI9"]
+one_shot = true
+
+[node name="SelectionPositioning" type="Node2D" parent="."]
+position = Vector2(620, 593)
+scale = Vector2(3, 3)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SelectionPositioning"]
+libraries = {
+"": SubResource("AnimationLibrary_njnam")
+}
+autoplay = "default"
+
+[node name="Prev" type="Label" parent="SelectionPositioning"]
+offset_left = -32.3333
+offset_top = -11.0
+offset_right = -19.3333
+offset_bottom = 38.0
+scale = Vector2(0.5, 0.496875)
+text = "<
+Q"
+
+[node name="Next" type="Label" parent="SelectionPositioning"]
+offset_left = 27.6667
+offset_top = -11.0
+offset_right = 37.6667
+offset_bottom = 38.0
+scale = Vector2(0.5, 0.5)
+text = ">
+E"
+
+[node name="KittyDisplay" parent="SelectionPositioning" instance=ExtResource("4_ojvef")]
+is_walking = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="SelectionPositioning"]
+offset_left = -26.0
+offset_top = -34.0
+offset_right = 77.0
+offset_bottom = -10.0
+scale = Vector2(0.5, 0.5)
+bbcode_enabled = true
+text = "[center]Cashier"
+
+[connection signal="timeout" from="Construction Kitties/UI Constrution AI/Timer" to="Construction Kitties/UI Constrution AI" method="_generateDesiredPosition"]
+[connection signal="timeout" from="Construction Kitties/UI Constrution AI2/Timer" to="Construction Kitties/UI Constrution AI2" method="_generateDesiredPosition"]
+[connection signal="timeout" from="Construction Kitties/UI Constrution AI3/Timer" to="Construction Kitties/UI Constrution AI3" method="_generateDesiredPosition"]
+[connection signal="timeout" from="Construction Kitties/UI Constrution AI4/Timer" to="Construction Kitties/UI Constrution AI4" method="_generateDesiredPosition"]
+[connection signal="timeout" from="Construction Kitties/UI Constrution AI5/Timer" to="Construction Kitties/UI Constrution AI5" method="_generateDesiredPosition"]
+[connection signal="timeout" from="Construction Kitties/UI Constrution AI6/Timer" to="Construction Kitties/UI Constrution AI6" method="_generateDesiredPosition"]
+[connection signal="timeout" from="Construction Kitties/UI Constrution AI7/Timer" to="Construction Kitties/UI Constrution AI7" method="_generateDesiredPosition"]
+[connection signal="timeout" from="Construction Kitties/UI Constrution AI8/Timer" to="Construction Kitties/UI Constrution AI8" method="_generateDesiredPosition"]
+[connection signal="timeout" from="Construction Kitties/UI Constrution AI9/Timer" to="Construction Kitties/UI Constrution AI9" method="_generateDesiredPosition"]
