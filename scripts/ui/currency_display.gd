@@ -2,7 +2,7 @@ extends Node
 
 class_name CurrencyDisplay
 
-@onready var displayLabel: Label = $Label
+@onready var displayLabel: Label = $MarginContainer/HBoxContainer/Label
 
 func _ready():
 	global_shop.connect("kitcoinUpdated", _updateDisplay)
