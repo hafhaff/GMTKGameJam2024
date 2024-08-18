@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://clsegmf75ckjy"]
+[gd_scene load_steps=12 format=4 uid="uid://clsegmf75ckjy"]
 
 [ext_resource type="TileSet" uid="uid://cpf2j2rvdkkd1" path="res://textures/tilemaps/building_tiles.tres" id="1_nfa3s"]
 [ext_resource type="Script" path="res://scripts/expansionMap.gd" id="2_i6fl6"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://scripts/expansionRightTest.gd" id="7_nk6tk"]
 [ext_resource type="Texture2D" uid="uid://hnpypiil78wy" path="res://icon.svg" id="8_d2idq"]
 [ext_resource type="Script" path="res://scripts/expansionLeftTest.gd" id="9_qphu6"]
+[ext_resource type="PackedScene" uid="uid://du8832mjcy7sc" path="res://scenes/ui/currency_display.tscn" id="10_7w4tk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h6lwn"]
 size = Vector2(11, 9)
@@ -80,6 +81,8 @@ texture = ExtResource("8_d2idq")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftExpand"]
 position = Vector2(4, 142)
 shape = SubResource("RectangleShape2D_h6lwn")
+
+[node name="Currency Display" parent="." instance=ExtResource("10_7w4tk")]
 
 [connection signal="body_entered" from="RightExpand" to="RightExpand" method="rightExpansion"]
 [connection signal="body_entered" from="LeftExpand" to="LeftExpand" method="_on_body_entered"]

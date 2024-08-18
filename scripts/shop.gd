@@ -41,3 +41,7 @@ func _addKitcoin(addition: float):
 func _removeKitcoin(addition: float):
 	kitcoins -= addition
 	kitcoinUpdated.emit(kitcoins)
+	
+func getKitcoin():
+	return kitcoins
+	
