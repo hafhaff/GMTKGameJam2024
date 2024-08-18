@@ -98,7 +98,7 @@ func _checkout() -> bool:
 	return false
 
 func _generateShoppingList():
-	itemsTotal = randi_range(1,6)
+	itemsTotal = randi_range(1,12)
 	for x in range(itemsTotal):
 		var key: ItemGlobal.FoodTypes = randi_range(0, ItemGlobal.FoodTypes.size() - 1) as ItemGlobal.FoodTypes
 		if shoppingList.has(key):
