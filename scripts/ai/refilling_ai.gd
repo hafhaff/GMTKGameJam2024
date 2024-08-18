@@ -48,7 +48,13 @@ func _setShelf(_shelf: Shelf) -> bool:
 		return true
 	
 	shelf = _shelf
-	var _boxes: Array = global_shop.boxes[_shelf.itemType].duplicate()
+	var validTypes = shelf.supportedItems.duplicate()
+	validTypes.shuffle()
+	var _boxes: Array =  []
+	for type in validTypes:
+		if global_shop.boxes[type].size() != 0:
+			_boxes = global_shop.boxes[type]
+			break
 	if _boxes.size() == 0:
 		shelf = null
 		return false
