@@ -10,10 +10,7 @@ var tileMap: NavmeshUpdater = null
 var kitcoins: float = 100.0
 var emptyShelves: Array[Shelf] = []
 var chunkNum = 1
-@onready var boxes: Dictionary = {
-	ItemGlobal.FoodTypes.CANNED : [],
-	ItemGlobal.FoodTypes.CEREAL : []
-}
+@onready var boxes: Dictionary = {}
 
 signal kitcoinUpdated(float)
 signal newEmptyShelf(shelf)
@@ -54,6 +51,8 @@ func _handleEmptyShelf(shelf: Shelf):
 		newEmptyShelf.emit(shelf)
 
 func _addBox(box: Box):
+	if !boxes.has(box.itemType):
+		boxes[box.itemType] = []
 	if !boxes[box.itemType].has(box):
 		boxes[box.itemType].push_back(box)
 		box.connect("selfYeet", _removeBox)
