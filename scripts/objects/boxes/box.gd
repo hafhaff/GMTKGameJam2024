@@ -11,17 +11,11 @@ class_name Box
 signal selfYeet(Box)	#Called on self destruction
 signal pickedUp(Box, bool)
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	global_shop._addBox(self)
-	
-	# Set display
-	update_box_type()
-	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
 	if Engine.is_editor_hint():
-		update_box_type()
+		global_shop._addBox(self)
+	
+	update_box_type()
 	
 func getItemName():
 	print(itemType)
