@@ -32,18 +32,41 @@ func _process(delta):
 func getSpaceLeft():
 	return maxItemCount - itemNum
 
-func fill(numItems, itemType):
-	if itemType == self.itemType:
-		if getSpaceLeft() <= numItems:
+func fill(numItems, itemType) -> int:
+	
+	
+	var remainingItems = numItems
+	
+	if self.itemNum <= 0:
+		
+		# If there's 0 items, ignore item type
+		self.itemType = itemType
+		self.itemNum += remainingItems
+		remainingItems -= self.itemNum
+			
+		# Set visuals
+		shelved_items.update_product_type(itemType)
+		$ShelvedItems.updateStockSprite()
+		
+		# This will be used for logic handled by the player/AI
+		
+	elif itemType == self.itemType:
+		
+		
+		if getSpaceLeft() < remainingItems:
+			
+			remainingItems -= getSpaceLeft()
+			
 			self.itemNum = maxItemCount
 			global_shop._handleEmptyShelf(self)
 			$ShelvedItems.updateStockSprite()
-			return true
 		else:
-			self.itemNum += numItems
+			self.itemNum += remainingItems
+			remainingItems = 0
+			
 			global_shop._handleEmptyShelf(self)
 			$ShelvedItems.updateStockSprite()
-			return true
+	return remainingItems
 	
 	#Why is this code repeated? ~Hullahopp
 	if self.itemNum == 0:

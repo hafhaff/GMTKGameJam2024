@@ -22,6 +22,7 @@ position = Vector2(0, -4.5)
 shape = SubResource("RectangleShape2D_x8lv1")
 
 [node name="BoxDisplay" parent="." instance=ExtResource("3_27jt8")]
+position = Vector2(0, 2)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

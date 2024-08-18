@@ -59,3 +59,4 @@ func removeSelf():
 # Change the texture to the current type
 func update_box_type():
 	box_display.itemType = self.itemType
+	box_display.update_box_type(itemType)

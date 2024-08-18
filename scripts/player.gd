@@ -45,23 +45,21 @@ func fillShelf():
 	print("filling shelf")
 	if canUnload and heldItem is Box:
 		#You can use printt instead or print ~Hullahopp
-		print("items in Box before fill:")
-		print(getNumInBox())
-		print("items in shelf:")
-		print(curShelf.itemNum)
-		var itemsToPutIn = curShelf.maxItemCount-curShelf.itemNum
-		curShelf.fill(getNumInBox(), getBoxItem())
+		print("items in Box before fill:", getNumInBox())
+		print("items in shelf:", curShelf.itemNum)
 		
-		if curShelf.itemType != getBoxItem():
-			pass
+		var remianingItems = curShelf.fill(getNumInBox(), getBoxItem())
 		
-		else: 
-			if getNumInBox() <= itemsToPutIn:
-				deleteEmptyBox()
-			else:
-				print("items in Box after fill:")
-				setNumInBox(getNumInBox()-itemsToPutIn)
-				print(getNumInBox())
+		print("items in Box after fill:", remianingItems)
+		
+		if remianingItems == getNumInBox():
+			print("Fill attempt failed")
+		elif remianingItems > 0:
+			setNumInBox(remianingItems)
+			print("Success, partial fill")
+		else:
+			deleteEmptyBox()
+			print("Success, complete fill")
 
 func getShelf(shelf):
 	return shelf
