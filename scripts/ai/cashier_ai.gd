@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+class_name CashierAI
+
 @export var speed: float = 100
 
 var target: Counter = null
