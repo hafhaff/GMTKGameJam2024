@@ -8,8 +8,10 @@ var shopCounters: Dictionary = {}	#dictionary
 var emptyCounters: Array[Counter] = []
 var tileMap: NavmeshUpdater = null
 var kitcoins: float = 100.0
+var emptyShelves: Array[Shelf] = []
 
 signal kitcoinUpdated(float)
+signal newEmptyShelf(shelf)
 
 func _registerTilemap(_tileMap: NavmeshUpdater):
 	tileMap = _tileMap
@@ -33,6 +35,18 @@ func _handleEmptyCounter(counter: Counter, forced: bool = false):
 		emptyCounters.push_back(counter)
 	else:
 		emptyCounters.erase(counter)
+
+func _handleEmptyShelf(shelf: Shelf):
+	if shelf.itemNum > 0:
+		if emptyShelves.has(shelf):
+			emptyShelves.erase(shelf)
+		return
+	
+	if emptyShelves.has(shelf):
+		emptyShelves.erase(shelf)
+	else:
+		emptyShelves.push_back(shelf)
+		newEmptyShelf.emit(shelf)
 
 func _addKitcoin(addition: float):
 	kitcoins += addition
