@@ -10,6 +10,7 @@ size = Vector2(12, 9)
 [node name="Box1" type="Area2D"]
 z_index = 1
 y_sort_enabled = true
+collision_mask = 3
 script = ExtResource("1_woa8u")
 
 [node name="Timer" type="Timer" parent="."]
