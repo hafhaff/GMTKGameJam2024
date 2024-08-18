@@ -53,23 +53,23 @@ func _handleEmptyShelf(shelf: Shelf):
 		emptyShelves.push_back(shelf)
 		newEmptyShelf.emit(shelf)
 
-func _addBox(_box: box):
-	if !boxes[_box.itemType].has(_box):
-		boxes[_box.itemType].push_back(_box)
-		_box.connect("selfYeet", _removeBox)
-		_box.connect("pickUp", _removeBox)
+func _addBox(box: Box):
+	if !boxes[box.itemType].has(box):
+		boxes[box.itemType].push_back(box)
+		box.connect("selfYeet", _removeBox)
+		box.connect("pickedUp", _removeBox)
 
-func _removeBox(_box: box):
-	if boxes[_box.itemType].has(_box):
-		boxes[_box.itemType].erase(_box)
+func _removeBox(box: Box):
+	if boxes[box.itemType].has(box):
+		boxes[box.itemType].erase(box)
 
-func _handleBoxPickup(_box: box, pickedUp: bool):
+func _handleBoxPickup(box: Box, pickedUp: bool):
 	#In our list, but picked up, we remove from our list
-	if boxes[_box.itemType].has(_box) && pickedUp:
-		boxes[_box.itemType].erase(_box)
+	if boxes[box.itemType].has(box) && pickedUp:
+		boxes[box.itemType].erase(box)
 	#Not in our list, but dropped, we add to our list
-	elif !boxes[_box.itemType].has(_box) && !pickedUp:
-		boxes[_box.itemType].push_back(_box)
+	elif !boxes[box.itemType].has(box) && !pickedUp:
+		boxes[box.itemType].push_back(box)
 
 func _addKitcoin(addition: float):
 	kitcoins += addition

@@ -22,6 +22,7 @@ func _ready():
 	position = Vector2(100, 100)
 	heldItem = null
 	kittyDisplay.randomize_look()
+	kittyDisplay.set_role(kittyDisplay.KittyRole.PLAYER)
 
 func _physics_process(_delta):
 	var action1 = Input.is_action_just_pressed("Action1")
@@ -42,9 +43,9 @@ func _physics_process(_delta):
 
 func fillShelf():
 	print("filling shelf")
-	if canUnload and heldItem is box:
+	if canUnload and heldItem is Box:
 		#You can use printt instead or print ~Hullahopp
-		print("items in box before fill:")
+		print("items in Box before fill:")
 		print(getNumInBox())
 		print("items in shelf:")
 		print(curShelf.itemNum)
@@ -58,7 +59,7 @@ func fillShelf():
 			if getNumInBox() <= itemsToPutIn:
 				deleteEmptyBox()
 			else:
-				print("items in box after fill:")
+				print("items in Box after fill:")
 				setNumInBox(getNumInBox()-itemsToPutIn)
 				print(getNumInBox())
 
@@ -95,11 +96,11 @@ func dropBox():
 		print("dropping")
 		
 
-func pickUpBox (box):
+func pickUpBox (Box):
 	$HoldBox.visible = true
-	box.hideSprite()
-	box.disablePickup()
-	heldItem = box
+	Box.hideSprite()
+	Box.disablePickup()
+	heldItem = Box
 	print(heldItem.getName())
 	
 

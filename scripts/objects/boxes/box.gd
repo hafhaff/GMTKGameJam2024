@@ -1,17 +1,16 @@
-extends Node2D
+extends Area2D
 
-class_name box
+class_name Box
 	
 @export var itemNum = 10
 @export var itemType : ItemGlobal.FoodTypes
 
-signal selfYeet(box)	#Called on self destruction
-signal pickedUp(box, bool)
+signal selfYeet(Box)	#Called on self destruction
+signal pickedUp(Box, bool)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
+	global_shop._addBox(self)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
