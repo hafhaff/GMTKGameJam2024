@@ -1,5 +1,7 @@
 extends Sprite2D
 
+class_name ShelvedItems
+
 @onready var shelf: Shelf = $".."
 
 # 92%, 3rd stage, changed so we can tell when its full this is 11/12
@@ -22,3 +24,13 @@ func updateStockSprite():
 
 func get_filled_percentage() -> float:
 	return shelf.itemNum / shelf.maxItemCount 
+
+func update_product_type(arg: ItemGlobal.FoodTypes) -> void:
+	match arg:
+		0:
+			texture = preload("res://textures/objects/products/shelved_canned_food_atlas.tres")
+		1:
+			texture = preload("res://textures/objects/products/shelved_cereal_atlas.tres")
+		2:
+			texture = preload("res://textures/objects/products/shelved_catnip_atlas.tres")
+	print("tyna match to ", arg)
