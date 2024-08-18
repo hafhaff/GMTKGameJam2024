@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhmvcfjqippet"]
+
+[ext_resource type="Script" path="res://scripts/ai/ui_construction_ai.gd" id="1_854x5"]
+[ext_resource type="PackedScene" uid="uid://bed0fmavm0x6e" path="res://scenes/characters/kitty_display.tscn" id="2_cmcmd"]
+
+[node name="UI Constrution AI" type="CharacterBody2D"]
+position = Vector2(269, 718)
+scale = Vector2(2, 2)
+script = ExtResource("1_854x5")
+
+[node name="KittyDisplay" parent="." instance=ExtResource("2_cmcmd")]
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_generateDesiredPosition"]
