@@ -45,7 +45,6 @@ func getName() -> ItemGlobal.FoodTypes:
 func _on_body_entered(body):
 	if body == $"../../Player" && $"../../Player".heldItem == null:
 		$"../../Player".pickUpBox(self) 
-		
 	else: 
 		pass # Replace with function body.
 

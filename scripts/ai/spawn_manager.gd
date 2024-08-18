@@ -23,7 +23,6 @@ func _on_spawn_timer_timeout():
 	add_child(shopper)
 	activeShoppers.push_back(shopper)
 	spawnTimer.start((1 if cameraSwitching else 10) + (2 * (float(activeShoppers.size())/maxShoppers) * 10))
-	shopper.navigation.avoidance_priority = lifetimeSpawns
 	lifetimeSpawns += 1
 	shopper.connect("leavingShop", _catExit)
 	if cameraSwitching:
