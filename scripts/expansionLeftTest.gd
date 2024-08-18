@@ -12,14 +12,20 @@ var leftExpansionCorner = Vector2i(-10,0)
 func _process(delta):
 	pass
 
-func moveExpansionMarker(amount = 320):
+func moveExpansionMarker(amount = -320):
 	translate( Vector2(amount,0) )
 
 func rightExpansion(body):
+	moveExpansionMarker(-320)
+	
+	pass # Replace with function body.
+
+
+func _on_body_entered(body):
 	if body is Player:
-		moveExpansionMarker(320)
+		moveExpansionMarker(-320)
 		print("new chunk")
-		$"../TileMapLayer".newChunk(rightExpansionCorner)
-		rightExpansionCorner.x = rightExpansionCorner.x + 10
+		$"../TileMapLayer".newChunk(leftExpansionCorner)
+		leftExpansionCorner.x = leftExpansionCorner.x - 10
 	else:
-		pass # Replace with function body.
+		pass

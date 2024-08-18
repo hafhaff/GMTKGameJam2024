@@ -1,13 +1,14 @@
-[gd_scene load_steps=10 format=4 uid="uid://clsegmf75ckjy"]
+[gd_scene load_steps=11 format=4 uid="uid://clsegmf75ckjy"]
 
 [ext_resource type="TileSet" uid="uid://cpf2j2rvdkkd1" path="res://textures/tilemaps/building_tiles.tres" id="1_nfa3s"]
-[ext_resource type="Script" path="res://scripts/expansionTest.gd" id="2_i6fl6"]
+[ext_resource type="Script" path="res://scripts/expansionMap.gd" id="2_i6fl6"]
 [ext_resource type="PackedScene" uid="uid://cr8g2ewri4sld" path="res://scenes/objects/shelf.tscn" id="3_eyec8"]
 [ext_resource type="PackedScene" uid="uid://dn0lkdgorj8pf" path="res://scenes/objects/counter.tscn" id="4_rsasi"]
 [ext_resource type="PackedScene" uid="uid://b6xpligwm2mx6" path="res://scenes/objects/box.tscn" id="5_qmdru"]
 [ext_resource type="PackedScene" uid="uid://ci8ldm6uxfv0i" path="res://scenes/player.tscn" id="6_20d4p"]
 [ext_resource type="Script" path="res://scenes/expansionAction.gd" id="7_nk6tk"]
 [ext_resource type="Texture2D" uid="uid://hnpypiil78wy" path="res://icon.svg" id="8_d2idq"]
+[ext_resource type="Script" path="res://scripts/expansionLeftTest.gd" id="9_qphu6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h6lwn"]
 size = Vector2(11, 9)
@@ -52,18 +53,33 @@ position = Vector2(51, 247)
 itemType = 1
 
 [node name="Player" parent="." instance=ExtResource("6_20d4p")]
-position = Vector2(62, 134)
+position = Vector2(95, 26)
 
-[node name="Node2D" type="Area2D" parent="."]
+[node name="RightExpand" type="Area2D" parent="."]
 script = ExtResource("7_nk6tk")
 
-[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+[node name="Sprite2D" type="Sprite2D" parent="RightExpand"]
 position = Vector2(315, 150)
 scale = Vector2(0.109375, 0.101563)
 texture = ExtResource("8_d2idq")
+metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightExpand"]
 position = Vector2(316, 150)
 shape = SubResource("RectangleShape2D_h6lwn")
+metadata/_edit_lock_ = true
 
-[connection signal="body_entered" from="Node2D" to="Node2D" method="_on_body_entered"]
+[node name="LeftExpand" type="Area2D" parent="."]
+script = ExtResource("9_qphu6")
+
+[node name="Sprite2D" type="Sprite2D" parent="LeftExpand"]
+position = Vector2(4, 142)
+scale = Vector2(0.109375, 0.101563)
+texture = ExtResource("8_d2idq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftExpand"]
+position = Vector2(4, 142)
+shape = SubResource("RectangleShape2D_h6lwn")
+
+[connection signal="body_entered" from="RightExpand" to="RightExpand" method="rightExpansion"]
+[connection signal="body_entered" from="LeftExpand" to="LeftExpand" method="_on_body_entered"]
