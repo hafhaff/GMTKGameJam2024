@@ -5,7 +5,7 @@ class_name Shelf
 var maxItemCount = 12
 @export var itemNum = 0
 @export var itemType: ItemGlobal.FoodTypes
-@export var supportedItems: Array = [ItemGlobal.FoodTypes.CANNED, ItemGlobal.FoodTypes.CEREAL]
+@export var supportedItems: Array = [ItemGlobal.FoodTypes.CANNED]
 @export var optionalAutoFill: bool = false
 var location
 
@@ -21,7 +21,7 @@ func _ready():
 	global_shop._registerShelf(self)	#Important, don't remove
 	interactPos = $InteractPos.global_position
 	$ShelvedItems.updateStockSprite()
-	global_shop._handleEmptyShelf(self)
+	# global_shop._handleEmptyShelf(self)
 	shelved_items.update_product_type(itemType)
 	shelved_items.updateStockSprite()
 
@@ -36,7 +36,7 @@ func getSpaceLeft():
 func is_supported(itemType) -> bool:
 	var is_supporting: bool = false
 	
-	for i in supportedItems.size() - 1:
+	for i in supportedItems.size():
 		if itemType == supportedItems[i]:
 			is_supporting = true
 	
@@ -63,8 +63,6 @@ func fill(numItems, itemType) -> int:
 		# This will be used for logic handled by the player/AI
 		
 	elif itemType == self.itemType:
-		
-		
 		if getSpaceLeft() < remainingItems:
 			
 			remainingItems -= getSpaceLeft()
@@ -78,6 +76,7 @@ func fill(numItems, itemType) -> int:
 			
 			global_shop._handleEmptyShelf(self)
 			$ShelvedItems.updateStockSprite()
+	
 	return remainingItems
 		
 #use 1 as num  items taken if you want one at a time
