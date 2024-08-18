@@ -64,56 +64,48 @@ position = Vector2(239, 113)
 
 [node name="Shelf2" parent="ShelfHolder" instance=ExtResource("4_pgnvs")]
 position = Vector2(558, 82)
-itemType = 1
 
 [node name="Shelf3" parent="ShelfHolder" instance=ExtResource("4_pgnvs")]
 position = Vector2(786, 81)
 
 [node name="Shelf4" parent="ShelfHolder" instance=ExtResource("4_pgnvs")]
 position = Vector2(150, 273)
-itemType = 1
 
 [node name="Shelf5" parent="ShelfHolder" instance=ExtResource("4_pgnvs")]
 position = Vector2(209, 566)
 
 [node name="Shelf6" parent="ShelfHolder" instance=ExtResource("4_pgnvs")]
 position = Vector2(50, 178)
-itemType = 1
 
 [node name="Shelf7" parent="ShelfHolder" instance=ExtResource("4_pgnvs")]
 position = Vector2(402, 275)
 
 [node name="Shelf8" parent="ShelfHolder" instance=ExtResource("4_pgnvs")]
 position = Vector2(432, 434)
-itemType = 1
 
 [node name="Shelf9" parent="ShelfHolder" instance=ExtResource("4_pgnvs")]
 position = Vector2(623, 595)
 
 [node name="Shelf10" parent="ShelfHolder" instance=ExtResource("4_pgnvs")]
 position = Vector2(880, 501)
-itemType = 1
 
 [node name="Shelf11" parent="ShelfHolder" instance=ExtResource("4_pgnvs")]
 position = Vector2(1008, 402)
 
 [node name="Shelf12" parent="ShelfHolder" instance=ExtResource("4_pgnvs")]
 position = Vector2(1041, 243)
-itemType = 1
 
 [node name="Shelf13" parent="ShelfHolder" instance=ExtResource("4_pgnvs")]
 position = Vector2(1071, 80)
 
 [node name="Shelf14" parent="ShelfHolder" instance=ExtResource("4_pgnvs")]
 position = Vector2(815, 370)
-itemType = 1
 
 [node name="Shelf15" parent="ShelfHolder" instance=ExtResource("4_pgnvs")]
 position = Vector2(49, 593)
 
 [node name="Shelf16" parent="ShelfHolder" instance=ExtResource("4_pgnvs")]
 position = Vector2(689, 436)
-itemType = 1
 
 [node name="CounterHolder" type="Node" parent="."]
 
@@ -157,16 +149,18 @@ position = Vector2(329, 76)
 
 [node name="Box8" parent="Boxes" instance=ExtResource("10_2pp0e")]
 position = Vector2(349, 76)
+itemType = 2
 
 [node name="Box9" parent="Boxes" instance=ExtResource("10_2pp0e")]
 position = Vector2(368, 76)
+itemType = 2
 
 [node name="Box10" parent="Boxes" instance=ExtResource("10_2pp0e")]
 position = Vector2(388, 76)
+itemType = 2
 
 [node name="Box11" parent="Boxes" instance=ExtResource("10_2pp0e")]
 position = Vector2(205, 60)
-itemType = 1
 
 [node name="Box12" parent="Boxes" instance=ExtResource("10_2pp0e")]
 position = Vector2(226, 60)

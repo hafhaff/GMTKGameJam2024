@@ -5,7 +5,7 @@ class_name Shelf
 var maxItemCount = 12
 @export var itemNum = 0
 @export var itemType: ItemGlobal.FoodTypes
-@export var supportedItems: Array = [ItemGlobal.FoodTypes.CANNED, ItemGlobal.FoodTypes.CEREAL]
+@export var supportedItems: Array = [ItemGlobal.FoodTypes.CANNED]
 @export var optionalAutoFill: bool = false
 var location
 
@@ -36,7 +36,7 @@ func getSpaceLeft():
 func is_supported(itemType) -> bool:
 	var is_supporting: bool = false
 	
-	for i in supportedItems.size() - 1:
+	for i in supportedItems.size():
 		if itemType == supportedItems[i]:
 			is_supporting = true
 	
