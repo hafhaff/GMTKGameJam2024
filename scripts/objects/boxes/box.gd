@@ -5,6 +5,8 @@ class_name box
 @export var itemNum = 10
 @export var itemType : ItemGlobal.FoodTypes
 
+signal selfYeet(box)	#Called on self destruction
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -50,4 +52,5 @@ func _on_timer_timeout():
 	pass # Replace with function body.
 
 func removeSelf():
+	selfYeet.emit(self)
 	queue_free()
