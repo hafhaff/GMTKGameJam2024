@@ -21,8 +21,10 @@ func _ready():
 
 func _physics_process(_delta):
 	if target == null:
+		kittyDisplay.is_walking = false
 		return
 	if navigation.is_navigation_finished():
+		kittyDisplay.is_walking = false
 		if heldItem == null:
 			_pickupBox()
 		else:
@@ -31,6 +33,7 @@ func _physics_process(_delta):
 	var nextPos: Vector2 = navigation.get_next_path_position()
 	velocity = global_position.direction_to(nextPos) * speed
 	kittyDisplay.is_flipped = velocity.x < 0
+	kittyDisplay.is_walking = true
 	move_and_slide()
 
 func _lookForShelf():
