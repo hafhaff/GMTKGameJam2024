@@ -14,6 +14,9 @@ enum KittyRole {CUSTOMER, CASHIER, RESTOCKER, PLAYER}
 ## Change between walking animation and idle animaion...duh
 @export var is_walking = false
 
+## Change animation speed 2 is default
+@export var animation_speed = 2
+
 ## Flips sprite
 @export var is_flipped = false
 
@@ -35,6 +38,7 @@ func _process(delta: float) -> void:
 		set_role(kitty_role)
 	
 	if not Engine.is_editor_hint():
+		animation_player.speed_scale = animation_speed
 		if is_walking:
 			animation_player.play("kitty_walk")
 		else:
