@@ -1,14 +1,17 @@
 extends Node
 
 @onready var largeKitten: KittyDisplay = $KittyDisplay
-@onready var largeKittenPos: Vector2 = $KittyDisplay.global_position
 @onready var smolKittenHolder: Node = $"Construction Kitties"
 
 var visible = true
-var largeKittenHidePos: Vector2
+var largeKittenHidePos: Vector2 = Vector2(-130, 784)	#Yup, shit's hardcoded
+var largeKittenPos: Vector2 = Vector2(96,784)
 
 func _ready():
-	largeKittenHidePos = largeKittenPos + Vector2(largeKittenPos.x - 200.0, largeKittenPos.y)
+	_toggleDisplay()
+
+func _process(_delta):
+	pass
 
 func _input(event: InputEvent):
 	if event.is_pressed():

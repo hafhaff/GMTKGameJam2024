@@ -3,16 +3,15 @@ extends CharacterBody2D
 class_name UiConstructionAI
 
 var speed: float
-var moveY: float
+var moveY: float = 718
 var forcedHidden: bool
+var spawnPosition: Vector2 = Vector2(269, 718)
 
 @onready var kittyDisplay: KittyDisplay = $KittyDisplay
 @onready var movementTimer: Timer = $Timer
-@onready var spawnPosition: Vector2 = self.global_position
 @onready var desiredPosition: Vector2 = self.global_position
 
 func _ready():
-	moveY = global_position.y
 	kittyDisplay.randomize_look()
 	kittyDisplay.set_role(KittyDisplay.KittyRole.CONSTRUCTION)
 	set_physics_process(false)
@@ -47,6 +46,8 @@ func _hideKitty(mustHide: bool):
 	if mustHide:
 		set_physics_process(false)
 	else:
+		kittyDisplay.randomize_look()
+		kittyDisplay.set_role(KittyDisplay.KittyRole.CONSTRUCTION)
 		tween.connect("finished", _tweenFinished)
 
 func _tweenFinished():

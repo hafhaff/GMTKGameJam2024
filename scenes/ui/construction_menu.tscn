@@ -8,7 +8,7 @@
 script = ExtResource("1_72s44")
 
 [node name="KittyDisplay" parent="." instance=ExtResource("1_1iyvu")]
-position = Vector2(96, 784)
+position = Vector2(-130, 784)
 scale = Vector2(16, 16)
 kitty_color = 9
 kitty_face = 2
@@ -17,21 +17,31 @@ animation_speed = 1
 [node name="Construction Kitties" type="Node" parent="."]
 
 [node name="UI Constrution AI" parent="Construction Kitties" instance=ExtResource("2_jok27")]
+position = Vector2(269, 768)
 
 [node name="UI Constrution AI2" parent="Construction Kitties" instance=ExtResource("2_jok27")]
+position = Vector2(269, 768)
 
 [node name="UI Constrution AI3" parent="Construction Kitties" instance=ExtResource("2_jok27")]
+position = Vector2(269, 768)
 
 [node name="UI Constrution AI4" parent="Construction Kitties" instance=ExtResource("2_jok27")]
+position = Vector2(269, 768)
 
 [node name="UI Constrution AI5" parent="Construction Kitties" instance=ExtResource("2_jok27")]
+position = Vector2(269, 768)
 
 [node name="UI Constrution AI6" parent="Construction Kitties" instance=ExtResource("2_jok27")]
+position = Vector2(269, 768)
 
 [node name="UI Constrution AI7" parent="Construction Kitties" instance=ExtResource("2_jok27")]
+position = Vector2(269, 768)
 
 [node name="UI Constrution AI8" parent="Construction Kitties" instance=ExtResource("2_jok27")]
+position = Vector2(269, 768)
 
 [node name="UI Constrution AI9" parent="Construction Kitties" instance=ExtResource("2_jok27")]
+position = Vector2(269, 768)
 
 [node name="UI Constrution AI10" parent="Construction Kitties" instance=ExtResource("2_jok27")]
+position = Vector2(269, 768)

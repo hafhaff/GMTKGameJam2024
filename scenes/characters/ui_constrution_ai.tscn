@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bhmvcfjqippet"]
+[gd_scene load_steps=4 format=3 uid="uid://bhmvcfjqippet"]
 
 [ext_resource type="Script" path="res://scripts/ai/ui_construction_ai.gd" id="1_854x5"]
 [ext_resource type="PackedScene" uid="uid://bed0fmavm0x6e" path="res://scenes/characters/kitty_display.tscn" id="2_cmcmd"]
+[ext_resource type="Texture2D" uid="uid://b1sbbw2dx8plb" path="res://textures/objects/items/hammer.png" id="3_2upua"]
 
 [node name="UI Constrution AI" type="CharacterBody2D"]
 position = Vector2(269, 718)
@@ -12,5 +13,11 @@ script = ExtResource("1_854x5")
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(7, -9)
+texture = ExtResource("3_2upua")
 
 [connection signal="timeout" from="Timer" to="." method="_generateDesiredPosition"]
