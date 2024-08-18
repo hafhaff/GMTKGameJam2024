@@ -76,13 +76,11 @@ func _pickupBox():
 	navigation.target_position = shelf.interactPos
 
 func _fillShelf():
-	var itemsToPutIn = shelf.maxItemCount-shelf.itemNum
-	shelf.fill(heldItem.itemNum, heldItem.itemType)
-	if heldItem.itemNum <= itemsToPutIn:
+	var rem: int = shelf.fill(heldItem.itemNum, heldItem.itemType)
+	if rem <= 0:
 		_deleteEmptyBox()
 	else:
-		print("items in Box after fill:")
-		heldItem.itemNum -= -itemsToPutIn
+		heldItem.itemNum -= rem
 		_dropItem()
 	heldItem = null
 	target = null
