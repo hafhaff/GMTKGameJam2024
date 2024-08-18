@@ -10,6 +10,7 @@ var location
 
 var interactPos: Vector2
 @onready var shelved_items: ShelvedItems = $ShelvedItems
+@onready var sprite: Sprite2D = $Sprite2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

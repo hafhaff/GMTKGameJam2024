@@ -1,3 +1,11 @@
-[gd_scene format=3 uid="uid://e13u0v8yrlfv"]
+[gd_scene load_steps=3 format=3 uid="uid://e13u0v8yrlfv"]
+
+[ext_resource type="Script" path="res://scripts/ui/selection_display.gd" id="1_36jgg"]
+[ext_resource type="Texture2D" uid="uid://cr5ayvghqy7os" path="res://textures/objects/shelf_atlas.tres" id="1_apwyr"]
 
 [node name="SelectionDisplay" type="Node2D"]
+script = ExtResource("1_36jgg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(16, 16)
+texture = ExtResource("1_apwyr")

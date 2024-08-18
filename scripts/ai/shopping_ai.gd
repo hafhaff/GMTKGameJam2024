@@ -27,6 +27,7 @@ func _ready():
 	_generateShoppingList()
 	_generateTarget()
 	kittyDisplay.randomize_look()
+	kittyDisplay.set_role(KittyDisplay.KittyRole.CUSTOMER)
 
 func _physics_process(_delta):
 	if navigation.is_navigation_finished():

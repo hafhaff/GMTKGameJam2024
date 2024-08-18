@@ -18,11 +18,6 @@ func _ready():
 	# Set display
 	update_box_type()
 	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	if Engine.is_editor_hint():
-		update_box_type()
-	
 func getItemName():
 	print(itemType)
 
