@@ -12,6 +12,16 @@ var emptyShelves: Array[Shelf] = []
 var chunkNum = 1
 @onready var boxes: Dictionary = {}
 
+var topLeft = Vector2i(0,0)
+var topRight = Vector2i(9,0)
+var bottomLeft = Vector2i(0,9)
+var bottomRight = Vector2i(9,9)
+
+var numChunksLeft = 0
+var numChunksRight = 0
+var numChunksUp = 0
+var numChunksDown = 0
+
 signal kitcoinUpdated(float)
 signal newEmptyShelf(shelf)
 
