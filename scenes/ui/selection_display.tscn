@@ -9,3 +9,5 @@ script = ExtResource("1_36jgg")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(16, 16)
 texture = ExtResource("1_apwyr")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 32)

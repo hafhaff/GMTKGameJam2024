@@ -54,15 +54,15 @@ func _build():
 func _spriteSetup(pos: Vector2i, parentPos: Vector2i):
 	var left: Vector2i = Vector2i(pos.x -1, pos.y)
 	var right: Vector2i = Vector2i(pos.x +1, pos.y)
-	if global_shop.shopShelves.has(left) :
+	if global_shop.shopShelves.has(left):
 		if (left != parentPos): _spriteSetup(left, pos)
 		if global_shop.shopShelves.has(right):
 			if (right != parentPos): _spriteSetup(right, pos)
-			global_shop.shopShelves[pos].sprite.texture.region_rect.position.x = 64
+			global_shop.shopShelves[pos].sprite.region_rect.position.x = 64
 			return
-		global_shop.shopShelves[pos].sprite.region_rect.position.x = 32
+		global_shop.shopShelves[pos].sprite.region_rect.position.x = 96
 		return
 	elif global_shop.shopShelves.has(Vector2i(pos.x +1, pos.y)):
 		if (right != parentPos): _spriteSetup(right, pos)
-		global_shop.shopShelves[pos].sprite.texture.region_rect.position.x = 96
+		global_shop.shopShelves[pos].sprite.region_rect.position.x = 32
 		return
