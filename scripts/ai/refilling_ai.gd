@@ -54,7 +54,7 @@ func _setShelf(_shelf: Shelf) -> bool:
 	navigation.target_position = target.global_position
 	return true
 
-func _lostTarget(box: Box, pickedUp: bool):
+func _lostTarget(_box: Box, _pickedUp: bool):
 	print("Lost target")
 	target.disconnect("pickedUp", _lostTarget)
 	if !navigation.is_navigation_finished():
