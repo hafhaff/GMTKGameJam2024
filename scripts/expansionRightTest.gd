@@ -24,6 +24,10 @@ func expand():
 	$"../TileMapLayer".newChunk(rightExpansionCorner)
 	rightExpansionCorner.x = rightExpansionCorner.x + 10
 
+func _input(event):
+	pass
+	
+
 func rightExpansion(body):
 	if body is Player and global_shop.getKitcoin() > price:
 		global_shop._removeKitcoin(price)

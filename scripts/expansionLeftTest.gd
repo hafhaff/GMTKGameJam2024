@@ -30,7 +30,7 @@ func expand():
 	leftExpansionCorner.x = leftExpansionCorner.x - 10
 
 func _on_body_entered(body):
-	if body is Player  and global_shop.getKitcoin() > price:
+	if body is Player and global_shop.getKitcoin() > price:
 		global_shop._removeKitcoin(price)
 		price = price * numExpansions
 		expand()
