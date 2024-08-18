@@ -5,11 +5,14 @@ class_name Counter
 var waitList: Array[ShoppingAI]
 var itemGlobalLocal: ItemGlobal = ItemGlobal.new()	#This is retarded
 
-@onready var interactPos: Vector2 = $InteractPos.global_position
-@onready var cashierPos: Vector2 = $CashierPos.global_position
+var interactPos: Vector2
+var cashierPos: Vector2
 
 func _ready():
 	global_shop._registerCounter(self)
+	global_position = floor(global_position/32)*32	#Important for the tilemap, BUT we'll handle placement differently later
+	interactPos = $InteractPos.global_position
+	cashierPos = $CashierPos.global_position
 
 func _addToWaitList(shoppingAI: ShoppingAI):
 	waitList.push_back(shoppingAI)
