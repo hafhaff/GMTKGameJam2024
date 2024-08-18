@@ -17,6 +17,7 @@ func _ready():
 	add_child(jobTimer)
 	jobTimer.one_shot = true
 	jobTimer.connect("timeout", _jobInteract)
+	kittyDisplay.randomize_look()
 
 func _physics_process(_delta):
 	if navigation.is_navigation_finished():
