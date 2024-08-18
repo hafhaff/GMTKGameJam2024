@@ -4,10 +4,10 @@ class_name ExpansionMap
 
 #include Vector2i()
 #TODO: Add walls in this
-func newChunk(topLeftTile):
+func newChunk(xNode, yNode):
 	for x in 10:
 		for y in 10:
-			set_cell(Vector2i(topLeftTile.x + x, topLeftTile.y + y), 0 ,Vector2i(4,3))
+			set_cell(Vector2i(xNode + x, yNode + y), 0 ,Vector2i(4,3))
 	
 func _ready():
 	global_shop._registerTilemap(self)
