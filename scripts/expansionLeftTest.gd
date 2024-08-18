@@ -20,12 +20,14 @@ func rightExpansion(body):
 	
 	pass # Replace with function body.
 
+func expand():
+	moveExpansionMarker(-320)
+	print("new chunk")
+	$"../TileMapLayer".newChunk(leftExpansionCorner)
+	leftExpansionCorner.x = leftExpansionCorner.x - 10
 
 func _on_body_entered(body):
 	if body is Player:
-		moveExpansionMarker(-320)
-		print("new chunk")
-		$"../TileMapLayer".newChunk(leftExpansionCorner)
-		leftExpansionCorner.x = leftExpansionCorner.x - 10
+		expand()
 	else:
 		pass

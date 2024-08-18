@@ -15,11 +15,14 @@ func _process(delta):
 func moveExpansionMarker(amount = 320):
 	translate( Vector2(amount,0) )
 
+func expand():
+	moveExpansionMarker(320)
+	print("new chunk")
+	$"../TileMapLayer".newChunk(rightExpansionCorner)
+	rightExpansionCorner.x = rightExpansionCorner.x + 10
+
 func rightExpansion(body):
 	if body is Player:
-		moveExpansionMarker(320)
-		print("new chunk")
-		$"../TileMapLayer".newChunk(rightExpansionCorner)
-		rightExpansionCorner.x = rightExpansionCorner.x + 10
+		expand()
 	else:
 		pass # Replace with function body.
