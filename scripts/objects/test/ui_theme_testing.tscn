@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhxb8cfaogxbb"]
+
+[ext_resource type="Theme" uid="uid://0rnnetbtuvds" path="res://textures/ui/ui_theme.tres" id="1_xsrfy"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_right = 180.0
+offset_bottom = 27.0
+max_value = 12.0
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 67.0
+offset_right = 228.0
+offset_bottom = 121.0
+theme = ExtResource("1_xsrfy")
+text = "WHATTTT???????"
