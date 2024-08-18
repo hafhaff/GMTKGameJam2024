@@ -36,6 +36,7 @@ func hideSprite():
 	self.hide()
 	
 func showSprite():
+	global_shop._addBox(self)
 	self.show()
 	
 func getName() -> ItemGlobal.FoodTypes:

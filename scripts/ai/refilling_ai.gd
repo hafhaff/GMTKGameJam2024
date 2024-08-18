@@ -100,5 +100,5 @@ func _dropItem():
 	boxHoldSprite.visible = false
 	heldItem.disablePickup()
 	heldItem.position = self.global_position
-	heldItem.show()
+	heldItem.showSprite()
 	heldItem.pickUpCoolDown()

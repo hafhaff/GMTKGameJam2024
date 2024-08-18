@@ -90,7 +90,7 @@ func dropBox():
 		heldItem.disablePickup()
 		heldItem.position = self.global_position
 		print (heldItem.position)
-		heldItem.show()
+		heldItem.showSprite()
 		heldItem.pickUpCoolDown()
 		heldItem = null
 		print("dropping")
