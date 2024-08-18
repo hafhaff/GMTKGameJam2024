@@ -1,8 +1,50 @@
-[gd_scene load_steps=5 format=3 uid="uid://b6xpligwm2mx6"]
+[gd_scene load_steps=11 format=3 uid="uid://b6xpligwm2mx6"]
 
 [ext_resource type="Script" path="res://scripts/objects/boxes/box.gd" id="1_woa8u"]
 [ext_resource type="Script" path="res://scripts/objects/boxes/Boxtimer.gd" id="2_sv5o5"]
-[ext_resource type="Texture2D" uid="uid://bsl2t6vuw1kqn" path="res://textures/objects/box.png" id="3_yyfyc"]
+[ext_resource type="Texture2D" uid="uid://ssanlg5le5ay" path="res://textures/objects/box/box_base_atlas.tres" id="3_odfel"]
+[ext_resource type="Texture2D" uid="uid://bvqdhlabyllpd" path="res://textures/objects/box/box_opening.png" id="4_cidq7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u5f75"]
+atlas = ExtResource("4_cidq7")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fqkbr"]
+atlas = ExtResource("4_cidq7")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tukjw"]
+atlas = ExtResource("4_cidq7")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fw52f"]
+atlas = ExtResource("4_cidq7")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iwrfm"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u5f75")
+}, {
+"duration": 0.3,
+"texture": SubResource("AtlasTexture_fqkbr")
+}, {
+"duration": 0.3,
+"texture": SubResource("AtlasTexture_tukjw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fw52f")
+}],
+"loop": true,
+"name": &"open",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x8lv1"]
 size = Vector2(12, 9)
@@ -16,10 +58,16 @@ script = ExtResource("1_woa8u")
 wait_time = 0.552
 script = ExtResource("2_sv5o5")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("3_yyfyc")
+[node name="Base" type="Sprite2D" parent="."]
+texture = ExtResource("3_odfel")
 offset = Vector2(0, -16)
-hframes = 4
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 32)
+
+[node name="Opening" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_iwrfm")
+autoplay = "default"
+offset = Vector2(0, -16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -4.5)
