@@ -5,7 +5,7 @@ class_name KittyDisplay
 
 enum KittyColor {SCRATCH, BLACK, WHITE, TUXEDO, CALICO, BROWNIE, BLUE, SILVER, POINT, GRAY}
 enum KittyFace {NEUTRAL, ANGRY, ANNOYED, EXCITED, ROCK}
-enum KittyRole {CUSTOMER, CASHIER, RESTOCKER, PLAYER}
+enum KittyRole {CUSTOMER, CASHIER, RESTOCKER, PLAYER, CONSTRUCTION}
 
 @export var kitty_color: KittyColor
 @export var kitty_face: KittyFace
