@@ -8,6 +8,9 @@ func _ready():
 var rightExpansionCorner = Vector2i(10,0)
 var leftExpansionCorner = Vector2i(-10,0)
 
+var numExpansions = 1
+var price = 10
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
@@ -22,7 +25,11 @@ func expand():
 	rightExpansionCorner.x = rightExpansionCorner.x + 10
 
 func rightExpansion(body):
-	if body is Player:
+	if body is Player and global_shop.getKitcoin() > price:
+		global_shop._removeKitcoin(price)
+		price = price * numExpansions
 		expand()
+		numExpansions = numExpansions + 1
+		global_shop.addChunkNum(1)
 	else:
 		pass # Replace with function body.

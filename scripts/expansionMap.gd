@@ -3,6 +3,7 @@ extends NavmeshUpdater
 class_name ExpansionMap
 
 #include Vector2i()
+#TODO: Add walls in this
 func newChunk(topLeftTile):
 	for x in 10:
 		for y in 10:

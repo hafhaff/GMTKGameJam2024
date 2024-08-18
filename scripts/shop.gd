@@ -9,6 +9,7 @@ var emptyCounters: Array[Counter] = []
 var tileMap: NavmeshUpdater = null
 var kitcoins: float = 100.0
 var emptyShelves: Array[Shelf] = []
+var chunkNum = 1
 
 signal kitcoinUpdated(float)
 signal newEmptyShelf(shelf)
@@ -55,3 +56,10 @@ func _addKitcoin(addition: float):
 func _removeKitcoin(addition: float):
 	kitcoins -= addition
 	kitcoinUpdated.emit(kitcoins)
+	
+func getKitcoin():
+	return kitcoins
+
+func addChunkNum(num):
+	chunkNum += num
+	

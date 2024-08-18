@@ -9,6 +9,7 @@ var maxItemCount = 12
 var location
 
 var interactPos: Vector2
+@onready var shelved_items: ShelvedItems = $ShelvedItems
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -19,6 +20,8 @@ func _ready():
 	interactPos = $InteractPos.global_position
 	$ShelvedItems.updateStockSprite()
 	global_shop._handleEmptyShelf(self)
+	shelved_items.update_product_type(itemType)
+	shelved_items.updateStockSprite()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -77,6 +80,7 @@ func take(numItemsTaken, itemType):
 
 #ONLY USE TO REPLACE with no protection
 func setItem(newItem): 
+	shelved_items.update_product_type(newItem)
 	itemType = newItem
 	
 func addItems (num):
