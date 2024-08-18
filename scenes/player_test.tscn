@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://ucd887khy117"]
+[gd_scene load_steps=13 format=4 uid="uid://ucd887khy117"]
 
 [ext_resource type="Texture2D" uid="uid://c0hl6hvpgglh7" path="res://textures/gmtk_floor.png" id="1_7ihwg"]
 [ext_resource type="Texture2D" uid="uid://kic3mm885h61" path="res://textures/gmtk_wall.png" id="2_h1x4s"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ci8ldm6uxfv0i" path="res://scenes/player.tscn" id="6_xjrtd"]
 [ext_resource type="Texture2D" uid="uid://c0lujqem7fj3o" path="res://textures/counter.png" id="7_612me"]
 [ext_resource type="PackedScene" uid="uid://biophta5et6p7" path="res://scenes/characters/shopping_ai.tscn" id="7_a8lbj"]
+[ext_resource type="PackedScene" uid="uid://b6xpligwm2mx6" path="res://scenes/objects/box.tscn" id="8_36i81"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_jhmfy"]
 vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
@@ -147,3 +148,75 @@ position = Vector2(974, 61)
 
 [node name="Sprite2D" type="Sprite2D" parent="CounterHolder/Counter5"]
 texture = ExtResource("7_612me")
+
+[node name="Boxes" type="Node" parent="."]
+
+[node name="Box1" parent="Boxes" instance=ExtResource("8_36i81")]
+position = Vector2(205, 76)
+
+[node name="Box2" parent="Boxes" instance=ExtResource("8_36i81")]
+position = Vector2(226, 76)
+
+[node name="Box3" parent="Boxes" instance=ExtResource("8_36i81")]
+position = Vector2(248, 76)
+
+[node name="Box4" parent="Boxes" instance=ExtResource("8_36i81")]
+position = Vector2(268, 76)
+
+[node name="Box5" parent="Boxes" instance=ExtResource("8_36i81")]
+position = Vector2(287, 76)
+
+[node name="Box6" parent="Boxes" instance=ExtResource("8_36i81")]
+position = Vector2(308, 76)
+
+[node name="Box7" parent="Boxes" instance=ExtResource("8_36i81")]
+position = Vector2(329, 76)
+
+[node name="Box8" parent="Boxes" instance=ExtResource("8_36i81")]
+position = Vector2(349, 76)
+
+[node name="Box9" parent="Boxes" instance=ExtResource("8_36i81")]
+position = Vector2(368, 76)
+
+[node name="Box10" parent="Boxes" instance=ExtResource("8_36i81")]
+position = Vector2(388, 76)
+
+[node name="Box11" parent="Boxes" instance=ExtResource("8_36i81")]
+position = Vector2(205, 60)
+itemType = 1
+
+[node name="Box12" parent="Boxes" instance=ExtResource("8_36i81")]
+position = Vector2(226, 60)
+itemType = 1
+
+[node name="Box13" parent="Boxes" instance=ExtResource("8_36i81")]
+position = Vector2(248, 60)
+itemType = 1
+
+[node name="Box14" parent="Boxes" instance=ExtResource("8_36i81")]
+position = Vector2(268, 60)
+itemType = 1
+
+[node name="Box15" parent="Boxes" instance=ExtResource("8_36i81")]
+position = Vector2(287, 60)
+itemType = 1
+
+[node name="Box16" parent="Boxes" instance=ExtResource("8_36i81")]
+position = Vector2(308, 60)
+itemType = 1
+
+[node name="Box17" parent="Boxes" instance=ExtResource("8_36i81")]
+position = Vector2(329, 60)
+itemType = 1
+
+[node name="Box18" parent="Boxes" instance=ExtResource("8_36i81")]
+position = Vector2(349, 60)
+itemType = 1
+
+[node name="Box19" parent="Boxes" instance=ExtResource("8_36i81")]
+position = Vector2(368, 60)
+itemType = 1
+
+[node name="Box20" parent="Boxes" instance=ExtResource("8_36i81")]
+position = Vector2(388, 61)
+itemType = 1

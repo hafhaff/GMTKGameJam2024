@@ -8,6 +8,9 @@ var itemGlobalLocal: ItemGlobal = ItemGlobal.new()	#This is retarded
 var interactPos: Vector2
 var cashierPos: Vector2
 
+@onready var KitcoinAnimate: KitcoinAnimate = $KitcoinAnimate
+
+
 func _ready():
 	global_shop._registerCounter(self)
 	global_position = floor(global_position/32)*32	#Important for the tilemap, BUT we'll handle placement differently later
@@ -21,6 +24,7 @@ func _addToWaitList(shoppingAI: ShoppingAI):
 #Called by the Player or AI
 func _checkShopperDistance():
 	if waitList.size() == 0:
+		KitcoinAnimate.checked_out = false
 		return
 	
 	if interactPos.distance_squared_to(waitList[0].global_position) < 100:
@@ -29,9 +33,12 @@ func _checkShopperDistance():
 			for item in waitList[0].shoppingList:
 				total += waitList[0].shoppingList[item] * itemGlobalLocal.FoodValues[item].sellPrice
 			global_shop._addKitcoin(total)
+			KitcoinAnimate.checked_out = true
+			print('customer checked out')
 			waitList.remove_at(0)
 			for x in range(waitList.size()):
 				_updateWaitingLine(x)
+	
 
 func _changeEmptyState(isEmpty: bool):
 	global_shop._handleEmptyCounter(self, isEmpty)
