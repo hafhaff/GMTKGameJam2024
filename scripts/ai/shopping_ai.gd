@@ -40,8 +40,8 @@ func _physics_process(_delta):
 		if target == null:
 			return
 		if target is Shelf:
-			target.take(1, target.itemType)
-			itemsHeld[target.itemType] += 1
+			if target.take(1, target.itemType):
+				itemsHeld[target.itemType] += 1
 		target = null
 		shoppingTimer.start(1.5)
 		return
@@ -52,7 +52,7 @@ func _physics_process(_delta):
 	move_and_slide()
 
 #Temporary, will get refactored when the shop is finished
-func _generateTarget():
+func _generateTarget(): 
 	if !_shoppingDone():
 		target = _selectShelf()
 		if target == null:
@@ -66,6 +66,7 @@ func _generateTarget():
 		waitForCheckout = true
 		target._addToWaitList(self)	#Handles navigation target setting
 
+	printt(self, target)
 	kittyDisplay.is_walking = true
 
 func _selectShelf() -> Shelf:
