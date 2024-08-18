@@ -12,7 +12,7 @@ var visible = true
 var largeKittenHidePos: Vector2 = Vector2(-130, 784)	#Yup, shit's hardcoded
 var largeKittenPos: Vector2 = Vector2(96,784)
 var selectionPos: Vector2 = Vector2(620,593)
-var selectionHiddenPos: Vector2 = Vector2(620,793)
+var selectionHiddenPos: Vector2 = Vector2(620,893)
 var constPos: Vector2
 var selection: PackedScene
 var selectionNum = 0
@@ -24,7 +24,12 @@ func _ready():
 func _process(_delta):
 	constPos = floor(get_tree().root.get_child(1).get_global_mouse_position()/32)
 	selectionDisplay.global_position = constPos * 32
-	if global_shop.shopShelves.has(Vector2i(constPos.x, constPos.y- 1)) || global_shop.shopShelves.has(Vector2i(constPos.x, constPos.y + 1)):
+	if (
+		global_shop.shopShelves.has(Vector2i(constPos.x, constPos.y- 1)) || 
+		global_shop.shopShelves.has(Vector2i(constPos.x, constPos.y + 1)) || 
+		global_shop.shopShelves.has(constPos as Vector2i) ||
+		global_shop.shopCounters.has(constPos as Vector2i)
+	):
 		selectionDisplay.selectionSprite.modulate = Color.RED
 	else:
 		selectionDisplay.selectionSprite.modulate = Color.GREEN
@@ -59,6 +64,7 @@ func _toggleDisplay():
 
 func _build():
 	if selectionDisplay.selectionSprite.modulate != Color.GREEN || !visible:
+		print("Construction Cancelled!")
 		return
 	var building = selection.instantiate()
 	building.global_position = constPos * 32
