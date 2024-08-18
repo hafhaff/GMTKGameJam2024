@@ -61,7 +61,7 @@ func _addBox(box: Box):
 	if !boxes[box.itemType].has(box):
 		boxes[box.itemType].push_back(box)
 		box.connect("selfYeet", _removeBox)
-		box.connect("pickedUp", _removeBox)
+		box.connect("pickedUp", _handleBoxPickup)
 
 func _removeBox(box: Box, _pickedUp: bool = false):
 	if boxes[box.itemType].has(box):
