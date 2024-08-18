@@ -12,7 +12,7 @@ signal selfYeet(Box)	#Called on self destruction
 signal pickedUp(Box, bool)
 
 func _ready():
-	if Engine.is_editor_hint():
+	if not Engine.is_editor_hint():
 		global_shop._addBox(self)
 	
 	update_box_type()
