@@ -19,6 +19,7 @@ shape = SubResource("CircleShape2D_tc1sj")
 
 [node name="KittyDisplay" parent="." instance=ExtResource("1_bp1wb")]
 position = Vector2(0, 9)
+kitty_role = 2
 
 [node name="SearchTimer" type="Timer" parent="."]
 wait_time = 3.0

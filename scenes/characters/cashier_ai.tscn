@@ -17,6 +17,7 @@ shape = SubResource("CircleShape2D_qa1wj")
 
 [node name="KittyDisplay" parent="." instance=ExtResource("2_c3wm5")]
 position = Vector2(0, 9)
+kitty_role = 1
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 1.0
