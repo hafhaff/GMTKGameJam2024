@@ -18,6 +18,7 @@ func _ready():
 	global_shop._registerShelf(self)	#Important, don't remove
 	interactPos = $InteractPos.global_position
 	$ShelvedItems.updateStockSprite()
+	global_shop._handleEmptyShelf(self)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -30,21 +31,26 @@ func fill(numItems, itemType):
 	if itemType == self.itemType:
 		if getSpaceLeft() <= numItems:
 			self.itemNum = maxItemCount
+			global_shop._handleEmptyShelf(self)
 			$ShelvedItems.updateStockSprite()
 			return true
 		else:
 			self.itemNum += numItems
+			global_shop._handleEmptyShelf(self)
 			$ShelvedItems.updateStockSprite()
 			return true
-			
+	
+	#Why is this code repeated? ~Hullahopp
 	if self.itemNum == 0:
 		self.itemType = itemType
 		if getSpaceLeft() <= numItems:
 			self.itemNum = maxItemCount
+			global_shop._handleEmptyShelf(self)
 			$ShelvedItems.updateStockSprite()
 			return true
 		else:
 			self.itemNum += numItems
+			global_shop._handleEmptyShelf(self)
 			$ShelvedItems.updateStockSprite()
 			return true
 	
@@ -58,9 +64,11 @@ func take(numItemsTaken, itemType):
 		if numItemsTaken <= self.itemNum:
 			self.itemNum -= numItemsTaken
 			$ShelvedItems.updateStockSprite()
+			global_shop._handleEmptyShelf(self)
 			return true
 		else:
 			self.itemNum = 0
+			global_shop._handleEmptyShelf(self)
 			$ShelvedItems.updateStockSprite()
 			return false
 	else: 
