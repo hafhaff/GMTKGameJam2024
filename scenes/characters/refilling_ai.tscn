@@ -38,6 +38,5 @@ path_desired_distance = 5.0
 path_postprocessing = 1
 simplify_path = true
 radius = 32.0
-debug_enabled = true
 
 [connection signal="timeout" from="SearchTimer" to="." method="_lookForShelf"]
