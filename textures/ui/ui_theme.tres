@@ -1,6 +1,7 @@
-[gd_resource type="Theme" load_steps=8 format=3 uid="uid://0rnnetbtuvds"]
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://0rnnetbtuvds"]
 
 [ext_resource type="Texture2D" uid="uid://yc1gyefhm55i" path="res://textures/ui/ui_buttons_atlas.tres" id="1_qrr4v"]
+[ext_resource type="Texture2D" uid="uid://vpnqef7mwa2" path="res://textures/ui/progress_bar_atlas.tres" id="2_0j1pr"]
 [ext_resource type="FontFile" uid="uid://081yyvpei5qw" path="res://textures/ui/Undead Pixel 11.ttf" id="2_7cow0"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_avqhl"]
@@ -43,9 +44,26 @@ texture_margin_right = 3.0
 texture_margin_bottom = 3.0
 region_rect = Rect2(48, 0, 16, 16)
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_04mmy"]
+texture = ExtResource("2_0j1pr")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+region_rect = Rect2(0, 0, 16, 8)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ua61w"]
+texture = ExtResource("2_0j1pr")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+region_rect = Rect2(16, 0, 16, 8)
+modulate_color = Color(0.854902, 0.52549, 0.243137, 1)
+
 [resource]
 default_font = ExtResource("2_7cow0")
-default_font_size = 22
+default_font_size = 11
 Button/colors/font_color = Color(0, 0, 0, 1)
 Button/colors/font_disabled_color = Color(1, 1, 1, 0.5)
 Button/colors/font_focus_color = Color(0, 0, 0, 1)
@@ -57,3 +75,6 @@ Button/styles/focus = SubResource("StyleBoxTexture_qeux1")
 Button/styles/hover = SubResource("StyleBoxTexture_hvbq3")
 Button/styles/normal = SubResource("StyleBoxTexture_8npvc")
 Button/styles/pressed = SubResource("StyleBoxTexture_ls5nr")
+ProgressBar/font_sizes/font_size = 11
+ProgressBar/styles/background = SubResource("StyleBoxTexture_04mmy")
+ProgressBar/styles/fill = SubResource("StyleBoxTexture_ua61w")

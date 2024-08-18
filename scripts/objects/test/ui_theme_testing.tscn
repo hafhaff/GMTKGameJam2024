@@ -12,9 +12,10 @@ grow_vertical = 2
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 layout_mode = 0
-offset_right = 180.0
-offset_bottom = 27.0
-max_value = 12.0
+offset_right = 48.0
+offset_bottom = 18.0
+theme = ExtResource("1_xsrfy")
+value = 50.0
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
