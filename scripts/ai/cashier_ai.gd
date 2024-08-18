@@ -20,6 +20,7 @@ func _ready():
 	jobTimer.one_shot = true
 	jobTimer.connect("timeout", _jobInteract)
 	kittyDisplay.randomize_look()
+	kittyDisplay.set_role(kittyDisplay.KittyRole.CASHIER)
 
 func _physics_process(_delta):
 	if navigation.is_navigation_finished():
