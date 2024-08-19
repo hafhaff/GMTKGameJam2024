@@ -8,6 +8,7 @@ var maxItemCount = 12
 @export var supportedItems: Array = [ItemGlobal.FoodTypes.CANNED]
 @export var optionalAutoFill: bool = false
 var location
+var isToolTipActive = false
 
 var interactPos: Vector2
 @onready var shelved_items: ShelvedItems = $ShelvedItems
@@ -77,6 +78,7 @@ func fill(numItems, itemType) -> int:
 			global_shop._handleEmptyShelf(self)
 			$ShelvedItems.updateStockSprite()
 	
+	update_tooltip()
 	return remainingItems
 		
 #use 1 as num  items taken if you want one at a time
@@ -86,14 +88,17 @@ func take(numItemsTaken, itemType):
 			self.itemNum -= numItemsTaken
 			$ShelvedItems.updateStockSprite()
 			global_shop._handleEmptyShelf(self)
+			update_tooltip()
 			return true
 		else:
 			self.itemNum = 0
 			global_shop._handleEmptyShelf(self)
 			$ShelvedItems.updateStockSprite()
+			update_tooltip()
 			return false
 	else: 
 		$ShelvedItems.updateStockSprite()
+		update_tooltip()
 		return false
 
 # For players to take items
@@ -123,6 +128,8 @@ func takeFromShelf(numItemsWanted) -> int:
 	
 	print("SHELFTAKE Player took ", itemsToGive)
 	print("SHELFTAKE Num in shelves after taking: ", self.itemNum)
+	
+	update_tooltip()
 	
 	return itemsToGive
 
@@ -154,7 +161,10 @@ func _on_interact_shape_body_exited(body):
 		body.canUnload = false
 		body.curShelf = null
 		setup_tooltip(false)
-	
+
+func update_tooltip():
+	if isToolTipActive:
+		setup_tooltip(true, position + Vector2(-13, -24))
 
 func setup_tooltip(switch: bool, positionArg: Vector2 = Vector2.ZERO):
 	
@@ -164,3 +174,4 @@ func setup_tooltip(switch: bool, positionArg: Vector2 = Vector2.ZERO):
 		tooltip.global_position = positionArg
 		tooltip.visible = switch
 		tooltip.set_tooltip_display(self.itemType, self.itemNum, self.maxItemCount)
+		isToolTipActive = switch
