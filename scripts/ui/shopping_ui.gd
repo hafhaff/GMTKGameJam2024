@@ -19,6 +19,8 @@ func _ready():
 	_fillUiWithItems()
 	_hide()
 	autoBuyTimer.connect("timeout", _autoBuyBoxes)
+	for type in range(ItemGlobal.FoodTypes.size()):
+		_setAutoBuy(1, type)
 
 func _input(event: InputEvent):
 	if event.is_pressed():
