@@ -147,10 +147,20 @@ func _on_interact_shape_body_entered(body):
 	if body is Player:
 		body.canUnload = true
 		body.curShelf = self
-		
-	
+		setup_tooltip(true, position + Vector2(-13, -24))
 
 func _on_interact_shape_body_exited(body):
 	if body is Player:
 		body.canUnload = false
 		body.curShelf = null
+		setup_tooltip(false)
+	
+
+func setup_tooltip(switch: bool, positionArg: Vector2 = Vector2.ZERO):
+	
+	# Only perform actions if the tooltip exists to prevent crashes
+	if %StorageUnitTooltip:
+		var tooltip: StorageUnitTooltip = %StorageUnitTooltip
+		tooltip.global_position = positionArg
+		tooltip.visible = switch
+		tooltip.set_tooltip_display(self.itemType, self.itemNum, self.maxItemCount)
