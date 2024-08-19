@@ -12,9 +12,6 @@ var activeShoppers: Array[ShoppingAI] = []
 var lifetimeSpawns: int = 0
 var customersToSpawn: int = 0
 
-func _ready() -> void:
-	customersToSpawn = 5
-
 func spawn_customer():
 	customersToSpawn -= 1
 	play_animation()
