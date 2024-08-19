@@ -159,3 +159,5 @@ func getItemName(building):
 	else:
 		print("not a buyable object")
 		return "box"
+
+	pass # Replace with function body.
