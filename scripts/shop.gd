@@ -11,6 +11,7 @@ var prices = {
 	"cashier" : 1,
 	"counter" : 10,
 	"shelf" : 5,
+	"expansion" : 20,
 	"loadingZone" : 10,
 	"box" : 2 #idk this is for 5 boxes maybe
 }
@@ -113,6 +114,8 @@ func _removeKitcoin(addition: float):
 func buy(cost):
 	if kitcoins >= cost:
 		kitcoins = kitcoins - cost
+		print("buy success")
+		kitcoinUpdated.emit(kitcoins)
 		return true
 	else:
 		return false
