@@ -7,6 +7,8 @@ atlas = ExtResource("1_yqm6e")
 region = Rect2(0, 0, 32, 32)
 
 [node name="Shopping UI Item" type="HBoxContainer"]
+offset_right = 320.0
+offset_bottom = 50.0
 size_flags_horizontal = 3
 alignment = 1
 
@@ -36,4 +38,11 @@ text = "SALE"
 [node name="Button" type="Button" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 22
 text = "BUY"
+
+[node name="TextEdit" type="TextEdit" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 22
+placeholder_text = "0"
