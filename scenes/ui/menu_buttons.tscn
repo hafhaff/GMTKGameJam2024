@@ -7,29 +7,26 @@
 
 [node name="MenuButtons" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -640.0
+offset_top = -360.0
+offset_right = -640.0
+offset_bottom = -360.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Hire" type="Button" parent="."]
-layout_mode = 0
-offset_right = 19.0
-offset_bottom = 19.0
-
-[node name="Icon" type="TextureRect" parent="Hire"]
-layout_mode = 0
-offset_left = 2.0
-offset_top = 1.0
-offset_right = 18.0
-offset_bottom = 17.0
-texture = ExtResource("1_h4gg3")
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
 [node name="Build" type="Button" parent="."]
 layout_mode = 0
-offset_left = -19.0
-offset_bottom = 19.0
+offset_left = -38.0
+offset_top = -19.0
+offset_right = -19.0
+tooltip_text = "Build"
 
 [node name="Icon" type="TextureRect" parent="Build"]
 layout_mode = 0
@@ -41,9 +38,9 @@ texture = ExtResource("2_gxmb1")
 
 [node name="Supplies" type="Button" parent="."]
 layout_mode = 0
-offset_left = -38.0
-offset_right = -19.0
-offset_bottom = 19.0
+offset_top = -19.0
+offset_right = 19.0
+tooltip_text = "Supplies"
 
 [node name="Icon" type="TextureRect" parent="Supplies"]
 layout_mode = 0
@@ -53,11 +50,26 @@ offset_right = 18.0
 offset_bottom = 17.0
 texture = ExtResource("3_kva1s")
 
+[node name="Hire" type="Button" parent="."]
+layout_mode = 0
+offset_left = -19.0
+offset_top = -19.0
+tooltip_text = "Hire"
+
+[node name="Icon" type="TextureRect" parent="Hire"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 18.0
+offset_bottom = 17.0
+texture = ExtResource("1_h4gg3")
+
 [node name="Reviews" type="Button" parent="."]
 layout_mode = 0
 offset_left = 19.0
+offset_top = -19.0
 offset_right = 38.0
-offset_bottom = 19.0
+tooltip_text = "Reviews"
 
 [node name="Icon" type="TextureRect" parent="Reviews"]
 layout_mode = 0
@@ -66,26 +78,3 @@ offset_top = 1.0
 offset_right = 17.0
 offset_bottom = 17.0
 texture = ExtResource("4_g4rfe")
-
-[node name="Panel" type="Panel" parent="."]
-z_index = 4
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -691.0
-offset_top = -395.0
-offset_right = -681.0
-offset_bottom = -386.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_type_variation = &"PanelSolidBlack"
-
-[node name="Label" type="Label" parent="Panel"]
-z_index = 5
-layout_mode = 0
-offset_right = 22.0
-offset_bottom = 12.0
-text = "efwersdgerg"
