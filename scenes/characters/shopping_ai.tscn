@@ -32,3 +32,4 @@ position = Vector2(0, 9)
 
 [node name="purchase" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_ib1oo")
+max_distance = 100.0
