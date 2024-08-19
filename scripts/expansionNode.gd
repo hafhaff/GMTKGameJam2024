@@ -27,6 +27,7 @@ var canBuild = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	updateNodePositionHroz()
 	pass
 	
 func toggleNode():
