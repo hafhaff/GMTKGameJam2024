@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bbvouelmrre6p"]
+[gd_scene load_steps=4 format=3 uid="uid://bbvouelmrre6p"]
 
 [ext_resource type="Texture2D" uid="uid://cmrs3wr6m8wxb" path="res://textures/kitcoin.png" id="2_05r4v"]
 [ext_resource type="Script" path="res://scripts/ui/shopping_ui.gd" id="2_fwhm4"]
-[ext_resource type="Texture2D" uid="uid://ssanlg5le5ay" path="res://textures/objects/box/box_base_atlas.tres" id="3_6eh8e"]
 [ext_resource type="PackedScene" uid="uid://detigdvegld83" path="res://scenes/ui/shopping_ui_item.tscn" id="3_8qcce"]
 
 [node name="Shopping UI" type="Control" node_paths=PackedStringArray("gridContainer")]
@@ -13,7 +12,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_fwhm4")
-boxSpriteAtlas = ExtResource("3_6eh8e")
 gridContainer = NodePath("Panel/GridContainer")
 shoppingUiItem = ExtResource("3_8qcce")
 

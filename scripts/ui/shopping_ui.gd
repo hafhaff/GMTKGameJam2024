@@ -1,6 +1,5 @@
 extends Control
 
-@export var boxSpriteAtlas: AtlasTexture = null
 @export var gridContainer: GridContainer = null
 @export var shoppingUiItem: PackedScene = null
 @export var hiringMenu: Node
@@ -30,9 +29,8 @@ func _fillUiWithItems():
 	for itemID in itemGlobalLocal.FoodTypes.size():
 		var shoppingItem: HBoxContainer = shoppingUiItem.instantiate()
 		gridContainer.add_child(shoppingItem)
-		shoppingItem.get_child(0).texture = boxSpriteAtlas
-		shoppingItem.get_child(0).texture.region.size = Vector2(32,32)
-		#shoppingItem.get_child(0).texture.region.position = Vector2(itemID * 32, 0)
+		shoppingItem.get_child(0).texture.region.position = Vector2(itemID * 32, 0)
+		#print(shoppingItem.get_child(0).texture.region.position)
 		shoppingItem.get_child(1).text = str(ItemGlobal.FoodTypes.keys()[itemID])
 		shoppingItem.get_child(2).text = str(itemGlobalLocal.FoodValues[itemID].purchasePrice)
 		shoppingItem.get_child(3).text = str(itemGlobalLocal.FoodValues[itemID].sellPrice)

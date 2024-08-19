@@ -45,7 +45,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0.0333333, 0.266666, 0.5, 0.766666, 1.03333),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(0.5, 0.5), Vector2(0.5, 0.475), Vector2(0.5, 0.5), Vector2(0.5, 0.475), Vector2(0.5, 0.494)]
+"values": [Vector2(1, 1), Vector2(1, 0.95), Vector2(1, 1), Vector2(1, 0.95), Vector2(1, 0.988)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -54,10 +54,10 @@ tracks/3/path = NodePath("Next:scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.233333, 0.466667, 0.733333, 1),
+"times": PackedFloat32Array(0, 0.2, 0.466667, 0.733333, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(0.5, 0.5), Vector2(0.5, 0.475), Vector2(0.5, 0.5), Vector2(0.5, 0.475), Vector2(0.5, 0.494)]
+"values": [Vector2(1, 1), Vector2(1, 0.95), Vector2(1, 1), Vector2(1, 0.95), Vector2(1, 0.988)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_njnam"]

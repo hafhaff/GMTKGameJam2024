@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://detigdvegld83"]
+[gd_scene load_steps=3 format=3 uid="uid://detigdvegld83"]
 
-[ext_resource type="Texture2D" uid="uid://cmrs3wr6m8wxb" path="res://textures/kitcoin.png" id="1_ypr8o"]
+[ext_resource type="Texture2D" uid="uid://cqcgkxb5t1lcq" path="res://textures/objects/box/box_base.png" id="1_yqm6e"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gkbm0"]
+atlas = ExtResource("1_yqm6e")
+region = Rect2(0, 0, 32, 32)
 
 [node name="Shopping UI Item" type="HBoxContainer"]
 size_flags_horizontal = 3
@@ -8,7 +12,7 @@ alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 2
-texture = ExtResource("1_ypr8o")
+texture = SubResource("AtlasTexture_gkbm0")
 expand_mode = 2
 
 [node name="Label" type="Label" parent="."]
