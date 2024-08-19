@@ -16,6 +16,8 @@ var prices = {
 	"box" : 2 #idk this is for 5 boxes maybe
 }
 
+var wagePeriod = 30 #30s, can change I guess
+
 var emptyCounters: Array[Counter] = []
 var tileMap: NavmeshUpdater = null
 var kitcoins: float = 100.0

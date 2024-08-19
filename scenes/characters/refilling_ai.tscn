@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://d3pmwvyul36cy"]
+[gd_scene load_steps=6 format=3 uid="uid://d3pmwvyul36cy"]
 
 [ext_resource type="Script" path="res://scripts/ai/refilling_ai.gd" id="1_16otg"]
 [ext_resource type="PackedScene" uid="uid://bed0fmavm0x6e" path="res://scenes/characters/kitty_display.tscn" id="1_bp1wb"]
 [ext_resource type="PackedScene" uid="uid://bbvoxcvfwybuw" path="res://scenes/objects/box_display.tscn" id="3_xk7dh"]
+[ext_resource type="Script" path="res://scenes/characters/timer.gd" id="4_oyqt3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tc1sj"]
 radius = 4.0
@@ -35,4 +36,8 @@ path_postprocessing = 1
 simplify_path = true
 radius = 32.0
 
+[node name="Timer" type="Timer" parent="."]
+script = ExtResource("4_oyqt3")
+
 [connection signal="timeout" from="SearchTimer" to="." method="_lookForShelf"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
