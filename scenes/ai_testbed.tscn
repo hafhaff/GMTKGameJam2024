@@ -1,9 +1,7 @@
-[gd_scene load_steps=15 format=4 uid="uid://de1beg5m18qmu"]
+[gd_scene load_steps=13 format=4 uid="uid://de1beg5m18qmu"]
 
 [ext_resource type="TileSet" uid="uid://cpf2j2rvdkkd1" path="res://textures/tilemaps/building_tiles.tres" id="1_0iapw"]
 [ext_resource type="Script" path="res://scripts/navmesh_updater.gd" id="3_t70eu"]
-[ext_resource type="PackedScene" uid="uid://cr8g2ewri4sld" path="res://scenes/objects/shelf.tscn" id="4_pgnvs"]
-[ext_resource type="PackedScene" uid="uid://dn0lkdgorj8pf" path="res://scenes/objects/counter.tscn" id="5_ijqlb"]
 [ext_resource type="PackedScene" uid="uid://b0ic68c7v5ojg" path="res://scenes/characters/cashier_ai.tscn" id="7_0418u"]
 [ext_resource type="PackedScene" uid="uid://ci8ldm6uxfv0i" path="res://scenes/player.tscn" id="9_akcb2"]
 [ext_resource type="PackedScene" uid="uid://duc186117kn0h" path="res://scenes/logic/spawn_manager.tscn" id="9_n4gvh"]
@@ -23,69 +21,6 @@ tile_map_data = PackedByteArray("AAAAAAAAAAAEAAMAAAAAAAEAAAAEAAMAAAAAAAIAAAAEAAM
 tile_set = ExtResource("1_0iapw")
 rendering_quadrant_size = 32
 script = ExtResource("3_t70eu")
-
-[node name="ShelfHolder" type="Node" parent="."]
-
-[node name="Shelf" parent="ShelfHolder" instance=ExtResource("4_pgnvs")]
-position = Vector2(239, 113)
-
-[node name="Shelf2" parent="ShelfHolder" instance=ExtResource("4_pgnvs")]
-position = Vector2(558, 82)
-itemType = 0
-
-[node name="Shelf3" parent="ShelfHolder" instance=ExtResource("4_pgnvs")]
-position = Vector2(786, 81)
-itemType = 2
-
-[node name="Shelf4" parent="ShelfHolder" instance=ExtResource("4_pgnvs")]
-position = Vector2(150, 273)
-itemType = 0
-
-[node name="Shelf5" parent="ShelfHolder" instance=ExtResource("4_pgnvs")]
-position = Vector2(209, 566)
-
-[node name="Shelf6" parent="ShelfHolder" instance=ExtResource("4_pgnvs")]
-position = Vector2(50, 178)
-itemType = 0
-
-[node name="Shelf7" parent="ShelfHolder" instance=ExtResource("4_pgnvs")]
-position = Vector2(402, 275)
-
-[node name="Shelf8" parent="ShelfHolder" instance=ExtResource("4_pgnvs")]
-position = Vector2(432, 434)
-itemType = 0
-
-[node name="Shelf9" parent="ShelfHolder" instance=ExtResource("4_pgnvs")]
-position = Vector2(623, 595)
-itemType = 2
-
-[node name="Shelf10" parent="ShelfHolder" instance=ExtResource("4_pgnvs")]
-position = Vector2(880, 501)
-itemType = 0
-
-[node name="Shelf11" parent="ShelfHolder" instance=ExtResource("4_pgnvs")]
-position = Vector2(1008, 402)
-
-[node name="Shelf12" parent="ShelfHolder" instance=ExtResource("4_pgnvs")]
-position = Vector2(1041, 243)
-itemType = 0
-
-[node name="Shelf13" parent="ShelfHolder" instance=ExtResource("4_pgnvs")]
-position = Vector2(1071, 80)
-
-[node name="Shelf14" parent="ShelfHolder" instance=ExtResource("4_pgnvs")]
-position = Vector2(815, 370)
-
-[node name="Shelf15" parent="ShelfHolder" instance=ExtResource("4_pgnvs")]
-position = Vector2(49, 593)
-
-[node name="Shelf16" parent="ShelfHolder" instance=ExtResource("4_pgnvs")]
-position = Vector2(689, 436)
-
-[node name="CounterHolder" type="Node" parent="."]
-
-[node name="Counter" parent="CounterHolder" instance=ExtResource("5_ijqlb")]
-position = Vector2(593, 275)
 
 [node name="Player" parent="." instance=ExtResource("9_akcb2")]
 position = Vector2(231, 162)
