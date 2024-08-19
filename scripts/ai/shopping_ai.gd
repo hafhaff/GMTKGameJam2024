@@ -109,7 +109,7 @@ func _on_sound_timer_timeout() -> void:
 	$purchase.play()
 	
 func _generateShoppingList():
-	itemsTotal = randi_range(1,12)
+	itemsTotal = randi_range(1,8)
 	for x in range(itemsTotal):
 		var key: ItemGlobal.FoodTypes = randi_range(0, ItemGlobal.FoodTypes.size() - 1) as ItemGlobal.FoodTypes
 		if shoppingList.has(key):
