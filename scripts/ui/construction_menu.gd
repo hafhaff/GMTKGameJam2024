@@ -101,7 +101,11 @@ func _build():
 		print("Construction Cancelled!")
 		return
 	var building = selection.instantiate()
+	
 	building.global_position = constPos * 32
+	
+	global_shop.buy(global_shop.prices[getItemName(building)])
+	
 	get_tree().root.get_child(1).add_child(building)
 	_spriteSetup(constPos as Vector2i, constPos as Vector2i)
 
@@ -142,3 +146,16 @@ func _selectionChange(next: bool):
 	else:
 		selectionDisplay.selectionSprite.scale = Vector2i(1,1)
 		selectionDisplay.selectionSprite.position = Vector2(16,16)
+		
+func getItemName(building):
+	if building is Shelf:
+		return "shelf"
+	if building is Counter:
+		return "counter"
+	if building is Box:
+		return "box"
+	if building is DeliveryPoint:
+		return "loadingZone"
+	else:
+		print("not a buyable object")
+		return "box"
