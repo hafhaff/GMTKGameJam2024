@@ -1,15 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://ighgjuvtgyfp"]
+[gd_scene load_steps=7 format=3 uid="uid://ighgjuvtgyfp"]
 
 [ext_resource type="Script" path="res://scripts/ui/pause.gd" id="1_loics"]
 [ext_resource type="AudioStream" uid="uid://c7jpyvbkntwa5" path="res://audio/sfx/Ui_Selected.wav" id="2_cf3sr"]
 [ext_resource type="AudioStream" uid="uid://bwis8k1aiv0xw" path="res://audio/sfx/Ui_Selection.wav" id="3_hk56p"]
-[ext_resource type="AudioStream" uid="uid://cludp55bhf1wp" path="res://audio/music/MewnimumWage.ogg" id="4_ipkqn"]
+[ext_resource type="AudioStream" uid="uid://dacr0ymbb6xmx" path="res://audio/music/Furball_Factory-_1_.ogg" id="4_4y5qw"]
+[ext_resource type="Script" path="res://scripts/ui/audio_setup.gd" id="5_mx6e5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ratbe"]
 bg_color = Color(0, 0.0352941, 0.0941176, 0.309804)
 
-[node name="Pause" type="CanvasLayer" node_paths=PackedStringArray("optionsMenu")]
+[node name="Pause" type="CanvasLayer" node_paths=PackedStringArray("switchSoundPlayer", "selectSoundPlayer", "optionsMenu")]
+process_mode = 3
 script = ExtResource("1_loics")
+switchSoundPlayer = NodePath("SwitchSound")
+selectSoundPlayer = NodePath("SelectSound")
 optionsMenu = NodePath("Panel/Panel/Panel")
 
 [node name="Panel" type="Panel" parent="."]
@@ -168,6 +172,16 @@ stream = ExtResource("3_hk56p")
 bus = &"SFX"
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_ipkqn")
+stream = ExtResource("4_4y5qw")
 autoplay = true
 bus = &"Music"
+
+[node name="AudioSetup" type="Node" parent="." node_paths=PackedStringArray("masterSlider", "musicSlider", "effectSlider")]
+script = ExtResource("5_mx6e5")
+masterSlider = NodePath("../Panel/Panel/Panel/Options/HSlider")
+musicSlider = NodePath("../Panel/Panel/Panel/Options/HSlider2")
+effectSlider = NodePath("../Panel/Panel/Panel/Options/HSlider3")
+
+[connection signal="pressed" from="Panel/Panel/Button2" to="." method="changeMenu"]
+[connection signal="pressed" from="Panel/Panel/Button4" to="." method="_return_to_menu"]
+[connection signal="pressed" from="Panel/Panel/Panel/Options/Button4" to="." method="changeMenu"]
