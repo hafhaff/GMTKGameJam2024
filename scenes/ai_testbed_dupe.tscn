@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://bjq40qf0h4otq"]
+[gd_scene load_steps=16 format=4 uid="uid://bjq40qf0h4otq"]
 
 [ext_resource type="TileSet" uid="uid://cpf2j2rvdkkd1" path="res://textures/tilemaps/building_tiles.tres" id="1_xqwej"]
 [ext_resource type="Script" path="res://scripts/navmesh_updater.gd" id="2_hdsk6"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://dn0lkdgorj8pf" path="res://scenes/objects/counter.tscn" id="4_qcp5b"]
 [ext_resource type="PackedScene" uid="uid://ci8ldm6uxfv0i" path="res://scenes/player.tscn" id="5_o4ggs"]
 [ext_resource type="PackedScene" uid="uid://b0ic68c7v5ojg" path="res://scenes/characters/cashier_ai.tscn" id="6_5mtwm"]
-[ext_resource type="PackedScene" uid="uid://duc186117kn0h" path="res://scenes/logic/spawn_manager.tscn" id="7_s6gkt"]
 [ext_resource type="PackedScene" uid="uid://du8832mjcy7sc" path="res://scenes/ui/currency_display.tscn" id="8_2fu0d"]
 [ext_resource type="PackedScene" uid="uid://b6xpligwm2mx6" path="res://scenes/objects/box.tscn" id="9_8384v"]
 [ext_resource type="PackedScene" uid="uid://d3pmwvyul36cy" path="res://scenes/characters/refilling_ai.tscn" id="10_r10t2"]
@@ -96,8 +95,6 @@ zoom_max = Vector2(15, 15)
 
 [node name="Cashier AI" parent="." instance=ExtResource("6_5mtwm")]
 position = Vector2(563, 224)
-
-[node name="Spawn Manager" parent="." instance=ExtResource("7_s6gkt")]
 
 [node name="Currency Display" parent="." instance=ExtResource("8_2fu0d")]
 
