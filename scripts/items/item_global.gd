@@ -5,7 +5,7 @@ class_name ItemGlobal
 enum FoodTypes {CANNED, CEREAL, CATNIP}
 
 var FoodValues: Dictionary = {
-	FoodTypes.CANNED : {purchasePrice = 1, sellPrice = 2},
-	FoodTypes.CEREAL : {purchasePrice = 1, sellPrice = 2},
-	FoodTypes.CATNIP : {purchasePrice = 1, sellPrice = 2}
+	FoodTypes.CANNED : {purchasePrice = 2, sellPrice = 4},
+	FoodTypes.CEREAL : {purchasePrice = 2, sellPrice = 5},
+	FoodTypes.CATNIP : {purchasePrice = 5, sellPrice = 10}
 }
