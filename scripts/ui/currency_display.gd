@@ -10,3 +10,6 @@ func _ready():
 
 func _updateDisplay(value: float):
 	displayLabel.text = str(value) + " Kitcoins"
+	
+func autoUpdateDisplay():
+	displayLabel.text = str(global_shop.kitcoins) + " Kitcoins"

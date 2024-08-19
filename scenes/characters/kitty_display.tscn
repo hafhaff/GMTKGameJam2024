@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://bed0fmavm0x6e"]
 
 [ext_resource type="Script" path="res://scripts/character/kitty_display.gd" id="1_jfm3s"]
-[ext_resource type="Texture2D" uid="uid://pild65lobbfl" path="res://textures/characters/kitty/kitty_face_atlas.tres" id="1_wxyyb"]
-[ext_resource type="Texture2D" uid="uid://dnbv1084ftvqo" path="res://textures/characters/kitty/kitty_outfit_atlas.tres" id="2_ppmw7"]
-[ext_resource type="Texture2D" uid="uid://xq6od1oywawu" path="res://textures/characters/kitty/kitty_base_atlas.tres" id="2_yraf8"]
+[ext_resource type="Texture2D" path="res://textures/characters/kitty/kitty_face_atlas.tres" id="1_wxyyb"]
+[ext_resource type="Texture2D" path="res://textures/characters/kitty/kitty_outfit_atlas.tres" id="2_ppmw7"]
+[ext_resource type="Texture2D" path="res://textures/characters/kitty/kitty_base_atlas.tres" id="2_yraf8"]
 
 [sub_resource type="Animation" id="Animation_bvyix"]
 length = 0.001

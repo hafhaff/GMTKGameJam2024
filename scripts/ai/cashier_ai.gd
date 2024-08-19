@@ -8,6 +8,9 @@ var target: Counter = null
 var lookForCounterTimer: Timer = Timer.new()
 var jobTimer: Timer = Timer.new()
 
+var wage = global_shop.prices["cashier"]
+var wagePeriod = global_shop.wagePeriod
+
 @onready var navigation: NavigationAgent2D = $NavigationAgent2D
 @onready var kittyDisplay: KittyDisplay = $KittyDisplay
 
@@ -48,3 +51,11 @@ func _lookForJob():
 func _jobInteract():
 	target._checkShopperDistance()
 	jobTimer.start(1)
+	
+func payWage():
+	global_shop.buy(wage)
+	pass
+
+func _on_wage_timer_timeout():
+	payWage()
+	pass # Replace with function body.

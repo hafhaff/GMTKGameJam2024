@@ -16,6 +16,7 @@ var interactPos: Vector2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	#print("shelf ready")
 	if optionalAutoFill:
 		fillWithRandom()	#For debugging n stuff, remove later
 	global_position = floor(global_position/32)*32	#Important for the tilemap, BUT we'll handle placement differently later

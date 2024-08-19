@@ -175,7 +175,7 @@ func fixWalls():
 
 func rightExpansion(body):
 	if body is Player and (global_shop.getKitcoin() > price) and enabled:
-		global_shop._removeKitcoin(price)
+		global_shop.buy(global_shop.prices["expansion"])
 		price = price * numExpansions
 		expand()
 		numExpansions = numExpansions + 1
