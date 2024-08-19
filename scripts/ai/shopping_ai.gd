@@ -40,8 +40,9 @@ func _physics_process(_delta):
 		if target == null:
 			return
 		if target is Shelf:
-			if target.take(1, target.itemType):
-				itemsHeld[target.itemType] += 1
+			if shoppingList.has(target.itemType):	#shelf item type can change by the time we arrive
+				if target.take(1, target.itemType):
+					itemsHeld[target.itemType] += 1
 		target = null
 		shoppingTimer.start(1.5)
 		return
