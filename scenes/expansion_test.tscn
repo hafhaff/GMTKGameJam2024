@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://clsegmf75ckjy"]
+[gd_scene load_steps=16 format=4 uid="uid://clsegmf75ckjy"]
 
 [ext_resource type="TileSet" uid="uid://cpf2j2rvdkkd1" path="res://textures/tilemaps/building_tiles.tres" id="1_nfa3s"]
 [ext_resource type="Script" path="res://scripts/expansionMap.gd" id="2_i6fl6"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dg3u5q8y8c1yu" path="res://scenes/ui/construction_menu.tscn" id="10_54oqk"]
 [ext_resource type="PackedScene" uid="uid://e13u0v8yrlfv" path="res://scenes/ui/selection_display.tscn" id="11_eptom"]
 [ext_resource type="Texture2D" uid="uid://bm0uofnnmns24" path="res://textures/objects/entrance.png" id="12_5gijb"]
+[ext_resource type="PackedScene" uid="uid://bbvouelmrre6p" path="res://scenes/ui/shopping_ui.tscn" id="14_8aidt"]
 [ext_resource type="PackedScene" uid="uid://mwdwlaqsblh8" path="res://scenes/ui/hiring_menu.tscn" id="14_t8xff"]
 [ext_resource type="PackedScene" uid="uid://chciysutigfsd" path="res://scenes/objects/delivery_point.tscn" id="15_2nylf"]
 [ext_resource type="PackedScene" uid="uid://bed0fmavm0x6e" path="res://scenes/characters/kitty_display.tscn" id="15_c1qqx"]
@@ -120,7 +121,12 @@ shape = SubResource("RectangleShape2D_h6lwn")
 
 [node name="Node2D" parent="." instance=ExtResource("15_2nylf")]
 position = Vector2(225, 1)
-enableBoxGeneration = true
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="Shopping UI" parent="CanvasLayer2" node_paths=PackedStringArray("hiringMenu", "constructionMenu") instance=ExtResource("14_8aidt")]
+hiringMenu = NodePath("../../HiringMen")
+constructionMenu = NodePath("../../ConstructionMen")
 
 [connection signal="visibilityToggled" from="ConstructionMen" to="RightExpand" method="buildModeToggled"]
 [connection signal="visibilityToggled" from="ConstructionMen" to="DownExpand" method="_on_canvas_layer_2_visibility_toggled"]
