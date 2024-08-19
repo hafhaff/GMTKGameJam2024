@@ -136,6 +136,9 @@ texture = ExtResource("8_d2idq")
 position = Vector2(4, 145)
 shape = SubResource("RectangleShape2D_h6lwn")
 
+[connection signal="visibilityToggled" from="CanvasLayer2" to="RightExpand" method="buildModeToggled"]
+[connection signal="visibilityToggled" from="CanvasLayer2" to="DownExpand" method="_on_canvas_layer_2_visibility_toggled"]
+[connection signal="visibilityToggled" from="CanvasLayer2" to="LeftExpand" method="_on_canvas_layer_2_visibility_toggled"]
 [connection signal="visibility_changed" from="CanvasLayer2" to="RightExpand" method="_on_canvas_layer_2_visibility_changed"]
 [connection signal="body_entered" from="RightExpand" to="RightExpand" method="rightExpansion"]
 [connection signal="body_entered" from="DownExpand" to="DownExpand" method="rightExpansion"]

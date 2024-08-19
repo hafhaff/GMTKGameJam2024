@@ -20,11 +20,17 @@ var price = 10
 var startX
 var startY
 
+var enabled = true
+
 var canBuild = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+	
+func toggleNode():
+	$Sprite2D.visible = !$Sprite2D.visible
+	enabled = !enabled
 
 func getCenterGloabal(point1, point2):
 	return 320*((point1 + point2)/2)
@@ -168,7 +174,7 @@ func fixWalls():
 	$"../TileMapLayer".fillSideWall(global_shop.topLeft, global_shop.bottomLeft, 1)
 
 func rightExpansion(body):
-	if body is Player and global_shop.getKitcoin() > price:
+	if body is Player and (global_shop.getKitcoin() > price) and enabled:
 		global_shop._removeKitcoin(price)
 		price = price * numExpansions
 		expand()
@@ -178,6 +184,13 @@ func rightExpansion(body):
 		pass # Replace with function body.
 
 
-func _on_canvas_layer_2_visibility_changed():
-	print("connects")
+func buildModeToggled(bool):
+	toggleNode()
 	
+	
+	pass # Replace with function body.
+
+
+func _on_canvas_layer_2_visibility_toggled(bool):
+	toggleNode()
+	pass # Replace with function body.
