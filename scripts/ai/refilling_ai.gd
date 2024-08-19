@@ -104,7 +104,7 @@ func _deleteEmptyBox():
 func _dropItem():
 	boxHoldSprite.visible = false
 	heldItem.disablePickup()
-	heldItem.position = self.global_position
+	heldItem.global_position = self.global_position
 	heldItem.showSprite()
 	heldItem.pickUpCoolDown()
 
