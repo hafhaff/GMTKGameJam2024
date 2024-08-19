@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://de1beg5m18qmu"]
+[gd_scene load_steps=16 format=4 uid="uid://de1beg5m18qmu"]
 
 [ext_resource type="TileSet" uid="uid://cpf2j2rvdkkd1" path="res://textures/tilemaps/building_tiles.tres" id="1_0iapw"]
 [ext_resource type="Script" path="res://scripts/navmesh_updater.gd" id="3_t70eu"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://mwdwlaqsblh8" path="res://scenes/ui/hiring_menu.tscn" id="13_rpqky"]
 [ext_resource type="PackedScene" uid="uid://e13u0v8yrlfv" path="res://scenes/ui/selection_display.tscn" id="13_ynf2t"]
 [ext_resource type="PackedScene" uid="uid://bed0fmavm0x6e" path="res://scenes/characters/kitty_display.tscn" id="14_ld5hc"]
+[ext_resource type="PackedScene" uid="uid://bbvouelmrre6p" path="res://scenes/ui/shopping_ui.tscn" id="15_8jsrj"]
 [ext_resource type="PackedScene" uid="uid://chciysutigfsd" path="res://scenes/objects/delivery_point.tscn" id="15_uj7gf"]
 
 [node name="ai_testbed" type="Node2D"]
@@ -128,4 +129,9 @@ y_sort_enabled = false
 
 [node name="Node2D" parent="." instance=ExtResource("15_uj7gf")]
 position = Vector2(148, 10)
-enableBoxGeneration = true
+
+[node name="CanvasLayer3" type="CanvasLayer" parent="."]
+
+[node name="Shopping UI" parent="CanvasLayer3" node_paths=PackedStringArray("hiringMenu", "constructionMenu") instance=ExtResource("15_8jsrj")]
+hiringMenu = NodePath("../../CanvasLayer2")
+constructionMenu = NodePath("../../CanvasLayer")

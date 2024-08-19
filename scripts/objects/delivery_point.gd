@@ -18,12 +18,16 @@ func _ready():
 	else:
 		generationTimer.queue_free()
 
-func _generateNewBox():
-	if relatedBoxes.size() >= maxBoxes:
+func _generateNewBox(type: ItemGlobal.FoodTypes = -1):
+	if enableBoxGeneration && relatedBoxes.size() >= maxBoxes:
 		return
+	printt("creating item", type)
 
 	var box: Box = boxTemplate.instantiate()
-	box.itemType = randi_range(0, ItemGlobal.FoodTypes.size() - 1) as ItemGlobal.FoodTypes
+	if type == -1:
+		box.itemType = randi_range(0, ItemGlobal.FoodTypes.size() - 1) as ItemGlobal.FoodTypes
+	else:
+		box.itemType = type as ItemGlobal.FoodTypes
 	add_child(box)
 	box.update_box_type()
 	box.connect("selfYeet", _removeBox)

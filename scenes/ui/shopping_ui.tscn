@@ -1,6 +1,5 @@
-[gd_scene load_steps=6 format=3 uid="uid://bbvouelmrre6p"]
+[gd_scene load_steps=5 format=3 uid="uid://bbvouelmrre6p"]
 
-[ext_resource type="Theme" uid="uid://0rnnetbtuvds" path="res://textures/ui/ui_theme.tres" id="1_ranje"]
 [ext_resource type="Texture2D" uid="uid://cmrs3wr6m8wxb" path="res://textures/kitcoin.png" id="2_05r4v"]
 [ext_resource type="Script" path="res://scripts/ui/shopping_ui.gd" id="2_fwhm4"]
 [ext_resource type="Texture2D" uid="uid://ssanlg5le5ay" path="res://textures/objects/box/box_base_atlas.tres" id="3_6eh8e"]
@@ -13,7 +12,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_ranje")
 script = ExtResource("2_fwhm4")
 boxSpriteAtlas = ExtResource("3_6eh8e")
 gridContainer = NodePath("Panel/GridContainer")
@@ -32,6 +30,7 @@ offset_right = 400.0
 offset_bottom = 225.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_type_variation = &"PanelSolidBlack"
 
 [node name="GridContainer" type="GridContainer" parent="Panel"]
 layout_mode = 1

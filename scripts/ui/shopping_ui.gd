@@ -1,17 +1,30 @@
-extends Node
+extends Control
 
 @export var boxSpriteAtlas: AtlasTexture = null
 @export var gridContainer: GridContainer = null
 @export var shoppingUiItem: PackedScene = null
+@export var hiringMenu: Node
+@export var constructionMenu: Node
 
 var itemGlobalLocal = ItemGlobal.new()
 var orderedTypes: Array[ItemGlobal.FoodTypes]
 var orderTotal: int = 0
+var showPos: Vector2 = Vector2(0, 0)
+var hidePos: Vector2 = Vector2(0, -720)
+var isHidden: bool = false
 
 @onready var totalText: Label = $Panel/Control/Total
 
 func _ready():
 	_fillUiWithItems()
+	_hide()
+
+func _input(event: InputEvent):
+	if event.is_pressed():
+		if event.is_action_pressed('shopping'):
+			printt(hiringMenu.visible, constructionMenu.visible)
+			if (hiringMenu != null && !hiringMenu.visible) && (constructionMenu != null && !constructionMenu.visible):
+				_hide()
 
 func _fillUiWithItems():
 	for itemID in itemGlobalLocal.FoodTypes.size():
@@ -41,4 +54,15 @@ func _clearCart():
 	orderedTypes.clear()
 
 func _submit():
-	pass
+	if !global_shop._calcNewPrice(-orderTotal):
+		return
+	global_shop._createBoxes(orderedTypes)
+	global_shop._removeKitcoin(orderTotal)
+	_clearCart()
+
+func _hide():
+	isHidden = !isHidden
+	var tweenTheSecond = create_tween()
+	tweenTheSecond.set_trans(Tween.TRANS_QUAD)
+	tweenTheSecond.set_ease(Tween.EASE_OUT)
+	tweenTheSecond.tween_property(self, "position", hidePos if isHidden else showPos, 0.5)

@@ -76,6 +76,15 @@ func _removeBox(box: Box, _pickedUp: bool = false):
 	if boxes[box.itemType].has(box):
 		boxes[box.itemType].erase(box)
 
+func _createBoxes(types: Array[ItemGlobal.FoodTypes]):
+	while types.size() > 0:
+		printt("Types size", types.size())
+		for deliveryPoint in deliveryPoints:
+			if types.size() == 0:
+				break
+			deliveryPoint._generateNewBox(types[0])
+			types.remove_at(0)
+
 func _handleBoxPickup(box: Box, pickedUp: bool):
 	#In our list, but picked up, we remove from our list
 	if boxes[box.itemType].has(box) && pickedUp:
@@ -91,6 +100,12 @@ func _addKitcoin(addition: float):
 func _removeKitcoin(addition: float):
 	kitcoins -= addition
 	kitcoinUpdated.emit(kitcoins)
+
+func _calcNewPrice(value: int) -> bool:
+	if kitcoins + value < 0:
+		return false
+	else:
+		return true
 	
 func getKitcoin():
 	return kitcoins
