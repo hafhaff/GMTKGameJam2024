@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://bjq40qf0h4otq"]
+[gd_scene load_steps=17 format=4 uid="uid://bjq40qf0h4otq"]
 
 [ext_resource type="TileSet" uid="uid://cpf2j2rvdkkd1" path="res://textures/tilemaps/building_tiles.tres" id="1_xqwej"]
 [ext_resource type="Script" path="res://scripts/navmesh_updater.gd" id="2_hdsk6"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://mwdwlaqsblh8" path="res://scenes/ui/hiring_menu.tscn" id="13_rvsx1"]
 [ext_resource type="PackedScene" uid="uid://bed0fmavm0x6e" path="res://scenes/characters/kitty_display.tscn" id="14_looae"]
 [ext_resource type="PackedScene" uid="uid://blawy58ur83h2" path="res://scenes/ui/tooltip/storage_unit_tooltip.tscn" id="15_o8y7b"]
+[ext_resource type="PackedScene" uid="uid://g13k232xga6o" path="res://scenes/objects/store_entrance.tscn" id="16_0q6ei"]
 
 [node name="ai_testbed" type="Node2D"]
 y_sort_enabled = true
@@ -140,3 +141,6 @@ itemType = 2
 unique_name_in_owner = true
 visible = false
 z_index = 5
+
+[node name="StoreEntrance" parent="." instance=ExtResource("16_0q6ei")]
+position = Vector2(130, 0)

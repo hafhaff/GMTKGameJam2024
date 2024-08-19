@@ -13,4 +13,4 @@ func _ready() -> void:
 
 # Customization
 func update_box_type(index: int) -> void:
-	base.region_rect.position.x = index * 32 
+	base.region_rect.position.x = index * 32
