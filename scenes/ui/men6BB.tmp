@@ -1,0 +1,125 @@
+[gd_scene load_steps=7 format=3 uid="uid://cipgad2c7su8"]
+
+[ext_resource type="Texture2D" uid="uid://bvnuo6ybkochq" path="res://textures/ui/icons/icon_0.png" id="1_h4gg3"]
+[ext_resource type="Texture2D" uid="uid://caklbqybw3w4e" path="res://textures/ui/icons/icon_1.png" id="2_gxmb1"]
+[ext_resource type="Texture2D" uid="uid://bswt1jo5caow3" path="res://textures/ui/icons/icon_3.png" id="3_kva1s"]
+[ext_resource type="Texture2D" uid="uid://ceum5liebwrgc" path="res://textures/ui/icons/icon_4.png" id="4_g4rfe"]
+[ext_resource type="Script" path="res://scripts/ui/tooltip/show_tooltip.gd" id="4_h5rg1"]
+[ext_resource type="Script" path="res://scripts/ui/tooltip/resizing_panel.gd" id="5_nm3yw"]
+
+[node name="MenuButtons" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 114.0
+offset_top = 52.0
+offset_right = 114.0
+offset_bottom = 52.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Build" type="Button" parent="."]
+layout_mode = 0
+offset_left = -19.0
+offset_bottom = 19.0
+tooltip_text = "Build"
+script = ExtResource("4_h5rg1")
+tooltip = "Build"
+
+[node name="Icon" type="TextureRect" parent="Build"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 18.0
+offset_bottom = 17.0
+texture = ExtResource("2_gxmb1")
+
+[node name="Supplies" type="Button" parent="."]
+layout_mode = 0
+offset_left = -38.0
+offset_right = -19.0
+offset_bottom = 19.0
+script = ExtResource("4_h5rg1")
+tooltip = "Supplies"
+
+[node name="Icon" type="TextureRect" parent="Supplies"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 18.0
+offset_bottom = 17.0
+texture = ExtResource("3_kva1s")
+
+[node name="Hire" type="Button" parent="."]
+layout_mode = 0
+offset_right = 19.0
+offset_bottom = 19.0
+script = ExtResource("4_h5rg1")
+tooltip = "Hire"
+
+[node name="Icon" type="TextureRect" parent="Hire"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 18.0
+offset_bottom = 17.0
+texture = ExtResource("1_h4gg3")
+
+[node name="Reviews" type="Button" parent="."]
+layout_mode = 0
+offset_left = 19.0
+offset_right = 38.0
+offset_bottom = 19.0
+script = ExtResource("4_h5rg1")
+tooltip = "Reviews"
+
+[node name="Icon" type="TextureRect" parent="Reviews"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 17.0
+offset_bottom = 17.0
+texture = ExtResource("4_g4rfe")
+
+[node name="Tooltip" type="Panel" parent="."]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0.588235)
+z_index = 4
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -715.0
+offset_top = -394.0
+offset_right = -677.0
+offset_bottom = -382.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(19, 12)
+theme_type_variation = &"PanelSolidBlack"
+script = ExtResource("5_nm3yw")
+
+[node name="Label" type="Label" parent="Tooltip"]
+z_index = 5
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Tooltip"
+horizontal_alignment = 1
+
+[connection signal="mouse_entered" from="Build" to="Hire" method="_mouse_entered"]
+[connection signal="mouse_exited" from="Build" to="Hire" method="_mouse_exited"]
+[connection signal="mouse_entered" from="Supplies" to="Hire" method="_mouse_entered"]
+[connection signal="mouse_exited" from="Supplies" to="Hire" method="_mouse_exited"]
+[connection signal="mouse_entered" from="Hire" to="Hire" method="_mouse_entered"]
+[connection signal="mouse_exited" from="Hire" to="Hire" method="_mouse_exited"]
+[connection signal="mouse_entered" from="Reviews" to="Hire" method="_mouse_entered"]
+[connection signal="mouse_exited" from="Reviews" to="Hire" method="_mouse_exited"]
