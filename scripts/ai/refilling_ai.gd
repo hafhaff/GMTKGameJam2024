@@ -52,6 +52,8 @@ func _setShelf(_shelf: Shelf) -> bool:
 	validTypes.shuffle()
 	var _boxes: Array =  []
 	for type in validTypes:
+		if !global_shop.boxes.has(type):
+			continue
 		if global_shop.boxes[type].size() != 0:
 			_boxes = global_shop.boxes[type]
 			break
