@@ -91,12 +91,21 @@ func _selectShortestCounter():
 
 func _checkout() -> bool:
 	itemsTotal -= 1
+	var random_delay = randf_range(-0.5, 0.5)
+	play_sound_with_delay(random_delay)
 	if itemsTotal < 0:
 		waitForCheckout = false
 		navigation.target_position = spawnPos
 		return true
 	return false
 
+func play_sound_with_delay(delay: float) -> void:
+	var timer = get_tree().create_timer(delay)
+	timer.timeout.connect(self._on_sound_timer_timeout)
+
+func _on_sound_timer_timeout() -> void:
+	$purchase.play()
+	
 func _generateShoppingList():
 	itemsTotal = randi_range(1,12)
 	for x in range(itemsTotal):
