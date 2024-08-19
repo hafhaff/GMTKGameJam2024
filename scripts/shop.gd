@@ -121,7 +121,7 @@ func _removeKitcoin(addition: float):
 	kitcoinUpdated.emit(kitcoins)
 	
 func buy(cost):
-	if kitcoins >= cost:
+	if kitcoins >= (cost- 100):
 		kitcoins = kitcoins - cost
 		print("buy success")
 		kitcoinUpdated.emit(kitcoins)
@@ -129,6 +129,8 @@ func buy(cost):
 	else:
 		return false
 		print('buy failed, not enough money')
+		
+
 
 func _calcNewPrice(value: int) -> bool:
 	if kitcoins + value < 0:
