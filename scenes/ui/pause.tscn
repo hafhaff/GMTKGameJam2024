@@ -1,0 +1,173 @@
+[gd_scene load_steps=6 format=3 uid="uid://ighgjuvtgyfp"]
+
+[ext_resource type="Script" path="res://scripts/ui/pause.gd" id="1_loics"]
+[ext_resource type="AudioStream" uid="uid://c7jpyvbkntwa5" path="res://audio/sfx/Ui_Selected.wav" id="2_cf3sr"]
+[ext_resource type="AudioStream" uid="uid://bwis8k1aiv0xw" path="res://audio/sfx/Ui_Selection.wav" id="3_hk56p"]
+[ext_resource type="AudioStream" uid="uid://cludp55bhf1wp" path="res://audio/music/MewnimumWage.ogg" id="4_ipkqn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ratbe"]
+bg_color = Color(0, 0.0352941, 0.0941176, 0.309804)
+
+[node name="Pause" type="CanvasLayer" node_paths=PackedStringArray("optionsMenu")]
+script = ExtResource("1_loics")
+optionsMenu = NodePath("Panel/Panel/Panel")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ratbe")
+
+[node name="Panel" type="Panel" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -130.0
+offset_right = 150.0
+offset_bottom = 130.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"PanelSolidBlack"
+
+[node name="Button2" type="Button" parent="Panel/Panel"]
+layout_mode = 2
+offset_top = 109.0
+offset_right = 300.0
+offset_bottom = 149.0
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 33
+text = "Options"
+
+[node name="Button4" type="Button" parent="Panel/Panel"]
+layout_mode = 2
+offset_top = 212.0
+offset_right = 300.0
+offset_bottom = 252.0
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 33
+text = "Exit"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/Panel"]
+layout_mode = 2
+offset_right = 300.0
+offset_bottom = 34.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="Panel/Panel/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 33
+text = "Game Paused!"
+
+[node name="Panel" type="Panel" parent="Panel/Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -130.0
+offset_right = 150.0
+offset_bottom = 130.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"PanelSolidBlack"
+
+[node name="Options" type="GridContainer" parent="Panel/Panel/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/Panel/Panel/Options"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="Panel/Panel/Panel/Options/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 33
+text = "Options"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/Panel/Panel/Options"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="Panel/Panel/Panel/Options/HBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = " "
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="Panel/Panel/Panel/Options"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="Panel/Panel/Panel/Options/HBoxContainer5"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Master"
+
+[node name="HSlider" type="HSlider" parent="Panel/Panel/Panel/Options"]
+layout_mode = 2
+min_value = -30.0
+max_value = 0.0
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Panel/Panel/Panel/Options"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="Panel/Panel/Panel/Options/HBoxContainer3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Music"
+
+[node name="HSlider2" type="HSlider" parent="Panel/Panel/Panel/Options"]
+layout_mode = 2
+min_value = -30.0
+max_value = 0.0
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="Panel/Panel/Panel/Options"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="Panel/Panel/Panel/Options/HBoxContainer4"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "SFX"
+
+[node name="HSlider3" type="HSlider" parent="Panel/Panel/Panel/Options"]
+layout_mode = 2
+min_value = -30.0
+max_value = 0.0
+
+[node name="Button4" type="Button" parent="Panel/Panel/Panel/Options"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 33
+text = "Back"
+
+[node name="SelectSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_cf3sr")
+bus = &"SFX"
+
+[node name="SwitchSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_hk56p")
+bus = &"SFX"
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_ipkqn")
+autoplay = true
+bus = &"Music"
