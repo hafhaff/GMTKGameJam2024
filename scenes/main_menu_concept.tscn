@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://cgxldb2nvtqbi"]
+[gd_scene load_steps=16 format=4 uid="uid://cgxldb2nvtqbi"]
 
 [ext_resource type="TileSet" uid="uid://cpf2j2rvdkkd1" path="res://textures/tilemaps/building_tiles.tres" id="1_6jp56"]
 [ext_resource type="PackedScene" uid="uid://cr8g2ewri4sld" path="res://scenes/objects/shelf.tscn" id="2_eutrg"]
@@ -9,6 +9,12 @@
 [ext_resource type="PackedScene" uid="uid://b0ic68c7v5ojg" path="res://scenes/characters/cashier_ai.tscn" id="6_et7a6"]
 [ext_resource type="PackedScene" uid="uid://chciysutigfsd" path="res://scenes/objects/delivery_point.tscn" id="7_4a278"]
 [ext_resource type="PackedScene" uid="uid://d3pmwvyul36cy" path="res://scenes/characters/refilling_ai.tscn" id="8_bfr7c"]
+[ext_resource type="Script" path="res://scripts/ui/main_menu.gd" id="9_hkqd7"]
+[ext_resource type="Texture2D" uid="uid://c7hdxl3cu87hi" path="res://textures/ui/title.png" id="10_ftank"]
+[ext_resource type="AudioStream" uid="uid://bwis8k1aiv0xw" path="res://audio/sfx/Ui_Selection.wav" id="10_o3i3y"]
+[ext_resource type="AudioStream" uid="uid://c7jpyvbkntwa5" path="res://audio/sfx/Ui_Selected.wav" id="11_3vjeq"]
+[ext_resource type="Script" path="res://scripts/ui/audio_setup.gd" id="11_dv5pp"]
+[ext_resource type="AudioStream" uid="uid://cludp55bhf1wp" path="res://audio/music/MewnimumWage.ogg" id="11_qfpvv"]
 
 [node name="Level" type="Node2D"]
 
@@ -294,7 +300,7 @@ kitty_face = 4
 kitty_role = 3
 animation_speed = 1
 
-[node name="Panel" type="Panel" parent="CanvasLayer"]
+[node name="Panel" type="Panel" parent="CanvasLayer" node_paths=PackedStringArray("selectSoundPlayer", "switchSoundPlayer", "musicPlayer", "menus", "loadingScreen")]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -305,8 +311,14 @@ offset_top = -260.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_type_variation = &"PanelSolidBlack"
+script = ExtResource("9_hkqd7")
+selectSoundPlayer = NodePath("../../SelectSound")
+switchSoundPlayer = NodePath("../../SwitchSound")
+musicPlayer = NodePath("../../MusicPlayer")
+menus = [NodePath("MainMenu"), NodePath("Options")]
+loadingScreen = NodePath("../LoadingScreen")
 
-[node name="GridContainer" type="GridContainer" parent="CanvasLayer/Panel"]
+[node name="MainMenu" type="GridContainer" parent="CanvasLayer/Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -314,46 +326,200 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Panel/GridContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Panel/MainMenu"]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="Label" type="Label" parent="CanvasLayer/Panel/GridContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="CanvasLayer/Panel/MainMenu/HBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Mega Meow Mart"
+theme_override_font_sizes/font_size = 33
+text = "Main Menu"
 
-[node name="Button" type="Button" parent="CanvasLayer/Panel/GridContainer"]
+[node name="Button" type="Button" parent="CanvasLayer/Panel/MainMenu"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 33
 text = "New Game"
 
-[node name="Button5" type="Button" parent="CanvasLayer/Panel/GridContainer"]
+[node name="Button5" type="Button" parent="CanvasLayer/Panel/MainMenu"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 33
 text = "Tutorial"
 
-[node name="Button2" type="Button" parent="CanvasLayer/Panel/GridContainer"]
+[node name="Button2" type="Button" parent="CanvasLayer/Panel/MainMenu"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 33
 text = "Options"
 
-[node name="Button3" type="Button" parent="CanvasLayer/Panel/GridContainer"]
+[node name="Button3" type="Button" parent="CanvasLayer/Panel/MainMenu"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 33
 text = "Credits"
 
-[node name="Button4" type="Button" parent="CanvasLayer/Panel/GridContainer"]
+[node name="Button4" type="Button" parent="CanvasLayer/Panel/MainMenu"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 33
 text = "Exit"
+
+[node name="Options" type="GridContainer" parent="CanvasLayer/Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Panel/Options"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel/Options/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 33
+text = "Options"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/Panel/Options"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel/Options/HBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = " "
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="CanvasLayer/Panel/Options"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel/Options/HBoxContainer5"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Master"
+
+[node name="HSlider" type="HSlider" parent="CanvasLayer/Panel/Options"]
+layout_mode = 2
+min_value = -30.0
+max_value = 0.0
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer/Panel/Options"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel/Options/HBoxContainer3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Music"
+
+[node name="HSlider2" type="HSlider" parent="CanvasLayer/Panel/Options"]
+layout_mode = 2
+min_value = -30.0
+max_value = 0.0
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="CanvasLayer/Panel/Options"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel/Options/HBoxContainer4"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "SFX"
+
+[node name="HSlider3" type="HSlider" parent="CanvasLayer/Panel/Options"]
+layout_mode = 2
+min_value = -30.0
+max_value = 0.0
+
+[node name="Button4" type="Button" parent="CanvasLayer/Panel/Options"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 33
+text = "Back"
+
+[node name="Timer" type="Timer" parent="CanvasLayer/Panel"]
+wait_time = 0.5
+one_shot = true
+
+[node name="Panel2" type="Panel" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -300.0
+offset_top = -327.0
+offset_bottom = -257.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_type_variation = &"PanelSolidBlack"
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Panel2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -107.0
+offset_top = -27.0
+offset_right = 107.0
+offset_bottom = 27.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_ftank")
+
+[node name="AudioSetup" type="Node" parent="CanvasLayer" node_paths=PackedStringArray("masterSlider", "musicSlider", "effectSlider")]
+script = ExtResource("11_dv5pp")
+masterSlider = NodePath("../Panel/Options/HSlider")
+musicSlider = NodePath("../Panel/Options/HSlider2")
+effectSlider = NodePath("../Panel/Options/HSlider3")
+
+[node name="LoadingScreen" type="Panel" parent="CanvasLayer"]
+visible = false
+z_index = 100
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"PanelSolidBlack"
+
+[node name="Label" type="Label" parent="CanvasLayer/LoadingScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -175.5
+offset_top = -50.0
+offset_right = 175.5
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 99
+text = "Loading..."
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(779, 304)
 zoom = Vector2(2, 2)
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="SelectSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_3vjeq")
+bus = &"SFX"
+
+[node name="SwitchSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_o3i3y")
+bus = &"SFX"
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_qfpvv")
+autoplay = true
+bus = &"Music"
 
 [node name="Node" type="Node" parent="."]
 
@@ -368,3 +534,7 @@ position = Vector2(894, 227)
 
 [node name="Cashier AI4" parent="Node" instance=ExtResource("6_et7a6")]
 position = Vector2(896, 135)
+
+[connection signal="pressed" from="CanvasLayer/Panel/MainMenu/Button" to="CanvasLayer/Panel" method="_switchScenes" binds= [0]]
+[connection signal="pressed" from="CanvasLayer/Panel/MainMenu/Button2" to="CanvasLayer/Panel" method="_switchMenu" binds= [1]]
+[connection signal="pressed" from="CanvasLayer/Panel/Options/Button4" to="CanvasLayer/Panel" method="_switchMenu"]
