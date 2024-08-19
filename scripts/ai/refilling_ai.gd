@@ -87,6 +87,13 @@ func _pickupBox():
 	navigation.target_position = shelf.interactPos
 
 func _fillShelf():
+	if shelf.itemType != heldItem.itemType && shelf.itemNum > 0:
+		_dropItem()
+		heldItem = null
+		target = null
+		shelf = null
+		return
+
 	var rem: int = shelf.fill(heldItem.itemNum, heldItem.itemType)
 	if rem <= 0:
 		_deleteEmptyBox()
@@ -105,6 +112,7 @@ func _dropItem():
 	boxHoldSprite.visible = false
 	heldItem.disablePickup()
 	heldItem.global_position = self.global_position
+	heldItem.update_box_type()
 	heldItem.showSprite()
 	heldItem.pickUpCoolDown()
 
