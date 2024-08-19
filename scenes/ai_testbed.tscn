@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://de1beg5m18qmu"]
+[gd_scene load_steps=16 format=4 uid="uid://de1beg5m18qmu"]
 
 [ext_resource type="TileSet" uid="uid://cpf2j2rvdkkd1" path="res://textures/tilemaps/building_tiles.tres" id="1_0iapw"]
 [ext_resource type="Script" path="res://scripts/navmesh_updater.gd" id="3_t70eu"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://mwdwlaqsblh8" path="res://scenes/ui/hiring_menu.tscn" id="13_rpqky"]
 [ext_resource type="PackedScene" uid="uid://e13u0v8yrlfv" path="res://scenes/ui/selection_display.tscn" id="13_ynf2t"]
 [ext_resource type="PackedScene" uid="uid://bed0fmavm0x6e" path="res://scenes/characters/kitty_display.tscn" id="14_ld5hc"]
+[ext_resource type="PackedScene" uid="uid://chciysutigfsd" path="res://scenes/objects/delivery_point.tscn" id="15_uj7gf"]
 
 [node name="ai_testbed" type="Node2D"]
 y_sort_enabled = true
@@ -182,16 +183,21 @@ position = Vector2(400, 211)
 [node name="Refilling AI3" parent="." instance=ExtResource("11_u6mje")]
 position = Vector2(451, 231)
 
-[node name="CanvasLayer" parent="." node_paths=PackedStringArray("selectionDisplay", "hiringMenu") instance=ExtResource("12_gfxdq")]
+[node name="CanvasLayer" parent="." node_paths=PackedStringArray("selectionDisplay", "hiringMenu", "tilemap") instance=ExtResource("12_gfxdq")]
 selectionDisplay = NodePath("../SelectionDisplay")
 hiringMenu = NodePath("../CanvasLayer2")
+tilemap = NodePath("../TileMapLayer")
 
 [node name="SelectionDisplay" parent="." instance=ExtResource("13_ynf2t")]
 
-[node name="CanvasLayer2" parent="." node_paths=PackedStringArray("selectionDisplay", "constructionMenu") instance=ExtResource("13_rpqky")]
+[node name="CanvasLayer2" parent="." node_paths=PackedStringArray("selectionDisplay", "constructionMenu", "tilemap") instance=ExtResource("13_rpqky")]
 selectionDisplay = NodePath("../KittyDisplay")
 constructionMenu = NodePath("../CanvasLayer")
+tilemap = NodePath("../TileMapLayer")
 
 [node name="KittyDisplay" parent="." instance=ExtResource("14_ld5hc")]
 z_index = 10
 y_sort_enabled = false
+
+[node name="Node2D" parent="." instance=ExtResource("15_uj7gf")]
+position = Vector2(259, 293)

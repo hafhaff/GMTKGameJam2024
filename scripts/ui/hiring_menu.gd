@@ -9,6 +9,7 @@ extends Node
 @export var selections: Array[PackedScene]
 @export var selectionDisplay: KittyDisplay
 @export var constructionMenu: Node
+@export var tilemap: TileMapLayer
 
 var visible = true
 var largeKittenHidePos: Vector2 = Vector2(-130, 784)	#Yup, shit's hardcoded
@@ -28,10 +29,20 @@ func _ready():
 	selectionDisplay.get_node("Sprites").get_node("Outfit").visible = false
 	selectionDisplay.get_node("Sprites").get_node("Face").visible = false
 	selectionDisplay.get_node("Sprites").get_node("Base").modulate = Color.GREEN
+	if tilemap == null:
+		printerr("ERROR: HIRING SCENE DOES NOT HAVE A TILEMAP SET. SELF YEETING IMMINENT!")
+		queue_free()
 
 func _process(_delta):
 	selectionDisplay.global_position = get_tree().root.get_child(1).get_global_mouse_position() + Vector2(0,9)
-
+	constPos = floor(get_tree().root.get_child(1).get_global_mouse_position()/32)
+	if (
+		tilemap.get_cell_tile_data(constPos) == null ||
+		tilemap.get_cell_tile_data(constPos).get_navigation_polygon(0) == null
+	):
+		selectionDisplay.get_node("Sprites").get_node("Base").modulate = Color.RED
+	else:
+		selectionDisplay.get_node("Sprites").get_node("Base").modulate = Color.GREEN
 func _input(event: InputEvent):
 	if event.is_pressed():
 		if event.is_action_pressed('hiring'):
@@ -65,7 +76,7 @@ func _toggleDisplay():
 	selectionDisplay.visible = visible
 
 func _build():
-	if !visible:
+	if selectionDisplay.get_node("Sprites").get_node("Base").modulate == Color.RED || !visible:
 		print("Construction Cancelled!")
 		return
 	var building = selection.instantiate()

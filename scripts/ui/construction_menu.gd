@@ -8,6 +8,7 @@ extends Node
 @export var selections: Array[PackedScene]
 @export var selectionDisplay: SelectionDisplay
 @export var hiringMenu: Node
+@export var tilemap: TileMapLayer
 
 var visible = true
 var largeKittenHidePos: Vector2 = Vector2(-130, 784)	#Yup, shit's hardcoded
@@ -23,6 +24,9 @@ signal visibilityToggled(bool)
 func _ready():
 	_toggleDisplay()
 	selection = selections[0]
+	if tilemap == null:
+		printerr("ERROR: CONSTRUCTION SCENE DOES NOT HAVE A TILEMAP SET. SELF YEETING IMMINENT!")
+		queue_free()
 
 func _process(_delta):
 	constPos = floor(get_tree().root.get_child(1).get_global_mouse_position()/32)
@@ -31,7 +35,9 @@ func _process(_delta):
 		global_shop.shopShelves.has(Vector2i(constPos.x, constPos.y- 1)) || 
 		global_shop.shopShelves.has(Vector2i(constPos.x, constPos.y + 1)) || 
 		global_shop.shopShelves.has(constPos as Vector2i) ||
-		global_shop.shopCounters.has(constPos as Vector2i)
+		global_shop.shopCounters.has(constPos as Vector2i) ||
+		tilemap.get_cell_tile_data(constPos) == null ||
+		tilemap.get_cell_tile_data(constPos).get_navigation_polygon(0) == null
 	):
 		selectionDisplay.selectionSprite.modulate = Color.RED
 	else:
