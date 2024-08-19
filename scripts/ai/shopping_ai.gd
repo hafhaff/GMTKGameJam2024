@@ -10,7 +10,6 @@ class_name ShoppingAI
 @onready var navigation: NavigationAgent2D = $NavigationAgent2D
 @onready var kittyDisplay: KittyDisplay = $KittyDisplay
 @onready var spawnPos: Vector2 = self.global_position
-@onready var shelves: Array = global_shop.shopShelves.values().duplicate()
 
 var target: Node2D = null
 var shoppingList: Dictionary = {}
@@ -22,7 +21,6 @@ var attachedCamera: Camera2D	#For the experimental main menu
 signal leavingShop(shoppingAI)
 
 func _ready():
-	shelves.shuffle()
 	shoppingTimer.connect("timeout", _generateTarget)
 	_generateShoppingList()
 	_generateTarget()
@@ -57,13 +55,13 @@ func _generateTarget():
 	if !_shoppingDone():
 		target = _selectShelf()
 		if target == null:
-			printt("Did not find shelf", self, shoppingList, itemsHeld)
+			#printt("Did not find shelf", self, shoppingList, itemsHeld)
 			shoppingTimer.start(3)
 			return
 	else:
 		target = _selectShortestCounter()
 		if target == null:
-			printt("Did not find counter", self, target)
+			#printt("Did not find counter", self, target)
 			shoppingTimer.start(3)
 			return
 		waitForCheckout = true
@@ -73,9 +71,12 @@ func _generateTarget():
 
 func _selectShelf() -> Shelf:
 	for item in itemsHeld:
+		var shelves: Array = global_shop.shopShelves.values().duplicate()
+		shelves.shuffle()
 		#if itemsHeld[item] == shoppingList[item]:
 		#	continue
 		for shelf in shelves:
+			#printt("katto lookin at shelves", self, shelf.itemType == item, shelf.itemNum > 0)
 			if shelf.itemType == item && shelf.itemNum > 0:
 				navigation.target_position = shelf.interactPos
 				return shelf
