@@ -49,8 +49,6 @@ func updateNodePositionHroz():
 		
 		global_position.y = getCenterGloabal(global_shop.topLeft.y, global_shop.bottomRight.y)
 	if direction == DIRECTION.RIGHT:
-		print("left center")
-		print(getCenterGloabal(global_shop.topLeft.y, global_shop.bottomRight.y))
 		global_position.y = getCenterGloabal(global_shop.topLeft.y, global_shop.bottomRight.y)
 
 func updateNodePosition():
