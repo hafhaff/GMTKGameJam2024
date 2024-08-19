@@ -77,6 +77,7 @@ func takeShelf():
 		pickUpBox(newBox)
 		
 		heldItem.itemType = curShelf.itemType
+		$HoldBox.update_box_type(heldItem.itemType)
 		setNumInBox(numItemsTaken)
 
 func getShelf(shelf):

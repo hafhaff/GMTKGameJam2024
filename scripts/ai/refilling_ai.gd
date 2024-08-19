@@ -11,7 +11,7 @@ var heldItem: Box = null
 @onready var navigation: NavigationAgent2D = $NavigationAgent2D
 @onready var kittyDisplay: KittyDisplay = $KittyDisplay
 @onready var lookForEmptyShelf: Timer = $SearchTimer
-@onready var boxHoldSprite: Sprite2D = $HoldBox
+@onready var boxHoldSprite: BoxDisplay = $HoldBox
 
 func _ready():
 	kittyDisplay.randomize_look()
@@ -81,6 +81,7 @@ func _pickupBox():
 	target.hideSprite()
 	target.disablePickup()
 	heldItem = target
+	boxHoldSprite.update_box_type(heldItem.itemType)
 	navigation.target_position = shelf.interactPos
 
 func _fillShelf():

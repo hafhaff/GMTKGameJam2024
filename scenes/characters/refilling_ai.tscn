@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/ai/refilling_ai.gd" id="1_16otg"]
 [ext_resource type="PackedScene" uid="uid://bed0fmavm0x6e" path="res://scenes/characters/kitty_display.tscn" id="1_bp1wb"]
-[ext_resource type="Texture2D" uid="uid://ssanlg5le5ay" path="res://textures/objects/box/box_base_atlas.tres" id="3_b723i"]
+[ext_resource type="PackedScene" uid="uid://bbvoxcvfwybuw" path="res://scenes/objects/box_display.tscn" id="3_xk7dh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tc1sj"]
 radius = 4.0
@@ -24,15 +24,10 @@ kitty_role = 2
 [node name="SearchTimer" type="Timer" parent="."]
 wait_time = 3.0
 
-[node name="HoldBox" type="Sprite2D" parent="."]
+[node name="HoldBox" parent="." instance=ExtResource("3_xk7dh")]
 visible = false
 z_index = 1
-y_sort_enabled = true
 position = Vector2(3, 10)
-texture = ExtResource("3_b723i")
-offset = Vector2(0, -16)
-region_enabled = true
-region_rect = Rect2(0, 2, 32, 32)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 5.0
