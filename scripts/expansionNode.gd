@@ -62,6 +62,8 @@ func expand():
 			$"../TileMapLayer".newChunk(startX, startY)
 			startX = startX + 10
 			
+		$"../TileMapLayer".fillHorizontalWall(global_shop.topLeft, global_shop.topRight, 1)
+			
 	if direction == DIRECTION.DOWN:
 		chunksExpand = getNumChunksBetweenNodes(global_shop.bottomLeft.x, global_shop.bottomRight.x)
 		
@@ -95,6 +97,7 @@ func expand():
 			startX = startX + 10
 		print(global_shop.bottomLeft)
 		print(global_shop.bottomRight)
+		$"../TileMapLayer".fillHorizontalWall(global_shop.bottomLeft, global_shop.bottomRight, 0)
 	
 	
 	if direction == DIRECTION.RIGHT:
@@ -124,6 +127,8 @@ func expand():
 		print(global_shop.bottomLeft)
 		print(global_shop.bottomRight)
 		
+		$"../TileMapLayer".fillSideWall(global_shop.topRight, global_shop.bottomRight, 0)
+		
 		
 	if direction == DIRECTION.LEFT:
 		chunksExpand = getNumChunksBetweenNodes(global_shop.topLeft.y, global_shop.bottomLeft.y)
@@ -146,11 +151,19 @@ func expand():
 			
 			$"../TileMapLayer".newChunk(startX, startY)
 			startY = startY + 10
+		$"../TileMapLayer".fillSideWall(global_shop.topLeft, global_shop.bottomLeft, 1)
 		
+	fixWalls()
 
 func _input(event):
 	pass
 	
+func fixWalls():
+	$"../TileMapLayer".fillHorizontalWall(global_shop.bottomLeft, global_shop.bottomRight, 0)
+	$"../TileMapLayer".fillHorizontalWall(global_shop.topLeft, global_shop.topRight, 1)
+	$"../TileMapLayer".fillHorizontalWall(global_shop.bottomLeft, global_shop.bottomRight, 0)
+	$"../TileMapLayer".fillSideWall(global_shop.topRight, global_shop.bottomRight, 0)
+	$"../TileMapLayer".fillSideWall(global_shop.topLeft, global_shop.bottomLeft, 1)
 
 func rightExpansion(body):
 	if body is Player and global_shop.getKitcoin() > price:
