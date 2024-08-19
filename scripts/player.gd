@@ -81,7 +81,8 @@ func takeShelf():
 		
 		$HoldBox.update_box_type(heldItem.itemType)
 		setNumInBox(numItemsTaken)
-		update_tooltip()
+		box_tooltip.set_tooltip_display(getBoxItem(), getNumInBox(), 10)
+		print("ITEM TYPE: " ,getBoxItem())
 
 func getShelf(shelf):
 	return shelf
