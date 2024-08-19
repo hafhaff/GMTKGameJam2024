@@ -121,3 +121,4 @@ libraries = {
 movie_quit_on_finish = true
 
 [node name="cha-ching" type="AudioStreamPlayer2D" parent="."]
+bus = &"SFX"
