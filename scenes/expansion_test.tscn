@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://clsegmf75ckjy"]
+[gd_scene load_steps=17 format=4 uid="uid://clsegmf75ckjy"]
 
 [ext_resource type="TileSet" uid="uid://cpf2j2rvdkkd1" path="res://textures/tilemaps/building_tiles.tres" id="1_nfa3s"]
 [ext_resource type="Script" path="res://scripts/expansionMap.gd" id="2_i6fl6"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://e13u0v8yrlfv" path="res://scenes/ui/selection_display.tscn" id="11_eptom"]
 [ext_resource type="Texture2D" uid="uid://bm0uofnnmns24" path="res://textures/objects/entrance.png" id="12_5gijb"]
 [ext_resource type="PackedScene" uid="uid://mwdwlaqsblh8" path="res://scenes/ui/hiring_menu.tscn" id="14_t8xff"]
+[ext_resource type="PackedScene" uid="uid://chciysutigfsd" path="res://scenes/objects/delivery_point.tscn" id="15_2nylf"]
 [ext_resource type="PackedScene" uid="uid://bed0fmavm0x6e" path="res://scenes/characters/kitty_display.tscn" id="15_c1qqx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h6lwn"]
@@ -30,20 +31,20 @@ script = ExtResource("2_i6fl6")
 [node name="ShelfHolder" type="Node" parent="."]
 
 [node name="Shelf" parent="ShelfHolder" instance=ExtResource("3_eyec8")]
-position = Vector2(214, 105)
+position = Vector2(161, 256)
 itemNum = 6
 
 [node name="Shelf2" parent="ShelfHolder" instance=ExtResource("3_eyec8")]
-position = Vector2(211, 34)
+position = Vector2(160, 128)
 
 [node name="Shelf3" parent="ShelfHolder" instance=ExtResource("3_eyec8")]
-position = Vector2(215, 189)
+position = Vector2(164, 197)
 itemNum = 4
 
 [node name="CounterHolder" type="Node" parent="."]
 
 [node name="Counter" parent="CounterHolder" instance=ExtResource("4_rsasi")]
-position = Vector2(74, 67)
+position = Vector2(65, 160)
 
 [node name="BoxHolder" type="Node" parent="."]
 
@@ -75,15 +76,17 @@ position = Vector2(81, -18)
 scale = Vector2(0.9375, 0.9375)
 texture = ExtResource("12_5gijb")
 
-[node name="CanvasLayer2" parent="." node_paths=PackedStringArray("selectionDisplay", "hiringMenu") instance=ExtResource("10_54oqk")]
+[node name="CanvasLayer2" parent="." node_paths=PackedStringArray("selectionDisplay", "hiringMenu", "tilemap") instance=ExtResource("10_54oqk")]
 selectionDisplay = NodePath("../SelectionDisplay2")
 hiringMenu = NodePath("../CanvasLayer3")
+tilemap = NodePath("../TileMapLayer")
 
 [node name="SelectionDisplay2" parent="." instance=ExtResource("11_eptom")]
 
-[node name="CanvasLayer3" parent="." node_paths=PackedStringArray("selectionDisplay", "constructionMenu") instance=ExtResource("14_t8xff")]
+[node name="CanvasLayer3" parent="." node_paths=PackedStringArray("selectionDisplay", "constructionMenu", "tilemap") instance=ExtResource("14_t8xff")]
 selectionDisplay = NodePath("../KittyDisplay")
 constructionMenu = NodePath("../CanvasLayer2")
+tilemap = NodePath("../TileMapLayer")
 
 [node name="KittyDisplay" parent="." instance=ExtResource("15_c1qqx")]
 z_index = 10
@@ -135,6 +138,10 @@ texture = ExtResource("8_d2idq")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftExpand"]
 position = Vector2(4, 145)
 shape = SubResource("RectangleShape2D_h6lwn")
+
+[node name="Node2D" parent="." instance=ExtResource("15_2nylf")]
+position = Vector2(225, 1)
+enableBoxGeneration = true
 
 [connection signal="visibilityToggled" from="CanvasLayer2" to="RightExpand" method="buildModeToggled"]
 [connection signal="visibilityToggled" from="CanvasLayer2" to="DownExpand" method="_on_canvas_layer_2_visibility_toggled"]
