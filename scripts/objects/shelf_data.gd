@@ -108,8 +108,6 @@ func takeFromShelf(numItemsWanted) -> int:
 	# May need to remember to change this if the standard for max items per box is changed
 	var maxItemsInBox: int = 10
 	
-	print("SHELFTAKE Num in shelves before taking: ", self.itemNum)
-	
 	if numItemsWanted <= self.itemNum:
 		self.itemNum -= numItemsWanted
 		itemsToGive = numItemsWanted
@@ -125,9 +123,6 @@ func takeFromShelf(numItemsWanted) -> int:
 		self.itemNum = 0
 		global_shop._handleEmptyShelf(self)
 		$ShelvedItems.updateStockSprite()
-	
-	print("SHELFTAKE Player took ", itemsToGive)
-	print("SHELFTAKE Num in shelves after taking: ", self.itemNum)
 	
 	update_tooltip()
 	
@@ -170,7 +165,7 @@ func setup_tooltip(switch: bool, positionArg: Vector2 = Vector2.ZERO):
 	
 	# Only perform actions if the tooltip exists to prevent crashes
 	if %StorageUnitTooltip:
-		var tooltip: StorageUnitTooltip = %StorageUnitTooltip
+		var tooltip: StorageTooltip = %StorageUnitTooltip
 		tooltip.global_position = positionArg
 		tooltip.visible = switch
 		tooltip.set_tooltip_display(self.itemType, self.itemNum, self.maxItemCount)

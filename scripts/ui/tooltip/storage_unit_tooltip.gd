@@ -1,13 +1,16 @@
 extends Panel
 
-class_name StorageUnitTooltip
+class_name StorageTooltip
 
-@onready var label: Label = $Label
+@onready var name_label: Label = $Name
+@onready var capacity: Label = $Capacity
+
 var item_names: Array = ["Canned Food", "Cereal", "Catnip"] 
-var format_string = "%s \n %s/%s"
+var format_string = "%s/%s"
 
 func set_tooltip_display(type: int, current: int, max: int):
-	label.text = format_string % [get_item_name(type, current), current, max]
+	name_label.text = get_item_name(type, current)
+	capacity.text = format_string % [current, max]
 
 func get_item_name(index: int, current:int) -> String:
 	var name: String = "Unknown"

@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://e13u0v8yrlfv" path="res://scenes/ui/selection_display.tscn" id="12_ltlba"]
 [ext_resource type="PackedScene" uid="uid://mwdwlaqsblh8" path="res://scenes/ui/hiring_menu.tscn" id="13_rvsx1"]
 [ext_resource type="PackedScene" uid="uid://bed0fmavm0x6e" path="res://scenes/characters/kitty_display.tscn" id="14_looae"]
-[ext_resource type="PackedScene" uid="uid://blawy58ur83h2" path="res://scenes/ui/storage_unit_tooltip.tscn" id="15_o8y7b"]
+[ext_resource type="PackedScene" uid="uid://blawy58ur83h2" path="res://scenes/ui/tooltip/storage_unit_tooltip.tscn" id="15_o8y7b"]
 
 [node name="ai_testbed" type="Node2D"]
 y_sort_enabled = true

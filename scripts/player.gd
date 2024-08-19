@@ -18,6 +18,7 @@ var zoom_speed = Vector2(0.300001, 0.300001)
 
 @onready var camera = $Camera2D
 @onready var kittyDisplay: KittyDisplay = $KittyDisplay
+@onready var box_tooltip: StorageTooltip = $BoxTooltip
 
 func _ready():
 	position = Vector2(100, 100)
@@ -77,8 +78,10 @@ func takeShelf():
 		pickUpBox(newBox)
 		
 		heldItem.itemType = curShelf.itemType
+		
 		$HoldBox.update_box_type(heldItem.itemType)
 		setNumInBox(numItemsTaken)
+		update_tooltip()
 
 func getShelf(shelf):
 	return shelf
@@ -97,33 +100,36 @@ func getBoxItem():
 		return heldItem.itemType
 
 func deleteEmptyBox():
+	setup_tooltip(false)
 	$HoldBox.visible = false
 	heldItem.removeSelf()
 	heldItem = null
+	
 
 func dropBox():
 	if heldItem == null: 
 		pass
 	else: 
+		setup_tooltip(false)
 		$HoldBox.visible = false
 		heldItem.disablePickup()
 		heldItem.global_position = self.global_position
+		heldItem.update_box_type()
 		print (heldItem.position)
 		heldItem.showSprite()
 		heldItem.pickUpCoolDown()
 		heldItem = null
 		print("dropping")
-		
 
 func pickUpBox (box: Box):
 	heldItem = box
+	setup_tooltip(true)
 	$HoldBox.update_box_type(getBoxItem())
 	$HoldBox.visible = true
 	box.hideSprite()
 	box.disablePickup()
 	
 	print(heldItem.getName())
-	
 
 func _input(event: InputEvent):
 	if event is InputEventMouseButton or Input:
@@ -134,5 +140,11 @@ func _input(event: InputEvent):
 			if event.is_action_pressed('zoom_in'):
 				if camera.zoom < zoom_max:
 					camera.zoom += zoom_speed
-				
-	
+
+func update_tooltip():
+	if heldItem == Box:
+		setup_tooltip(true)
+
+func setup_tooltip(switch: bool):
+	box_tooltip.visible = switch
+	box_tooltip.set_tooltip_display(heldItem.itemType, getNumInBox(), 10)

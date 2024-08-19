@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://ci8ldm6uxfv0i"]
+[gd_scene load_steps=8 format=3 uid="uid://ci8ldm6uxfv0i"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_7xdi6"]
 [ext_resource type="PackedScene" uid="uid://bed0fmavm0x6e" path="res://scenes/characters/kitty_display.tscn" id="2_h6ns5"]
 [ext_resource type="PackedScene" uid="uid://b6xpligwm2mx6" path="res://scenes/objects/box.tscn" id="2_qypj0"]
 [ext_resource type="Texture2D" uid="uid://bsl2t6vuw1kqn" path="res://textures/objects/box.png" id="3_jq1b1"]
 [ext_resource type="PackedScene" uid="uid://bbvoxcvfwybuw" path="res://scenes/objects/box_display.tscn" id="4_01twm"]
+[ext_resource type="PackedScene" uid="uid://duicci3rxpyyq" path="res://scenes/ui/tooltip/box_tooltip.tscn" id="6_s1h5o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_doxln"]
 size = Vector2(16, 10)
@@ -38,3 +39,9 @@ frame = 3
 visible = false
 z_index = 1
 position = Vector2(3, 17)
+
+[node name="BoxTooltip" parent="." instance=ExtResource("6_s1h5o")]
+visible = false
+z_index = 5
+offset_top = 18.0
+offset_bottom = 38.0
