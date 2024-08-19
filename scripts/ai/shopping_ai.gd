@@ -57,23 +57,24 @@ func _generateTarget():
 	if !_shoppingDone():
 		target = _selectShelf()
 		if target == null:
+			printt("Did not find shelf", self, shoppingList, itemsHeld)
 			shoppingTimer.start(3)
 			return
 	else:
 		target = _selectShortestCounter()
 		if target == null:
+			printt("Did not find counter", self, target)
 			shoppingTimer.start(3)
 			return
 		waitForCheckout = true
 		target._addToWaitList(self)	#Handles navigation target setting
 
-	printt(self, target)
 	kittyDisplay.is_walking = true
 
 func _selectShelf() -> Shelf:
 	for item in itemsHeld:
-		if itemsHeld[item] == shoppingList[item]:
-			continue
+		#if itemsHeld[item] == shoppingList[item]:
+		#	continue
 		for shelf in shelves:
 			if shelf.itemType == item && shelf.itemNum > 0:
 				navigation.target_position = shelf.interactPos
