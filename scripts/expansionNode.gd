@@ -20,6 +20,8 @@ var price = 10
 var startX
 var startY
 
+var canBuild = false
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
@@ -174,3 +176,10 @@ func rightExpansion(body):
 		global_shop.addChunkNum(1)
 	else:
 		pass # Replace with function body.
+		
+
+
+
+func _on_canvas_layer_2_visibility_changed():
+	print("toggle")
+	pass # Replace with function body.
