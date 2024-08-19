@@ -73,8 +73,8 @@ func _selectShelf() -> Shelf:
 	for item in itemsHeld:
 		var shelves: Array = global_shop.shopShelves.values().duplicate()
 		shelves.shuffle()
-		#if itemsHeld[item] == shoppingList[item]:
-		#	continue
+		if itemsHeld[item] == shoppingList[item]:
+			continue
 		for shelf in shelves:
 			#printt("katto lookin at shelves", self, shelf.itemType == item, shelf.itemNum > 0)
 			if shelf.itemType == item && shelf.itemNum > 0:
