@@ -1,0 +1,131 @@
+[gd_scene load_steps=15 format=4 uid="uid://clsegmf75ckjy"]
+
+[ext_resource type="TileSet" uid="uid://cpf2j2rvdkkd1" path="res://textures/tilemaps/building_tiles.tres" id="1_nfa3s"]
+[ext_resource type="Script" path="res://scripts/expansionMap.gd" id="2_i6fl6"]
+[ext_resource type="PackedScene" uid="uid://dn0lkdgorj8pf" path="res://scenes/objects/counter.tscn" id="4_rsasi"]
+[ext_resource type="PackedScene" uid="uid://ci8ldm6uxfv0i" path="res://scenes/player.tscn" id="6_20d4p"]
+[ext_resource type="Script" path="res://scripts/expansionNode.gd" id="7_nk6tk"]
+[ext_resource type="Texture2D" uid="uid://hnpypiil78wy" path="res://icon.svg" id="8_d2idq"]
+[ext_resource type="PackedScene" uid="uid://du8832mjcy7sc" path="res://scenes/ui/currency_display.tscn" id="10_7w4tk"]
+[ext_resource type="PackedScene" uid="uid://dg3u5q8y8c1yu" path="res://scenes/ui/construction_menu.tscn" id="10_54oqk"]
+[ext_resource type="PackedScene" uid="uid://e13u0v8yrlfv" path="res://scenes/ui/selection_display.tscn" id="11_eptom"]
+[ext_resource type="Texture2D" uid="uid://bm0uofnnmns24" path="res://textures/objects/entrance.png" id="12_5gijb"]
+[ext_resource type="PackedScene" uid="uid://mwdwlaqsblh8" path="res://scenes/ui/hiring_menu.tscn" id="14_t8xff"]
+[ext_resource type="PackedScene" uid="uid://chciysutigfsd" path="res://scenes/objects/delivery_point.tscn" id="15_2nylf"]
+[ext_resource type="PackedScene" uid="uid://bed0fmavm0x6e" path="res://scenes/characters/kitty_display.tscn" id="15_c1qqx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h6lwn"]
+size = Vector2(11, 9)
+
+[node name="ExpansionTest" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAAAAAAAAEAAMAAAAAAAEAAAAEAAMAAAAAAAIAAAAEAAMAAAAAAAMAAAAEAAMAAAAAAAQAAAAEAAMAAAAAAAUAAAAEAAMAAAAAAAYAAAAEAAMAAAAAAAcAAAAEAAMAAAAAAAgAAAAEAAMAAAAAAAkAAAAEAAMAAAABAAkAAAAEAAMAAAACAAkAAAAEAAMAAAADAAkAAAAEAAMAAAAEAAkAAAAEAAMAAAAFAAkAAAAEAAMAAAAGAAkAAAAEAAMAAAAHAAkAAAAEAAMAAAAIAAkAAAAEAAMAAAAJAAkAAAAEAAMAAAABAAAAAAAEAAMAAAABAAEAAAAEAAMAAAABAAIAAAAEAAMAAAABAAMAAAAEAAMAAAABAAQAAAAEAAMAAAABAAUAAAAEAAMAAAABAAYAAAAEAAMAAAABAAcAAAAEAAMAAAABAAgAAAAEAAMAAAACAAAAAAAEAAMAAAACAAEAAAAEAAMAAAACAAIAAAAEAAMAAAACAAMAAAAEAAMAAAACAAQAAAAEAAMAAAACAAUAAAAEAAMAAAACAAYAAAAEAAMAAAACAAcAAAAEAAMAAAACAAgAAAAEAAMAAAADAAAAAAAEAAMAAAADAAEAAAAEAAMAAAADAAIAAAAEAAMAAAADAAMAAAAEAAMAAAADAAQAAAAEAAMAAAADAAUAAAAEAAMAAAADAAYAAAAEAAMAAAADAAcAAAAEAAMAAAADAAgAAAAEAAMAAAAEAAAAAAAEAAMAAAAEAAEAAAAEAAMAAAAEAAIAAAAEAAMAAAAEAAMAAAAEAAMAAAAEAAQAAAAEAAMAAAAEAAUAAAAEAAMAAAAEAAYAAAAEAAMAAAAEAAcAAAAEAAMAAAAEAAgAAAAEAAMAAAAFAAAAAAAEAAMAAAAFAAEAAAAEAAMAAAAFAAIAAAAEAAMAAAAFAAMAAAAEAAMAAAAFAAQAAAAEAAMAAAAFAAUAAAAEAAMAAAAFAAYAAAAEAAMAAAAFAAcAAAAEAAMAAAAFAAgAAAAEAAMAAAAGAAAAAAAEAAMAAAAGAAEAAAAEAAMAAAAGAAIAAAAEAAMAAAAGAAMAAAAEAAMAAAAGAAQAAAAEAAMAAAAGAAUAAAAEAAMAAAAGAAYAAAAEAAMAAAAGAAcAAAAEAAMAAAAGAAgAAAAEAAMAAAAHAAAAAAAEAAMAAAAHAAEAAAAEAAMAAAAHAAIAAAAEAAMAAAAHAAMAAAAEAAMAAAAHAAQAAAAEAAMAAAAHAAUAAAAEAAMAAAAHAAYAAAAEAAMAAAAHAAcAAAAEAAMAAAAHAAgAAAAEAAMAAAAIAAAAAAAEAAMAAAAIAAEAAAAEAAMAAAAIAAIAAAAEAAMAAAAIAAMAAAAEAAMAAAAIAAQAAAAEAAMAAAAIAAUAAAAEAAMAAAAIAAYAAAAEAAMAAAAIAAcAAAAEAAMAAAAIAAgAAAAEAAMAAAAJAAAAAAAEAAMAAAAJAAEAAAAEAAMAAAAJAAIAAAAEAAMAAAAJAAMAAAAEAAMAAAAJAAQAAAAEAAMAAAAJAAUAAAAEAAMAAAAJAAYAAAAEAAMAAAAJAAcAAAAEAAMAAAAJAAgAAAAEAAMAAAAAAP//AAACAAMAAAABAP//AAACAAMAAAACAP//AAACAAMAAAADAP//AAACAAMAAAAEAP//AAACAAMAAAAFAP//AAACAAMAAAAGAP//AAACAAMAAAAHAP//AAACAAMAAAAIAP//AAACAAMAAAAJAP//AAACAAMAAAD//wAAAAACAAEAAAD//wEAAAACAAEAAAD//wIAAAACAAEAAAD//wMAAAACAAEAAAD//wQAAAACAAEAAAD//wUAAAACAAEAAAD//wYAAAACAAEAAAD//wcAAAACAAEAAAD//wgAAAACAAEAAAD//wkAAAACAAEAAAAKAP//AAAEAAAAAAD/////AAACAAAAAAAKAAAAAAAEAAEAAAAKAAEAAAAEAAEAAAAKAAIAAAAEAAEAAAAKAAMAAAAEAAEAAAAKAAQAAAAEAAEAAAAKAAUAAAAEAAEAAAAKAAYAAAAEAAEAAAAKAAcAAAAEAAEAAAAKAAgAAAAEAAEAAAAKAAkAAAAEAAEAAAADAAoAAAADAAIAAAAEAAoAAAADAAIAAAAFAAoAAAADAAIAAAAGAAoAAAADAAIAAAAHAAoAAAADAAIAAAAIAAoAAAADAAIAAAAJAAoAAAADAAIAAAAAAAoAAAADAAIAAAABAAoAAAADAAIAAAACAAoAAAADAAIAAAA=")
+tile_set = ExtResource("1_nfa3s")
+rendering_quadrant_size = 32
+navigation_visibility_mode = 1
+script = ExtResource("2_i6fl6")
+
+[node name="ShelfHolder" type="Node" parent="."]
+
+[node name="CounterHolder" type="Node" parent="."]
+
+[node name="Counter" parent="CounterHolder" instance=ExtResource("4_rsasi")]
+position = Vector2(65, 160)
+
+[node name="BoxHolder" type="Node" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("6_20d4p")]
+position = Vector2(95, 26)
+speed = 220.0
+zoom_min = Vector2(0.2, 0.2)
+zoom_max = Vector2(10, 10)
+
+[node name="CanvasLayer" parent="." node_paths=PackedStringArray("selectionDisplay") instance=ExtResource("10_54oqk")]
+selectionDisplay = NodePath("../SelectionDisplay")
+
+[node name="Currency Display" parent="." instance=ExtResource("10_7w4tk")]
+
+[node name="SelectionDisplay" parent="." instance=ExtResource("11_eptom")]
+position = Vector2(174, 172)
+
+[node name="Entrance" type="Sprite2D" parent="."]
+position = Vector2(81, -18)
+scale = Vector2(0.9375, 0.9375)
+texture = ExtResource("12_5gijb")
+
+[node name="ConstructionMen" parent="." node_paths=PackedStringArray("selectionDisplay", "hiringMenu", "tilemap") instance=ExtResource("10_54oqk")]
+selectionDisplay = NodePath("../SelectionDisplay2")
+hiringMenu = NodePath("../HiringMen")
+tilemap = NodePath("../TileMapLayer")
+
+[node name="SelectionDisplay2" parent="." instance=ExtResource("11_eptom")]
+position = Vector2(137, 101)
+
+[node name="HiringMen" parent="." node_paths=PackedStringArray("selectionDisplay", "constructionMenu", "tilemap") instance=ExtResource("14_t8xff")]
+selectionDisplay = NodePath("../KittyDisplay")
+constructionMenu = NodePath("../ConstructionMen")
+tilemap = NodePath("../TileMapLayer")
+
+[node name="KittyDisplay" parent="." instance=ExtResource("15_c1qqx")]
+z_index = 10
+y_sort_enabled = false
+
+[node name="RightExpand" type="Area2D" parent="."]
+collision_layer = 6
+collision_mask = 7
+script = ExtResource("7_nk6tk")
+direction = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="RightExpand"]
+position = Vector2(315, 150)
+scale = Vector2(0.109375, 0.101563)
+texture = ExtResource("8_d2idq")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightExpand"]
+position = Vector2(316, 150)
+shape = SubResource("RectangleShape2D_h6lwn")
+metadata/_edit_lock_ = true
+
+[node name="DownExpand" type="Area2D" parent="."]
+collision_layer = 6
+collision_mask = 7
+script = ExtResource("7_nk6tk")
+direction = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="DownExpand"]
+position = Vector2(159, 316)
+scale = Vector2(0.109375, 0.101563)
+texture = ExtResource("8_d2idq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DownExpand"]
+position = Vector2(159, 316)
+shape = SubResource("RectangleShape2D_h6lwn")
+
+[node name="LeftExpand" type="Area2D" parent="."]
+collision_layer = 6
+collision_mask = 7
+script = ExtResource("7_nk6tk")
+direction = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="LeftExpand"]
+position = Vector2(5.00002, 145)
+scale = Vector2(0.109375, 0.101563)
+texture = ExtResource("8_d2idq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftExpand"]
+position = Vector2(4, 145)
+shape = SubResource("RectangleShape2D_h6lwn")
+
+[node name="Node2D" parent="." instance=ExtResource("15_2nylf")]
+position = Vector2(225, 1)
+enableBoxGeneration = true
+
+[connection signal="visibilityToggled" from="ConstructionMen" to="RightExpand" method="buildModeToggled"]
+[connection signal="visibilityToggled" from="ConstructionMen" to="DownExpand" method="_on_canvas_layer_2_visibility_toggled"]
+[connection signal="visibilityToggled" from="ConstructionMen" to="LeftExpand" method="_on_canvas_layer_2_visibility_toggled"]
+[connection signal="visibility_changed" from="ConstructionMen" to="RightExpand" method="_on_canvas_layer_2_visibility_changed"]
+[connection signal="body_entered" from="RightExpand" to="RightExpand" method="rightExpansion"]
+[connection signal="body_entered" from="DownExpand" to="DownExpand" method="rightExpansion"]
+[connection signal="body_entered" from="LeftExpand" to="LeftExpand" method="rightExpansion"]

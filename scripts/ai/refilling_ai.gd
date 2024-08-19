@@ -13,6 +13,8 @@ var heldItem: Box = null
 @onready var lookForEmptyShelf: Timer = $SearchTimer
 @onready var boxHoldSprite: BoxDisplay = $HoldBox
 
+var wage = global_shop.prices["restocker"]
+
 func _ready():
 	kittyDisplay.randomize_look()
 	kittyDisplay.set_role(kittyDisplay.KittyRole.RESTOCKER)
@@ -105,3 +107,11 @@ func _dropItem():
 	heldItem.position = self.global_position
 	heldItem.showSprite()
 	heldItem.pickUpCoolDown()
+
+func payWage():
+	global_shop.buy(wage)
+	pass
+
+func _on_timer_timeout():
+	payWage()
+	pass # Replace with function body.
