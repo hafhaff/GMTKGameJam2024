@@ -152,9 +152,11 @@ visible = false
 position = Vector2(111, 14)
 
 [node name="BoxTooltip" parent="." instance=ExtResource("18_legp7")]
+unique_name_in_owner = true
 visible = false
 
 [node name="StorageUnitTooltip" parent="." instance=ExtResource("19_bkvnn")]
+unique_name_in_owner = true
 visible = false
 
 [connection signal="visibilityToggled" from="ConstructionMen" to="RightExpand" method="buildModeToggled"]
