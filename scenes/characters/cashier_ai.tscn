@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://b0ic68c7v5ojg"]
+[gd_scene load_steps=5 format=3 uid="uid://b0ic68c7v5ojg"]
 
 [ext_resource type="Script" path="res://scripts/ai/cashier_ai.gd" id="1_l2gmu"]
 [ext_resource type="PackedScene" uid="uid://bed0fmavm0x6e" path="res://scenes/characters/kitty_display.tscn" id="2_c3wm5"]
+[ext_resource type="Script" path="res://scenes/characters/wage_timer.gd" id="3_s2uwy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qa1wj"]
 radius = 4.0
@@ -24,3 +25,9 @@ path_desired_distance = 1.0
 target_desired_distance = 1.0
 path_postprocessing = 1
 simplify_path = true
+
+[node name="wageTimer" type="Timer" parent="."]
+autostart = true
+script = ExtResource("3_s2uwy")
+
+[connection signal="timeout" from="wageTimer" to="." method="_on_wage_timer_timeout"]

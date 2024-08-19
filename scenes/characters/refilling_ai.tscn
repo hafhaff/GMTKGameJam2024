@@ -37,6 +37,7 @@ simplify_path = true
 radius = 32.0
 
 [node name="Timer" type="Timer" parent="."]
+autostart = true
 script = ExtResource("4_oyqt3")
 
 [connection signal="timeout" from="SearchTimer" to="." method="_lookForShelf"]
