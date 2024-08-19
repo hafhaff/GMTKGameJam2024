@@ -30,6 +30,7 @@ var topLeft = Vector2i(0,0)
 var topRight = Vector2i(9,0)
 var bottomLeft = Vector2i(0,9)
 var bottomRight = Vector2i(9,9)
+var autoBuyBoxes: Dictionary = {}
 
 signal kitcoinUpdated(float)
 signal newEmptyShelf(shelf)
@@ -96,6 +97,12 @@ func _createBoxes(types: Array[ItemGlobal.FoodTypes]):
 				break
 			deliveryPoint._generateNewBox(types[0])
 			types.remove_at(0)
+
+func _boxAutoBuy(type: int, amount: int):
+	if !autoBuyBoxes.has(type):
+		autoBuyBoxes[type] = amount
+		return
+	autoBuyBoxes[type] = amount
 
 func _handleBoxPickup(box: Box, pickedUp: bool):
 	#In our list, but picked up, we remove from our list
