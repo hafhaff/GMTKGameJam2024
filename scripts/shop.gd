@@ -135,3 +135,17 @@ func getKitcoin():
 func addChunkNum(num):
 	chunkNum += num
 	
+func _clearShop():
+	shopShelves.clear()
+	shopCounters.clear()
+	shopDeliveryPoints.clear()
+	emptyCounters.clear()
+	kitcoins = 100
+	emptyShelves.clear()
+	deliveryPoints.clear()
+	chunkNum = 1
+	boxes.clear()
+	topLeft = Vector2i(0,0)
+	topRight = Vector2i(9,0)
+	bottomLeft = Vector2i(0,9)
+	bottomRight = Vector2i(9,9)

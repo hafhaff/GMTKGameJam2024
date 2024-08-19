@@ -51,4 +51,5 @@ func _switchScenes(value: int = 0):
 	await get_tree().process_frame
 	await get_tree().process_frame
 	await get_tree().process_frame
+	global_shop._clearShop()
 	get_tree().change_scene_to_file(scenes[value])
