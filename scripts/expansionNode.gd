@@ -221,8 +221,9 @@ func _on_canvas_layer_2_visibility_toggled(bool):
 func _on_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and enabled:
 		if event.is_pressed():
-			global_shop.buy(global_shop.prices["expansion"])
-			expand()
+			if global_shop.buy(global_shop.prices["expansion"]):
+				expand()
+			
 	pass # Replace with function body.s
 
 
