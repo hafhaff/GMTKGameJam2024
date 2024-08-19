@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://chciysutigfsd"]
+
+[ext_resource type="Script" path="res://scripts/objects/delivery_point.gd" id="1_lilm2"]
+[ext_resource type="PackedScene" uid="uid://b6xpligwm2mx6" path="res://scenes/objects/box.tscn" id="2_dk4pd"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_lpvrk"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_nm8wt"]
+width = 96
+height = 96
+noise = SubResource("FastNoiseLite_lpvrk")
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_lilm2")
+boxTemplate = ExtResource("2_dk4pd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.411765)
+position = Vector2(48, 48)
+texture = SubResource("NoiseTexture2D_nm8wt")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true

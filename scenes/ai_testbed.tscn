@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://de1beg5m18qmu"]
+[gd_scene load_steps=15 format=4 uid="uid://de1beg5m18qmu"]
 
 [ext_resource type="TileSet" uid="uid://cpf2j2rvdkkd1" path="res://textures/tilemaps/building_tiles.tres" id="1_0iapw"]
 [ext_resource type="Script" path="res://scripts/navmesh_updater.gd" id="3_t70eu"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://ci8ldm6uxfv0i" path="res://scenes/player.tscn" id="9_akcb2"]
 [ext_resource type="PackedScene" uid="uid://duc186117kn0h" path="res://scenes/logic/spawn_manager.tscn" id="9_n4gvh"]
 [ext_resource type="PackedScene" uid="uid://du8832mjcy7sc" path="res://scenes/ui/currency_display.tscn" id="9_nwyhr"]
-[ext_resource type="PackedScene" uid="uid://b6xpligwm2mx6" path="res://scenes/objects/box.tscn" id="10_2pp0e"]
 [ext_resource type="PackedScene" uid="uid://d3pmwvyul36cy" path="res://scenes/characters/refilling_ai.tscn" id="11_u6mje"]
 [ext_resource type="PackedScene" uid="uid://dg3u5q8y8c1yu" path="res://scenes/ui/construction_menu.tscn" id="12_gfxdq"]
 [ext_resource type="PackedScene" uid="uid://mwdwlaqsblh8" path="res://scenes/ui/hiring_menu.tscn" id="13_rpqky"]
@@ -102,78 +101,6 @@ position = Vector2(563, 224)
 
 [node name="Boxes" type="Node" parent="."]
 
-[node name="Box1" parent="Boxes" instance=ExtResource("10_2pp0e")]
-position = Vector2(205, 76)
-
-[node name="Box2" parent="Boxes" instance=ExtResource("10_2pp0e")]
-position = Vector2(226, 76)
-
-[node name="Box3" parent="Boxes" instance=ExtResource("10_2pp0e")]
-position = Vector2(248, 76)
-
-[node name="Box4" parent="Boxes" instance=ExtResource("10_2pp0e")]
-position = Vector2(268, 76)
-
-[node name="Box5" parent="Boxes" instance=ExtResource("10_2pp0e")]
-position = Vector2(287, 76)
-
-[node name="Box6" parent="Boxes" instance=ExtResource("10_2pp0e")]
-position = Vector2(308, 76)
-
-[node name="Box7" parent="Boxes" instance=ExtResource("10_2pp0e")]
-position = Vector2(329, 76)
-
-[node name="Box8" parent="Boxes" instance=ExtResource("10_2pp0e")]
-position = Vector2(349, 76)
-itemType = 2
-
-[node name="Box9" parent="Boxes" instance=ExtResource("10_2pp0e")]
-position = Vector2(368, 76)
-itemType = 2
-
-[node name="Box10" parent="Boxes" instance=ExtResource("10_2pp0e")]
-position = Vector2(388, 76)
-itemType = 2
-
-[node name="Box11" parent="Boxes" instance=ExtResource("10_2pp0e")]
-position = Vector2(205, 60)
-
-[node name="Box12" parent="Boxes" instance=ExtResource("10_2pp0e")]
-position = Vector2(226, 60)
-itemType = 1
-
-[node name="Box13" parent="Boxes" instance=ExtResource("10_2pp0e")]
-position = Vector2(248, 60)
-itemType = 1
-
-[node name="Box14" parent="Boxes" instance=ExtResource("10_2pp0e")]
-position = Vector2(268, 60)
-itemType = 1
-
-[node name="Box15" parent="Boxes" instance=ExtResource("10_2pp0e")]
-position = Vector2(287, 60)
-itemType = 1
-
-[node name="Box16" parent="Boxes" instance=ExtResource("10_2pp0e")]
-position = Vector2(308, 60)
-itemType = 1
-
-[node name="Box17" parent="Boxes" instance=ExtResource("10_2pp0e")]
-position = Vector2(329, 60)
-itemType = 1
-
-[node name="Box18" parent="Boxes" instance=ExtResource("10_2pp0e")]
-position = Vector2(349, 60)
-itemType = 1
-
-[node name="Box19" parent="Boxes" instance=ExtResource("10_2pp0e")]
-position = Vector2(368, 60)
-itemType = 1
-
-[node name="Box20" parent="Boxes" instance=ExtResource("10_2pp0e")]
-position = Vector2(388, 61)
-itemType = 1
-
 [node name="Refilling AI" parent="." instance=ExtResource("11_u6mje")]
 position = Vector2(431, 178)
 
@@ -200,4 +127,5 @@ z_index = 10
 y_sort_enabled = false
 
 [node name="Node2D" parent="." instance=ExtResource("15_uj7gf")]
-position = Vector2(259, 293)
+position = Vector2(148, 10)
+enableBoxGeneration = true
