@@ -47,6 +47,7 @@ selectionDisplay = NodePath("../SelectionDisplay")
 [node name="Currency Display" parent="." instance=ExtResource("10_7w4tk")]
 
 [node name="SelectionDisplay" parent="." instance=ExtResource("11_eptom")]
+position = Vector2(174, 172)
 
 [node name="Entrance" type="Sprite2D" parent="."]
 position = Vector2(81, -18)
@@ -59,6 +60,7 @@ hiringMenu = NodePath("../HiringMen")
 tilemap = NodePath("../TileMapLayer")
 
 [node name="SelectionDisplay2" parent="." instance=ExtResource("11_eptom")]
+position = Vector2(137, 101)
 
 [node name="HiringMen" parent="." node_paths=PackedStringArray("selectionDisplay", "constructionMenu", "tilemap") instance=ExtResource("14_t8xff")]
 selectionDisplay = NodePath("../KittyDisplay")

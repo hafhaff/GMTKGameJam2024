@@ -6,6 +6,15 @@ var shopShelves: Dictionary = {}	#dictionary
 var shopCounters: Dictionary = {}	#dictionary
 var shopDeliveryPoints: Dictionary = {}	#dictionary
 
+var prices = {
+	"restocker" : 2,
+	"cashier" : 1,
+	"counter" : 10,
+	"shelf" : 5,
+	"loadingZone" : 10,
+	"box" : 2 #idk this is for 5 boxes maybe
+}
+
 var emptyCounters: Array[Counter] = []
 var tileMap: NavmeshUpdater = null
 var kitcoins: float = 100.0
@@ -100,6 +109,14 @@ func _addKitcoin(addition: float):
 func _removeKitcoin(addition: float):
 	kitcoins -= addition
 	kitcoinUpdated.emit(kitcoins)
+	
+func buy(cost):
+	if kitcoins >= cost:
+		kitcoins = kitcoins - cost
+		return true
+	else:
+		return false
+		print('buy failed, not enough money')
 
 func _calcNewPrice(value: int) -> bool:
 	if kitcoins + value < 0:

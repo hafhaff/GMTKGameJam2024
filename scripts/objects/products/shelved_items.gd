@@ -23,6 +23,10 @@ func updateStockSprite():
 
 
 func get_filled_percentage() -> float:
+	
+	if shelf.itemNum == null or shelf.maxItemCount == null:
+		return 0
+	
 	return shelf.itemNum / shelf.maxItemCount
 
 func update_product_type(arg: ItemGlobal.FoodTypes) -> void:
