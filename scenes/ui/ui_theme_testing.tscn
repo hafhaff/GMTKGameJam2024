@@ -32,8 +32,9 @@ text = "WHATTTT???????"
 layout_mode = 0
 offset_left = 49.0
 offset_right = 89.0
-offset_bottom = 13.0
+offset_bottom = 8.0
 theme = ExtResource("1_1nq8a")
+theme_type_variation = &"PanelSolidBlack"
 
 [node name="Label" type="Label" parent="Panel"]
 layout_mode = 1

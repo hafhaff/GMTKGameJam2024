@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=13 format=3 uid="uid://0rnnetbtuvds"]
+[gd_resource type="Theme" load_steps=16 format=3 uid="uid://0rnnetbtuvds"]
 
 [ext_resource type="Texture2D" uid="uid://yc1gyefhm55i" path="res://textures/ui/ui_buttons_atlas.tres" id="1_qrr4v"]
 [ext_resource type="Texture2D" uid="uid://vpnqef7mwa2" path="res://textures/ui/progress_bar_atlas.tres" id="2_0j1pr"]
@@ -53,6 +53,29 @@ texture_margin_right = 3.0
 texture_margin_bottom = 3.0
 region_rect = Rect2(8, 0, 8, 8)
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lrnq3"]
+texture = ExtResource("2_fecjf")
+texture_margin_left = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+region_rect = Rect2(0, 0, 8, 8)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8d6ii"]
+texture = ExtResource("2_fecjf")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+region_rect = Rect2(8, 0, 8, 8)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x03m3"]
+texture = ExtResource("2_fecjf")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+region_rect = Rect2(24, 0, 8, 8)
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_04mmy"]
 texture = ExtResource("2_0j1pr")
 texture_margin_left = 3.0
@@ -84,8 +107,13 @@ Button/styles/focus = SubResource("StyleBoxTexture_qeux1")
 Button/styles/hover = SubResource("StyleBoxTexture_hvbq3")
 Button/styles/normal = SubResource("StyleBoxTexture_8npvc")
 Button/styles/pressed = SubResource("StyleBoxTexture_ls5nr")
-Label/constants/outline_size = 2
 Panel/styles/panel = SubResource("StyleBoxTexture_73k5m")
+PanelSolidBlack/base_type = &"Panel"
+PanelSolidBlack/styles/panel = SubResource("StyleBoxTexture_lrnq3")
+PanelWhiteBorderless/base_type = &"Panel"
+PanelWhiteBorderless/styles/panel = SubResource("StyleBoxTexture_8d6ii")
+PanelWhiteRound/base_type = &"Panel"
+PanelWhiteRound/styles/panel = SubResource("StyleBoxTexture_x03m3")
 ProgressBar/font_sizes/font_size = 11
 ProgressBar/styles/background = SubResource("StyleBoxTexture_04mmy")
 ProgressBar/styles/fill = SubResource("StyleBoxTexture_ua61w")
