@@ -18,6 +18,8 @@ var constPos: Vector2
 var selection: PackedScene
 var selectionNum = 0
 
+signal visibilityToggled(bool)
+
 func _ready():
 	_toggleDisplay()
 	selection = selections[0]
@@ -63,6 +65,7 @@ func _toggleDisplay():
 	visible = !visible
 	set_process(visible)
 	selectionDisplay.visible = visible
+	visibilityToggled.emit(visible)
 
 func _build():
 	if selectionDisplay.selectionSprite.modulate != Color.GREEN || !visible:
