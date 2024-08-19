@@ -7,6 +7,7 @@ enum DIRECTION {UP, DOWN, LEFT, RIGHT}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	updateNodePositionHroz()
 	pass # Replace with function body.
 
 var rightExpansionCorner = Vector2i(10,0)
@@ -33,17 +34,37 @@ func toggleNode():
 	enabled = !enabled
 
 func getCenterGloabal(point1, point2):
-	return 320*((point1 + point2)/2)
+	return 32*((point1 + point2)/2)
 	
+	
+func updateNodePositionHroz():
+	if direction == DIRECTION.UP:
+	
+		position.x = getCenterGloabal(global_shop.topLeft.x, global_shop.topRight.x)
+	if direction == DIRECTION.DOWN:
+	
+		global_position.x = getCenterGloabal(global_shop.topLeft.x, global_shop.topRight.x)
+	if direction == DIRECTION.LEFT:
+		
+		global_position.y = getCenterGloabal(global_shop.topLeft.y, global_shop.bottomRight.y)
+	if direction == DIRECTION.RIGHT:
+		print("left center")
+		print(getCenterGloabal(global_shop.topLeft.y, global_shop.bottomRight.y))
+		global_position.y = getCenterGloabal(global_shop.topLeft.y, global_shop.bottomRight.y)
+
 func updateNodePosition():
 	if direction == DIRECTION.UP:
 		moveExpansionMarker(0, -320)
+		position.x = getCenterGloabal(global_shop.topLeft.x, global_shop.topRight.x)
 	if direction == DIRECTION.DOWN:
 		moveExpansionMarker(0, 320)
+		global_position.x = getCenterGloabal(global_shop.topLeft.x, global_shop.topRight.x)
 	if direction == DIRECTION.LEFT:
 		moveExpansionMarker(-320, 0)
+		global_position.y = getCenterGloabal(global_shop.topLeft.y, global_shop.bottomRight.y)
 	if direction == DIRECTION.RIGHT:
 		moveExpansionMarker(320,0)
+		global_position.y = getCenterGloabal(global_shop.topLeft.y, global_shop.bottomRight.y)
 
 func moveExpansionMarker(amountX = 320, amountY=0):
 	translate( Vector2(amountX,amountY))
@@ -163,9 +184,7 @@ func expand():
 		
 	fixWalls()
 
-func _input(event):
-	pass
-	
+
 func fixWalls():
 	$"../TileMapLayer".fillHorizontalWall(global_shop.bottomLeft, global_shop.bottomRight, 0)
 	$"../TileMapLayer".fillHorizontalWall(global_shop.topLeft, global_shop.topRight, 1)
@@ -184,6 +203,8 @@ func rightExpansion(body):
 		pass # Replace with function body.
 
 
+
+
 func buildModeToggled(bool):
 	toggleNode()
 	
@@ -193,4 +214,22 @@ func buildModeToggled(bool):
 
 func _on_canvas_layer_2_visibility_toggled(bool):
 	toggleNode()
+	pass # Replace with function body.
+
+
+func _on_input_event(viewport, event, shape_idx):
+	if event is InputEventMouseButton and enabled:
+		if event.is_pressed():
+			global_shop.buy(global_shop.prices["expansion"])
+			expand()
+	pass # Replace with function body.s
+
+
+func _on_construction_men_visibility_toggled(bool):
+	toggleNode()
+	pass # Replace with function body.
+
+
+func _on_expansion_signal_update(bool):
+	updateNodePositionHroz()
 	pass # Replace with function body.

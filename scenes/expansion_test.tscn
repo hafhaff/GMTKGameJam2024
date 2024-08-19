@@ -1,22 +1,23 @@
-[gd_scene load_steps=16 format=4 uid="uid://clsegmf75ckjy"]
+[gd_scene load_steps=17 format=4 uid="uid://clsegmf75ckjy"]
 
 [ext_resource type="TileSet" uid="uid://cpf2j2rvdkkd1" path="res://textures/tilemaps/building_tiles.tres" id="1_nfa3s"]
 [ext_resource type="Script" path="res://scripts/expansionMap.gd" id="2_i6fl6"]
 [ext_resource type="PackedScene" uid="uid://dn0lkdgorj8pf" path="res://scenes/objects/counter.tscn" id="4_rsasi"]
 [ext_resource type="PackedScene" uid="uid://ci8ldm6uxfv0i" path="res://scenes/player.tscn" id="6_20d4p"]
 [ext_resource type="Script" path="res://scripts/expansionNode.gd" id="7_nk6tk"]
-[ext_resource type="Texture2D" uid="uid://hnpypiil78wy" path="res://icon.svg" id="8_d2idq"]
 [ext_resource type="PackedScene" uid="uid://du8832mjcy7sc" path="res://scenes/ui/currency_display.tscn" id="10_7w4tk"]
 [ext_resource type="PackedScene" uid="uid://dg3u5q8y8c1yu" path="res://scenes/ui/construction_menu.tscn" id="10_54oqk"]
 [ext_resource type="PackedScene" uid="uid://e13u0v8yrlfv" path="res://scenes/ui/selection_display.tscn" id="11_eptom"]
 [ext_resource type="Texture2D" uid="uid://bm0uofnnmns24" path="res://textures/objects/entrance.png" id="12_5gijb"]
+[ext_resource type="Texture2D" uid="uid://cntsg5b50qh3m" path="res://textures/ui/icons/icon_2.png" id="12_boghn"]
 [ext_resource type="PackedScene" uid="uid://bbvouelmrre6p" path="res://scenes/ui/shopping_ui.tscn" id="14_8aidt"]
 [ext_resource type="PackedScene" uid="uid://mwdwlaqsblh8" path="res://scenes/ui/hiring_menu.tscn" id="14_t8xff"]
 [ext_resource type="PackedScene" uid="uid://chciysutigfsd" path="res://scenes/objects/delivery_point.tscn" id="15_2nylf"]
+[ext_resource type="Script" path="res://scenes/expansionController.gd" id="15_5jux3"]
 [ext_resource type="PackedScene" uid="uid://bed0fmavm0x6e" path="res://scenes/characters/kitty_display.tscn" id="15_c1qqx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h6lwn"]
-size = Vector2(11, 9)
+size = Vector2(51, 49)
 
 [node name="ExpansionTest" type="Node2D"]
 
@@ -72,52 +73,61 @@ tilemap = NodePath("../TileMapLayer")
 z_index = 10
 y_sort_enabled = false
 
+[node name="ExpansionSignal" type="Node" parent="."]
+script = ExtResource("15_5jux3")
+
 [node name="RightExpand" type="Area2D" parent="."]
+position = Vector2(350, 168)
 collision_layer = 6
 collision_mask = 7
 script = ExtResource("7_nk6tk")
 direction = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="RightExpand"]
-position = Vector2(315, 150)
-scale = Vector2(0.109375, 0.101563)
-texture = ExtResource("8_d2idq")
+position = Vector2(3, -0.999985)
+scale = Vector2(4.625, 4.375)
+texture = ExtResource("12_boghn")
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightExpand"]
-position = Vector2(316, 150)
+position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_h6lwn")
 metadata/_edit_lock_ = true
 
-[node name="DownExpand" type="Area2D" parent="."]
-collision_layer = 6
-collision_mask = 7
-script = ExtResource("7_nk6tk")
-direction = 1
-
-[node name="Sprite2D" type="Sprite2D" parent="DownExpand"]
-position = Vector2(159, 316)
-scale = Vector2(0.109375, 0.101563)
-texture = ExtResource("8_d2idq")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DownExpand"]
-position = Vector2(159, 316)
-shape = SubResource("RectangleShape2D_h6lwn")
-
 [node name="LeftExpand" type="Area2D" parent="."]
+position = Vector2(-38, 169)
 collision_layer = 6
 collision_mask = 7
 script = ExtResource("7_nk6tk")
 direction = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="LeftExpand"]
-position = Vector2(5.00002, 145)
-scale = Vector2(0.109375, 0.101563)
-texture = ExtResource("8_d2idq")
+position = Vector2(-1, 4)
+rotation = 3.14159
+scale = Vector2(4.625, 4.375)
+texture = ExtResource("12_boghn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftExpand"]
-position = Vector2(4, 145)
+position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_h6lwn")
+
+[node name="DownExpand" type="Area2D" parent="."]
+position = Vector2(160, 349)
+collision_layer = 6
+collision_mask = 7
+script = ExtResource("7_nk6tk")
+direction = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="DownExpand"]
+position = Vector2(2, 1)
+rotation = 1.5708
+scale = Vector2(4.625, 4.375)
+texture = ExtResource("12_boghn")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DownExpand"]
+shape = SubResource("RectangleShape2D_h6lwn")
+metadata/_edit_lock_ = true
 
 [node name="Node2D" parent="." instance=ExtResource("15_2nylf")]
 position = Vector2(225, 1)
@@ -125,13 +135,32 @@ position = Vector2(225, 1)
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 
 [node name="Shopping UI" parent="CanvasLayer2" node_paths=PackedStringArray("hiringMenu", "constructionMenu") instance=ExtResource("14_8aidt")]
+offset_left = 12.0
+offset_top = 42.0
+offset_right = 12.0
+offset_bottom = 42.0
 hiringMenu = NodePath("../../HiringMen")
 constructionMenu = NodePath("../../ConstructionMen")
 
 [connection signal="visibilityToggled" from="ConstructionMen" to="RightExpand" method="buildModeToggled"]
-[connection signal="visibilityToggled" from="ConstructionMen" to="DownExpand" method="_on_canvas_layer_2_visibility_toggled"]
-[connection signal="visibilityToggled" from="ConstructionMen" to="LeftExpand" method="_on_canvas_layer_2_visibility_toggled"]
+[connection signal="visibilityToggled" from="ConstructionMen" to="LeftExpand" method="buildModeToggled"]
+[connection signal="visibilityToggled" from="ConstructionMen" to="DownExpand" method="_on_construction_men_visibility_toggled"]
 [connection signal="visibility_changed" from="ConstructionMen" to="RightExpand" method="_on_canvas_layer_2_visibility_changed"]
+[connection signal="update" from="ExpansionSignal" to="RightExpand" method="_on_expansion_signal_update"]
+[connection signal="update" from="ExpansionSignal" to="LeftExpand" method="_on_expansion_signal_update"]
+[connection signal="update" from="ExpansionSignal" to="DownExpand" method="_on_expansion_signal_update"]
 [connection signal="body_entered" from="RightExpand" to="RightExpand" method="rightExpansion"]
-[connection signal="body_entered" from="DownExpand" to="DownExpand" method="rightExpansion"]
+[connection signal="input_event" from="RightExpand" to="RightExpand" method="_on_input_event"]
+[connection signal="input_event" from="RightExpand" to="ExpansionSignal" method="_on_right_expand_input_event"]
+[connection signal="mouse_entered" from="RightExpand" to="ConstructionMen" method="_on_mouse_entered_expansion"]
+[connection signal="mouse_shape_entered" from="RightExpand" to="ConstructionMen" method="_on_right_expand_mouse_shape_entered"]
 [connection signal="body_entered" from="LeftExpand" to="LeftExpand" method="rightExpansion"]
+[connection signal="input_event" from="LeftExpand" to="LeftExpand" method="_on_input_event"]
+[connection signal="input_event" from="LeftExpand" to="ExpansionSignal" method="_on_left_expand_input_event"]
+[connection signal="mouse_entered" from="LeftExpand" to="ConstructionMen" method="_on_mouse_entered_expansion"]
+[connection signal="mouse_shape_entered" from="LeftExpand" to="ConstructionMen" method="_on_right_expand_mouse_shape_entered"]
+[connection signal="body_entered" from="DownExpand" to="DownExpand" method="rightExpansion"]
+[connection signal="input_event" from="DownExpand" to="DownExpand" method="_on_input_event"]
+[connection signal="input_event" from="DownExpand" to="ExpansionSignal" method="_on_down_expand_input_event"]
+[connection signal="mouse_entered" from="DownExpand" to="ConstructionMen" method="_on_mouse_entered_expansion"]
+[connection signal="mouse_shape_entered" from="DownExpand" to="ConstructionMen" method="_on_right_expand_mouse_shape_entered"]
