@@ -103,17 +103,27 @@ func takeFromShelf(numItemsWanted) -> int:
 	# May need to remember to change this if the standard for max items per box is changed
 	var maxItemsInBox: int = 10
 	
+	print("SHELFTAKE Num in shelves before taking: ", self.itemNum)
+	
 	if numItemsWanted <= self.itemNum:
 		self.itemNum -= numItemsWanted
 		itemsToGive = numItemsWanted
 		$ShelvedItems.updateStockSprite()
 		global_shop._handleEmptyShelf(self)
+	elif numItemsWanted == self.itemNum:
+		itemsToGive = self.itemNum
+		self.itemNum = 0
+		global_shop._handleEmptyShelf(self)
+		$ShelvedItems.updateStockSprite()
 	else:
 		itemsToGive = self.itemNum
 		self.itemNum = 0
 		global_shop._handleEmptyShelf(self)
 		$ShelvedItems.updateStockSprite()
-		
+	
+	print("SHELFTAKE Player took ", itemsToGive)
+	print("SHELFTAKE Num in shelves after taking: ", self.itemNum)
+	
 	return itemsToGive
 
 #ONLY USE TO REPLACE with no protection

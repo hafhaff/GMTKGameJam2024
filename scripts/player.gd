@@ -68,12 +68,16 @@ func fillShelf():
 	print(curShelf.is_supported(getBoxItem()))
 
 func takeShelf():
-	if curShelf.itemNum > 0:
+	
+	var numItemsTaken = curShelf.takeFromShelf(10)
+	
+	if numItemsTaken > 0:
 		var newBox = box_scene.instantiate()
 		get_tree().root.get_child(1).add_child(newBox)
 		pickUpBox(newBox)
+		
 		heldItem.itemType = curShelf.itemType
-		curShelf.takeFromShelf(10)	
+		setNumInBox(numItemsTaken)
 
 func getShelf(shelf):
 	return shelf
