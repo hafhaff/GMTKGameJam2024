@@ -102,7 +102,7 @@ func dropBox():
 	else: 
 		$HoldBox.visible = false
 		heldItem.disablePickup()
-		heldItem.position = self.global_position
+		heldItem.global_position = self.global_position
 		print (heldItem.position)
 		heldItem.showSprite()
 		heldItem.pickUpCoolDown()
