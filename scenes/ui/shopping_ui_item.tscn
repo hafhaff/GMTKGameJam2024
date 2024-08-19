@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=3 uid="uid://detigdvegld83"]
+
+[ext_resource type="Texture2D" uid="uid://cmrs3wr6m8wxb" path="res://textures/kitcoin.png" id="1_ypr8o"]
+
+[node name="Shopping UI Item" type="HBoxContainer"]
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_ypr8o")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 22
+text = "ITEM NAME"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 22
+text = "PURCHASE"
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 22
+text = "SALE"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "BUY"
