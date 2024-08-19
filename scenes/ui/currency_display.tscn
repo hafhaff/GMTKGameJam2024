@@ -28,6 +28,7 @@ texture = ExtResource("2_pwk1m")
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.729412)
 theme_override_fonts/font = ExtResource("2_jlofs")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 26
 text = "123456 Kitcoin"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://ucd887khy117"]
+[gd_scene load_steps=14 format=4 uid="uid://ucd887khy117"]
 
 [ext_resource type="Texture2D" uid="uid://c0hl6hvpgglh7" path="res://textures/gmtk_floor.png" id="1_7ihwg"]
 [ext_resource type="Texture2D" uid="uid://kic3mm885h61" path="res://textures/gmtk_wall.png" id="2_h1x4s"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://c0lujqem7fj3o" path="res://textures/counter.png" id="7_612me"]
 [ext_resource type="PackedScene" uid="uid://biophta5et6p7" path="res://scenes/characters/shopping_ai.tscn" id="7_a8lbj"]
 [ext_resource type="PackedScene" uid="uid://b6xpligwm2mx6" path="res://scenes/objects/box.tscn" id="8_36i81"]
+[ext_resource type="PackedScene" uid="uid://du8832mjcy7sc" path="res://scenes/ui/currency_display.tscn" id="9_vn35d"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_jhmfy"]
 vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
@@ -220,3 +221,5 @@ itemType = 1
 [node name="Box20" parent="Boxes" instance=ExtResource("8_36i81")]
 position = Vector2(388, 61)
 itemType = 1
+
+[node name="Currency Display" parent="." instance=ExtResource("9_vn35d")]
