@@ -1,8 +1,7 @@
-[gd_scene load_steps=21 format=4 uid="uid://clsegmf75ckjy"]
+[gd_scene load_steps=20 format=4 uid="uid://clsegmf75ckjy"]
 
 [ext_resource type="TileSet" uid="uid://cpf2j2rvdkkd1" path="res://textures/tilemaps/building_tiles.tres" id="1_nfa3s"]
 [ext_resource type="Script" path="res://scripts/expansionMap.gd" id="2_i6fl6"]
-[ext_resource type="PackedScene" uid="uid://dn0lkdgorj8pf" path="res://scenes/objects/counter.tscn" id="4_rsasi"]
 [ext_resource type="PackedScene" uid="uid://ci8ldm6uxfv0i" path="res://scenes/player.tscn" id="6_20d4p"]
 [ext_resource type="Script" path="res://scripts/expansionNode.gd" id="7_nk6tk"]
 [ext_resource type="PackedScene" uid="uid://du8832mjcy7sc" path="res://scenes/ui/currency_display.tscn" id="10_7w4tk"]
@@ -31,13 +30,6 @@ tile_set = ExtResource("1_nfa3s")
 rendering_quadrant_size = 32
 script = ExtResource("2_i6fl6")
 
-[node name="ShelfHolder" type="Node" parent="."]
-
-[node name="CounterHolder" type="Node" parent="."]
-
-[node name="Counter" parent="CounterHolder" instance=ExtResource("4_rsasi")]
-position = Vector2(65, 160)
-
 [node name="BoxHolder" type="Node" parent="."]
 
 [node name="Player" parent="." instance=ExtResource("6_20d4p")]
@@ -46,13 +38,7 @@ speed = 220.0
 zoom_min = Vector2(0.2, 0.2)
 zoom_max = Vector2(10, 10)
 
-[node name="CanvasLayer" parent="." node_paths=PackedStringArray("selectionDisplay") instance=ExtResource("10_54oqk")]
-selectionDisplay = NodePath("../SelectionDisplay")
-
 [node name="Currency Display" parent="." instance=ExtResource("10_7w4tk")]
-
-[node name="SelectionDisplay" parent="." instance=ExtResource("11_eptom")]
-position = Vector2(174, 172)
 
 [node name="Entrance" type="Sprite2D" parent="."]
 position = Vector2(81, -18)
