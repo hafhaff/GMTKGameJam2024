@@ -4,11 +4,13 @@ class_name Shop
 
 var shopShelves: Dictionary = {}	#dictionary
 var shopCounters: Dictionary = {}	#dictionary
+var shopDeliveryPoints: Dictionary = {}	#dictionary
 
 var emptyCounters: Array[Counter] = []
 var tileMap: NavmeshUpdater = null
 var kitcoins: float = 100.0
 var emptyShelves: Array[Shelf] = []
+var deliveryPoints: Array[DeliveryPoint] = []	#for easy access
 var chunkNum = 1
 @onready var boxes: Dictionary = {}
 
@@ -32,6 +34,13 @@ func _registerCounter(counter: Counter):
 	var position: Vector2i = floor(counter.global_position/32)
 	shopCounters[position] = counter
 	_handleEmptyCounter(counter)
+
+func _registerDeliveryPoint(deliveryPoint: DeliveryPoint):
+	var position: Vector2i = floor(deliveryPoint.global_position/32)
+	for x in range(3):
+		for y in range(3):
+			shopDeliveryPoints[Vector2i(position.x + x,position.y + y)] = deliveryPoint
+	deliveryPoints.push_back(deliveryPoint)
 
 func _handleEmptyCounter(counter: Counter, forced: bool = false):
 	if forced:

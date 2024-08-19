@@ -1,5 +1,7 @@
 extends Node2D
 
+class_name DeliveryPoint
+
 @export var maxBoxes: int = 5
 @export var boxTemplate: PackedScene
 @export var enableBoxGeneration: bool
@@ -10,6 +12,7 @@ var relatedBoxes: Array[Box] = []
 
 func _ready():
 	global_position = floor(global_position/32)*32	#Important for the tilemap, BUT we'll handle placement differently later
+	global_shop._registerDeliveryPoint(self)
 	if enableBoxGeneration:
 		generationTimer.connect("timeout", _generateNewBox)
 	else:

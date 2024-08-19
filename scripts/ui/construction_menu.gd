@@ -31,17 +31,40 @@ func _ready():
 func _process(_delta):
 	constPos = floor(get_tree().root.get_child(1).get_global_mouse_position()/32)
 	selectionDisplay.global_position = constPos * 32
-	if (
-		global_shop.shopShelves.has(Vector2i(constPos.x, constPos.y- 1)) || 
-		global_shop.shopShelves.has(Vector2i(constPos.x, constPos.y + 1)) || 
-		global_shop.shopShelves.has(constPos as Vector2i) ||
-		global_shop.shopCounters.has(constPos as Vector2i) ||
-		tilemap.get_cell_tile_data(constPos) == null ||
-		tilemap.get_cell_tile_data(constPos).get_navigation_polygon(0) == null
-	):
-		selectionDisplay.selectionSprite.modulate = Color.RED
+
+	if selectionNum == 2:
+		for x in range(3):
+			for y in range(3):
+				var constPosCheck = constPos
+				constPosCheck = constPosCheck + Vector2(x, y)
+				if (
+					global_shop.shopShelves.has(Vector2i(constPosCheck.x, constPosCheck.y- 1)) || 
+					global_shop.shopShelves.has(Vector2i(constPosCheck.x, constPosCheck.y + 1)) || 
+					global_shop.shopShelves.has(constPosCheck as Vector2i) ||
+					global_shop.shopDeliveryPoints.has(constPosCheck as Vector2i) ||
+					global_shop.shopCounters.has(constPosCheck as Vector2i) ||
+					tilemap.get_cell_tile_data(constPosCheck) == null ||
+					tilemap.get_cell_tile_data(constPosCheck).get_navigation_polygon(0) == null
+				):
+					selectionDisplay.selectionSprite.modulate = Color.RED
+					#printt(constPos, Vector2(x, y), constPosCheck)
+					return
+				else:
+					selectionDisplay.selectionSprite.modulate = Color.GREEN
 	else:
-		selectionDisplay.selectionSprite.modulate = Color.GREEN
+		if (
+			global_shop.shopShelves.has(Vector2i(constPos.x, constPos.y- 1)) || 
+			global_shop.shopShelves.has(Vector2i(constPos.x, constPos.y + 1)) || 
+			global_shop.shopShelves.has(constPos as Vector2i) ||
+			global_shop.shopDeliveryPoints.has(constPos as Vector2i) ||
+			global_shop.shopCounters.has(constPos as Vector2i) ||
+			tilemap.get_cell_tile_data(constPos) == null ||
+			tilemap.get_cell_tile_data(constPos).get_navigation_polygon(0) == null
+		):
+			selectionDisplay.selectionSprite.modulate = Color.RED
+		else:
+			selectionDisplay.selectionSprite.modulate = Color.GREEN
+
 
 func _input(event: InputEvent):
 	if event.is_pressed():
@@ -113,3 +136,9 @@ func _selectionChange(next: bool):
 			selection = selections[selectionNum]
 	selectionDisplay.selectionSprite.texture = selectionDisplay.selectionSprites[selection]
 	selectionSprite.texture = selectionDisplay.selectionSprite.texture
+	if selectionNum == 2:
+		selectionDisplay.selectionSprite.scale = Vector2i(3,3)
+		selectionDisplay.selectionSprite.position = Vector2(48,48)
+	else:
+		selectionDisplay.selectionSprite.scale = Vector2i(1,1)
+		selectionDisplay.selectionSprite.position = Vector2(16,16)
