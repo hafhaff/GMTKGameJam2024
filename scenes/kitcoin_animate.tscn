@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dmxsucin0lemb"]
+[gd_scene load_steps=7 format=3 uid="uid://dmxsucin0lemb"]
 
 [ext_resource type="Script" path="res://scripts/kitcoin_animate.gd" id="1_d24h3"]
 [ext_resource type="Texture2D" uid="uid://cmrs3wr6m8wxb" path="res://textures/kitcoin.png" id="1_x8efk"]
+[ext_resource type="AudioStream" uid="uid://olw4ldmo6ahw" path="res://audio/money_moment.mp3" id="3_m4be2"]
 
 [sub_resource type="Animation" id="Animation_2oeom"]
 length = 0.001
@@ -81,6 +82,21 @@ tracks/2/keys = {
 "update": 1,
 "values": [false, true, false]
 }
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("cha-ching")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_m4be2")
+}],
+"times": PackedFloat32Array(0.3)
+}
+tracks/3/use_blend = false
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mp4yp"]
 _data = {
@@ -103,3 +119,5 @@ libraries = {
 "": SubResource("AnimationLibrary_mp4yp")
 }
 movie_quit_on_finish = true
+
+[node name="cha-ching" type="AudioStreamPlayer2D" parent="."]

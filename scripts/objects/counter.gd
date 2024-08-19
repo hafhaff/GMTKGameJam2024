@@ -39,7 +39,7 @@ func _checkShopperDistance():
 			for x in range(waitList.size()):
 				_updateWaitingLine(x)
 				
-			await get_tree().create_timer(0.1).timeout  # Short delay to ensure animation starts
+			await get_tree().create_timer(0.1).timeout
 			KitcoinAnimate.checked_out = false
 	
 
