@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhxb8cfaogxbb"]
+
+[ext_resource type="Theme" uid="uid://0rnnetbtuvds" path="res://textures/ui/ui_theme.tres" id="1_1nq8a"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_right = 48.0
+offset_bottom = 6.0
+theme = ExtResource("1_1nq8a")
+value = 50.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="ProgressBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 4.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_1nq8a")
+text = "6/10"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 67.0
+offset_right = 95.0
+offset_bottom = 85.0
+theme = ExtResource("1_1nq8a")
+theme_override_font_sizes/font_size = 11
+text = "WHATTTT???????"

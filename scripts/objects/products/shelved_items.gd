@@ -23,7 +23,7 @@ func updateStockSprite():
 
 
 func get_filled_percentage() -> float:
-	return shelf.itemNum / shelf.maxItemCount 
+	return shelf.itemNum / shelf.maxItemCount
 
 func update_product_type(arg: ItemGlobal.FoodTypes) -> void:
 	match arg:

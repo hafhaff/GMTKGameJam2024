@@ -6,6 +6,7 @@ class_name Player
 @export var pickUpCoolDown = 0.3
 @export var zoom_min = Vector2(2.00001, 2.00001)
 @export var zoom_max = Vector2(5.00001, 5.00001)
+@export var box_scene: PackedScene = null
 
 var heldItem : Node
 var counter: Counter
@@ -38,8 +39,11 @@ func _physics_process(_delta):
 		dropBox()
 	if action1 and counter != null:
 		counter._checkShopperDistance()
-	if action1 and canUnload:
+	if action1 and canUnload and getNumInBox() > 0:
 		fillShelf()
+	elif action1 and canUnload and getNumInBox() < 1:
+		takeShelf()
+	
 
 func fillShelf():
 	print("filling shelf")
@@ -63,6 +67,15 @@ func fillShelf():
 	
 	print(curShelf.is_supported(getBoxItem()))
 
+func takeShelf():
+	if curShelf.itemNum > 0:
+		var newBox = box_scene.instantiate()
+		add_child(newBox)
+		heldItem = newBox
+		pickUpBox(heldItem)
+		heldItem.itemType = curShelf.itemType
+		curShelf.takeFromShelf(10)	
+
 func getShelf(shelf):
 	return shelf
 	
@@ -72,6 +85,8 @@ func setNumInBox(num):
 func getNumInBox():
 	if heldItem != null:
 		return heldItem.itemNum
+	else:
+		return 0
 	
 func getBoxItem():
 	if heldItem != null:

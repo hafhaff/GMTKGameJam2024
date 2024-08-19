@@ -96,6 +96,26 @@ func take(numItemsTaken, itemType):
 		$ShelvedItems.updateStockSprite()
 		return false
 
+# For players to take items
+func takeFromShelf(numItemsWanted) -> int: 
+	var itemsToGive: int = 0
+	
+	# May need to remember to change this if the standard for max items per box is changed
+	var maxItemsInBox: int = 10
+	
+	if numItemsWanted <= self.itemNum:
+		self.itemNum -= numItemsWanted
+		itemsToGive = numItemsWanted
+		$ShelvedItems.updateStockSprite()
+		global_shop._handleEmptyShelf(self)
+	else:
+		itemsToGive = self.itemNum
+		self.itemNum = 0
+		global_shop._handleEmptyShelf(self)
+		$ShelvedItems.updateStockSprite()
+		
+	return itemsToGive
+
 #ONLY USE TO REPLACE with no protection
 func setItem(newItem): 
 	shelved_items.update_product_type(newItem)
