@@ -127,3 +127,10 @@ y_sort_enabled = false
 [node name="Box1" parent="." instance=ExtResource("9_8384v")]
 position = Vector2(170, 75)
 itemType = 1
+
+[node name="Box2" parent="." instance=ExtResource("9_8384v")]
+position = Vector2(189, 75)
+
+[node name="Box3" parent="." instance=ExtResource("9_8384v")]
+position = Vector2(210, 75)
+itemType = 2

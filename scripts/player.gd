@@ -70,9 +70,8 @@ func fillShelf():
 func takeShelf():
 	if curShelf.itemNum > 0:
 		var newBox = box_scene.instantiate()
-		add_child(newBox)
-		heldItem = newBox
-		pickUpBox(heldItem)
+		add_child(get_tree().root)
+		pickUpBox(newBox)
 		heldItem.itemType = curShelf.itemType
 		curShelf.takeFromShelf(10)	
 
