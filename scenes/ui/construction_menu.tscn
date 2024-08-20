@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://dg3u5q8y8c1yu"]
+[gd_scene load_steps=11 format=3 uid="uid://dg3u5q8y8c1yu"]
 
 [ext_resource type="PackedScene" uid="uid://bed0fmavm0x6e" path="res://scenes/characters/kitty_display.tscn" id="1_1iyvu"]
 [ext_resource type="Script" path="res://scripts/ui/construction_menu.gd" id="1_72s44"]
 [ext_resource type="PackedScene" uid="uid://bhmvcfjqippet" path="res://scenes/characters/ui_constrution_ai.tscn" id="2_jok27"]
 [ext_resource type="PackedScene" uid="uid://cr8g2ewri4sld" path="res://scenes/objects/shelf.tscn" id="2_ya0r4"]
 [ext_resource type="PackedScene" uid="uid://dn0lkdgorj8pf" path="res://scenes/objects/counter.tscn" id="3_6y21a"]
+[ext_resource type="PackedScene" path="res://scenes/objects/freezer.tscn" id="3_564dg"]
 [ext_resource type="PackedScene" uid="uid://chciysutigfsd" path="res://scenes/objects/delivery_point.tscn" id="4_43sxt"]
 [ext_resource type="Texture2D" uid="uid://cr5ayvghqy7os" path="res://textures/objects/shelf_atlas.tres" id="5_3gime"]
 
@@ -67,7 +68,7 @@ _data = {
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_72s44")
-selections = Array[PackedScene]([ExtResource("2_ya0r4"), ExtResource("3_6y21a"), ExtResource("4_43sxt")])
+selections = Array[PackedScene]([ExtResource("2_ya0r4"), ExtResource("3_564dg"), ExtResource("3_6y21a"), ExtResource("4_43sxt")])
 
 [node name="KittyDisplay" parent="." instance=ExtResource("1_1iyvu")]
 position = Vector2(-130, 784)

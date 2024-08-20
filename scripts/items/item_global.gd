@@ -8,7 +8,7 @@ var FoodValues: Dictionary = {
 	FoodTypes.CANNED : {purchasePrice = 2, sellPrice = 4},
 	FoodTypes.CEREAL : {purchasePrice = 2, sellPrice = 5},
 	FoodTypes.CATNIP : {purchasePrice = 5, sellPrice = 10},
-	FoodTypes.MILK : {purchasePrice = 5, sellPrice = 10},
-	FoodTypes.DRINKS : {purchasePrice = 5, sellPrice = 10},
-	FoodTypes.ICE_CREAM : {purchasePrice = 5, sellPrice = 10}
+	FoodTypes.MILK : {purchasePrice = 3, sellPrice = 8},
+	FoodTypes.DRINKS : {purchasePrice = 2, sellPrice = 4},
+	FoodTypes.ICE_CREAM : {purchasePrice = 4, sellPrice = 10}
 }

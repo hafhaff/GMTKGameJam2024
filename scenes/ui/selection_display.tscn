@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://e13u0v8yrlfv"]
+[gd_scene load_steps=10 format=3 uid="uid://e13u0v8yrlfv"]
 
 [ext_resource type="Script" path="res://scripts/ui/selection_display.gd" id="1_36jgg"]
 [ext_resource type="Texture2D" uid="uid://cr5ayvghqy7os" path="res://textures/objects/shelf_atlas.tres" id="1_apwyr"]
@@ -7,13 +7,16 @@
 [ext_resource type="Texture2D" uid="uid://c0lujqem7fj3o" path="res://textures/counter.png" id="5_kud6x"]
 [ext_resource type="PackedScene" uid="uid://chciysutigfsd" path="res://scenes/objects/delivery_point.tscn" id="6_q7qks"]
 [ext_resource type="Texture2D" uid="uid://dykkaqprrqgyx" path="res://textures/tilemaps/building_tiles_atlas.tres" id="7_5rwqh"]
+[ext_resource type="PackedScene" path="res://scenes/objects/freezer.tscn" id="8_d4qwm"]
+[ext_resource type="Texture2D" path="res://textures/objects/freezer_atlas.tres" id="9_1ruv1"]
 
 [node name="SelectionDisplay" type="Node2D"]
 script = ExtResource("1_36jgg")
 selectionSprites = {
 ExtResource("2_sndmh"): ExtResource("1_apwyr"),
 ExtResource("4_pbijb"): ExtResource("5_kud6x"),
-ExtResource("6_q7qks"): ExtResource("7_5rwqh")
+ExtResource("6_q7qks"): ExtResource("7_5rwqh"),
+ExtResource("8_d4qwm"): ExtResource("9_1ruv1")
 }
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

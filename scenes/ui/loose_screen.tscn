@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bsl2t6vuw1kqn" path="res://textures/objects/box.png" id="2_8jehm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o21v7"]
-bg_color = Color(0, 0.0196078, 0.12549, 0.317647)
+bg_color = Color(2.95553e-07, 0.00724453, 0.0641937, 0.533333)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wj6ry"]
 atlas = ExtResource("2_8jehm")

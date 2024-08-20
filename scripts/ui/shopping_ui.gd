@@ -33,7 +33,7 @@ func _fillUiWithItems():
 		gridContainer.add_child(shoppingItem)
 		shoppingItem.get_child(0).texture.region.position = Vector2(itemID * 32, 0)
 		#print(shoppingItem.get_child(0).texture.region.position)
-		shoppingItem.get_child(1).text = str(ItemGlobal.FoodTypes.keys()[itemID])
+		shoppingItem.get_child(1).text = GlobalTipsHelper.item_names[itemID]
 		shoppingItem.get_child(2).text = str(itemGlobalLocal.FoodValues[itemID].purchasePrice)
 		shoppingItem.get_child(3).text = str(itemGlobalLocal.FoodValues[itemID].sellPrice)
 		shoppingItem.get_child(4).connect("pressed", _addToCart.bind(itemID, itemGlobalLocal.FoodValues[itemID].purchasePrice))
