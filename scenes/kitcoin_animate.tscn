@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/kitcoin_animate.gd" id="1_d24h3"]
 [ext_resource type="Texture2D" uid="uid://cmrs3wr6m8wxb" path="res://textures/kitcoin.png" id="1_x8efk"]
-[ext_resource type="AudioStream" uid="uid://olw4ldmo6ahw" path="res://audio/money_moment.mp3" id="3_m4be2"]
+[ext_resource type="AudioStream" uid="uid://olw4ldmo6ahw" path="res://audio/sfx/money_moment.mp3" id="3_m4be2"]
 
 [sub_resource type="Animation" id="Animation_2oeom"]
 length = 0.001
@@ -96,7 +96,7 @@ tracks/3/keys = {
 }],
 "times": PackedFloat32Array(0.3)
 }
-tracks/3/use_blend = false
+tracks/3/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mp4yp"]
 _data = {
