@@ -8,9 +8,9 @@ var shopDeliveryPoints: Dictionary = {}	#dictionary
 var storageUnitTooltip: StorageTooltip = null #did this since placed shelves cant access it with %
 
 var prices = {
-	"restocker" : 2,
-	"cashier" : 1,
-	"counter" : 10,
+	"restocker" : 3,
+	"cashier" : 2,
+	"counter" : 5,
 	"shelf" : 5,
 	"expansion" : 20,
 	"loadingZone" : 10,

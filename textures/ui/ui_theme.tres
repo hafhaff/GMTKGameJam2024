@@ -1,7 +1,7 @@
 [gd_resource type="Theme" load_steps=16 format=3 uid="uid://0rnnetbtuvds"]
 
 [ext_resource type="Texture2D" uid="uid://yc1gyefhm55i" path="res://textures/ui/ui_buttons_atlas.tres" id="1_qrr4v"]
-[ext_resource type="Texture2D" uid="uid://vpnqef7mwa2" path="res://textures/ui/progress_bar_atlas.tres" id="2_0j1pr"]
+[ext_resource type="Texture2D" path="res://textures/ui/progress_bar_atlas.tres" id="2_0j1pr"]
 [ext_resource type="FontFile" uid="uid://081yyvpei5qw" path="res://textures/ui/Undead Pixel 11.ttf" id="2_7cow0"]
 [ext_resource type="Texture2D" uid="uid://pdsvqvxh0iim" path="res://textures/ui/ui_panels_atlas.tres" id="2_fecjf"]
 
