@@ -20,7 +20,7 @@ var supportiveTexts: Array[String] = [
 	"Good stuff! Keep it up!",
 	"You're doing great! I love money!",
 	"This is where the fun begins!",
-	"I love the sound of Kittycoins!",
+	"I love the sound of Kitcoins!",
 	"Me? Greedy? Nah man!",
 	"...should've open my own shop!"
 ]
