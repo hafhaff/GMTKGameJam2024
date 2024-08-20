@@ -7,6 +7,7 @@ extends Node
 @onready var label2: Label = $InstallmentProgress/Label
 @onready var tooltip: Control = $LoanGuy
 @onready var kitty_display: KittyDisplay = $LoanGuy/Panel/SubViewportContainer/SubViewport/KittyDisplay
+@onready var _name: Label = $LoanGuy/Panel/catName
 
 var tooltipShown: bool = true
 var installment: int = 50
@@ -26,15 +27,30 @@ var supportiveTexts: Array[String] = [
 	"...should've open my own shop!"
 ]
 
+var firstNames: Array[String] = [
+	"Kitty", "Alfred", "Meowrio", "Purrcy", "Cornelius", "Jesse", "John", "Madeline",
+	"Casey", "Gregory", "Cake", "Jake", "Kat", "Kate"
+]
+
+var lastNames: Array[String] = [
+	"Montgomery", "Cheeto", "Katterson", "Mewington", "Litterbox", "Scratch", "Cumberbatch",
+	"Meowsalot", "Softpaws", "Katterson", "Klinklank", "Wolfeschlegelsteinhausenbergerdorff",
+	"Wolfgang", "Claws"
+]
+
 func _ready():
 	loanTimer.connect("timeout", _payInstalment)
 	transitionTimer.connect("timeout", _toggleTooltip)
 	transitionTimer.start(10)
 	kitty_display.randomize_look()
 	kitty_display.set_role(3)
+	_set_random_name()
 
 func _process(_delta):
 	progressBar.value = loanTimer.time_left / 90.0
+
+func _set_random_name():
+	_name.text = firstNames.pick_random() + " " + lastNames.pick_random()
 
 func _payInstalment():
 	global_shop._removeKitcoin(installment)

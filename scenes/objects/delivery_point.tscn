@@ -1,23 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://chciysutigfsd"]
+[gd_scene load_steps=4 format=3 uid="uid://chciysutigfsd"]
 
 [ext_resource type="Script" path="res://scripts/objects/delivery_point.gd" id="1_lilm2"]
 [ext_resource type="PackedScene" uid="uid://b6xpligwm2mx6" path="res://scenes/objects/box.tscn" id="2_dk4pd"]
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_lpvrk"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_nm8wt"]
-width = 96
-height = 96
-noise = SubResource("FastNoiseLite_lpvrk")
+[ext_resource type="Texture2D" uid="uid://dykkaqprrqgyx" path="res://textures/tilemaps/building_tiles_atlas.tres" id="3_6ibkc"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_lilm2")
 boxTemplate = ExtResource("2_dk4pd")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.411765)
 position = Vector2(48, 48)
-texture = SubResource("NoiseTexture2D_nm8wt")
+texture = ExtResource("3_6ibkc")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
