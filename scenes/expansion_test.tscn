@@ -139,6 +139,7 @@ unique_name_in_owner = true
 visible = false
 
 [node name="StoreEntrance" parent="." instance=ExtResource("17_nwqem")]
+y_sort_enabled = true
 position = Vector2(80, 0)
 
 [node name="Loan Layer" parent="." instance=ExtResource("19_rxvgi")]
