@@ -37,7 +37,7 @@ script = ExtResource("2_i6fl6")
 position = Vector2(92, 108)
 speed = 220.0
 zoom_min = Vector2(0.2, 0.2)
-zoom_max = Vector2(15, 10)
+zoom_max = Vector2(15, 15)
 
 [node name="Currency Display" parent="." instance=ExtResource("10_7w4tk")]
 
