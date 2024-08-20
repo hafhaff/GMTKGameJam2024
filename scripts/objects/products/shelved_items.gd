@@ -37,4 +37,10 @@ func update_product_type(arg: ItemGlobal.FoodTypes) -> void:
 			texture = preload("res://textures/objects/products/shelved_cereal_atlas.tres")
 		2:
 			texture = preload("res://textures/objects/products/shelved_catnip_atlas.tres")
+		3:
+			texture = preload("res://textures/objects/products/shelved_milk.tres")
+		4:
+			texture = preload("res://textures/objects/products/shelved_drinks.tres")
+		5:
+			texture = preload("res://textures/objects/products/shelved_ice_cream.tres")
 	print("tyna match to ", arg)
