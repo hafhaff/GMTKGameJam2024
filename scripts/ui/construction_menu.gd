@@ -106,7 +106,7 @@ func _build():
 	
 	global_shop.buy(global_shop.prices[getItemName(building)])
 	
-	get_tree().root.get_child(1).add_child(building)
+	get_tree().root.get_child(2).add_child(building)
 	_spriteSetup(constPos as Vector2i, constPos as Vector2i)
 
 func _spriteSetup(pos: Vector2i, parentPos: Vector2i):
