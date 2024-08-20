@@ -28,8 +28,9 @@ var supportiveTexts: Array[String] = [
 ]
 
 var firstNames: Array[String] = [
-	"Kitty", "Alfred", "Meowrio", "Purrcy", "Cornelius", "Jesse", "John", "Madeline",
-	"Casey", "Gregory", "Cake", "Jake", "Kat", "Kate", "Tigris", "Danny", "Zuni", "Bo", "Kormi"
+	"Alfred", "Meowrio", "Purrcy", "Cornelius", "Madeline", "Puss",
+	"Cake", "Jake", "Katoo", "Kate", "Tigris", "Danny", "Zuni", "Bo", "Kormi",
+	"Hya", "Nani", "Leo", "Pebbles", "Sylvester"
 ]
 
 var lastNames: Array[String] = [
