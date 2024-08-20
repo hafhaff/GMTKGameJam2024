@@ -193,7 +193,7 @@ func fixWalls():
 
 func rightExpansion(body):
 	if body is Player and (global_shop.getKitcoin() > price) and enabled:
-		global_shop.buy(global_shop.prices["expansion"])
+		global_shop.buy(global_shop.prices["expansion"] * global_shop.chunkNum * 4)
 		price = price * numExpansions
 		expand()
 		numExpansions = numExpansions + 1

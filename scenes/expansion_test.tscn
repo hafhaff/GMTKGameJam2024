@@ -15,7 +15,7 @@
 [ext_resource type="Script" path="res://scenes/expansionController.gd" id="15_5jux3"]
 [ext_resource type="PackedScene" uid="uid://bed0fmavm0x6e" path="res://scenes/characters/kitty_display.tscn" id="15_c1qqx"]
 [ext_resource type="PackedScene" uid="uid://cipgad2c7su8" path="res://scenes/ui/menu_buttons.tscn" id="15_gq8li"]
-[ext_resource type="PackedScene" uid="uid://ighgjuvtgyfp" path="res://scenes/ui/pause.tscn" id="16_cq8ll"]
+[ext_resource type="PackedScene" path="res://scenes/ui/pause.tscn" id="16_cq8ll"]
 [ext_resource type="PackedScene" uid="uid://g13k232xga6o" path="res://scenes/objects/store_entrance.tscn" id="17_nwqem"]
 [ext_resource type="PackedScene" uid="uid://blawy58ur83h2" path="res://scenes/ui/tooltip/storage_unit_tooltip.tscn" id="19_bkvnn"]
 
@@ -37,7 +37,7 @@ script = ExtResource("2_i6fl6")
 position = Vector2(92, 108)
 speed = 220.0
 zoom_min = Vector2(0.2, 0.2)
-zoom_max = Vector2(10, 10)
+zoom_max = Vector2(15, 10)
 
 [node name="Currency Display" parent="." instance=ExtResource("10_7w4tk")]
 
