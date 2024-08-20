@@ -140,6 +140,7 @@ unique_name_in_owner = true
 visible = false
 
 [node name="StoreEntrance" parent="." node_paths=PackedStringArray("customerTotalLabel", "rushHourLabel") instance=ExtResource("17_nwqem")]
+y_sort_enabled = true
 position = Vector2(80, 0)
 customerTotalLabel = NodePath("../Customer Total Display/Label")
 rushHourLabel = NodePath("../Customer Total Display/Control")
