@@ -11,6 +11,8 @@ boxTemplate = ExtResource("2_dk4pd")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(48, 48)
 texture = ExtResource("3_6ibkc")
+region_enabled = true
+region_rect = Rect2(160, 32, 96, 96)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
