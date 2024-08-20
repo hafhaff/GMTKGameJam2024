@@ -37,10 +37,7 @@ theme_override_fonts/font = ExtResource("2_jlofs")
 theme_override_font_sizes/font_size = 33
 text = "123456 Kitcoin"
 
-[node name="kitcoinDifference" type="Label" parent="MarginContainer/VBoxContainer"]
-visible = false
+[node name="kitcoinDifference" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 22
-text = "123456 Kitcoins"
-horizontal_alignment = 2
+size_flags_horizontal = 8
+alignment = 2
