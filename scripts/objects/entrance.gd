@@ -68,7 +68,7 @@ func _on_random_spawns_timeout() -> void:
 func _on_next_wave_timer_timeout() -> void:
 	#print("total spawns::")
 	#print(lifetimeSpawns)
-	random_spawns.start(randi_range(25, 180))
+	#random_spawns.start(randi_range(25, 180))	#what
 	#Waves should be multiplied by lifetime waves, otherwise the size grows unexpectedly out of control
 	#customersToSpawn += 50 * round(lifetimeSpawns/5)
 	customersToSpawn += 20 * lifetimeWaves
