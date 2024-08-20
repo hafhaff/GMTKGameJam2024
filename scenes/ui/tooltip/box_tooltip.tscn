@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://duicci3rxpyyq"]
 
-[ext_resource type="Script" path="res://scripts/ui/tooltip/storage_unit_tooltip.gd" id="1_mqevl"]
+[ext_resource type="Script" path="res://scripts/ui/tooltip/box_tooltip.gd" id="1_twa68"]
 
 [node name="BoxTooltip" type="Panel"]
 self_modulate = Color(1, 1, 1, 0.588235)
@@ -11,7 +11,7 @@ pivot_offset = Vector2(29, 20)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_type_variation = &"PanelSolidBlack"
-script = ExtResource("1_mqevl")
+script = ExtResource("1_twa68")
 
 [node name="Name" type="Label" parent="."]
 layout_mode = 0
