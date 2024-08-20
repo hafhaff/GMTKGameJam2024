@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bed0fmavm0x6e" path="res://scenes/characters/kitty_display.tscn" id="2_h6ns5"]
 [ext_resource type="PackedScene" uid="uid://b6xpligwm2mx6" path="res://scenes/objects/box.tscn" id="2_qypj0"]
 [ext_resource type="Script" path="res://scripts/interaction/interaction_manager.gd" id="3_54jq5"]
-[ext_resource type="PackedScene" uid="uid://bbvoxcvfwybuw" path="res://scenes/objects/box_display.tscn" id="4_01twm"]
+[ext_resource type="PackedScene" uid="uid://drn7p5px8vm5h" path="res://scenes/objects/held_box_display.tscn" id="5_j3es1"]
 [ext_resource type="PackedScene" uid="uid://duicci3rxpyyq" path="res://scenes/ui/tooltip/box_tooltip.tscn" id="6_s1h5o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_doxln"]
@@ -30,9 +30,9 @@ zoom = Vector2(3, 3)
 [node name="KittyDisplay" parent="." instance=ExtResource("2_h6ns5")]
 position = Vector2(0, 16)
 
-[node name="HoldBox" parent="." instance=ExtResource("4_01twm")]
+[node name="HoldBox" parent="." instance=ExtResource("5_j3es1")]
 visible = false
-position = Vector2(3, 17)
+position = Vector2(3, 18)
 
 [node name="BoxTooltip" parent="." instance=ExtResource("6_s1h5o")]
 visible = false
