@@ -7,7 +7,6 @@ class_name StorageTooltip
 
 var item_names: Array = ["Canned Food", "Cereal", "Catnip"] 
 var format_string = "%s/%s"
-var storage_unit: Shelf = null
 
 func _ready() -> void:
 	global_shop._registerStorageTooltip(self)
