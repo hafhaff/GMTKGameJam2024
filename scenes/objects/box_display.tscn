@@ -50,12 +50,14 @@ y_sort_enabled = true
 script = ExtResource("1_wi8ng")
 
 [node name="Base" type="Sprite2D" parent="."]
+y_sort_enabled = true
 texture = ExtResource("2_mnjq3")
 offset = Vector2(0, -16)
 region_enabled = true
 region_rect = Rect2(0, 2, 32, 32)
 
 [node name="Opening" type="AnimatedSprite2D" parent="."]
+y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_iwrfm")
 autoplay = "default"
 offset = Vector2(0, -16)

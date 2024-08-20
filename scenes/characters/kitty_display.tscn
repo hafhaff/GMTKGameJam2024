@@ -84,7 +84,6 @@ _data = {
 }
 
 [node name="KittyDisplay" type="Node2D"]
-z_index = 1
 y_sort_enabled = true
 script = ExtResource("1_jfm3s")
 kitty_color = 5
@@ -92,18 +91,21 @@ kitty_color = 5
 [node name="Sprites" type="Node2D" parent="."]
 
 [node name="Base" type="Sprite2D" parent="Sprites"]
+y_sort_enabled = true
 texture = ExtResource("2_yraf8")
 offset = Vector2(0, -16)
 region_enabled = true
 region_rect = Rect2(160, 0, 32, 32)
 
 [node name="Outfit" type="Sprite2D" parent="Sprites"]
+y_sort_enabled = true
 texture = ExtResource("2_ppmw7")
 offset = Vector2(0, -16)
 region_enabled = true
 region_rect = Rect2(0, 0, 32, 32)
 
 [node name="Face" type="Sprite2D" parent="Sprites"]
+y_sort_enabled = true
 texture = ExtResource("1_wxyyb")
 offset = Vector2(0, -16)
 region_enabled = true

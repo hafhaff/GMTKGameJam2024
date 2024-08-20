@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://du8832mjcy7sc" path="res://scenes/ui/currency_display.tscn" id="10_7w4tk"]
 [ext_resource type="PackedScene" uid="uid://dg3u5q8y8c1yu" path="res://scenes/ui/construction_menu.tscn" id="10_54oqk"]
 [ext_resource type="PackedScene" uid="uid://e13u0v8yrlfv" path="res://scenes/ui/selection_display.tscn" id="11_eptom"]
-[ext_resource type="Texture2D" uid="uid://bm0uofnnmns24" path="res://textures/objects/entrance.png" id="12_5gijb"]
 [ext_resource type="Texture2D" uid="uid://cntsg5b50qh3m" path="res://textures/ui/icons/icon_2.png" id="12_boghn"]
 [ext_resource type="PackedScene" uid="uid://bbvouelmrre6p" path="res://scenes/ui/shopping_ui.tscn" id="14_8aidt"]
 [ext_resource type="PackedScene" uid="uid://mwdwlaqsblh8" path="res://scenes/ui/hiring_menu.tscn" id="14_t8xff"]
@@ -15,14 +14,16 @@
 [ext_resource type="Script" path="res://scenes/expansionController.gd" id="15_5jux3"]
 [ext_resource type="PackedScene" uid="uid://bed0fmavm0x6e" path="res://scenes/characters/kitty_display.tscn" id="15_c1qqx"]
 [ext_resource type="PackedScene" uid="uid://ighgjuvtgyfp" path="res://scenes/ui/pause.tscn" id="16_cq8ll"]
-[ext_resource type="PackedScene" uid="uid://duc186117kn0h" path="res://scenes/logic/spawn_manager.tscn" id="17_6seeb"]
-[ext_resource type="PackedScene" uid="uid://duicci3rxpyyq" path="res://scenes/ui/tooltip/box_tooltip.tscn" id="18_legp7"]
+[ext_resource type="Texture2D" uid="uid://bvnuo6ybkochq" path="res://textures/ui/icons/icon_0.png" id="17_cqh3u"]
+[ext_resource type="PackedScene" uid="uid://g13k232xga6o" path="res://scenes/objects/store_entrance.tscn" id="17_nwqem"]
+[ext_resource type="Texture2D" uid="uid://caklbqybw3w4e" path="res://textures/ui/icons/icon_1.png" id="18_5drp6"]
 [ext_resource type="PackedScene" uid="uid://blawy58ur83h2" path="res://scenes/ui/tooltip/storage_unit_tooltip.tscn" id="19_bkvnn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h6lwn"]
 size = Vector2(51, 49)
 
 [node name="ExpansionTest" type="Node2D"]
+y_sort_enabled = true
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAAAAAAAAAAEAAMAAAAAAAEAAAAEAAMAAAAAAAIAAAAEAAMAAAAAAAMAAAAEAAMAAAAAAAQAAAAEAAMAAAAAAAUAAAAEAAMAAAAAAAYAAAAEAAMAAAAAAAcAAAAEAAMAAAAAAAgAAAAEAAMAAAAAAAkAAAAEAAMAAAABAAkAAAAEAAMAAAACAAkAAAAEAAMAAAADAAkAAAAEAAMAAAAEAAkAAAAEAAMAAAAFAAkAAAAEAAMAAAAGAAkAAAAEAAMAAAAHAAkAAAAEAAMAAAAIAAkAAAAEAAMAAAAJAAkAAAAEAAMAAAABAAAAAAAEAAMAAAABAAEAAAAEAAMAAAABAAIAAAAEAAMAAAABAAMAAAAEAAMAAAABAAQAAAAEAAMAAAABAAUAAAAEAAMAAAABAAYAAAAEAAMAAAABAAcAAAAEAAMAAAABAAgAAAAEAAMAAAACAAAAAAAEAAMAAAACAAEAAAAEAAMAAAACAAIAAAAEAAMAAAACAAMAAAAEAAMAAAACAAQAAAAEAAMAAAACAAUAAAAEAAMAAAACAAYAAAAEAAMAAAACAAcAAAAEAAMAAAACAAgAAAAEAAMAAAADAAAAAAAEAAMAAAADAAEAAAAEAAMAAAADAAIAAAAEAAMAAAADAAMAAAAEAAMAAAADAAQAAAAEAAMAAAADAAUAAAAEAAMAAAADAAYAAAAEAAMAAAADAAcAAAAEAAMAAAADAAgAAAAEAAMAAAAEAAAAAAAEAAMAAAAEAAEAAAAEAAMAAAAEAAIAAAAEAAMAAAAEAAMAAAAEAAMAAAAEAAQAAAAEAAMAAAAEAAUAAAAEAAMAAAAEAAYAAAAEAAMAAAAEAAcAAAAEAAMAAAAEAAgAAAAEAAMAAAAFAAAAAAAEAAMAAAAFAAEAAAAEAAMAAAAFAAIAAAAEAAMAAAAFAAMAAAAEAAMAAAAFAAQAAAAEAAMAAAAFAAUAAAAEAAMAAAAFAAYAAAAEAAMAAAAFAAcAAAAEAAMAAAAFAAgAAAAEAAMAAAAGAAAAAAAEAAMAAAAGAAEAAAAEAAMAAAAGAAIAAAAEAAMAAAAGAAMAAAAEAAMAAAAGAAQAAAAEAAMAAAAGAAUAAAAEAAMAAAAGAAYAAAAEAAMAAAAGAAcAAAAEAAMAAAAGAAgAAAAEAAMAAAAHAAAAAAAEAAMAAAAHAAEAAAAEAAMAAAAHAAIAAAAEAAMAAAAHAAMAAAAEAAMAAAAHAAQAAAAEAAMAAAAHAAUAAAAEAAMAAAAHAAYAAAAEAAMAAAAHAAcAAAAEAAMAAAAHAAgAAAAEAAMAAAAIAAAAAAAEAAMAAAAIAAEAAAAEAAMAAAAIAAIAAAAEAAMAAAAIAAMAAAAEAAMAAAAIAAQAAAAEAAMAAAAIAAUAAAAEAAMAAAAIAAYAAAAEAAMAAAAIAAcAAAAEAAMAAAAIAAgAAAAEAAMAAAAJAAAAAAAEAAMAAAAJAAEAAAAEAAMAAAAJAAIAAAAEAAMAAAAJAAMAAAAEAAMAAAAJAAQAAAAEAAMAAAAJAAUAAAAEAAMAAAAJAAYAAAAEAAMAAAAJAAcAAAAEAAMAAAAJAAgAAAAEAAMAAAAAAP//AAACAAMAAAABAP//AAACAAMAAAACAP//AAACAAMAAAADAP//AAACAAMAAAAEAP//AAACAAMAAAAFAP//AAACAAMAAAAGAP//AAACAAMAAAAHAP//AAACAAMAAAAIAP//AAACAAMAAAAJAP//AAACAAMAAAD//wAAAAACAAEAAAD//wEAAAACAAEAAAD//wIAAAACAAEAAAD//wMAAAACAAEAAAD//wQAAAACAAEAAAD//wUAAAACAAEAAAD//wYAAAACAAEAAAD//wcAAAACAAEAAAD//wgAAAACAAEAAAD//wkAAAACAAEAAAAKAP//AAAEAAAAAAD/////AAACAAAAAAAKAAAAAAAEAAEAAAAKAAEAAAAEAAEAAAAKAAIAAAAEAAEAAAAKAAMAAAAEAAEAAAAKAAQAAAAEAAEAAAAKAAUAAAAEAAEAAAAKAAYAAAAEAAEAAAAKAAcAAAAEAAEAAAAKAAgAAAAEAAEAAAAKAAkAAAAEAAEAAAADAAoAAAADAAIAAAAEAAoAAAADAAIAAAAFAAoAAAADAAIAAAAGAAoAAAADAAIAAAAHAAoAAAADAAIAAAAIAAoAAAADAAIAAAAJAAoAAAADAAIAAAAAAAoAAAADAAIAAAABAAoAAAADAAIAAAACAAoAAAADAAIAAAA=")
@@ -33,17 +34,12 @@ script = ExtResource("2_i6fl6")
 [node name="BoxHolder" type="Node" parent="."]
 
 [node name="Player" parent="." instance=ExtResource("6_20d4p")]
-position = Vector2(95, 26)
+position = Vector2(92, 108)
 speed = 220.0
 zoom_min = Vector2(0.2, 0.2)
 zoom_max = Vector2(10, 10)
 
 [node name="Currency Display" parent="." instance=ExtResource("10_7w4tk")]
-
-[node name="Entrance" type="Sprite2D" parent="."]
-position = Vector2(81, -18)
-scale = Vector2(0.9375, 0.9375)
-texture = ExtResource("12_5gijb")
 
 [node name="ConstructionMen" parent="." node_paths=PackedStringArray("selectionDisplay", "hiringMenu", "tilemap") instance=ExtResource("10_54oqk")]
 selectionDisplay = NodePath("../SelectionDisplay2")
@@ -134,16 +130,26 @@ constructionMenu = NodePath("../../ConstructionMen")
 [node name="Pause" parent="." instance=ExtResource("16_cq8ll")]
 visible = false
 
-[node name="Spawn Manager" parent="." instance=ExtResource("17_6seeb")]
-position = Vector2(111, 14)
-
-[node name="BoxTooltip" parent="." instance=ExtResource("18_legp7")]
-unique_name_in_owner = true
-visible = false
-
 [node name="StorageUnitTooltip" parent="." instance=ExtResource("19_bkvnn")]
 unique_name_in_owner = true
 visible = false
+
+[node name="StoreEntrance" parent="." instance=ExtResource("17_nwqem")]
+position = Vector2(80, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(80, 102)
+texture = ExtResource("17_cqh3u")
+offset = Vector2(0, -5)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(78, 101)
+texture = ExtResource("18_5drp6")
+offset = Vector2(0, -5)
 
 [connection signal="visibilityToggled" from="ConstructionMen" to="RightExpand" method="buildModeToggled"]
 [connection signal="visibilityToggled" from="ConstructionMen" to="LeftExpand" method="buildModeToggled"]
