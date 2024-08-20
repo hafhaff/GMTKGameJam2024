@@ -57,10 +57,14 @@ func _setShelf(_shelf: Shelf) -> bool:
 		if !global_shop.boxes.has(type):
 			continue
 		if global_shop.boxes[type].size() != 0:
-			_boxes = global_shop.boxes[type]
+			_boxes = global_shop.boxes[type].duplicate()
 			break
 	if _boxes.size() == 0:
 		shelf = null
+		return false
+	if !is_instance_valid(_boxes[0]):
+		shelf = null
+		global_shop._boxCleanup()
 		return false
 	_boxes.shuffle()
 	target = _boxes[0]
@@ -70,7 +74,7 @@ func _setShelf(_shelf: Shelf) -> bool:
 	return true
 
 func _lostTarget(_box: Box, _pickedUp: bool):
-	print("Lost target")
+	#print("Lost target")
 	target.disconnect("pickedUp", _lostTarget)
 	if !navigation.is_navigation_finished():
 		global_shop._handleEmptyShelf(shelf)

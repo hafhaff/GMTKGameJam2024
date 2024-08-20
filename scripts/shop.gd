@@ -87,6 +87,14 @@ func _addBox(box: Box):
 		box.connect("selfYeet", _removeBox)
 		box.connect("pickedUp", _handleBoxPickup)
 
+func _boxCleanup():
+	for boxType in boxes:
+		var i = 0
+		for box in boxes[boxType]:
+			if !is_instance_valid(box):
+				boxes[boxType].remove_at(i)
+			i += 1
+
 func _removeBox(box: Box, _pickedUp: bool = false):
 	if boxes[box.itemType].has(box):
 		boxes[box.itemType].erase(box)
