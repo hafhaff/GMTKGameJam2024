@@ -61,6 +61,7 @@ func _physics_process(_delta):
 			tooltip.set_tooltip_display(curShelf.itemType, curShelf.itemNum, curShelf.maxItemCount)
 	else:
 		tooltip.visible = false
+		canUnload = false
 
 func fillShelf():
 	print("filling shelf")
