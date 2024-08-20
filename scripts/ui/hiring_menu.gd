@@ -80,8 +80,8 @@ func _build():
 		print("Construction Cancelled!")
 		return
 	var building = selection.instantiate()
-	building.global_position = get_tree().root.get_child(1).get_global_mouse_position()
-	get_tree().root.get_child(1).add_child(building)
+	building.global_position = get_tree().root.get_child(2).get_global_mouse_position()
+	get_tree().root.get_child(2).add_child(building)
 
 func _selectionChange(next: bool):
 	if !visible:
