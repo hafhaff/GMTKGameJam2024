@@ -8,6 +8,7 @@ extends Node
 @export var selections: Array[PackedScene]
 @export var selectionDisplay: SelectionDisplay
 @export var hiringMenu: Node
+@export var purchasingMenu: Node
 @export var tilemap: TileMapLayer
 
 var visible = true
@@ -69,8 +70,7 @@ func _process(_delta):
 func _input(event: InputEvent):
 	if event.is_pressed():
 		if event.is_action_pressed('construction'):
-			if hiringMenu != null && !hiringMenu.visible:
-				_toggleDisplay()
+			_toggleDisplay()
 		if event.is_action_pressed('construct'):
 			_build()
 		if event.is_action_pressed('construction_next'):
@@ -79,6 +79,11 @@ func _input(event: InputEvent):
 			_selectionChange(false)
 
 func _toggleDisplay():
+	if !visible:
+		if hiringMenu != null && hiringMenu.visible:
+			hiringMenu._toggleDisplay()
+		if purchasingMenu != null && !purchasingMenu.isHidden:
+			purchasingMenu._hide()
 	var tween = create_tween()
 	tween.set_trans(Tween.TRANS_QUAD)
 	tween.set_ease(Tween.EASE_OUT)

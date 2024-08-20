@@ -25,9 +25,7 @@ func _ready():
 func _input(event: InputEvent):
 	if event.is_pressed():
 		if event.is_action_pressed('shopping'):
-			printt(hiringMenu.visible, constructionMenu.visible)
-			if (hiringMenu != null && !hiringMenu.visible) && (constructionMenu != null && !constructionMenu.visible):
-				_hide()
+			_hide()
 
 func _fillUiWithItems():
 	for itemID in itemGlobalLocal.FoodTypes.size():
@@ -64,6 +62,11 @@ func _submit():
 	_clearCart()
 
 func _hide():
+	if isHidden:
+		if hiringMenu != null && hiringMenu.visible:
+			hiringMenu._toggleDisplay()
+		if constructionMenu != null && constructionMenu.visible:
+			constructionMenu._toggleDisplay()
 	isHidden = !isHidden
 	var tweenTheSecond = create_tween()
 	tweenTheSecond.set_trans(Tween.TRANS_QUAD)
