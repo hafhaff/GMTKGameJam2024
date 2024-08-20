@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://du8832mjcy7sc"]
+[gd_scene load_steps=3 format=3 uid="uid://du8832mjcy7sc"]
 
 [ext_resource type="Script" path="res://scripts/ui/currency_display.gd" id="1_mhgm4"]
-[ext_resource type="FontFile" uid="uid://081yyvpei5qw" path="res://textures/ui/Undead Pixel 11.ttf" id="2_jlofs"]
 [ext_resource type="Texture2D" uid="uid://cmrs3wr6m8wxb" path="res://textures/kitcoin.png" id="2_pwk1m"]
 
 [node name="Currency Display" type="CanvasLayer"]
@@ -11,19 +10,26 @@ script = ExtResource("1_mhgm4")
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -169.0
-offset_bottom = 40.0
+offset_left = -172.0
+offset_top = -2.0
+offset_right = -81.0
+offset_bottom = 26.0
 grow_horizontal = 0
+scale = Vector2(2, 2)
 theme_override_constants/margin_right = 4
+
+[node name="Panel" type="Panel" parent="MarginContainer"]
+layout_mode = 2
+theme_type_variation = &"PanelSolidBlack"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+size_flags_stretch_ratio = 0.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -32,12 +38,22 @@ stretch_mode = 5
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.729412)
-theme_override_fonts/font = ExtResource("2_jlofs")
-theme_override_font_sizes/font_size = 33
 text = "123456 Kitcoin"
 
-[node name="kitcoinDifference" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+alignment = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Wages: 50/m"
+
+[node name="kitcoinDifference" type="VBoxContainer" parent="."]
+offset_left = 1178.0
+offset_top = 59.0
+offset_right = 1178.0
+offset_bottom = 69.0
+scale = Vector2(2, 2)
 size_flags_horizontal = 8
 alignment = 2
