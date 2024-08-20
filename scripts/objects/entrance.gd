@@ -3,7 +3,7 @@ extends Node2D
 class_name StoreEntrance
 
 @export var shoppingAI: PackedScene = null
-@export var maxShoppers: int = 10000
+@export var maxShoppers: int = 25
 var readyToSpawn = false
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -12,8 +12,11 @@ var readyToSpawn = false
 var activeShoppers: Array[ShoppingAI] = []
 var lifetimeSpawns: int = 0
 var customersToSpawn: int = 0
+var lifetimeWaves: int = 1
 
 func spawn_customer():
+	if activeShoppers.size() >= (maxShoppers * global_shop.chunkNum):
+		return
 	customersToSpawn -= 1
 	play_animation()
 	var shopper: ShoppingAI = shoppingAI.instantiate()
@@ -40,7 +43,7 @@ func spawn_wave_chunk():
 			
 
 func _on_timer_timeout() -> void:
-	if customersToSpawn > 0 and activeShoppers.size() < maxShoppers:
+	if customersToSpawn > 0:
 		if customersToSpawn > 3:
 			spawn_wave_chunk()
 		else:
@@ -48,14 +51,19 @@ func _on_timer_timeout() -> void:
 
 func _on_random_spawns_timeout() -> void:
 	if readyToSpawn == true:
-		random_spawns.wait_time = randi_range(5, 15)
-		customersToSpawn += 12 *  round(lifetimeSpawns/5)
+		random_spawns.start(randi_range(4, 10))
+		#Random spaws should be consistent, but increased by shop size, not lifetime spawns ~Hullahopp
+		#customersToSpawn += 12 *  round(lifetimeSpawns/5)
+		customersToSpawn += 2 *  global_shop.chunkNum
 
 func _on_next_wave_timer_timeout() -> void:
 	#print("total spawns::")
 	#print(lifetimeSpawns)
-	random_spawns.wait_time = randi_range(25, 180)
-	customersToSpawn += 50 * round(lifetimeSpawns/5)
+	random_spawns.start(randi_range(25, 180))
+	#Waves should be multiplied by lifetime waves, otherwise the size grows unexpectedly out of control
+	#customersToSpawn += 50 * round(lifetimeSpawns/5)
+	customersToSpawn += 20 * lifetimeWaves
+	lifetimeWaves += 1
 
 
 func _on_initial_timer_timeout():
