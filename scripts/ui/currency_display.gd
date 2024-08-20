@@ -18,7 +18,6 @@ func autoUpdateDisplay():
 
 
 func showKitcoinDifference(diff: float):
-	# Create a new label for the difference
 	var diffLabel = Label.new()
 	if diff == 0:
 		return
@@ -37,14 +36,10 @@ func showKitcoinDifference(diff: float):
 	# Set initial position for animation
 	diffLabel.position = Vector2(0, 0)
 	
-	# Move existing labels down
 	moveExistingLabelsDown()
-	
-	# Animate the label to move down and fade out
 	animateLabel(diffLabel)
 
 
-# Move existing labels down
 func moveExistingLabelsDown():
 	for i in range(labelContainer.get_child_count() - 1):
 		var label = labelContainer.get_child(i)
@@ -52,15 +47,8 @@ func moveExistingLabelsDown():
 			label.position.y += 30  # Adjust this value based on label height
 
 
-# Animate the label to move down and fade out
 func animateLabel(label: Label):
 	var tween = create_tween()
-
-	# Move the label down over 0.5 seconds
-	#tween.tween_property(label, "position:y", label.position.y + 50, 0.5)
-	# Fade the label out over 5 seconds
 	tween.tween_property(label, "modulate:a", 0, 5)
-
-	# Queue the label for deletion after the animation completes
 	tween.connect("finished", Callable(label, "queue_free"))
 	

@@ -1,0 +1,168 @@
+[gd_scene load_steps=6 format=3 uid="uid://2xpgk2h81yie"]
+
+[ext_resource type="Script" path="res://scripts/ui/tooltip/simple_mouse_hover_tip.gd" id="1_4f654"]
+[ext_resource type="Texture2D" uid="uid://caklbqybw3w4e" path="res://textures/ui/icons/icon_1.png" id="2_qwohj"]
+[ext_resource type="Texture2D" uid="uid://bswt1jo5caow3" path="res://textures/ui/icons/icon_3.png" id="3_63s2f"]
+[ext_resource type="Texture2D" uid="uid://bvnuo6ybkochq" path="res://textures/ui/icons/icon_0.png" id="4_pyuap"]
+[ext_resource type="Texture2D" uid="uid://ceum5liebwrgc" path="res://textures/ui/icons/icon_4.png" id="5_xst6p"]
+
+[node name="Hotbar" type="Panel"]
+z_index = 5
+offset_left = 557.0
+offset_top = 698.0
+offset_right = 639.0
+offset_bottom = 723.0
+scale = Vector2(2, 2)
+pivot_offset = Vector2(41, 22)
+theme_type_variation = &"PanelWhiteRound"
+
+[node name="Build" type="Button" parent="."]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 2.0
+offset_right = 22.0
+offset_bottom = 21.0
+tooltip_text = "Build"
+script = ExtResource("1_4f654")
+
+[node name="Icon" type="TextureRect" parent="Build"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 18.0
+offset_bottom = 17.0
+texture = ExtResource("2_qwohj")
+
+[node name="Tooltip" type="Panel" parent="Build"]
+visible = false
+z_index = 6
+layout_mode = 0
+offset_left = -13.0
+offset_top = -15.0
+offset_right = 31.0
+offset_bottom = -3.0
+pivot_offset = Vector2(22, 12)
+theme_type_variation = &"PanelSolidBlack"
+
+[node name="Label" type="Label" parent="Build/Tooltip"]
+layout_mode = 0
+offset_left = 1.5
+offset_top = -0.5
+offset_right = 39.5
+offset_bottom = 11.5
+text = "Build (B)"
+horizontal_alignment = 1
+
+[node name="Supplies" type="Button" parent="."]
+layout_mode = 0
+offset_left = 41.0
+offset_top = 2.0
+offset_right = 60.0
+offset_bottom = 21.0
+tooltip_text = "Supplies"
+script = ExtResource("1_4f654")
+
+[node name="Icon" type="TextureRect" parent="Supplies"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 18.0
+offset_bottom = 17.0
+texture = ExtResource("3_63s2f")
+
+[node name="Tooltip" type="Panel" parent="Supplies"]
+visible = false
+offset_left = -18.0
+offset_top = -15.0
+offset_right = 37.0
+offset_bottom = -3.0
+pivot_offset = Vector2(20, 11)
+theme_type_variation = &"PanelSolidBlack"
+
+[node name="Label" type="Label" parent="Supplies/Tooltip"]
+layout_mode = 0
+offset_left = 1.5
+offset_top = -0.5
+offset_right = 39.5
+offset_bottom = 11.5
+text = "Supplies (R)"
+horizontal_alignment = 1
+
+[node name="Hire" type="Button" parent="."]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 2.0
+offset_right = 41.0
+offset_bottom = 21.0
+tooltip_text = "Hire"
+script = ExtResource("1_4f654")
+
+[node name="Icon" type="TextureRect" parent="Hire"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 18.0
+offset_bottom = 17.0
+texture = ExtResource("4_pyuap")
+
+[node name="Tooltip" type="Panel" parent="Hire"]
+visible = false
+offset_left = -12.0
+offset_top = -15.0
+offset_right = 28.0
+offset_bottom = -3.0
+pivot_offset = Vector2(20, 11)
+theme_type_variation = &"PanelSolidBlack"
+
+[node name="Label" type="Label" parent="Hire/Tooltip"]
+layout_mode = 0
+offset_left = 1.5
+offset_top = -0.5
+offset_right = 39.5
+offset_bottom = 11.5
+text = "Hire (H)"
+horizontal_alignment = 1
+
+[node name="Reviews" type="Button" parent="."]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 2.0
+offset_right = 79.0
+offset_bottom = 21.0
+tooltip_text = "Reviews"
+script = ExtResource("1_4f654")
+
+[node name="Icon" type="TextureRect" parent="Reviews"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 17.0
+offset_bottom = 17.0
+texture = ExtResource("5_xst6p")
+
+[node name="Tooltip" type="Panel" parent="Reviews"]
+visible = false
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 32.0
+offset_bottom = -3.0
+pivot_offset = Vector2(20, 11)
+theme_type_variation = &"PanelSolidBlack"
+
+[node name="Label" type="Label" parent="Reviews/Tooltip"]
+layout_mode = 0
+offset_left = 1.5
+offset_top = -0.5
+offset_right = 39.5
+offset_bottom = 11.5
+text = "Reviews(?)"
+horizontal_alignment = 1
+
+[connection signal="mouse_entered" from="Build" to="Build" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Build" to="Build" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Supplies" to="Supplies" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Supplies" to="Supplies" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Hire" to="Hire" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Hire" to="Hire" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Reviews" to="Reviews" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Reviews" to="Reviews" method="_on_mouse_exited"]

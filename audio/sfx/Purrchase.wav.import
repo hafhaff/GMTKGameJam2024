@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://b12ur2gh4yv7t"
-path="res://.godot/imported/Purrchase.wav-6dc24bcb569853deea6bddae1c827699.sample"
+path="res://.godot/imported/Purrchase.wav-4bd6f98e0a15884e8fbf59e826f4a21e.sample"
 
 [deps]
 
-source_file="res://audio/Purrchase.wav"
-dest_files=["res://.godot/imported/Purrchase.wav-6dc24bcb569853deea6bddae1c827699.sample"]
+source_file="res://audio/sfx/Purrchase.wav"
+dest_files=["res://.godot/imported/Purrchase.wav-4bd6f98e0a15884e8fbf59e826f4a21e.sample"]
 
 [params]
 

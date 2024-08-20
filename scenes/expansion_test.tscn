@@ -10,11 +10,11 @@
 [ext_resource type="Texture2D" uid="uid://cntsg5b50qh3m" path="res://textures/ui/icons/icon_2.png" id="12_boghn"]
 [ext_resource type="PackedScene" uid="uid://bbvouelmrre6p" path="res://scenes/ui/shopping_ui.tscn" id="14_8aidt"]
 [ext_resource type="PackedScene" uid="uid://mwdwlaqsblh8" path="res://scenes/ui/hiring_menu.tscn" id="14_t8xff"]
-[ext_resource type="PackedScene" uid="uid://ca8jpowiue5at" path="res://scenes/ui/tooltip/tips.tscn" id="14_vyjnr"]
-[ext_resource type="PackedScene" uid="uid://chciysutigfsd" path="res://scenes/objects/delivery_point.tscn" id="15_2nylf"]
+[ext_resource type="PackedScene" uid="uid://dvlyc5korg8xr" path="res://scenes/ui/tooltip/tips.tscn" id="14_vyjnr"]
+[ext_resource type="PackedScene" path="res://scenes/objects/delivery_point.tscn" id="15_2nylf"]
+[ext_resource type="PackedScene" uid="uid://2xpgk2h81yie" path="res://scenes/ui/hotbar.tscn" id="15_3vro4"]
 [ext_resource type="Script" path="res://scenes/expansionController.gd" id="15_5jux3"]
 [ext_resource type="PackedScene" uid="uid://bed0fmavm0x6e" path="res://scenes/characters/kitty_display.tscn" id="15_c1qqx"]
-[ext_resource type="PackedScene" uid="uid://cipgad2c7su8" path="res://scenes/ui/menu_buttons.tscn" id="15_gq8li"]
 [ext_resource type="PackedScene" uid="uid://ighgjuvtgyfp" path="res://scenes/ui/pause.tscn" id="16_cq8ll"]
 [ext_resource type="PackedScene" uid="uid://g13k232xga6o" path="res://scenes/objects/store_entrance.tscn" id="17_nwqem"]
 [ext_resource type="PackedScene" uid="uid://blawy58ur83h2" path="res://scenes/ui/tooltip/storage_unit_tooltip.tscn" id="19_bkvnn"]
@@ -37,8 +37,6 @@ script = ExtResource("2_i6fl6")
 [node name="Player" parent="." instance=ExtResource("6_20d4p")]
 position = Vector2(92, 108)
 speed = 220.0
-zoom_min = Vector2(0.2, 0.2)
-zoom_max = Vector2(10, 10)
 
 [node name="Currency Display" parent="." instance=ExtResource("10_7w4tk")]
 
@@ -131,7 +129,7 @@ constructionMenu = NodePath("../../ConstructionMen")
 
 [node name="Tips" parent="CanvasLayer2" instance=ExtResource("14_vyjnr")]
 
-[node name="MenuButtons" parent="CanvasLayer2" instance=ExtResource("15_gq8li")]
+[node name="Hotbar" parent="CanvasLayer2" instance=ExtResource("15_3vro4")]
 
 [node name="Pause" parent="." instance=ExtResource("16_cq8ll")]
 visible = false
