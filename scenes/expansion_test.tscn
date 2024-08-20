@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://mwdwlaqsblh8" path="res://scenes/ui/hiring_menu.tscn" id="14_t8xff"]
 [ext_resource type="PackedScene" uid="uid://dvlyc5korg8xr" path="res://scenes/ui/tooltip/tips.tscn" id="14_vyjnr"]
 [ext_resource type="PackedScene" uid="uid://chciysutigfsd" path="res://scenes/objects/delivery_point.tscn" id="15_2nylf"]
-[ext_resource type="PackedScene" uid="uid://2xpgk2h81yie" path="res://scenes/ui/hotbar.tscn" id="15_3vro4"]
+[ext_resource type="PackedScene" path="res://scenes/ui/hotbar.tscn" id="15_3vro4"]
 [ext_resource type="Script" path="res://scenes/expansionController.gd" id="15_5jux3"]
 [ext_resource type="PackedScene" uid="uid://bed0fmavm0x6e" path="res://scenes/characters/kitty_display.tscn" id="15_c1qqx"]
 [ext_resource type="PackedScene" uid="uid://ighgjuvtgyfp" path="res://scenes/ui/pause.tscn" id="16_cq8ll"]
@@ -20,7 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://blawy58ur83h2" path="res://scenes/ui/tooltip/storage_unit_tooltip.tscn" id="19_bkvnn"]
 [ext_resource type="PackedScene" uid="uid://c7v2ljd5ues64" path="res://scenes/ui/loan_layer.tscn" id="19_rxvgi"]
 [ext_resource type="PackedScene" uid="uid://dj7cfurbin3uy" path="res://scenes/ui/customer_total_display.tscn" id="20_k5ne2"]
-[ext_resource type="PackedScene" uid="uid://bulh8ramy0f3v" path="res://scenes/objects/freezer.tscn" id="21_7qyov"]
+[ext_resource type="PackedScene" uid="uid://behe0cu7s7r1s" path="res://scenes/ui/loose_screen.tscn" id="21_kpkyc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h6lwn"]
 size = Vector2(51, 49)
@@ -38,21 +38,23 @@ script = ExtResource("2_i6fl6")
 
 [node name="Player" parent="." instance=ExtResource("6_20d4p")]
 position = Vector2(92, 108)
-speed = 220.0
+speed = 200.0
 
 [node name="Currency Display" parent="." instance=ExtResource("10_7w4tk")]
 
-[node name="ConstructionMen" parent="." node_paths=PackedStringArray("selectionDisplay", "hiringMenu", "tilemap") instance=ExtResource("10_54oqk")]
+[node name="ConstructionMen" parent="." node_paths=PackedStringArray("selectionDisplay", "hiringMenu", "purchasingMenu", "tilemap") instance=ExtResource("10_54oqk")]
 selectionDisplay = NodePath("../SelectionDisplay2")
 hiringMenu = NodePath("../HiringMen")
+purchasingMenu = NodePath("../CanvasLayer2/Shopping UI")
 tilemap = NodePath("../TileMapLayer")
 
 [node name="SelectionDisplay2" parent="." instance=ExtResource("11_eptom")]
 position = Vector2(137, 101)
 
-[node name="HiringMen" parent="." node_paths=PackedStringArray("selectionDisplay", "constructionMenu", "tilemap") instance=ExtResource("14_t8xff")]
+[node name="HiringMen" parent="." node_paths=PackedStringArray("selectionDisplay", "constructionMenu", "purchasingMenu", "tilemap") instance=ExtResource("14_t8xff")]
 selectionDisplay = NodePath("../KittyDisplay")
 constructionMenu = NodePath("../ConstructionMen")
+purchasingMenu = NodePath("../CanvasLayer2/Shopping UI")
 tilemap = NodePath("../TileMapLayer")
 
 [node name="KittyDisplay" parent="." instance=ExtResource("15_c1qqx")]
@@ -133,6 +135,27 @@ constructionMenu = NodePath("../../ConstructionMen")
 
 [node name="Hotbar" parent="CanvasLayer2" instance=ExtResource("15_3vro4")]
 
+[node name="Tooltip" parent="CanvasLayer2/Hotbar/Supplies" index="1"]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 55.0
+offset_bottom = 12.0
+
+[node name="Tooltip" parent="CanvasLayer2/Hotbar/Hire" index="1"]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 40.0
+offset_bottom = 12.0
+
+[node name="Tooltip" parent="CanvasLayer2/Hotbar/Reviews" index="1"]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 47.0
+offset_bottom = 12.0
+
 [node name="Pause" parent="." instance=ExtResource("16_cq8ll")]
 visible = false
 
@@ -146,7 +169,8 @@ position = Vector2(80, 0)
 customerTotalLabel = NodePath("../Customer Total Display/Label")
 rushHourLabel = NodePath("../Customer Total Display/Control")
 
-[node name="Loan Layer" parent="." instance=ExtResource("19_rxvgi")]
+[node name="Loan Layer" parent="." node_paths=PackedStringArray("looseScreen") instance=ExtResource("19_rxvgi")]
+looseScreen = NodePath("../LooseScreen")
 
 [node name="Customer Total Display" parent="." instance=ExtResource("20_k5ne2")]
 
@@ -154,14 +178,13 @@ rushHourLabel = NodePath("../Customer Total Display/Control")
 text = "0/25"
 
 [node name="Label2" parent="Customer Total Display/Control" index="0"]
-layout_mode = 0
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 192.0
 offset_bottom = 45.0
 
-[node name="Shelf" parent="." instance=ExtResource("21_7qyov")]
-position = Vector2(106, 101)
+[node name="LooseScreen" parent="." instance=ExtResource("21_kpkyc")]
+visible = false
 
 [connection signal="visibilityToggled" from="ConstructionMen" to="RightExpand" method="buildModeToggled"]
 [connection signal="visibilityToggled" from="ConstructionMen" to="LeftExpand" method="buildModeToggled"]
@@ -185,5 +208,9 @@ position = Vector2(106, 101)
 [connection signal="input_event" from="DownExpand" to="DownExpand" method="_on_input_event"]
 [connection signal="mouse_entered" from="DownExpand" to="ConstructionMen" method="_on_mouse_entered_expansion"]
 [connection signal="mouse_shape_entered" from="DownExpand" to="ConstructionMen" method="_on_right_expand_mouse_shape_entered"]
+[connection signal="pressed" from="CanvasLayer2/Hotbar/Build" to="ConstructionMen" method="_toggleDisplay"]
+[connection signal="pressed" from="CanvasLayer2/Hotbar/Supplies" to="CanvasLayer2/Shopping UI" method="_hide"]
+[connection signal="pressed" from="CanvasLayer2/Hotbar/Hire" to="HiringMen" method="_toggleDisplay"]
 
+[editable path="CanvasLayer2/Hotbar"]
 [editable path="Customer Total Display"]

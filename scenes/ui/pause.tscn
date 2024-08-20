@@ -12,6 +12,7 @@ bg_color = Color(0, 0.0352941, 0.0941176, 0.309804)
 
 [node name="Pause" type="CanvasLayer" node_paths=PackedStringArray("switchSoundPlayer", "selectSoundPlayer", "backSoundPlayer", "optionsMenu")]
 process_mode = 3
+layer = 128
 script = ExtResource("1_loics")
 switchSoundPlayer = NodePath("SwitchSound")
 selectSoundPlayer = NodePath("SelectSound")

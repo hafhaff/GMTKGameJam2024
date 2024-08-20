@@ -29,7 +29,7 @@ var supportiveTexts: Array[String] = [
 
 var firstNames: Array[String] = [
 	"Kitty", "Alfred", "Meowrio", "Purrcy", "Cornelius", "Jesse", "John", "Madeline",
-	"Casey", "Gregory", "Cake", "Jake", "Kat", "Kate"
+	"Casey", "Gregory", "Cake", "Jake", "Kat", "Kate", "Tigris", "Danny", "Zuni", "Bo", "Kormi"
 ]
 
 var lastNames: Array[String] = [
@@ -37,6 +37,8 @@ var lastNames: Array[String] = [
 	"Meowsalot", "Softpaws", "Katterson", "Klinklank", "Wolfeschlegelsteinhausenbergerdorff",
 	"Wolfgang", "Claws"
 ]
+
+@export var looseScreen: LooseScreen
 
 func _ready():
 	loanTimer.connect("timeout", _payInstalment)
@@ -54,6 +56,13 @@ func _set_random_name():
 
 func _payInstalment():
 	global_shop._removeKitcoin(installment)
+	if global_shop.kitcoins < 0:
+		if looseScreen == null:
+			printerr("NO LOOSE SCREEN ASSIGNED")
+			return
+		looseScreen.visible = true
+		looseScreen.pause()
+		return
 	installment += installmentIncrement
 	label2.text = "Next instalment: " + str(installment)
 	_toggleTooltip()
