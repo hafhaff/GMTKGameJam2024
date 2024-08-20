@@ -156,7 +156,8 @@ func _on_interact_shape_body_exited(body):
 	if body is Player:
 		body.canUnload = false
 		body.curShelf = null
-		setup_tooltip(false)
+		if global_shop.storageUnitTooltip.storage_unit == self:
+			setup_tooltip(false)
 
 func update_tooltip():
 	if isToolTipActive:
@@ -172,5 +173,7 @@ func setup_tooltip(switch: bool, positionArg: Vector2 = Vector2.ZERO):
 		tooltip.visible = switch
 		tooltip.set_tooltip_display(self.itemType, self.itemNum, self.maxItemCount)
 		isToolTipActive = switch
+		if switch:
+			tooltip.storage_unit = self
 	else:
 		print("didnt find tooltip")
