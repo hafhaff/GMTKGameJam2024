@@ -144,6 +144,10 @@ offset_top = -11.0
 offset_right = -19.3333
 offset_bottom = 38.0
 scale = Vector2(1, 0.99375)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_outline_size = 4
 text = "<
 Q"
 
@@ -152,6 +156,10 @@ offset_left = 27.6667
 offset_top = -11.0
 offset_right = 37.6667
 offset_bottom = 38.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_outline_size = 4
 text = ">
 E"
 
@@ -160,5 +168,9 @@ offset_left = -15.0
 offset_top = -25.0
 offset_right = 44.0
 offset_bottom = -12.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_outline_size = 4
 theme_override_font_sizes/font_size = 11
 text = "PRICE"

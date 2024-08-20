@@ -86,6 +86,7 @@ offset_bottom = 331.0
 rotation = 0.0872665
 
 [node name="Label2" type="Label" parent="Control"]
+layout_mode = 0
 offset_left = -90.6415
 offset_top = -31.0225
 offset_right = 101.358

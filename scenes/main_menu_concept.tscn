@@ -315,7 +315,7 @@ pivot_offset = Vector2(53, 0)
 size_flags_horizontal = 4
 texture = ExtResource("10_ftank")
 
-[node name="Panel" type="Panel" parent="CanvasLayer" node_paths=PackedStringArray("selectSoundPlayer", "switchSoundPlayer", "backSoundPlayer", "musicPlayer", "menus", "loadingScreen")]
+[node name="Panel" type="Panel" parent="CanvasLayer" node_paths=PackedStringArray("selectSoundPlayer", "switchSoundPlayer", "backSoundPlayer", "musicPlayer", "menus", "loadingScreen", "creditsPanel")]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -333,6 +333,7 @@ backSoundPlayer = NodePath("../../Back")
 musicPlayer = NodePath("../../MusicPlayer")
 menus = [NodePath("MainMenu"), NodePath("Options"), NodePath("Credits")]
 loadingScreen = NodePath("../LoadingScreen")
+creditsPanel = NodePath("../CreditsPanel")
 
 [node name="MainMenu" type="GridContainer" parent="CanvasLayer/Panel"]
 layout_mode = 1
@@ -624,5 +625,7 @@ position = Vector2(896, 135)
 
 [connection signal="pressed" from="CanvasLayer/Panel/MainMenu/Button" to="CanvasLayer/Panel" method="_switchScenes" binds= [0]]
 [connection signal="pressed" from="CanvasLayer/Panel/MainMenu/Button2" to="CanvasLayer/Panel" method="_switchMenu" binds= [1]]
+[connection signal="pressed" from="CanvasLayer/Panel/MainMenu/Button3" to="CanvasLayer/Panel" method="_toggleCredits"]
 [connection signal="pressed" from="CanvasLayer/Panel/Options/Button4" to="CanvasLayer/Panel" method="_switchMenu"]
 [connection signal="pressed" from="CanvasLayer/Panel/Credits/Button4" to="CanvasLayer/Panel" method="_switchMenu"]
+[connection signal="pressed" from="CanvasLayer/Panel/Credits/Button4" to="CanvasLayer/Panel" method="_toggleCredits"]

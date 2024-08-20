@@ -177,6 +177,10 @@ offset_top = -11.0
 offset_right = -19.3333
 offset_bottom = 38.0
 scale = Vector2(0.5, 0.496875)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_outline_size = 4
 text = "<
 Q"
 
@@ -185,6 +189,10 @@ offset_left = 27.6667
 offset_top = -11.0
 offset_right = 37.6667
 offset_bottom = 38.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_outline_size = 4
 text = ">
 E"
 
@@ -196,6 +204,10 @@ offset_left = -32.0
 offset_top = -42.3333
 offset_right = 33.0
 offset_bottom = -30.3333
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 4
 bbcode_enabled = true
 text = "[center]Cashier"
 
@@ -204,6 +216,10 @@ offset_left = -32.0
 offset_top = -32.0
 offset_right = 33.0
 offset_bottom = -20.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 4
 bbcode_enabled = true
 text = "[center]Price"
 
