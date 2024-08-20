@@ -133,7 +133,12 @@ wait_time = 10.212
 one_shot = true
 autostart = true
 
+[node name="Notification" type="Timer" parent="."]
+wait_time = 6.0
+one_shot = true
+
 [connection signal="timeout" from="MainSpawnTimer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="RandomSpawns" to="." method="_on_random_spawns_timeout"]
 [connection signal="timeout" from="NextWaveTimer" to="." method="_on_next_wave_timer_timeout"]
 [connection signal="timeout" from="InitialTimer" to="." method="_on_initial_timer_timeout"]
+[connection signal="timeout" from="Notification" to="." method="_rushHourNotification"]

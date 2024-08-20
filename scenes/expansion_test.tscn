@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://clsegmf75ckjy"]
+[gd_scene load_steps=22 format=4 uid="uid://clsegmf75ckjy"]
 
 [ext_resource type="TileSet" uid="uid://cpf2j2rvdkkd1" path="res://textures/tilemaps/building_tiles.tres" id="1_nfa3s"]
 [ext_resource type="Script" path="res://scripts/expansionMap.gd" id="2_i6fl6"]
@@ -12,13 +12,14 @@
 [ext_resource type="PackedScene" uid="uid://mwdwlaqsblh8" path="res://scenes/ui/hiring_menu.tscn" id="14_t8xff"]
 [ext_resource type="PackedScene" uid="uid://dvlyc5korg8xr" path="res://scenes/ui/tooltip/tips.tscn" id="14_vyjnr"]
 [ext_resource type="PackedScene" uid="uid://chciysutigfsd" path="res://scenes/objects/delivery_point.tscn" id="15_2nylf"]
-[ext_resource type="PackedScene" uid="uid://2xpgk2h81yie" path="res://scenes/ui/hotbar.tscn" id="15_3vro4"]
+[ext_resource type="PackedScene" path="res://scenes/ui/hotbar.tscn" id="15_3vro4"]
 [ext_resource type="Script" path="res://scenes/expansionController.gd" id="15_5jux3"]
 [ext_resource type="PackedScene" uid="uid://bed0fmavm0x6e" path="res://scenes/characters/kitty_display.tscn" id="15_c1qqx"]
 [ext_resource type="PackedScene" uid="uid://ighgjuvtgyfp" path="res://scenes/ui/pause.tscn" id="16_cq8ll"]
 [ext_resource type="PackedScene" uid="uid://g13k232xga6o" path="res://scenes/objects/store_entrance.tscn" id="17_nwqem"]
 [ext_resource type="PackedScene" uid="uid://blawy58ur83h2" path="res://scenes/ui/tooltip/storage_unit_tooltip.tscn" id="19_bkvnn"]
 [ext_resource type="PackedScene" uid="uid://c7v2ljd5ues64" path="res://scenes/ui/loan_layer.tscn" id="19_rxvgi"]
+[ext_resource type="PackedScene" uid="uid://dj7cfurbin3uy" path="res://scenes/ui/customer_total_display.tscn" id="20_k5ne2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h6lwn"]
 size = Vector2(51, 49)
@@ -138,10 +139,24 @@ visible = false
 unique_name_in_owner = true
 visible = false
 
-[node name="StoreEntrance" parent="." instance=ExtResource("17_nwqem")]
+[node name="StoreEntrance" parent="." node_paths=PackedStringArray("customerTotalLabel", "rushHourLabel") instance=ExtResource("17_nwqem")]
 position = Vector2(80, 0)
+customerTotalLabel = NodePath("../Customer Total Display/Label")
+rushHourLabel = NodePath("../Customer Total Display/Control")
 
 [node name="Loan Layer" parent="." instance=ExtResource("19_rxvgi")]
+
+[node name="Customer Total Display" parent="." instance=ExtResource("20_k5ne2")]
+
+[node name="Label" parent="Customer Total Display" index="2"]
+text = "0/25"
+
+[node name="Label2" parent="Customer Total Display/Control" index="0"]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 192.0
+offset_bottom = 45.0
 
 [connection signal="visibilityToggled" from="ConstructionMen" to="RightExpand" method="buildModeToggled"]
 [connection signal="visibilityToggled" from="ConstructionMen" to="LeftExpand" method="buildModeToggled"]
@@ -165,3 +180,5 @@ position = Vector2(80, 0)
 [connection signal="input_event" from="DownExpand" to="DownExpand" method="_on_input_event"]
 [connection signal="mouse_entered" from="DownExpand" to="ConstructionMen" method="_on_mouse_entered_expansion"]
 [connection signal="mouse_shape_entered" from="DownExpand" to="ConstructionMen" method="_on_right_expand_mouse_shape_entered"]
+
+[editable path="Customer Total Display"]
