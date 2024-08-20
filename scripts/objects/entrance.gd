@@ -52,8 +52,8 @@ func _on_random_spawns_timeout() -> void:
 		customersToSpawn += 12 *  round(lifetimeSpawns/5)
 
 func _on_next_wave_timer_timeout() -> void:
-	print("total spawns::")
-	print(lifetimeSpawns)
+	#print("total spawns::")
+	#print(lifetimeSpawns)
 	random_spawns.wait_time = randi_range(25, 180)
 	customersToSpawn += 50 * round(lifetimeSpawns/5)
 
@@ -61,5 +61,5 @@ func _on_next_wave_timer_timeout() -> void:
 func _on_initial_timer_timeout():
 	readyToSpawn = true
 	customersToSpawn += 5
-	print("HERE THEY COME")
+	#print("HERE THEY COME")
 	pass # Replace with function body.

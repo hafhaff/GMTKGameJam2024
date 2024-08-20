@@ -36,5 +36,5 @@ func _catExit(cat: ShoppingAI):
 	activeShoppers.erase(cat)
 
 func _switchCamera():
-	print("Camera Switch")
+	#print("Camera Switch")
 	activeShoppers.pick_random().attachedCamera.make_current()
