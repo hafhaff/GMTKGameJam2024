@@ -130,7 +130,7 @@ func dropBox():
 		setup_tooltip(false)
 		$HoldBox.visible = false
 		heldItem.disablePickup()
-		heldItem.global_position = self.global_position
+		heldItem.global_position = self.global_position + Vector2(0, 18)
 		heldItem.update_box_type()
 		print (heldItem.position)
 		heldItem.showSprite()
@@ -159,7 +159,7 @@ func _input(event: InputEvent):
 					camera.zoom += zoom_speed
 
 func update_tooltip():
-	if heldItem == Box:
+	if heldItem != null:
 		setup_tooltip(true)
 
 func setup_tooltip(switch: bool):

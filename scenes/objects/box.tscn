@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bbvoxcvfwybuw" path="res://scenes/objects/box_display.tscn" id="3_27jt8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x8lv1"]
-size = Vector2(12, 9)
+size = Vector2(14, 10)
 
 [node name="Box1" type="Area2D"]
 z_index = 1
@@ -19,11 +19,10 @@ one_shot = true
 script = ExtResource("2_sv5o5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -4.5)
+position = Vector2(0, -5)
 shape = SubResource("RectangleShape2D_x8lv1")
 
 [node name="BoxDisplay" parent="." instance=ExtResource("3_27jt8")]
-position = Vector2(0, 2)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
