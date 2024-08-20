@@ -5,6 +5,7 @@ class_name Shop
 var shopShelves: Dictionary = {}	#dictionary
 var shopCounters: Dictionary = {}	#dictionary
 var shopDeliveryPoints: Dictionary = {}	#dictionary
+var storageUnitTooltip: StorageTooltip = null #did this since placed shelves cant access it with %
 
 var prices = {
 	"restocker" : 2,
@@ -112,6 +113,9 @@ func _handleBoxPickup(box: Box, pickedUp: bool):
 	#Not in our list, but dropped, we add to our list
 	elif !boxes[box.itemType].has(box) && !pickedUp:
 		boxes[box.itemType].push_back(box)
+
+func _registerStorageTooltip(tooltip: StorageTooltip):
+	storageUnitTooltip = tooltip
 
 func _addKitcoin(addition: float):
 	kitcoins += addition

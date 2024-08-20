@@ -8,6 +8,9 @@ class_name StorageTooltip
 var item_names: Array = ["Canned Food", "Cereal", "Catnip"] 
 var format_string = "%s/%s"
 
+func _ready() -> void:
+	global_shop._registerStorageTooltip(self)
+
 func set_tooltip_display(type: int, current: int, max: int):
 	name_label.text = get_item_name(type, current)
 	capacity.text = format_string % [current, max]
