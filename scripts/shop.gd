@@ -33,6 +33,7 @@ var bottomRight = Vector2i(9,9)
 var autoBuyBoxes: Dictionary = {}
 
 signal kitcoinUpdated(float)
+signal kitcoinDifference(float)
 signal newEmptyShelf(shelf)
 
 func _registerTilemap(_tileMap: NavmeshUpdater):
@@ -114,7 +115,9 @@ func _handleBoxPickup(box: Box, pickedUp: bool):
 
 func _addKitcoin(addition: float):
 	kitcoins += addition
+	print("kitcoins added: " + str(addition))
 	kitcoinUpdated.emit(kitcoins)
+	kitcoinDifference.emit(addition)
 
 func _removeKitcoin(addition: float):
 	kitcoins -= addition
@@ -124,7 +127,9 @@ func buy(cost):
 	if kitcoins >= (cost- 100):
 		kitcoins = kitcoins - cost
 		print("buy success")
+		print("kitcoins lost: " + str(cost))
 		kitcoinUpdated.emit(kitcoins)
+		kitcoinDifference.emit(-cost)
 		return true
 	else:
 		return false
