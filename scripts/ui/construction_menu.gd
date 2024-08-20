@@ -55,11 +55,17 @@ func _process(_delta):
 	else:
 		if (
 			global_shop.shopShelves.has(Vector2i(constPos.x, constPos.y- 1)) || 
+			global_shop.shopShelves.has(Vector2i(constPos.x -1, constPos.y- 1)) || 
+			global_shop.shopShelves.has(Vector2i(constPos.x +1, constPos.y- 1)) || 
 			global_shop.shopShelves.has(Vector2i(constPos.x, constPos.y + 1)) || 
+			global_shop.shopShelves.has(Vector2i(constPos.x -1, constPos.y + 1)) || 
+			global_shop.shopShelves.has(Vector2i(constPos.x +1, constPos.y + 1)) || 
 			global_shop.shopShelves.has(constPos as Vector2i) ||
 			global_shop.shopDeliveryPoints.has(constPos as Vector2i) ||
 			global_shop.shopCounters.has(constPos as Vector2i) ||
 			tilemap.get_cell_tile_data(constPos) == null ||
+			tilemap.get_cell_tile_data(Vector2i(constPos.x, constPos.y + 1)) == null ||
+			tilemap.get_cell_tile_data(Vector2i(constPos.x, constPos.y + 1)).get_navigation_polygon(0) == null ||
 			tilemap.get_cell_tile_data(constPos).get_navigation_polygon(0) == null
 		):
 			selectionDisplay.selectionSprite.modulate = Color.RED
