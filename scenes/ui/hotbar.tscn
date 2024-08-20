@@ -23,6 +23,7 @@ offset_top = 2.0
 offset_right = 22.0
 offset_bottom = 21.0
 tooltip_text = "Build"
+focus_mode = 0
 script = ExtResource("1_4f654")
 
 [node name="Icon" type="TextureRect" parent="Build"]
@@ -60,6 +61,7 @@ offset_top = 2.0
 offset_right = 60.0
 offset_bottom = 21.0
 tooltip_text = "Supplies"
+focus_mode = 0
 script = ExtResource("1_4f654")
 
 [node name="Icon" type="TextureRect" parent="Supplies"]
@@ -96,6 +98,7 @@ offset_top = 2.0
 offset_right = 41.0
 offset_bottom = 21.0
 tooltip_text = "Hire"
+focus_mode = 0
 script = ExtResource("1_4f654")
 
 [node name="Icon" type="TextureRect" parent="Hire"]
@@ -132,6 +135,7 @@ offset_top = 2.0
 offset_right = 79.0
 offset_bottom = 21.0
 tooltip_text = "Reviews"
+focus_mode = 0
 script = ExtResource("1_4f654")
 
 [node name="Icon" type="TextureRect" parent="Reviews"]
