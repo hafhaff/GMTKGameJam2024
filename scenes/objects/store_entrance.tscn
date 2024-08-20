@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://g13k232xga6o"]
 
-[ext_resource type="Texture2D" uid="uid://bp256u2m1eiea" path="res://textures/objects/entrance_atlas.tres" id="1_li4r7"]
+[ext_resource type="Texture2D" path="res://textures/objects/entrance_atlas.tres" id="1_li4r7"]
 [ext_resource type="Script" path="res://scripts/objects/entrance.gd" id="1_w8h1o"]
 [ext_resource type="PackedScene" uid="uid://biophta5et6p7" path="res://scenes/characters/shopping_ai.tscn" id="2_muv61"]
 
@@ -117,11 +117,11 @@ libraries = {
 autoplay = "idle"
 
 [node name="MainSpawnTimer" type="Timer" parent="."]
-wait_time = 0.2
 autostart = true
 
 [node name="RandomSpawns" type="Timer" parent="."]
 wait_time = 30.0
+one_shot = true
 autostart = true
 
 [node name="NextWaveTimer" type="Timer" parent="."]
