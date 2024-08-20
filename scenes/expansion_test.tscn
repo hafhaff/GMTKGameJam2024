@@ -12,14 +12,14 @@
 [ext_resource type="PackedScene" uid="uid://mwdwlaqsblh8" path="res://scenes/ui/hiring_menu.tscn" id="14_t8xff"]
 [ext_resource type="PackedScene" uid="uid://dvlyc5korg8xr" path="res://scenes/ui/tooltip/tips.tscn" id="14_vyjnr"]
 [ext_resource type="PackedScene" uid="uid://chciysutigfsd" path="res://scenes/objects/delivery_point.tscn" id="15_2nylf"]
-[ext_resource type="PackedScene" path="res://scenes/ui/hotbar.tscn" id="15_3vro4"]
+[ext_resource type="PackedScene" uid="uid://2xpgk2h81yie" path="res://scenes/ui/hotbar.tscn" id="15_3vro4"]
 [ext_resource type="Script" path="res://scenes/expansionController.gd" id="15_5jux3"]
 [ext_resource type="PackedScene" uid="uid://bed0fmavm0x6e" path="res://scenes/characters/kitty_display.tscn" id="15_c1qqx"]
 [ext_resource type="PackedScene" uid="uid://ighgjuvtgyfp" path="res://scenes/ui/pause.tscn" id="16_cq8ll"]
 [ext_resource type="PackedScene" uid="uid://g13k232xga6o" path="res://scenes/objects/store_entrance.tscn" id="17_nwqem"]
 [ext_resource type="PackedScene" uid="uid://blawy58ur83h2" path="res://scenes/ui/tooltip/storage_unit_tooltip.tscn" id="19_bkvnn"]
 [ext_resource type="PackedScene" uid="uid://c7v2ljd5ues64" path="res://scenes/ui/loan_layer.tscn" id="19_rxvgi"]
-[ext_resource type="PackedScene" uid="uid://dj7cfurbin3uy" path="res://scenes/ui/customer_total_display.tscn" id="20_k5ne2"]
+[ext_resource type="PackedScene" path="res://scenes/ui/customer_total_display.tscn" id="20_k5ne2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h6lwn"]
 size = Vector2(51, 49)

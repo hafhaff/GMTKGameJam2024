@@ -2,16 +2,17 @@ extends Node
 
 @onready var loanTimer: Timer = $Timer
 @onready var transitionTimer: Timer = $Timer2
-@onready var progressBar: ProgressBar = $HBoxContainer/ProgressBar
-@onready var label: Label = $HBoxContainer2/Label
-@onready var label2: Label = $HBoxContainer/Label
-@onready var tooltip: Control = $HBoxContainer2
+@onready var progressBar: ProgressBar = $InstallmentProgress/ProgressBar
+@onready var label: Label = $LoanGuy/Message
+@onready var label2: Label = $InstallmentProgress/Label
+@onready var tooltip: Control = $LoanGuy
+@onready var kitty_display: KittyDisplay = $LoanGuy/Panel/SubViewportContainer/SubViewport/KittyDisplay
 
 var tooltipShown: bool = true
 var installment: int = 50
 var installmentIncrement: int = 80
-var showPos: Vector2 = Vector2(390, 55)
-var hidePos: Vector2 = Vector2(390, -70)
+var showPos: Vector2 = Vector2(397, 40)
+var hidePos: Vector2 = Vector2(397, -98)
 var supportiveTexts: Array[String] = [
 	"Nice! You paid me!",
 	"Great job! I got the money!",
@@ -29,6 +30,8 @@ func _ready():
 	loanTimer.connect("timeout", _payInstalment)
 	transitionTimer.connect("timeout", _toggleTooltip)
 	transitionTimer.start(10)
+	kitty_display.randomize_look()
+	kitty_display.set_role(3)
 
 func _process(_delta):
 	progressBar.value = loanTimer.time_left / 90.0
