@@ -27,6 +27,7 @@ zoom = Vector2(3, 3)
 position = Vector2(0, 16)
 
 [node name="HoldBox" parent="." instance=ExtResource("4_01twm")]
+visible = false
 position = Vector2(3, 17)
 
 [node name="BoxTooltip" parent="." instance=ExtResource("6_s1h5o")]

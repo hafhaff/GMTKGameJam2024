@@ -166,8 +166,11 @@ func setup_tooltip(switch: bool, positionArg: Vector2 = Vector2.ZERO):
 	
 	# Only perform actions if the tooltip exists to prevent crashes
 	if %StorageUnitTooltip:
+		print("found tooltip")
 		var tooltip: StorageTooltip = %StorageUnitTooltip
 		tooltip.global_position = positionArg
 		tooltip.visible = switch
 		tooltip.set_tooltip_display(self.itemType, self.itemNum, self.maxItemCount)
 		isToolTipActive = switch
+	else:
+		print("didnt find tooltip")
