@@ -148,15 +148,17 @@ func fillWithRandom():
 
 func _on_interact_shape_body_entered(body):
 	if body is Player:
-		body.canUnload = true
-		body.curShelf = self
-		setup_tooltip(true, position + Vector2(-13, -24))
+		body.interaction_manager.register_area(self)
+	#	body.canUnload = true
+	#	body.curShelf = self
+	#	setup_tooltip(true, position + Vector2(-13, -24))
 
 func _on_interact_shape_body_exited(body):
 	if body is Player:
-		body.canUnload = false
-		body.curShelf = null
-		setup_tooltip(false)
+		body.interaction_manager.unregister_area(self)
+	#		body.canUnload = false
+	#		body.curShelf = null
+	#		setup_tooltip(false)
 
 func update_tooltip():
 	if isToolTipActive:

@@ -19,12 +19,18 @@ var zoom_speed = Vector2(0.300001, 0.300001)
 @onready var camera = $Camera2D
 @onready var kittyDisplay: KittyDisplay = $KittyDisplay
 @onready var box_tooltip: StorageTooltip = $BoxTooltip
+@onready var interaction_manager: InteractionManager = $InteractionManager
+
+var tooltip: StorageTooltip
 
 func _ready():
 	position = Vector2(100, 100)
 	heldItem = null
 	kittyDisplay.randomize_look()
 	kittyDisplay.set_role(kittyDisplay.KittyRole.PLAYER)
+	
+	if global_shop.storageUnitTooltip != null:
+			tooltip = global_shop.storageUnitTooltip
 
 func _physics_process(_delta):
 	var action1 = Input.is_action_just_pressed("Action1")
@@ -45,6 +51,16 @@ func _physics_process(_delta):
 	elif action1 and canUnload and getNumInBox() < 1:
 		takeShelf()
 	
+	curShelf = interaction_manager.get_active_area()
+	
+	if interaction_manager.get_active_area() != null:
+		canUnload = true
+		if tooltip != null:
+			tooltip.global_position = curShelf.position + Vector2(-13, -24)
+			tooltip.visible = true
+			tooltip.set_tooltip_display(curShelf.itemType, curShelf.itemNum, curShelf.maxItemCount)
+	else:
+		tooltip.visible = false
 
 func fillShelf():
 	print("filling shelf")

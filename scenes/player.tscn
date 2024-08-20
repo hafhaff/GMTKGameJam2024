@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://ci8ldm6uxfv0i"]
+[gd_scene load_steps=8 format=3 uid="uid://ci8ldm6uxfv0i"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_7xdi6"]
 [ext_resource type="PackedScene" uid="uid://bed0fmavm0x6e" path="res://scenes/characters/kitty_display.tscn" id="2_h6ns5"]
 [ext_resource type="PackedScene" uid="uid://b6xpligwm2mx6" path="res://scenes/objects/box.tscn" id="2_qypj0"]
+[ext_resource type="Script" path="res://scripts/interaction/interaction_manager.gd" id="3_54jq5"]
 [ext_resource type="PackedScene" uid="uid://bbvoxcvfwybuw" path="res://scenes/objects/box_display.tscn" id="4_01twm"]
 [ext_resource type="PackedScene" uid="uid://duicci3rxpyyq" path="res://scenes/ui/tooltip/box_tooltip.tscn" id="6_s1h5o"]
 
@@ -15,6 +16,9 @@ y_sort_enabled = true
 collision_layer = 2
 script = ExtResource("1_7xdi6")
 box_scene = ExtResource("2_qypj0")
+
+[node name="InteractionManager" type="Node2D" parent="."]
+script = ExtResource("3_54jq5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 11)
