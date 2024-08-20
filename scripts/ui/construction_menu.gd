@@ -33,7 +33,7 @@ func _process(_delta):
 	constPos = floor(get_tree().root.get_child(2).get_global_mouse_position()/32)
 	selectionDisplay.global_position = constPos * 32
 
-	if selectionNum == 2:
+	if selectionNum == 3:
 		for x in range(3):
 			for y in range(3):
 				var constPosCheck = constPos
