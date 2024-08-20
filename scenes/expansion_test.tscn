@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://clsegmf75ckjy"]
+[gd_scene load_steps=23 format=4 uid="uid://clsegmf75ckjy"]
 
 [ext_resource type="TileSet" uid="uid://cpf2j2rvdkkd1" path="res://textures/tilemaps/building_tiles.tres" id="1_nfa3s"]
 [ext_resource type="Script" path="res://scripts/expansionMap.gd" id="2_i6fl6"]
@@ -19,7 +19,8 @@
 [ext_resource type="PackedScene" uid="uid://g13k232xga6o" path="res://scenes/objects/store_entrance.tscn" id="17_nwqem"]
 [ext_resource type="PackedScene" uid="uid://blawy58ur83h2" path="res://scenes/ui/tooltip/storage_unit_tooltip.tscn" id="19_bkvnn"]
 [ext_resource type="PackedScene" uid="uid://c7v2ljd5ues64" path="res://scenes/ui/loan_layer.tscn" id="19_rxvgi"]
-[ext_resource type="PackedScene" path="res://scenes/ui/customer_total_display.tscn" id="20_k5ne2"]
+[ext_resource type="PackedScene" uid="uid://dj7cfurbin3uy" path="res://scenes/ui/customer_total_display.tscn" id="20_k5ne2"]
+[ext_resource type="PackedScene" uid="uid://bulh8ramy0f3v" path="res://scenes/objects/freezer.tscn" id="21_7qyov"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h6lwn"]
 size = Vector2(51, 49)
@@ -158,6 +159,9 @@ offset_left = 0.0
 offset_top = 0.0
 offset_right = 192.0
 offset_bottom = 45.0
+
+[node name="Shelf" parent="." instance=ExtResource("21_7qyov")]
+position = Vector2(106, 101)
 
 [connection signal="visibilityToggled" from="ConstructionMen" to="RightExpand" method="buildModeToggled"]
 [connection signal="visibilityToggled" from="ConstructionMen" to="LeftExpand" method="buildModeToggled"]

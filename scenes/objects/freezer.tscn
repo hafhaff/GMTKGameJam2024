@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://bulh8ramy0f3v"]
+
+[ext_resource type="Script" path="res://scripts/objects/shelf_data.gd" id="1_0b2na"]
+[ext_resource type="Texture2D" uid="uid://bvjkk6qt4vush" path="res://textures/objects/freezer.png" id="2_oryyb"]
+[ext_resource type="Texture2D" uid="uid://b7e1so884gc4r" path="res://textures/objects/products/shelved_milk.tres" id="3_s7ksw"]
+[ext_resource type="Script" path="res://scripts/objects/products/shelved_items.gd" id="4_88lxl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tlx30"]
+atlas = ExtResource("2_oryyb")
+region = Rect2(0, 0, 128, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kqj1n"]
+size = Vector2(32, 5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yhb2b"]
+radius = 16.0
+
+[node name="Shelf" type="StaticBody2D"]
+z_index = 1
+y_sort_enabled = true
+script = ExtResource("1_0b2na")
+itemType = 3
+supportedItems = [3, 4, 5]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(16, 32)
+texture = SubResource("AtlasTexture_tlx30")
+offset = Vector2(0, -16)
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 32)
+
+[node name="ShelvedItems" type="Sprite2D" parent="."]
+position = Vector2(16, 32)
+texture = ExtResource("3_s7ksw")
+offset = Vector2(0, -16)
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 32)
+script = ExtResource("4_88lxl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(16, 29.5)
+shape = SubResource("RectangleShape2D_kqj1n")
+
+[node name="InteractShape" type="Area2D" parent="."]
+position = Vector2(16, 32)
+collision_mask = 3
+
+[node name="InteractArea" type="CollisionShape2D" parent="InteractShape"]
+shape = SubResource("CircleShape2D_yhb2b")
+
+[node name="InteractPos" type="Node2D" parent="."]
+position = Vector2(16, 34)
+
+[connection signal="body_entered" from="InteractShape" to="." method="_on_interact_shape_body_entered"]
+[connection signal="body_exited" from="InteractShape" to="." method="_on_interact_shape_body_exited"]
