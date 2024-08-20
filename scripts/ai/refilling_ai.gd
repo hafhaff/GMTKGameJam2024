@@ -18,11 +18,14 @@ var wage = global_shop.prices["restocker"]
 func _ready():
 	kittyDisplay.randomize_look()
 	kittyDisplay.set_role(kittyDisplay.KittyRole.RESTOCKER)
-	global_shop.connect("newEmptyShelf", _setShelf)
+	#global_shop.connect("newEmptyShelf", _setShelf)
 	lookForEmptyShelf.start(randf_range(1,4))
 
 func _physics_process(_delta):
-	if target == null:
+	if target == null || !is_instance_valid(target):
+		if shelf != null:
+			printerr("No target (box), but we have a shelf set! Box got freed? Resetting...")
+			shelf = null
 		kittyDisplay.is_walking = false
 		return
 	if navigation.is_navigation_finished():
@@ -39,6 +42,7 @@ func _physics_process(_delta):
 	move_and_slide()
 
 func _lookForShelf():
+	printt("Looking for shelf", self, shelf)
 	if shelf != null:
 		return
 	for _shelf in global_shop.emptyShelves:
@@ -62,22 +66,22 @@ func _setShelf(_shelf: Shelf) -> bool:
 	if _boxes.size() == 0:
 		shelf = null
 		return false
+	_boxes.shuffle()
 	if !is_instance_valid(_boxes[0]):
 		shelf = null
 		global_shop._boxCleanup()
 		return false
-	_boxes.shuffle()
 	target = _boxes[0]
 	target.connect("pickedUp", _lostTarget)
 	navigation.target_position = target.global_position
-	global_shop._handleEmptyShelf(shelf)
+	global_shop._handleEmptyShelf(shelf, true)
 	return true
 
 func _lostTarget(_box: Box, _pickedUp: bool):
 	#print("Lost target")
 	target.disconnect("pickedUp", _lostTarget)
 	if !navigation.is_navigation_finished():
-		global_shop._handleEmptyShelf(shelf)
+		global_shop._handleEmptyShelf(shelf, true)
 		shelf = null
 		target = null
 

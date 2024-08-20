@@ -67,15 +67,23 @@ func _handleEmptyCounter(counter: Counter, forced: bool = false):
 	else:
 		emptyCounters.erase(counter)
 
-func _handleEmptyShelf(shelf: Shelf):
+func _handleEmptyShelf(shelf: Shelf, forceChange: bool = false):
 	if shelf.itemNum > 0:
 		if emptyShelves.has(shelf):
 			emptyShelves.erase(shelf)
 		return
+
+	if forceChange:
+		if emptyShelves.has(shelf):
+			emptyShelves.erase(shelf)
+		elif !emptyShelves.has(shelf):
+			emptyShelves.push_back(shelf)
+			newEmptyShelf.emit(shelf)
+		return
 	
-	if emptyShelves.has(shelf):
+	if emptyShelves.has(shelf) && shelf.itemNum > 0:
 		emptyShelves.erase(shelf)
-	else:
+	elif !emptyShelves.has(shelf) && shelf.itemNum <= 0:
 		emptyShelves.push_back(shelf)
 		newEmptyShelf.emit(shelf)
 
@@ -127,7 +135,7 @@ func _registerStorageTooltip(tooltip: StorageTooltip):
 
 func _addKitcoin(addition: float):
 	kitcoins += addition
-	print("kitcoins added: " + str(addition))
+	#print("kitcoins added: " + str(addition))
 	kitcoinUpdated.emit(kitcoins)
 	kitcoinDifference.emit(addition)
 
@@ -139,7 +147,7 @@ func _removeKitcoin(addition: float):
 func buy(cost):
 	if kitcoins >= (cost- 100):
 		kitcoins = kitcoins - cost
-		print("buy success")
+		#print("buy success")
 		print("kitcoins lost: " + str(cost))
 		kitcoinUpdated.emit(kitcoins)
 		kitcoinDifference.emit(-cost)
