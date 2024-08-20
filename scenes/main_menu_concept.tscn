@@ -331,7 +331,7 @@ selectSoundPlayer = NodePath("../../SelectSound")
 switchSoundPlayer = NodePath("../../SwitchSound")
 backSoundPlayer = NodePath("../../Back")
 musicPlayer = NodePath("../../MusicPlayer")
-menus = [NodePath("MainMenu"), NodePath("Options")]
+menus = [NodePath("MainMenu"), NodePath("Options"), NodePath("Credits")]
 loadingScreen = NodePath("../LoadingScreen")
 
 [node name="MainMenu" type="GridContainer" parent="CanvasLayer/Panel"]
@@ -456,6 +456,58 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 33
 text = "Back"
 
+[node name="Credits" type="GridContainer" parent="CanvasLayer/Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Panel/Credits"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel/Credits/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 33
+text = "Credits"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/Panel/Credits"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="CanvasLayer/Panel/Credits"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="CanvasLayer/Panel/Credits"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel/Credits/HBoxContainer4"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Made for the
+GMTK Game Jam 2024
+
+\"Any thing is pawsible\"
+~Mark Brown 8:50 PM
+20th Aug in #general
+
+"
+horizontal_alignment = 1
+
+[node name="Button4" type="Button" parent="CanvasLayer/Panel/Credits"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 33
+text = "Back"
+
 [node name="Timer" type="Timer" parent="CanvasLayer/Panel"]
 wait_time = 0.5
 one_shot = true
@@ -491,6 +543,46 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 99
 text = "Loading..."
+
+[node name="CreditsPanel" type="Panel" parent="CanvasLayer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -100.0
+offset_right = 150.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+pivot_offset = Vector2(150, 0)
+theme_type_variation = &"PanelSolidBlack"
+
+[node name="Label" type="Label" parent="CanvasLayer/CreditsPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "MADE WITH LOVE AND HATRED IN A LITTERBOX
+
+Programming:
+Hullapop, SadArab, hafnhaf, NathanTheCraziest
+
+Art:
+NathanTheCraziest
+
+Music & SFX:
+Lemonz, Creeno
+
+Assets used:
+Font: Not Jam Font Pack by Not Jam on itch.io"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(779, 304)
@@ -533,3 +625,4 @@ position = Vector2(896, 135)
 [connection signal="pressed" from="CanvasLayer/Panel/MainMenu/Button" to="CanvasLayer/Panel" method="_switchScenes" binds= [0]]
 [connection signal="pressed" from="CanvasLayer/Panel/MainMenu/Button2" to="CanvasLayer/Panel" method="_switchMenu" binds= [1]]
 [connection signal="pressed" from="CanvasLayer/Panel/Options/Button4" to="CanvasLayer/Panel" method="_switchMenu"]
+[connection signal="pressed" from="CanvasLayer/Panel/Credits/Button4" to="CanvasLayer/Panel" method="_switchMenu"]
