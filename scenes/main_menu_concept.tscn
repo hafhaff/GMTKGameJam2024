@@ -545,7 +545,6 @@ theme_override_font_sizes/font_size = 99
 text = "Loading..."
 
 [node name="CreditsPanel" type="Panel" parent="CanvasLayer"]
-visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -571,7 +570,7 @@ grow_vertical = 2
 text = "MADE WITH LOVE AND HATRED IN A LITTERBOX
 
 Programming:
-Hullapop, SadArab, hafnhaf, NathanTheCraziest
+Hullahopp, SadArab, hafnhaf, NathanTheCraziest
 
 Art:
 NathanTheCraziest

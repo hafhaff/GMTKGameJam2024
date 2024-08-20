@@ -13,10 +13,10 @@ y_sort_enabled = true
 script = ExtResource("1_ek76o")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-z_index = 1
 y_sort_enabled = true
-position = Vector2(16, 16)
+position = Vector2(16, 32)
 texture = ExtResource("2_10oq4")
+offset = Vector2(0, -16)
 
 [node name="InteractPos" type="Node2D" parent="."]
 position = Vector2(16, 35)
