@@ -60,6 +60,18 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector2(1, 1), Vector2(1, 0.95), Vector2(1, 1), Vector2(1, 0.95), Vector2(1, 0.988)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Price:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.466667, 0.733333, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 0.95), Vector2(1, 1), Vector2(1, 0.95), Vector2(1, 0.988)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_njnam"]
 _data = {
@@ -131,7 +143,7 @@ offset_left = -32.3333
 offset_top = -11.0
 offset_right = -19.3333
 offset_bottom = 38.0
-scale = Vector2(0.5, 0.496875)
+scale = Vector2(1, 0.99375)
 text = "<
 Q"
 
@@ -140,6 +152,13 @@ offset_left = 27.6667
 offset_top = -11.0
 offset_right = 37.6667
 offset_bottom = 38.0
-scale = Vector2(0.5, 0.5)
 text = ">
 E"
+
+[node name="Price" type="Label" parent="SelectionPositioning"]
+offset_left = -15.0
+offset_top = -25.0
+offset_right = 44.0
+offset_bottom = -12.0
+theme_override_font_sizes/font_size = 11
+text = "PRICE"

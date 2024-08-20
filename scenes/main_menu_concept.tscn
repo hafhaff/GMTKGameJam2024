@@ -11,11 +11,11 @@
 [ext_resource type="PackedScene" uid="uid://d3pmwvyul36cy" path="res://scenes/characters/refilling_ai.tscn" id="8_bfr7c"]
 [ext_resource type="Script" path="res://scripts/ui/main_menu.gd" id="9_hkqd7"]
 [ext_resource type="Texture2D" uid="uid://c7hdxl3cu87hi" path="res://textures/ui/title.png" id="10_ftank"]
-[ext_resource type="AudioStream" uid="uid://bwis8k1aiv0xw" path="res://audio/sfx/Ui_Selection.wav" id="10_o3i3y"]
 [ext_resource type="Script" path="res://scripts/ui/audio_setup.gd" id="11_dv5pp"]
 [ext_resource type="AudioStream" uid="uid://d2gxrc5djvckt" path="res://audio/sfx/button.ogg" id="12_dt1l1"]
 [ext_resource type="AudioStream" uid="uid://d2gc6loqe2b0a" path="res://audio/sfx/back.ogg" id="13_3w0d7"]
 [ext_resource type="AudioStream" uid="uid://dmfm71uu760e4" path="res://audio/music/Mewnimum_Wage_Meowximum_Overdrive-_1_.ogg" id="14_n48ae"]
+[ext_resource type="AudioStream" uid="uid://bkxrn04td2jhk" path="res://audio/sfx/UiSelection.ogg" id="14_urtjn"]
 
 [node name="Level" type="Node2D"]
 
@@ -507,7 +507,7 @@ volume_db = -2.0
 bus = &"SFX"
 
 [node name="SwitchSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("10_o3i3y")
+stream = ExtResource("14_urtjn")
 bus = &"SFX"
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]

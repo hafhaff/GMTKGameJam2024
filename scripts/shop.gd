@@ -12,6 +12,7 @@ var prices = {
 	"cashier" : 2,
 	"counter" : 5,
 	"shelf" : 5,
+	"freezer" : 5,
 	"expansion" : 20,
 	"loadingZone" : 10,
 	"box" : 2 #idk this is for 5 boxes maybe

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://clsegmf75ckjy"]
+[gd_scene load_steps=24 format=4 uid="uid://clsegmf75ckjy"]
 
 [ext_resource type="TileSet" uid="uid://cpf2j2rvdkkd1" path="res://textures/tilemaps/building_tiles.tres" id="1_nfa3s"]
 [ext_resource type="Script" path="res://scripts/expansionMap.gd" id="2_i6fl6"]
@@ -12,10 +12,11 @@
 [ext_resource type="PackedScene" uid="uid://mwdwlaqsblh8" path="res://scenes/ui/hiring_menu.tscn" id="14_t8xff"]
 [ext_resource type="PackedScene" uid="uid://dvlyc5korg8xr" path="res://scenes/ui/tooltip/tips.tscn" id="14_vyjnr"]
 [ext_resource type="PackedScene" uid="uid://chciysutigfsd" path="res://scenes/objects/delivery_point.tscn" id="15_2nylf"]
-[ext_resource type="PackedScene" path="res://scenes/ui/hotbar.tscn" id="15_3vro4"]
+[ext_resource type="PackedScene" uid="uid://8qs7x0pusqhi" path="res://scenes/ui/hotbar.tscn" id="15_3vro4"]
 [ext_resource type="Script" path="res://scenes/expansionController.gd" id="15_5jux3"]
 [ext_resource type="PackedScene" uid="uid://bed0fmavm0x6e" path="res://scenes/characters/kitty_display.tscn" id="15_c1qqx"]
 [ext_resource type="PackedScene" uid="uid://ighgjuvtgyfp" path="res://scenes/ui/pause.tscn" id="16_cq8ll"]
+[ext_resource type="Script" path="res://scripts/ui/hotbar.gd" id="16_kwml2"]
 [ext_resource type="PackedScene" uid="uid://g13k232xga6o" path="res://scenes/objects/store_entrance.tscn" id="17_nwqem"]
 [ext_resource type="PackedScene" uid="uid://blawy58ur83h2" path="res://scenes/ui/tooltip/storage_unit_tooltip.tscn" id="19_bkvnn"]
 [ext_resource type="PackedScene" uid="uid://c7v2ljd5ues64" path="res://scenes/ui/loan_layer.tscn" id="19_rxvgi"]
@@ -51,11 +52,12 @@ tilemap = NodePath("../TileMapLayer")
 [node name="SelectionDisplay2" parent="." instance=ExtResource("11_eptom")]
 position = Vector2(137, 101)
 
-[node name="HiringMen" parent="." node_paths=PackedStringArray("selectionDisplay", "constructionMenu", "purchasingMenu", "tilemap") instance=ExtResource("14_t8xff")]
+[node name="HiringMen" parent="." node_paths=PackedStringArray("selectionDisplay", "constructionMenu", "purchasingMenu", "tilemap", "wageLabel") instance=ExtResource("14_t8xff")]
 selectionDisplay = NodePath("../KittyDisplay")
 constructionMenu = NodePath("../ConstructionMen")
 purchasingMenu = NodePath("../CanvasLayer2/Shopping UI")
 tilemap = NodePath("../TileMapLayer")
+wageLabel = NodePath("../Currency Display/MarginContainer/VBoxContainer/HBoxContainer2/Label")
 
 [node name="KittyDisplay" parent="." instance=ExtResource("15_c1qqx")]
 z_index = 10
@@ -133,28 +135,11 @@ constructionMenu = NodePath("../../ConstructionMen")
 
 [node name="Tips" parent="CanvasLayer2" instance=ExtResource("14_vyjnr")]
 
-[node name="Hotbar" parent="CanvasLayer2" instance=ExtResource("15_3vro4")]
-
-[node name="Tooltip" parent="CanvasLayer2/Hotbar/Supplies" index="1"]
-layout_mode = 0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 55.0
-offset_bottom = 12.0
-
-[node name="Tooltip" parent="CanvasLayer2/Hotbar/Hire" index="1"]
-layout_mode = 0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 40.0
-offset_bottom = 12.0
-
-[node name="Tooltip" parent="CanvasLayer2/Hotbar/Reviews" index="1"]
-layout_mode = 0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 47.0
-offset_bottom = 12.0
+[node name="Hotbar" parent="CanvasLayer2" node_paths=PackedStringArray("hiringMenu", "purchasingMenu", "constructionMenu") instance=ExtResource("15_3vro4")]
+script = ExtResource("16_kwml2")
+hiringMenu = NodePath("../../HiringMen")
+purchasingMenu = NodePath("../Shopping UI")
+constructionMenu = NodePath("../../ConstructionMen")
 
 [node name="Pause" parent="." instance=ExtResource("16_cq8ll")]
 visible = false
@@ -208,9 +193,6 @@ visible = false
 [connection signal="input_event" from="DownExpand" to="DownExpand" method="_on_input_event"]
 [connection signal="mouse_entered" from="DownExpand" to="ConstructionMen" method="_on_mouse_entered_expansion"]
 [connection signal="mouse_shape_entered" from="DownExpand" to="ConstructionMen" method="_on_right_expand_mouse_shape_entered"]
-[connection signal="pressed" from="CanvasLayer2/Hotbar/Build" to="ConstructionMen" method="_toggleDisplay"]
-[connection signal="pressed" from="CanvasLayer2/Hotbar/Supplies" to="CanvasLayer2/Shopping UI" method="_hide"]
-[connection signal="pressed" from="CanvasLayer2/Hotbar/Hire" to="HiringMen" method="_toggleDisplay"]
 
-[editable path="CanvasLayer2/Hotbar"]
+[editable path="Currency Display"]
 [editable path="Customer Total Display"]

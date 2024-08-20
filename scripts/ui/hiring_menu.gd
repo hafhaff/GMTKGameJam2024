@@ -5,6 +5,7 @@ extends Node
 @onready var selectionPositioning: Node2D = $SelectionPositioning
 @onready var kittyDisplay: KittyDisplay = $SelectionPositioning/KittyDisplay
 @onready var nameLabel: RichTextLabel = $SelectionPositioning/RichTextLabel
+@onready var priceLabel: RichTextLabel = $SelectionPositioning/RichTextLabel2
 
 @export var selections: Array[PackedScene]
 @export var selectionDisplay: KittyDisplay
@@ -12,6 +13,7 @@ extends Node
 @export var purchasingMenu: Node
 @export var tilemap: TileMapLayer
 @export var particles: PackedScene
+@export var wageLabel: Label
 
 var visible = true
 var largeKittenHidePos: Vector2 = Vector2(-130, 784)	#Yup, shit's hardcoded
@@ -21,6 +23,8 @@ var selectionHiddenPos: Vector2 = Vector2(620,893)
 var constPos: Vector2
 var selection: PackedScene
 var selectionNum = 1
+var totalWage: int = 0
+var priceNames = ["cashier", "restocker"]
 
 func _ready():
 	_toggleDisplay()
@@ -34,6 +38,7 @@ func _ready():
 	if tilemap == null:
 		printerr("ERROR: HIRING SCENE DOES NOT HAVE A TILEMAP SET. SELF YEETING IMMINENT!")
 		queue_free()
+	priceLabel.text = "[center]" + str(global_shop.prices[priceNames[selectionNum - 1]]) + " Kitcoin"
 
 func _process(_delta):
 	selectionDisplay.global_position = get_tree().root.get_child(2).get_global_mouse_position() + Vector2(0,9)
@@ -92,6 +97,9 @@ func _build():
 		var _particles: CPUParticles2D = particles.instantiate()
 		building.add_child(_particles)
 		_particles.emitting = true
+	if wageLabel != null:
+		totalWage += building.wage * 2
+		wageLabel.text = "Wages: " + str(totalWage) + "/m"
 
 func _selectionChange(next: bool):
 	if !visible:
@@ -102,4 +110,5 @@ func _selectionChange(next: bool):
 		selectionNum = 1
 	selection = selections[selectionNum - 1]
 	kittyDisplay.set_role(selectionNum)
+	priceLabel.text = "[center]" + str(global_shop.prices[priceNames[selectionNum - 1]]) + " Kitcoin"
 	nameLabel.text = "[center]" + str(KittyDisplay.KittyRole.keys()[selectionNum])

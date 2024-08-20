@@ -4,6 +4,7 @@ extends Node
 @onready var smolKittenHolder: Node = $"Construction Kitties"
 @onready var selectionPositioning: Node2D = $SelectionPositioning
 @onready var selectionSprite: Sprite2D = $SelectionPositioning/Sprite2D
+@onready var priceLabel: Label = $SelectionPositioning/Price
 
 @export var selections: Array[PackedScene]
 @export var selectionDisplay: SelectionDisplay
@@ -19,6 +20,7 @@ var selectionHiddenPos: Vector2 = Vector2(620,893)
 var constPos: Vector2
 var selection: PackedScene
 var selectionNum = 0
+var priceNames = ["shelf", "freezer", "counter", "loadingZone"]
 
 signal visibilityToggled(bool)
 
@@ -28,6 +30,7 @@ func _ready():
 	if tilemap == null:
 		printerr("ERROR: CONSTRUCTION SCENE DOES NOT HAVE A TILEMAP SET. SELF YEETING IMMINENT!")
 		queue_free()
+	priceLabel.text = str(global_shop.prices[priceNames[selectionNum]]) + " Kitcoin"
 
 func _process(_delta):
 	constPos = floor(get_tree().root.get_child(2).get_global_mouse_position()/32)
@@ -151,7 +154,8 @@ func _selectionChange(next: bool):
 			selection = selections[selectionNum]
 	selectionDisplay.selectionSprite.texture = selectionDisplay.selectionSprites[selection]
 	selectionSprite.texture = selectionDisplay.selectionSprite.texture
-	if selectionNum == 2:
+	priceLabel.text = str(global_shop.prices[priceNames[selectionNum]]) + " Kitcoin"
+	if selectionNum == 3:
 		selectionDisplay.selectionSprite.scale = Vector2i(3,3)
 		selectionDisplay.selectionSprite.position = Vector2(48,48)
 	else:

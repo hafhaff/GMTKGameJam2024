@@ -77,14 +77,18 @@ func _setAutoBuy(newText: float, itemID: int):
 	global_shop._boxAutoBuy(itemID, newText)
 
 func _autoBuyBoxes():
+	var autoOrders: Array[ItemGlobal.FoodTypes] = []
+	var autoTotal: int = 0
 	for type in global_shop.autoBuyBoxes:
 		if !global_shop.boxes.has(type):
 			for i in range(global_shop.autoBuyBoxes[type]):
-				orderTotal += itemGlobalLocal.FoodValues[type].purchasePrice
-				orderedTypes.push_back(type)
+				autoTotal += itemGlobalLocal.FoodValues[type].purchasePrice
+				autoOrders.push_back(type)
 			continue
 		if global_shop.boxes[type].size() < global_shop.autoBuyBoxes[type]:
 			for i in range(global_shop.boxes[type].size(), global_shop.autoBuyBoxes[type]):
-				orderTotal += itemGlobalLocal.FoodValues[type].purchasePrice
-				orderedTypes.push_back(type)
-	_submit()
+				autoTotal += itemGlobalLocal.FoodValues[type].purchasePrice
+				autoOrders.push_back(type)
+	
+	global_shop._createBoxes(autoOrders)
+	global_shop._removeKitcoin(autoTotal)

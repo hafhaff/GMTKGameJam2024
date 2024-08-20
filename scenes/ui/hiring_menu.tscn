@@ -192,12 +192,20 @@ E"
 is_walking = true
 
 [node name="RichTextLabel" type="RichTextLabel" parent="SelectionPositioning"]
-offset_left = -32.3333
-offset_top = -34.0
-offset_right = 32.6667
-offset_bottom = -10.0
+offset_left = -32.0
+offset_top = -42.3333
+offset_right = 33.0
+offset_bottom = -30.3333
 bbcode_enabled = true
 text = "[center]Cashier"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="SelectionPositioning"]
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 33.0
+offset_bottom = -20.0
+bbcode_enabled = true
+text = "[center]Price"
 
 [connection signal="timeout" from="Construction Kitties/UI Constrution AI/Timer" to="Construction Kitties/UI Constrution AI" method="_generateDesiredPosition"]
 [connection signal="timeout" from="Construction Kitties/UI Constrution AI2/Timer" to="Construction Kitties/UI Constrution AI2" method="_generateDesiredPosition"]

@@ -105,6 +105,7 @@ _data = {
 }
 
 [node name="KitcoinAnimate" type="Node2D"]
+z_index = 10
 position = Vector2(0, 10)
 script = ExtResource("1_d24h3")
 
@@ -120,6 +121,7 @@ libraries = {
 }
 movie_quit_on_finish = true
 
-[node name="cha-ching" type="AudioStreamPlayer" parent="."]
+[node name="cha-ching" type="AudioStreamPlayer2D" parent="."]
+max_distance = 200.0
 max_polyphony = 10
 bus = &"SFX"

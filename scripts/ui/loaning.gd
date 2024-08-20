@@ -12,6 +12,7 @@ extends Node
 var tooltipShown: bool = true
 var installment: int = 50
 var installmentIncrement: int = 80
+var shozSizeAddition: int = 10
 var showPos: Vector2 = Vector2(397, 40)
 var hidePos: Vector2 = Vector2(397, -98)
 var supportiveTexts: Array[String] = [
@@ -48,6 +49,7 @@ func _ready():
 	kitty_display.randomize_look()
 	kitty_display.set_role(3)
 	_set_random_name()
+	label2.text = "Next instalment: " + str(installment)
 
 func _process(_delta):
 	progressBar.value = loanTimer.time_left / 90.0
@@ -64,7 +66,7 @@ func _payInstalment():
 		looseScreen.visible = true
 		looseScreen.pause()
 		return
-	installment += installmentIncrement
+	installment += installmentIncrement + (shozSizeAddition * global_shop.chunkNum)
 	label2.text = "Next instalment: " + str(installment)
 	_toggleTooltip()
 	transitionTimer.start(5)
