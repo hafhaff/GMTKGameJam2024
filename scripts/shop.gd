@@ -126,6 +126,7 @@ func _addKitcoin(addition: float):
 func _removeKitcoin(addition: float):
 	kitcoins -= addition
 	kitcoinUpdated.emit(kitcoins)
+	kitcoinDifference.emit(-addition)
 	
 func buy(cost):
 	if kitcoins >= (cost- 100):
