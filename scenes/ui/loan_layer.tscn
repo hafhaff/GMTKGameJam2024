@@ -1,0 +1,95 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7v2ljd5ues64"]
+
+[ext_resource type="Script" path="res://scripts/ui/loaning.gd" id="1_3jutd"]
+[ext_resource type="Texture2D" uid="uid://ybw8mpjhfvr" path="res://textures/characters/kitty/kitty_base.png" id="1_erelu"]
+[ext_resource type="Texture2D" uid="uid://qfgwimc8v0ms" path="res://textures/characters/kitty/kitty_face.png" id="2_42t0e"]
+
+[node name="Loan Layer" type="CanvasLayer"]
+script = ExtResource("1_3jutd")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -250.0
+offset_right = 250.0
+offset_bottom = 45.0
+grow_horizontal = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+max_value = 1.0
+value = 1.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_outline_size = 8
+theme_override_font_sizes/font_size = 44
+text = "Next instalment: 100"
+
+[node name="HBoxContainer2" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -250.0
+offset_top = 55.0
+offset_right = 250.0
+offset_bottom = 100.0
+grow_horizontal = 2
+
+[node name="Control" type="Control" parent="HBoxContainer2"]
+layout_mode = 2
+anchors_preset = 0
+offset_bottom = 45.0
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer2/Control"]
+layout_mode = 2
+offset_left = -40.0
+offset_top = -47.0
+offset_right = -11.0
+offset_bottom = -24.0
+scale = Vector2(4, 4)
+texture = ExtResource("1_erelu")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer2/Control"]
+layout_mode = 2
+offset_left = -40.0
+offset_top = -47.0
+offset_right = -14.0
+offset_bottom = -20.0
+scale = Vector2(4, 4)
+texture = ExtResource("2_42t0e")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="Label" type="Label" parent="HBoxContainer2"]
+layout_mode = 0
+offset_left = 68.0
+offset_right = 484.0
+offset_bottom = 49.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_outline_size = 8
+theme_override_font_sizes/font_size = 22
+text = "Hey man. I kinda need that money I lent you.
+Don't worry, you can pay me back in instalments!"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 90.0
+autostart = true
+
+[node name="Timer2" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
