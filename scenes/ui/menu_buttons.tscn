@@ -7,28 +7,33 @@
 
 [node name="MenuButtons" type="Control"]
 layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -640.0
-offset_top = -360.0
-offset_right = -640.0
-offset_bottom = -360.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
-size_flags_vertical = 4
+size_flags_vertical = 8
 
-[node name="Build" type="Button" parent="."]
+[node name="Panel" type="Panel" parent="."]
 layout_mode = 0
-offset_left = -38.0
-offset_top = -19.0
-offset_right = -19.0
+offset_left = 557.0
+offset_top = 698.0
+offset_right = 639.0
+offset_bottom = 723.0
+scale = Vector2(2, 2)
+pivot_offset = Vector2(41, 22)
+theme_type_variation = &"PanelWhiteRound"
+
+[node name="Build" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 2.0
+offset_right = 22.0
+offset_bottom = 21.0
 tooltip_text = "Build"
 
-[node name="Icon" type="TextureRect" parent="Build"]
+[node name="Icon" type="TextureRect" parent="Panel/Build"]
 layout_mode = 0
 offset_left = 2.0
 offset_top = 1.0
@@ -36,13 +41,15 @@ offset_right = 18.0
 offset_bottom = 17.0
 texture = ExtResource("2_gxmb1")
 
-[node name="Supplies" type="Button" parent="."]
+[node name="Supplies" type="Button" parent="Panel"]
 layout_mode = 0
-offset_top = -19.0
-offset_right = 19.0
+offset_left = 41.0
+offset_top = 2.0
+offset_right = 60.0
+offset_bottom = 21.0
 tooltip_text = "Supplies"
 
-[node name="Icon" type="TextureRect" parent="Supplies"]
+[node name="Icon" type="TextureRect" parent="Panel/Supplies"]
 layout_mode = 0
 offset_left = 2.0
 offset_top = 1.0
@@ -50,13 +57,15 @@ offset_right = 18.0
 offset_bottom = 17.0
 texture = ExtResource("3_kva1s")
 
-[node name="Hire" type="Button" parent="."]
+[node name="Hire" type="Button" parent="Panel"]
 layout_mode = 0
-offset_left = -19.0
-offset_top = -19.0
+offset_left = 22.0
+offset_top = 2.0
+offset_right = 41.0
+offset_bottom = 21.0
 tooltip_text = "Hire"
 
-[node name="Icon" type="TextureRect" parent="Hire"]
+[node name="Icon" type="TextureRect" parent="Panel/Hire"]
 layout_mode = 0
 offset_left = 2.0
 offset_top = 1.0
@@ -64,14 +73,15 @@ offset_right = 18.0
 offset_bottom = 17.0
 texture = ExtResource("1_h4gg3")
 
-[node name="Reviews" type="Button" parent="."]
+[node name="Reviews" type="Button" parent="Panel"]
 layout_mode = 0
-offset_left = 19.0
-offset_top = -19.0
-offset_right = 38.0
+offset_left = 60.0
+offset_top = 2.0
+offset_right = 79.0
+offset_bottom = 21.0
 tooltip_text = "Reviews"
 
-[node name="Icon" type="TextureRect" parent="Reviews"]
+[node name="Icon" type="TextureRect" parent="Panel/Reviews"]
 layout_mode = 0
 offset_left = 1.0
 offset_top = 1.0
