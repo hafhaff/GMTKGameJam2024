@@ -120,5 +120,6 @@ libraries = {
 }
 movie_quit_on_finish = true
 
-[node name="cha-ching" type="AudioStreamPlayer2D" parent="."]
+[node name="cha-ching" type="AudioStreamPlayer" parent="."]
+max_polyphony = 10
 bus = &"SFX"
