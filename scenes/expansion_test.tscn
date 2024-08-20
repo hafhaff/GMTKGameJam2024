@@ -163,7 +163,6 @@ looseScreen = NodePath("../LooseScreen")
 text = "0/25"
 
 [node name="Label2" parent="Customer Total Display/Control" index="0"]
-layout_mode = 0
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 192.0

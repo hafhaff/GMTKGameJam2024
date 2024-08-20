@@ -43,9 +43,6 @@ func fillHorizontalWall(leftPoint, rightPoint, side = 1):
 	for i in distance:
 		set_cell(Vector2i(leftPoint.x + i , rightPoint.y + offset), 0, fillSide)
 		print(i)
-
-	
-	
 	
 	pass
 	
