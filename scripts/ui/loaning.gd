@@ -8,8 +8,8 @@ extends Node
 @onready var tooltip: Control = $HBoxContainer2
 
 var tooltipShown: bool = true
-var installment: int = 100
-var installmentIncrement: int = 200
+var installment: int = 50
+var installmentIncrement: int = 80
 var showPos: Vector2 = Vector2(390, 55)
 var hidePos: Vector2 = Vector2(390, -70)
 var supportiveTexts: Array[String] = [
