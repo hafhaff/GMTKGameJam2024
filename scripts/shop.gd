@@ -22,7 +22,7 @@ var wagePeriod = 30 #30s, can change I guess
 
 var emptyCounters: Array[Counter] = []
 var tileMap: NavmeshUpdater = null
-var kitcoins: float = 100.0
+var kitcoins: float = 200.0
 var emptyShelves: Array[Shelf] = []
 var deliveryPoints: Array[DeliveryPoint] = []	#for easy access
 var chunkNum = 1
