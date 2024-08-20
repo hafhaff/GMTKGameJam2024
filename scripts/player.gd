@@ -70,6 +70,7 @@ func _physics_process(_delta):
 	else:
 		tooltip.visible = false
 		GlobalTipsHelper.controlTips.stock.visible = false
+		GlobalTipsHelper.controlTips.take.visible = false
 		if heldItem != null:
 			GlobalTipsHelper.controlTips.drop.visible = true
 		canUnload = false
