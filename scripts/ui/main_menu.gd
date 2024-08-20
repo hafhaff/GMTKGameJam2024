@@ -6,6 +6,7 @@ extends Control
 @export var musicPlayer: AudioStreamPlayer
 @export var menus: Array[CanvasItem]
 @export var loadingScreen: Panel
+@export var creditsPanel: Panel
 
 var activeMenu: CanvasItem
 
@@ -62,3 +63,7 @@ func _switchScenes(value: int = 0):
 	await get_tree().process_frame
 	global_shop._clearShop()
 	get_tree().change_scene_to_file(scenes[value])
+
+func _toggleCredits():
+	_switchMenu(0 if creditsPanel.visible else 2)
+	creditsPanel.visible = !creditsPanel.visible
