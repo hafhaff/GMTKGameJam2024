@@ -100,6 +100,7 @@ func _checkout() -> bool:
 	play_sound_with_delay(random_delay)
 	if itemsTotal < 0:
 		waitForCheckout = false
+		kittyDisplay.is_walking = true
 		navigation.target_position = spawnPos
 		return true
 	return false
