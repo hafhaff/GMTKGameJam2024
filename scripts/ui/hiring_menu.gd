@@ -34,8 +34,8 @@ func _ready():
 		queue_free()
 
 func _process(_delta):
-	selectionDisplay.global_position = get_tree().root.get_child(1).get_global_mouse_position() + Vector2(0,9)
-	constPos = floor(get_tree().root.get_child(1).get_global_mouse_position()/32)
+	selectionDisplay.global_position = get_tree().root.get_child(2).get_global_mouse_position() + Vector2(0,9)
+	constPos = floor(get_tree().root.get_child(2).get_global_mouse_position()/32)
 	if (
 		tilemap.get_cell_tile_data(constPos) == null ||
 		tilemap.get_cell_tile_data(constPos).get_navigation_polygon(0) == null

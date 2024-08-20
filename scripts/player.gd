@@ -29,8 +29,8 @@ func _ready():
 	kittyDisplay.randomize_look()
 	kittyDisplay.set_role(kittyDisplay.KittyRole.PLAYER)
 	
-	if global_shop.storageUnitTooltip != null:
-			tooltip = global_shop.storageUnitTooltip
+	if GlobalTipsHelper.storageUnitTooltip != null:
+			tooltip = GlobalTipsHelper.storageUnitTooltip
 
 func _physics_process(_delta):
 	var action1 = Input.is_action_just_pressed("Action1")
@@ -59,8 +59,20 @@ func _physics_process(_delta):
 			tooltip.global_position = curShelf.position + Vector2(-13, -24)
 			tooltip.visible = true
 			tooltip.set_tooltip_display(curShelf.itemType, curShelf.itemNum, curShelf.maxItemCount)
+			
+		
+		if heldItem == null and curShelf.itemNum > 0:
+			GlobalTipsHelper.controlTips.take.visible = true
+		elif heldItem != null and curShelf.itemNum < curShelf.maxItemCount:
+			GlobalTipsHelper.controlTips.take.visible = false
+			GlobalTipsHelper.controlTips.drop.visible = false
+			GlobalTipsHelper.controlTips.stock.visible = true
 	else:
 		tooltip.visible = false
+		GlobalTipsHelper.controlTips.stock.visible = false
+		GlobalTipsHelper.controlTips.take.visible = false
+		if heldItem != null:
+			GlobalTipsHelper.controlTips.drop.visible = true
 		canUnload = false
 
 func fillShelf():
@@ -83,6 +95,7 @@ func fillShelf():
 			deleteEmptyBox()
 			print("Success, complete fill")
 	
+	GlobalTipsHelper.controlTips.stock.visible = false
 	print(curShelf.is_supported(getBoxItem()))
 
 func takeShelf():
@@ -121,7 +134,6 @@ func deleteEmptyBox():
 	$HoldBox.visible = false
 	heldItem.removeSelf()
 	heldItem = null
-	
 
 func dropBox():
 	if heldItem == null: 
@@ -136,6 +148,9 @@ func dropBox():
 		heldItem.showSprite()
 		heldItem.pickUpCoolDown()
 		heldItem = null
+		
+		GlobalTipsHelper.controlTips.drop.visible = false
+		
 		print("dropping")
 
 func pickUpBox (box: Box):
@@ -145,6 +160,8 @@ func pickUpBox (box: Box):
 	$HoldBox.visible = true
 	box.hideSprite()
 	box.disablePickup()
+	
+	GlobalTipsHelper.controlTips.drop.visible = true
 	
 	print(heldItem.getName())
 
@@ -157,10 +174,6 @@ func _input(event: InputEvent):
 			if event.is_action_pressed('zoom_in'):
 				if camera.zoom < zoom_max:
 					camera.zoom += zoom_speed
-
-func update_tooltip():
-	if heldItem != null:
-		setup_tooltip(true)
 
 func setup_tooltip(switch: bool):
 	box_tooltip.visible = switch

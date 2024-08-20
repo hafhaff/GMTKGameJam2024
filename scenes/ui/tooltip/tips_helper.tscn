@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b723uuhfyehrc"]
+
+[ext_resource type="Script" path="res://scripts/ui/tooltip/tips_helper.gd" id="1_ujq6o"]
+
+[node name="TipsHelper" type="Node"]
+script = ExtResource("1_ujq6o")
