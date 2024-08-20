@@ -18,7 +18,7 @@ var zoom_speed = Vector2(0.300001, 0.300001)
 
 @onready var camera = $Camera2D
 @onready var kittyDisplay: KittyDisplay = $KittyDisplay
-@onready var box_tooltip: StorageTooltip = $BoxTooltip
+@onready var box_tooltip: BoxTooltip = $BoxTooltip
 @onready var interaction_manager: InteractionManager = $InteractionManager
 
 var tooltip: StorageTooltip
@@ -28,11 +28,12 @@ func _ready():
 	heldItem = null
 	kittyDisplay.randomize_look()
 	kittyDisplay.set_role(kittyDisplay.KittyRole.PLAYER)
-	
-	if GlobalTipsHelper.storageUnitTooltip != null:
-			tooltip = GlobalTipsHelper.storageUnitTooltip
 
 func _physics_process(_delta):
+	
+	if GlobalTipsHelper.storageUnitTooltip != null and tooltip == null:
+			tooltip = GlobalTipsHelper.storageUnitTooltip
+	
 	var action1 = Input.is_action_just_pressed("Action1")
 	var direction = Input.get_vector("left", "right", "up", "down")
 	velocity = direction * speed
@@ -94,6 +95,9 @@ func fillShelf():
 		else:
 			deleteEmptyBox()
 			print("Success, complete fill")
+		
+		if heldItem != null:
+			setup_tooltip(true)
 	
 	GlobalTipsHelper.controlTips.stock.visible = false
 	print(curShelf.is_supported(getBoxItem()))

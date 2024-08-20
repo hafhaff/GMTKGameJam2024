@@ -1,14 +1,11 @@
 extends Panel
 
-class_name StorageTooltip
+class_name BoxTooltip
 
 @onready var name_label: Label = $Name
 @onready var capacity: Label = $Capacity
 
 var format_string = "%s/%s"
-
-func _ready() -> void:
-	GlobalTipsHelper._registerStorageUnitTooltip(self)
 
 func set_tooltip_display(type: int, current: int, max: int):
 	name_label.text = get_item_name(type, current)
