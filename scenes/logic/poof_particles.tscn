@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://nxvio3yrigm2"]
+
+[ext_resource type="Script" path="res://scripts/ui/poof_particles.gd" id="1_2r0or"]
+
+[sub_resource type="Gradient" id="Gradient_6a1yl"]
+colors = PackedColorArray(0.347817, 0.347817, 0.347817, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lldhb"]
+gradient = SubResource("Gradient_6a1yl")
+width = 5
+height = 5
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(10, 10)
+
+[sub_resource type="Gradient" id="Gradient_e05dy"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[node name="Node2D" type="CPUParticles2D"]
+z_index = 1
+y_sort_enabled = true
+emitting = false
+amount = 10
+lifetime = 0.5
+one_shot = true
+local_coords = true
+texture = SubResource("GradientTexture2D_lldhb")
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 10.0
+orbit_velocity_min = 1.0
+orbit_velocity_max = 1.0
+color_ramp = SubResource("Gradient_e05dy")
+script = ExtResource("1_2r0or")

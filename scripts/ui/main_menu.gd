@@ -2,6 +2,7 @@ extends Control
 
 @export var selectSoundPlayer: AudioStreamPlayer
 @export var switchSoundPlayer: AudioStreamPlayer
+@export var backSoundPlayer: AudioStreamPlayer
 @export var musicPlayer: AudioStreamPlayer
 @export var menus: Array[CanvasItem]
 @export var loadingScreen: Panel
@@ -18,7 +19,10 @@ func _ready():
 			for node in child.get_children():
 				if node is Button:
 					node.connect("mouse_entered", _playSwitch)
-					node.connect("pressed", _playSelect)
+					if node.text == "Back":
+						node.connect("pressed", _playBack)
+					else:
+						node.connect("pressed", _playSelect)
 	musicPlayer.play(1)
 	activeMenu = menus[0]	#0 is always the main menu
 	get_tree().paused = false
@@ -32,6 +36,11 @@ func _playSelect():
 	if selectSoundPlayer.playing:
 		selectSoundPlayer.stop()
 	selectSoundPlayer.play()
+
+func _playBack():
+	if backSoundPlayer.playing:
+		backSoundPlayer.stop()
+	backSoundPlayer.play()
 
 func _playMusic():
 	musicPlayer.play()
