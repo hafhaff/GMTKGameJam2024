@@ -10,6 +10,7 @@ class_name ShoppingAI
 @onready var navigation: NavigationAgent2D = $NavigationAgent2D
 @onready var kittyDisplay: KittyDisplay = $KittyDisplay
 @onready var spawnPos: Vector2 = self.global_position
+@onready var addingToCart: AudioStreamPlayer2D = $addingToCart
 
 var target: Node2D = null
 var shoppingList: Dictionary = {}
@@ -41,6 +42,7 @@ func _physics_process(_delta):
 			if shoppingList.has(target.itemType):	#shelf item type can change by the time we arrive
 				if target.take(1, target.itemType):
 					itemsHeld[target.itemType] += 1
+					addingToCart.play()
 		target = null
 		shoppingTimer.start(1.5)
 		return

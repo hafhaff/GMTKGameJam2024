@@ -11,6 +11,7 @@ extends Node
 @export var constructionMenu: Node
 @export var purchasingMenu: Node
 @export var tilemap: TileMapLayer
+@export var particles: PackedScene
 
 var visible = true
 var largeKittenHidePos: Vector2 = Vector2(-130, 784)	#Yup, shit's hardcoded
@@ -87,6 +88,10 @@ func _build():
 	var building = selection.instantiate()
 	building.global_position = get_tree().root.get_child(2).get_global_mouse_position()
 	get_tree().root.get_child(2).add_child(building)
+	if particles != null:
+		var _particles: CPUParticles2D = particles.instantiate()
+		building.add_child(_particles)
+		_particles.emitting = true
 
 func _selectionChange(next: bool):
 	if !visible:

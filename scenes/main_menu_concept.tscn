@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://cgxldb2nvtqbi"]
+[gd_scene load_steps=17 format=4 uid="uid://cgxldb2nvtqbi"]
 
 [ext_resource type="TileSet" uid="uid://cpf2j2rvdkkd1" path="res://textures/tilemaps/building_tiles.tres" id="1_6jp56"]
 [ext_resource type="PackedScene" uid="uid://cr8g2ewri4sld" path="res://scenes/objects/shelf.tscn" id="2_eutrg"]
@@ -12,9 +12,10 @@
 [ext_resource type="Script" path="res://scripts/ui/main_menu.gd" id="9_hkqd7"]
 [ext_resource type="Texture2D" uid="uid://c7hdxl3cu87hi" path="res://textures/ui/title.png" id="10_ftank"]
 [ext_resource type="AudioStream" uid="uid://bwis8k1aiv0xw" path="res://audio/sfx/Ui_Selection.wav" id="10_o3i3y"]
-[ext_resource type="AudioStream" uid="uid://c7jpyvbkntwa5" path="res://audio/sfx/Ui_Selected.wav" id="11_3vjeq"]
 [ext_resource type="Script" path="res://scripts/ui/audio_setup.gd" id="11_dv5pp"]
-[ext_resource type="AudioStream" uid="uid://cludp55bhf1wp" path="res://audio/music/MewnimumWage.ogg" id="11_qfpvv"]
+[ext_resource type="AudioStream" uid="uid://d2gxrc5djvckt" path="res://audio/sfx/button.ogg" id="12_dt1l1"]
+[ext_resource type="AudioStream" uid="uid://d2gc6loqe2b0a" path="res://audio/sfx/back.ogg" id="13_3w0d7"]
+[ext_resource type="AudioStream" uid="uid://dmfm71uu760e4" path="res://audio/music/Mewnimum_Wage_Meowximum_Overdrive-_1_.ogg" id="14_n48ae"]
 
 [node name="Level" type="Node2D"]
 
@@ -314,7 +315,7 @@ pivot_offset = Vector2(53, 0)
 size_flags_horizontal = 4
 texture = ExtResource("10_ftank")
 
-[node name="Panel" type="Panel" parent="CanvasLayer" node_paths=PackedStringArray("selectSoundPlayer", "switchSoundPlayer", "musicPlayer", "menus", "loadingScreen")]
+[node name="Panel" type="Panel" parent="CanvasLayer" node_paths=PackedStringArray("selectSoundPlayer", "switchSoundPlayer", "backSoundPlayer", "musicPlayer", "menus", "loadingScreen")]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -328,6 +329,7 @@ theme_type_variation = &"PanelSolidBlack"
 script = ExtResource("9_hkqd7")
 selectSoundPlayer = NodePath("../../SelectSound")
 switchSoundPlayer = NodePath("../../SwitchSound")
+backSoundPlayer = NodePath("../../Back")
 musicPlayer = NodePath("../../MusicPlayer")
 menus = [NodePath("MainMenu"), NodePath("Options")]
 loadingScreen = NodePath("../LoadingScreen")
@@ -495,7 +497,13 @@ position = Vector2(779, 304)
 zoom = Vector2(2, 2)
 
 [node name="SelectSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("11_3vjeq")
+stream = ExtResource("12_dt1l1")
+volume_db = -2.0
+bus = &"SFX"
+
+[node name="Back" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_3w0d7")
+volume_db = -2.0
 bus = &"SFX"
 
 [node name="SwitchSound" type="AudioStreamPlayer" parent="."]
@@ -503,7 +511,8 @@ stream = ExtResource("10_o3i3y")
 bus = &"SFX"
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("11_qfpvv")
+stream = ExtResource("14_n48ae")
+volume_db = -4.0
 autoplay = true
 bus = &"Music"
 
