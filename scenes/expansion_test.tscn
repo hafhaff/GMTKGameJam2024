@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://clsegmf75ckjy"]
+[gd_scene load_steps=18 format=4 uid="uid://clsegmf75ckjy"]
 
 [ext_resource type="TileSet" uid="uid://cpf2j2rvdkkd1" path="res://textures/tilemaps/building_tiles.tres" id="1_nfa3s"]
 [ext_resource type="Script" path="res://scripts/expansionMap.gd" id="2_i6fl6"]
@@ -14,9 +14,7 @@
 [ext_resource type="Script" path="res://scenes/expansionController.gd" id="15_5jux3"]
 [ext_resource type="PackedScene" uid="uid://bed0fmavm0x6e" path="res://scenes/characters/kitty_display.tscn" id="15_c1qqx"]
 [ext_resource type="PackedScene" uid="uid://ighgjuvtgyfp" path="res://scenes/ui/pause.tscn" id="16_cq8ll"]
-[ext_resource type="Texture2D" uid="uid://bvnuo6ybkochq" path="res://textures/ui/icons/icon_0.png" id="17_cqh3u"]
 [ext_resource type="PackedScene" uid="uid://g13k232xga6o" path="res://scenes/objects/store_entrance.tscn" id="17_nwqem"]
-[ext_resource type="Texture2D" uid="uid://caklbqybw3w4e" path="res://textures/ui/icons/icon_1.png" id="18_5drp6"]
 [ext_resource type="PackedScene" uid="uid://blawy58ur83h2" path="res://scenes/ui/tooltip/storage_unit_tooltip.tscn" id="19_bkvnn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h6lwn"]
@@ -136,20 +134,6 @@ visible = false
 
 [node name="StoreEntrance" parent="." instance=ExtResource("17_nwqem")]
 position = Vector2(80, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-z_index = 1
-y_sort_enabled = true
-position = Vector2(80, 102)
-texture = ExtResource("17_cqh3u")
-offset = Vector2(0, -5)
-
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-z_index = 1
-y_sort_enabled = true
-position = Vector2(78, 101)
-texture = ExtResource("18_5drp6")
-offset = Vector2(0, -5)
 
 [connection signal="visibilityToggled" from="ConstructionMen" to="RightExpand" method="buildModeToggled"]
 [connection signal="visibilityToggled" from="ConstructionMen" to="LeftExpand" method="buildModeToggled"]
