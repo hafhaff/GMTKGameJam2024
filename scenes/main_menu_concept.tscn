@@ -632,5 +632,5 @@ optionalAutoFill = true
 [connection signal="pressed" from="CanvasLayer/Panel/MainMenu/Button2" to="CanvasLayer/Panel" method="_switchMenu" binds= [1]]
 [connection signal="pressed" from="CanvasLayer/Panel/MainMenu/Button3" to="CanvasLayer/Panel" method="_toggleCredits"]
 [connection signal="pressed" from="CanvasLayer/Panel/Options/Button4" to="CanvasLayer/Panel" method="_switchMenu"]
-[connection signal="pressed" from="CanvasLayer/Panel/Credits/Button4" to="CanvasLayer/Panel" method="_switchMenu"]
 [connection signal="pressed" from="CanvasLayer/Panel/Credits/Button4" to="CanvasLayer/Panel" method="_toggleCredits"]
+[connection signal="pressed" from="CanvasLayer/Panel/Credits/Button4" to="CanvasLayer/Panel" method="_switchMenu"]
