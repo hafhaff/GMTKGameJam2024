@@ -56,7 +56,7 @@ func _process(_delta):
 	progressBar.value = loanTimer.time_left / 90.0
 
 func _set_random_name():
-	_name.text = firstNames.pick_random() + " " + lastNames.pick_random()
+	_name.text = "From: " + firstNames.pick_random() + " " + lastNames.pick_random()
 
 func _payInstalment():
 	global_shop._removeKitcoin(installment)

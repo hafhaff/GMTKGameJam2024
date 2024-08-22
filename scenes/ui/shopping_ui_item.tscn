@@ -1,56 +1,68 @@
-[gd_scene load_steps=5 format=3 uid="uid://detigdvegld83"]
+[gd_scene load_steps=3 format=3 uid="uid://detigdvegld83"]
 
-[ext_resource type="Texture2D" uid="uid://cqcgkxb5t1lcq" path="res://textures/objects/box/box_base.png" id="1_yqm6e"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gkbm0"]
-atlas = ExtResource("1_yqm6e")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="Theme" id="Theme_4mf4v"]
-default_font_size = 22
-
-[sub_resource type="ImageTexture" id="ImageTexture_axd4b"]
+[ext_resource type="PackedScene" uid="uid://bbvoxcvfwybuw" path="res://scenes/objects/box_display.tscn" id="1_8vy2b"]
+[ext_resource type="Script" path="res://scripts/ui/shopping_ui_item.gd" id="1_11g1y"]
 
 [node name="Shopping UI Item" type="HBoxContainer"]
-offset_right = 378.0
-offset_bottom = 40.0
+offset_right = 400.0
+offset_bottom = 20.0
 size_flags_horizontal = 3
 alignment = 1
+script = ExtResource("1_11g1y")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Box" type="Panel" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(23, 0)
 layout_mode = 2
-texture = SubResource("AtlasTexture_gkbm0")
-expand_mode = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Box"]
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
+offset_left = 5.0
+offset_top = 3.0
+offset_right = 19.0
+offset_bottom = 17.0
+
+[node name="SubViewport" type="SubViewport" parent="Box/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(14, 14)
+render_target_update_mode = 4
+
+[node name="BoxDisplay" parent="Box/SubViewportContainer/SubViewport" instance=ExtResource("1_8vy2b")]
+position = Vector2(7, 12)
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 22
 text = "ITEM NAME"
+horizontal_alignment = 1
+
+[node name="Unit" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "SHELF"
+horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 22
 text = "PURCHASE"
+horizontal_alignment = 1
 
 [node name="Label3" type="Label" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 22
 text = "SALE"
+horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 22
 text = "BUY"
 
 [node name="SpinBox" type="SpinBox" parent="."]
+custom_minimum_size = Vector2(65, 0)
 layout_mode = 2
-size_flags_horizontal = 3
-theme = SubResource("Theme_4mf4v")
-theme_override_icons/updown = SubResource("ImageTexture_axd4b")
-value = 1.0
-rounded = true
-select_all_on_focus = true
+alignment = 1
+update_on_text_changed = true
