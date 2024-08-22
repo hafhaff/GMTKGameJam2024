@@ -87,6 +87,7 @@ _data = {
 y_sort_enabled = true
 script = ExtResource("1_jfm3s")
 kitty_color = 5
+kitty_role = 5
 
 [node name="Sprites" type="Node2D" parent="."]
 

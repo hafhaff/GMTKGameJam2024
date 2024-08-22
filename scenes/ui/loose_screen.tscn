@@ -2,14 +2,11 @@
 
 [ext_resource type="Script" path="res://scripts/ui/loose_screen.gd" id="1_0261r"]
 [ext_resource type="PackedScene" uid="uid://bed0fmavm0x6e" path="res://scenes/characters/kitty_display.tscn" id="1_mqctj"]
-[ext_resource type="Texture2D" uid="uid://bsl2t6vuw1kqn" path="res://textures/objects/box.png" id="2_8jehm"]
+[ext_resource type="Texture2D" uid="uid://cvphvdoe4rcu7" path="res://textures/objects/items/mug.png" id="2_af7p7"]
+[ext_resource type="Texture2D" uid="uid://wtjjebgwmqfh" path="res://textures/objects/homeless_box.png" id="3_1u0nw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o21v7"]
 bg_color = Color(2.95553e-07, 0.00724453, 0.0641937, 0.533333)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wj6ry"]
-atlas = ExtResource("2_8jehm")
-region = Rect2(96, 0, 32, 0)
 
 [node name="LooseScreen" type="CanvasLayer"]
 process_mode = 3
@@ -23,70 +20,73 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_o21v7")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+[node name="Lose" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -150.0
+offset_top = 229.0
+offset_right = 150.0
+offset_bottom = 254.0
+grow_horizontal = 2
+scale = Vector2(2, 2)
+pivot_offset = Vector2(150, 0)
+theme_type_variation = &"PanelSolidBlack"
+
+[node name="LoseText" type="Label" parent="Control/Lose"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(150, 0)
+theme_override_font_sizes/font_size = 22
+text = "You fell into irrecoverable debt!"
+horizontal_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control"]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_top = -154.0
-offset_bottom = -87.0
+offset_top = 240.0
+offset_right = -640.0
+offset_bottom = 258.0
 grow_horizontal = 2
 grow_vertical = 2
-alignment = 1
-
-[node name="Label" type="Label" parent="Control/HBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 66
-text = "You Lose!"
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="Control"]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -73.0
-grow_horizontal = 2
-grow_vertical = 0
+scale = Vector2(2, 2)
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="Label" type="Button" parent="Control/HBoxContainer2"]
+[node name="Exit" type="Button" parent="Control/HBoxContainer2"]
+custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
-theme_override_font_sizes/font_size = 66
 text = " Exit "
 
-[node name="Label2" type="Button" parent="Control/HBoxContainer2"]
+[node name="Replay" type="Button" parent="Control/HBoxContainer2"]
+custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
-theme_override_font_sizes/font_size = 66
-text = " Play again? "
+text = "Retry?"
 
-[node name="Label" type="Label" parent="Control"]
-layout_mode = 0
-offset_left = 561.0
-offset_top = 449.0
-offset_right = 945.0
-offset_bottom = 516.0
-theme_override_font_sizes/font_size = 33
-text = "Where's my money, Kowalski?"
-
-[node name="KittyDisplay" parent="." instance=ExtResource("1_mqctj")]
-position = Vector2(460, 441)
+[node name="HomelessKitty" type="Node2D" parent="."]
+position = Vector2(640, 360)
 scale = Vector2(6, 6)
+
+[node name="Mug" type="Sprite2D" parent="HomelessKitty"]
+position = Vector2(10.6667, 18.8333)
+texture = ExtResource("2_af7p7")
+
+[node name="HomelessBox" type="Sprite2D" parent="HomelessKitty"]
+position = Vector2(-10.3333, 7)
+texture = ExtResource("3_1u0nw")
+
+[node name="KittyDisplay" parent="HomelessKitty" instance=ExtResource("1_mqctj")]
+position = Vector2(-6.33333, 20.8333)
 kitty_face = 2
+animation_speed = 1
 
-[node name="KittyDisplay2" parent="." instance=ExtResource("1_mqctj")]
-position = Vector2(738, 441)
-scale = Vector2(6, 6)
-kitty_face = 1
-kitty_role = 3
-is_flipped = true
-
-[node name="Box" type="Sprite2D" parent="."]
-position = Vector2(460, 363)
-scale = Vector2(8, 8)
-texture = SubResource("AtlasTexture_wj6ry")
-
-[connection signal="pressed" from="Control/HBoxContainer2/Label" to="." method="_switchScenes" binds= [1]]
-[connection signal="pressed" from="Control/HBoxContainer2/Label2" to="." method="_switchScenes" binds= [0]]
+[connection signal="pressed" from="Control/HBoxContainer2/Exit" to="." method="_switchScenes" binds= [1]]
+[connection signal="pressed" from="Control/HBoxContainer2/Replay" to="." method="_switchScenes" binds= [0]]

@@ -154,9 +154,6 @@ position = Vector2(80, 0)
 customerTotalLabel = NodePath("../Customer Total Display/Label")
 rushHourLabel = NodePath("../Customer Total Display/Control")
 
-[node name="Loan Layer" parent="." node_paths=PackedStringArray("looseScreen") instance=ExtResource("19_rxvgi")]
-looseScreen = NodePath("../LooseScreen")
-
 [node name="Customer Total Display" parent="." instance=ExtResource("20_k5ne2")]
 
 [node name="Label" parent="Customer Total Display" index="2"]
@@ -170,6 +167,9 @@ offset_bottom = 45.0
 
 [node name="LooseScreen" parent="." instance=ExtResource("21_kpkyc")]
 visible = false
+
+[node name="Loan Layer" parent="." node_paths=PackedStringArray("looseScreen") instance=ExtResource("19_rxvgi")]
+looseScreen = NodePath("../LooseScreen")
 
 [connection signal="visibilityToggled" from="ConstructionMen" to="RightExpand" method="buildModeToggled"]
 [connection signal="visibilityToggled" from="ConstructionMen" to="LeftExpand" method="buildModeToggled"]
