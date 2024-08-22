@@ -1,9 +1,10 @@
-[gd_resource type="Theme" load_steps=16 format=3 uid="uid://0rnnetbtuvds"]
+[gd_resource type="Theme" load_steps=23 format=3 uid="uid://0rnnetbtuvds"]
 
 [ext_resource type="Texture2D" uid="uid://yc1gyefhm55i" path="res://textures/ui/ui_buttons_atlas.tres" id="1_qrr4v"]
 [ext_resource type="Texture2D" uid="uid://vpnqef7mwa2" path="res://textures/ui/progress_bar_atlas.tres" id="2_0j1pr"]
 [ext_resource type="FontFile" uid="uid://081yyvpei5qw" path="res://textures/ui/Undead Pixel 11.ttf" id="2_7cow0"]
 [ext_resource type="Texture2D" uid="uid://pdsvqvxh0iim" path="res://textures/ui/ui_panels_atlas.tres" id="2_fecjf"]
+[ext_resource type="Texture2D" uid="uid://d2ig6kgge67e6" path="res://textures/ui/progress_bar.png" id="3_u3g8m"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_avqhl"]
 texture = ExtResource("1_qrr4v")
@@ -44,6 +45,42 @@ texture_margin_top = 3.0
 texture_margin_right = 3.0
 texture_margin_bottom = 3.0
 region_rect = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_28tmc"]
+atlas = ExtResource("2_fecjf")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kafqu"]
+atlas = ExtResource("2_fecjf")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4gwxh"]
+atlas = ExtResource("2_fecjf")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k6jgj"]
+texture = ExtResource("3_u3g8m")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+region_rect = Rect2(16, 0, 16, 8)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2mct1"]
+texture = ExtResource("3_u3g8m")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+region_rect = Rect2(16, 0, 16, 8)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lgw2d"]
+texture = ExtResource("2_0j1pr")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+region_rect = Rect2(0, 0, 16, 8)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_73k5m"]
 texture = ExtResource("2_fecjf")
@@ -108,6 +145,12 @@ Button/styles/focus = SubResource("StyleBoxTexture_qeux1")
 Button/styles/hover = SubResource("StyleBoxTexture_hvbq3")
 Button/styles/normal = SubResource("StyleBoxTexture_8npvc")
 Button/styles/pressed = SubResource("StyleBoxTexture_ls5nr")
+HSlider/icons/grabber = SubResource("AtlasTexture_28tmc")
+HSlider/icons/grabber_disabled = SubResource("AtlasTexture_kafqu")
+HSlider/icons/grabber_highlight = SubResource("AtlasTexture_4gwxh")
+HSlider/styles/grabber_area = SubResource("StyleBoxTexture_k6jgj")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxTexture_2mct1")
+HSlider/styles/slider = SubResource("StyleBoxTexture_lgw2d")
 Panel/styles/panel = SubResource("StyleBoxTexture_73k5m")
 PanelSolidBlack/base_type = &"Panel"
 PanelSolidBlack/styles/panel = SubResource("StyleBoxTexture_lrnq3")

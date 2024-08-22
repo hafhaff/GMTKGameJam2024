@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://cgxldb2nvtqbi"]
+[gd_scene load_steps=21 format=4 uid="uid://cgxldb2nvtqbi"]
 
 [ext_resource type="TileSet" uid="uid://cpf2j2rvdkkd1" path="res://textures/tilemaps/building_tiles.tres" id="1_6jp56"]
 [ext_resource type="PackedScene" uid="uid://cr8g2ewri4sld" path="res://scenes/objects/shelf.tscn" id="2_eutrg"]
@@ -11,12 +11,24 @@
 [ext_resource type="PackedScene" uid="uid://d3pmwvyul36cy" path="res://scenes/characters/refilling_ai.tscn" id="8_bfr7c"]
 [ext_resource type="Script" path="res://scripts/ui/main_menu.gd" id="9_hkqd7"]
 [ext_resource type="Texture2D" uid="uid://c7hdxl3cu87hi" path="res://textures/ui/title.png" id="10_ftank"]
+[ext_resource type="FontFile" uid="uid://081yyvpei5qw" path="res://textures/ui/Undead Pixel 11.ttf" id="11_45wkf"]
 [ext_resource type="Script" path="res://scripts/ui/audio_setup.gd" id="11_dv5pp"]
 [ext_resource type="AudioStream" uid="uid://d2gxrc5djvckt" path="res://audio/sfx/button.ogg" id="12_dt1l1"]
 [ext_resource type="AudioStream" uid="uid://d2gc6loqe2b0a" path="res://audio/sfx/back.ogg" id="13_3w0d7"]
 [ext_resource type="AudioStream" uid="uid://dmfm71uu760e4" path="res://audio/music/Mewnimum_Wage_Meowximum_Overdrive-_1_.ogg" id="14_n48ae"]
 [ext_resource type="AudioStream" uid="uid://bkxrn04td2jhk" path="res://audio/sfx/UiSelection.ogg" id="14_urtjn"]
 [ext_resource type="PackedScene" uid="uid://bulh8ramy0f3v" path="res://scenes/objects/freezer.tscn" id="17_aji71"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xlhni"]
+line_spacing = -3.0
+font = ExtResource("11_45wkf")
+font_size = 11
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_jbyh3"]
+line_spacing = 0.0
+font = ExtResource("11_45wkf")
+font_size = 11
 
 [node name="Level" type="Node2D"]
 y_sort_enabled = true
@@ -249,39 +261,68 @@ position = Vector2(89, 131)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="KittyDisplay" parent="CanvasLayer" instance=ExtResource("5_217tr")]
-position = Vector2(144, 816)
-scale = Vector2(24, 24)
+[node name="Kitties" type="Node2D" parent="CanvasLayer"]
+position = Vector2(1106, 484)
+scale = Vector2(4, 4)
+
+[node name="KittyDisplay" parent="CanvasLayer/Kitties" instance=ExtResource("5_217tr")]
 kitty_color = 7
 kitty_face = 4
 kitty_role = 3
 animation_speed = 1
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+[node name="KittyDisplay2" parent="CanvasLayer/Kitties" instance=ExtResource("5_217tr")]
+position = Vector2(20.25, 0)
+kitty_color = 4
+kitty_face = 3
+kitty_role = 4
+animation_speed = 1
+
+[node name="KittyDisplay3" parent="CanvasLayer/Kitties" instance=ExtResource("5_217tr")]
+position = Vector2(-20.75, 0)
+kitty_color = 3
+kitty_face = 2
+kitty_role = 2
+animation_speed = 1
+is_flipped = true
+
+[node name="KittyDisplay4" parent="CanvasLayer/Kitties" instance=ExtResource("5_217tr")]
+position = Vector2(-20.75, 0)
+kitty_color = 3
+kitty_face = 2
+kitty_role = 2
+animation_speed = 1
+is_flipped = true
+
+[node name="Title" type="TextureRect" parent="CanvasLayer"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -53.5
-offset_top = 14.0
-offset_right = 53.5
-offset_bottom = 42.0
+offset_left = -53.0
+offset_top = 55.0
+offset_right = 54.0
+offset_bottom = 84.0
 grow_horizontal = 2
-scale = Vector2(7, 7)
-pivot_offset = Vector2(53, 0)
+scale = Vector2(3, 2.71731)
+pivot_offset = Vector2(53, 14)
 size_flags_horizontal = 4
 texture = ExtResource("10_ftank")
 
-[node name="Panel" type="Panel" parent="CanvasLayer" node_paths=PackedStringArray("selectSoundPlayer", "switchSoundPlayer", "backSoundPlayer", "musicPlayer", "menus", "loadingScreen", "creditsPanel")]
+[node name="MenuPanel" type="Panel" parent="CanvasLayer" node_paths=PackedStringArray("selectSoundPlayer", "switchSoundPlayer", "backSoundPlayer", "musicPlayer", "menus", "loadingScreen", "creditsPanel")]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -300.0
-offset_top = -260.0
+offset_left = -170.0
+offset_top = -150.0
+offset_right = -10.0
+offset_bottom = -35.0
 grow_horizontal = 0
 grow_vertical = 0
-theme_type_variation = &"PanelSolidBlack"
+scale = Vector2(2, 2)
+pivot_offset = Vector2(160, 90)
+theme_type_variation = &"PanelWhiteRound"
 script = ExtResource("9_hkqd7")
 selectSoundPlayer = NodePath("../../SelectSound")
 switchSoundPlayer = NodePath("../../SwitchSound")
@@ -291,166 +332,170 @@ menus = [NodePath("MainMenu"), NodePath("Options"), NodePath("Credits")]
 loadingScreen = NodePath("../LoadingScreen")
 creditsPanel = NodePath("../CreditsPanel")
 
-[node name="MainMenu" type="GridContainer" parent="CanvasLayer/Panel"]
+[node name="MainMenu" type="GridContainer" parent="CanvasLayer/MenuPanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 9.5
+offset_top = -0.5
+offset_right = -10.5
+offset_bottom = 25.5
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(70, 0)
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Panel/MainMenu"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MenuPanel/MainMenu"]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="Label" type="Label" parent="CanvasLayer/Panel/MainMenu/HBoxContainer"]
+[node name="NewGame" type="Button" parent="CanvasLayer/MenuPanel/MainMenu"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 33
-text = "Main Menu"
-
-[node name="Button" type="Button" parent="CanvasLayer/Panel/MainMenu"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 33
 text = "New Game"
 
-[node name="Button5" type="Button" parent="CanvasLayer/Panel/MainMenu"]
-visible = false
+[node name="Tutorial" type="Button" parent="CanvasLayer/MenuPanel/MainMenu"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 33
 text = "Tutorial"
 
-[node name="Button2" type="Button" parent="CanvasLayer/Panel/MainMenu"]
+[node name="Options" type="Button" parent="CanvasLayer/MenuPanel/MainMenu"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 33
 text = "Options"
 
-[node name="Button3" type="Button" parent="CanvasLayer/Panel/MainMenu"]
+[node name="Credits" type="Button" parent="CanvasLayer/MenuPanel/MainMenu"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 33
 text = "Credits"
 
-[node name="Button4" type="Button" parent="CanvasLayer/Panel/MainMenu"]
+[node name="Exit" type="Button" parent="CanvasLayer/MenuPanel/MainMenu"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 33
 text = "Exit"
 
-[node name="Options" type="GridContainer" parent="CanvasLayer/Panel"]
+[node name="Options" type="GridContainer" parent="CanvasLayer/MenuPanel"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 5.5
+offset_right = -10.0
+offset_bottom = 29.5
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(70, 0)
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Panel/Options"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MenuPanel/Options"]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="Label" type="Label" parent="CanvasLayer/Panel/Options/HBoxContainer"]
+[node name="Panel" type="Panel" parent="CanvasLayer/MenuPanel/Options/HBoxContainer"]
+custom_minimum_size = Vector2(50, 10)
 layout_mode = 2
-theme_override_font_sizes/font_size = 33
+theme_type_variation = &"PanelSolidBlack"
+
+[node name="Label" type="Label" parent="CanvasLayer/MenuPanel/Options/HBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -7.5
+offset_right = 16.0
+offset_bottom = 4.5
+grow_horizontal = 2
+grow_vertical = 2
 text = "Options"
+horizontal_alignment = 1
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/Panel/Options"]
+[node name="Master" type="Label" parent="CanvasLayer/MenuPanel/Options"]
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
-size_flags_horizontal = 3
-alignment = 1
-
-[node name="Label" type="Label" parent="CanvasLayer/Panel/Options/HBoxContainer2"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 22
-text = " "
-
-[node name="HBoxContainer5" type="HBoxContainer" parent="CanvasLayer/Panel/Options"]
-layout_mode = 2
-size_flags_horizontal = 3
-alignment = 1
-
-[node name="Label" type="Label" parent="CanvasLayer/Panel/Options/HBoxContainer5"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 22
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Master"
+horizontal_alignment = 1
 
-[node name="HSlider" type="HSlider" parent="CanvasLayer/Panel/Options"]
+[node name="MasterSlider" type="HSlider" parent="CanvasLayer/MenuPanel/Options/Master"]
 layout_mode = 2
+offset_top = 11.0
+offset_right = 140.0
+offset_bottom = 19.0
 min_value = -30.0
 max_value = 0.0
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer/Panel/Options"]
+[node name="Music" type="Label" parent="CanvasLayer/MenuPanel/Options"]
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
-size_flags_horizontal = 3
-alignment = 1
-
-[node name="Label" type="Label" parent="CanvasLayer/Panel/Options/HBoxContainer3"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 22
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Music"
+horizontal_alignment = 1
 
-[node name="HSlider2" type="HSlider" parent="CanvasLayer/Panel/Options"]
+[node name="MusicSlider" type="HSlider" parent="CanvasLayer/MenuPanel/Options/Music"]
 layout_mode = 2
+offset_top = 11.0
+offset_right = 140.0
+offset_bottom = 19.0
 min_value = -30.0
 max_value = 0.0
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="CanvasLayer/Panel/Options"]
+[node name="SFX" type="Label" parent="CanvasLayer/MenuPanel/Options"]
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
-size_flags_horizontal = 3
-alignment = 1
-
-[node name="Label" type="Label" parent="CanvasLayer/Panel/Options/HBoxContainer4"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 22
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "SFX"
+horizontal_alignment = 1
 
-[node name="HSlider3" type="HSlider" parent="CanvasLayer/Panel/Options"]
+[node name="SFXSlider" type="HSlider" parent="CanvasLayer/MenuPanel/Options/SFX"]
 layout_mode = 2
+offset_top = 11.0
+offset_right = 140.0
+offset_bottom = 19.0
 min_value = -30.0
 max_value = 0.0
 
-[node name="Button4" type="Button" parent="CanvasLayer/Panel/Options"]
+[node name="Back" type="Button" parent="CanvasLayer/MenuPanel/Options"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 33
 text = "Back"
 
-[node name="Credits" type="GridContainer" parent="CanvasLayer/Panel"]
+[node name="Credits" type="GridContainer" parent="CanvasLayer/MenuPanel"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 9.5
+offset_top = 2.0
+offset_right = -10.5
+offset_bottom = 17.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(70, 0)
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Panel/Credits"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MenuPanel/Credits"]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="Label" type="Label" parent="CanvasLayer/Panel/Credits/HBoxContainer"]
+[node name="Label" type="Label" parent="CanvasLayer/MenuPanel/Credits/HBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 33
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Credits"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/Panel/Credits"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/MenuPanel/Credits"]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="HBoxContainer5" type="HBoxContainer" parent="CanvasLayer/Panel/Credits"]
+[node name="HBoxContainer4" type="HBoxContainer" parent="CanvasLayer/MenuPanel/Credits"]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="CanvasLayer/Panel/Credits"]
+[node name="Label" type="Label" parent="CanvasLayer/MenuPanel/Credits/HBoxContainer4"]
 layout_mode = 2
-size_flags_horizontal = 3
-alignment = 1
-
-[node name="Label" type="Label" parent="CanvasLayer/Panel/Credits/HBoxContainer4"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 22
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Made for the
 GMTK Game Jam 2024
 
@@ -459,22 +504,22 @@ GMTK Game Jam 2024
 20th Aug in #general
 
 "
+label_settings = SubResource("LabelSettings_xlhni")
 horizontal_alignment = 1
 
-[node name="Button4" type="Button" parent="CanvasLayer/Panel/Credits"]
+[node name="Button4" type="Button" parent="CanvasLayer/MenuPanel/Credits"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 33
 text = "Back"
 
-[node name="Timer" type="Timer" parent="CanvasLayer/Panel"]
+[node name="Timer" type="Timer" parent="CanvasLayer/MenuPanel"]
 wait_time = 0.5
 one_shot = true
 
 [node name="AudioSetup" type="Node" parent="CanvasLayer" node_paths=PackedStringArray("masterSlider", "musicSlider", "effectSlider")]
 script = ExtResource("11_dv5pp")
-masterSlider = NodePath("../Panel/Options/HSlider")
-musicSlider = NodePath("../Panel/Options/HSlider2")
-effectSlider = NodePath("../Panel/Options/HSlider3")
+masterSlider = NodePath("../MenuPanel/Options/Master/MasterSlider")
+musicSlider = NodePath("../MenuPanel/Options/Music/MusicSlider")
+effectSlider = NodePath("../MenuPanel/Options/SFX/SFXSlider")
 
 [node name="LoadingScreen" type="Panel" parent="CanvasLayer"]
 visible = false
@@ -499,8 +544,10 @@ offset_right = 175.5
 offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 99
+theme_override_font_sizes/font_size = 22
 text = "Loading..."
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="CreditsPanel" type="Panel" parent="CanvasLayer"]
 visible = false
@@ -516,7 +563,7 @@ offset_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2, 2)
-pivot_offset = Vector2(150, 0)
+pivot_offset = Vector2(150, 100)
 theme_type_variation = &"PanelSolidBlack"
 
 [node name="Label" type="Label" parent="CanvasLayer/CreditsPanel"]
@@ -538,7 +585,11 @@ Music & SFX:
 Lemonz, Creeno
 
 Assets used:
-Font: Not Jam Font Pack by Not Jam on itch.io"
+Font: Not Jam Font Pack by Not Jam on itch.io
+
+A very big thank you for people who played, rated and 
+commented for the Jam! "
+label_settings = SubResource("LabelSettings_jbyh3")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -628,9 +679,9 @@ optionalAutoFill = true
 position = Vector2(460, 212)
 optionalAutoFill = true
 
-[connection signal="pressed" from="CanvasLayer/Panel/MainMenu/Button" to="CanvasLayer/Panel" method="_switchScenes" binds= [0]]
-[connection signal="pressed" from="CanvasLayer/Panel/MainMenu/Button2" to="CanvasLayer/Panel" method="_switchMenu" binds= [1]]
-[connection signal="pressed" from="CanvasLayer/Panel/MainMenu/Button3" to="CanvasLayer/Panel" method="_toggleCredits"]
-[connection signal="pressed" from="CanvasLayer/Panel/Options/Button4" to="CanvasLayer/Panel" method="_switchMenu"]
-[connection signal="pressed" from="CanvasLayer/Panel/Credits/Button4" to="CanvasLayer/Panel" method="_toggleCredits"]
-[connection signal="pressed" from="CanvasLayer/Panel/Credits/Button4" to="CanvasLayer/Panel" method="_switchMenu"]
+[connection signal="pressed" from="CanvasLayer/MenuPanel/MainMenu/NewGame" to="CanvasLayer/MenuPanel" method="_switchScenes" binds= [0]]
+[connection signal="pressed" from="CanvasLayer/MenuPanel/MainMenu/Options" to="CanvasLayer/MenuPanel" method="_switchMenu" binds= [1]]
+[connection signal="pressed" from="CanvasLayer/MenuPanel/MainMenu/Credits" to="CanvasLayer/MenuPanel" method="_toggleCredits"]
+[connection signal="pressed" from="CanvasLayer/MenuPanel/Options/Back" to="CanvasLayer/MenuPanel" method="_switchMenu"]
+[connection signal="pressed" from="CanvasLayer/MenuPanel/Credits/Button4" to="CanvasLayer/MenuPanel" method="_switchMenu"]
+[connection signal="pressed" from="CanvasLayer/MenuPanel/Credits/Button4" to="CanvasLayer/MenuPanel" method="_toggleCredits"]
