@@ -32,7 +32,6 @@ func _fillUiWithItems():
 		var shoppingItem: ShoppingUiItem = shoppingUiItem.instantiate()
 		gridContainer.add_child(shoppingItem)
 		shoppingItem.box_display.update_box_type(itemID)
-		#print(shoppingItem.get_child(0).texture.region.position)
 		shoppingItem.get_child(1).text = GlobalTipsHelper.item_names[itemID]
 		
 		if itemID > 2:
@@ -50,7 +49,7 @@ func _addToCart(type: ItemGlobal.FoodTypes, price: int):
 	multiplier = 100 if Input.is_key_pressed(KEY_CTRL) else multiplier
 	multiplier = 1000 if Input.is_key_pressed(KEY_CTRL) and Input.is_key_pressed(KEY_SHIFT) else multiplier
 	orderTotal += price * multiplier
-	totalText.text = "Total:" + str(orderTotal)
+	totalText.text = "Total: " + str(orderTotal)
 	for x in range(multiplier):
 		orderedTypes.push_back(type)
 	print(orderedTypes.size())
@@ -80,7 +79,6 @@ func _hide():
 	tweenTheSecond.tween_property(panel, "position", Vector2(panel.position.x ,hidePos if isHidden else showPos), 0.5)
 
 func _setAutoBuy(newText: float, itemID: int):
-	print("AUTOBUUY ")
 	global_shop._boxAutoBuy(itemID, newText)
 
 func _autoBuyBoxes():

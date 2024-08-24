@@ -1,10 +1,18 @@
-[gd_scene load_steps=8 format=3 uid="uid://mwdwlaqsblh8"]
+[gd_scene load_steps=10 format=3 uid="uid://mwdwlaqsblh8"]
 
 [ext_resource type="Script" path="res://scripts/ui/hiring_menu.gd" id="1_dky4c"]
 [ext_resource type="PackedScene" uid="uid://b0ic68c7v5ojg" path="res://scenes/characters/cashier_ai.tscn" id="2_yhpgu"]
 [ext_resource type="Script" path="res://scripts/ai/ui_construction_ai.gd" id="3_4byee"]
 [ext_resource type="PackedScene" uid="uid://d3pmwvyul36cy" path="res://scenes/characters/refilling_ai.tscn" id="3_6o8xj"]
 [ext_resource type="PackedScene" uid="uid://bed0fmavm0x6e" path="res://scenes/characters/kitty_display.tscn" id="4_ojvef"]
+[ext_resource type="FontFile" uid="uid://081yyvpei5qw" path="res://textures/ui/Undead Pixel 11.ttf" id="6_58pb4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_s8d2q"]
+line_spacing = -3.0
+font = ExtResource("6_58pb4")
+font_size = 11
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Animation" id="Animation_qye6q"]
 resource_name = "default"
@@ -165,6 +173,19 @@ one_shot = true
 position = Vector2(620, 593)
 scale = Vector2(3, 3)
 
+[node name="Desc" type="Label" parent="SelectionPositioning"]
+offset_left = 42.3333
+offset_top = -19.3333
+offset_right = 215.333
+offset_bottom = 10.6667
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_outline_size = 4
+theme_override_font_sizes/font_size = 11
+label_settings = SubResource("LabelSettings_s8d2q")
+autowrap_mode = 3
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="SelectionPositioning"]
 libraries = {
 "": SubResource("AnimationLibrary_njnam")
@@ -176,7 +197,7 @@ offset_left = -32.3333
 offset_top = -11.0
 offset_right = -19.3333
 offset_bottom = 38.0
-scale = Vector2(0.5, 0.496875)
+scale = Vector2(1, 0.99375)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 0
 theme_override_constants/shadow_offset_y = 0
@@ -212,9 +233,9 @@ bbcode_enabled = true
 text = "[center]Cashier"
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="SelectionPositioning"]
-offset_left = -32.0
+offset_left = -53.0
 offset_top = -32.0
-offset_right = 33.0
+offset_right = 53.0
 offset_bottom = -20.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_y = 0
