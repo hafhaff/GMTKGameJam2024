@@ -13,7 +13,7 @@ config_version=5
 config/name="Mega Meow Mart"
 run/main_scene="res://scenes/main_menu_concept.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://textures/ui/icons/icon.png"
+config/icon="res://textures/ui/icons/icon.ico"
 
 [autoload]
 
