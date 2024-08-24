@@ -1,6 +1,6 @@
 extends Control
 
-@export var gridContainer: GridContainer = null
+@export var gridContainer: VBoxContainer = null
 @export var shoppingUiItem: PackedScene = null
 @export var hiringMenu: Node
 @export var constructionMenu: Node
@@ -8,16 +8,16 @@ extends Control
 var itemGlobalLocal = ItemGlobal.new()
 var orderedTypes: Array[ItemGlobal.FoodTypes]
 var orderTotal: int = 0
-var showPos: Vector2 = Vector2(0, 0)
-var hidePos: Vector2 = Vector2(0, -720)
-var isHidden: bool = false
+var showPos: int = 140
+var hidePos: int = -600
+var isHidden: bool = true
 
 @onready var totalText: Label = $Panel/Control/Total
 @onready var autoBuyTimer: Timer = $Timer
+@onready var panel: Panel = $Panel
 
 func _ready():
 	_fillUiWithItems()
-	_hide()
 	autoBuyTimer.connect("timeout", _autoBuyBoxes)
 	for type in range(ItemGlobal.FoodTypes.size()):
 		_setAutoBuy(1, type)
@@ -29,22 +29,27 @@ func _input(event: InputEvent):
 
 func _fillUiWithItems():
 	for itemID in itemGlobalLocal.FoodTypes.size():
-		var shoppingItem: HBoxContainer = shoppingUiItem.instantiate()
+		var shoppingItem: ShoppingUiItem = shoppingUiItem.instantiate()
 		gridContainer.add_child(shoppingItem)
-		shoppingItem.get_child(0).texture.region.position = Vector2(itemID * 32, 0)
-		#print(shoppingItem.get_child(0).texture.region.position)
+		shoppingItem.box_display.update_box_type(itemID)
 		shoppingItem.get_child(1).text = GlobalTipsHelper.item_names[itemID]
-		shoppingItem.get_child(2).text = str(itemGlobalLocal.FoodValues[itemID].purchasePrice)
-		shoppingItem.get_child(3).text = str(itemGlobalLocal.FoodValues[itemID].sellPrice)
-		shoppingItem.get_child(4).connect("pressed", _addToCart.bind(itemID, itemGlobalLocal.FoodValues[itemID].purchasePrice))
-		shoppingItem.get_child(5).connect("value_changed", _setAutoBuy.bind(itemID))
+		
+		if itemID > 2:
+			shoppingItem.get_child(2).text = "Freezer"
+		else:
+			shoppingItem.get_child(2).text = "Shelf"
+		
+		shoppingItem.get_child(3).text = str(itemGlobalLocal.FoodValues[itemID].purchasePrice)
+		shoppingItem.get_child(4).text = str(itemGlobalLocal.FoodValues[itemID].sellPrice)
+		shoppingItem.get_child(5).connect("pressed", _addToCart.bind(itemID, itemGlobalLocal.FoodValues[itemID].purchasePrice))
+		shoppingItem.get_child(6).connect("value_changed", _setAutoBuy.bind(itemID))
 
 func _addToCart(type: ItemGlobal.FoodTypes, price: int):
 	var multiplier = 10 if Input.is_key_pressed(KEY_SHIFT) else 1
 	multiplier = 100 if Input.is_key_pressed(KEY_CTRL) else multiplier
 	multiplier = 1000 if Input.is_key_pressed(KEY_CTRL) and Input.is_key_pressed(KEY_SHIFT) else multiplier
 	orderTotal += price * multiplier
-	totalText.text = str(orderTotal)
+	totalText.text = "Total: " + str(orderTotal)
 	for x in range(multiplier):
 		orderedTypes.push_back(type)
 	print(orderedTypes.size())
@@ -71,7 +76,7 @@ func _hide():
 	var tweenTheSecond = create_tween()
 	tweenTheSecond.set_trans(Tween.TRANS_QUAD)
 	tweenTheSecond.set_ease(Tween.EASE_OUT)
-	tweenTheSecond.tween_property(self, "position", hidePos if isHidden else showPos, 0.5)
+	tweenTheSecond.tween_property(panel, "position", Vector2(panel.position.x ,hidePos if isHidden else showPos), 0.5)
 
 func _setAutoBuy(newText: float, itemID: int):
 	global_shop._boxAutoBuy(itemID, newText)

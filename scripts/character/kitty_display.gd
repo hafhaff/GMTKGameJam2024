@@ -5,7 +5,7 @@ class_name KittyDisplay
 
 enum KittyColor {SCRATCH, BLACK, WHITE, TUXEDO, CALICO, BROWNIE, BLUE, SILVER, POINT, GRAY}
 enum KittyFace {NEUTRAL, ANGRY, ANNOYED, EXCITED, ROCK}
-enum KittyRole {CUSTOMER, CASHIER, RESTOCKER, PLAYER, CONSTRUCTION}
+enum KittyRole {CUSTOMER, CASHIER, RESTOCKER, PLAYER, CONSTRUCTION, HOMELESS}
 
 @export var kitty_color: KittyColor
 @export var kitty_face: KittyFace
@@ -43,14 +43,17 @@ func _process(delta: float) -> void:
 
 ## I think this one explains itself
 func set_color(index: int) -> void:
+	kitty_color = index
 	base.region_rect.position.x = (index * 32)
 
 ## This one too
 func set_face(index: int) -> void:
+	kitty_face = index
 	face.region_rect.position.x = (index * 32)
 
 ## And finally this one, not fully functioning yet
 func set_role(index:int) -> void:
+	kitty_role = index
 	outfit.region_rect.position.x = (index * 32)
 
 ## This is what you asked for sir Hullahpop

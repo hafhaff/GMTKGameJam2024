@@ -28,6 +28,10 @@ func _ready():
 	heldItem = null
 	kittyDisplay.randomize_look()
 	kittyDisplay.set_role(kittyDisplay.KittyRole.PLAYER)
+	
+	# Register appearance so can be used in other instances
+	GlobalTipsHelper.player_appearance_data[0] = self.kittyDisplay.kitty_color
+	GlobalTipsHelper.player_appearance_data[1] = self.kittyDisplay.kitty_face
 
 func _physics_process(_delta):
 	

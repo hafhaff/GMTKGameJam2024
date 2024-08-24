@@ -67,3 +67,7 @@ func _switchScenes(value: int = 0):
 func _toggleCredits():
 	_switchMenu(0 if creditsPanel.visible else 2)
 	creditsPanel.visible = !creditsPanel.visible
+
+
+func _on_exit_pressed() -> void:
+	_exitGame()

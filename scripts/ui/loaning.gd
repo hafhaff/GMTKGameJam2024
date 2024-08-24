@@ -9,6 +9,7 @@ extends Node
 @onready var kitty_display: KittyDisplay = $LoanGuy/Panel/SubViewportContainer/SubViewport/KittyDisplay
 @onready var _name: Label = $LoanGuy/Panel/catName
 
+
 var tooltipShown: bool = true
 var installment: int = 50
 var installmentIncrement: int = 80
@@ -55,17 +56,26 @@ func _process(_delta):
 	progressBar.value = loanTimer.time_left / 90.0
 
 func _set_random_name():
-	_name.text = firstNames.pick_random() + " " + lastNames.pick_random()
+	_name.text = "From: " + firstNames.pick_random() + " " + lastNames.pick_random()
 
 func _payInstalment():
 	global_shop._removeKitcoin(installment)
+	
+	# When lost game
 	if global_shop.kitcoins < 0:
 		if looseScreen == null:
 			printerr("NO LOOSE SCREEN ASSIGNED")
 			return
+		print("Lose debug", GlobalTipsHelper.player_appearance_data[0])
+		print("Lose debug", GlobalTipsHelper.player_appearance_data[1])
 		looseScreen.visible = true
 		looseScreen.pause()
+		looseScreen.kitty_display.set_color(GlobalTipsHelper.player_appearance_data[0])
+		looseScreen.kitty_display.set_face(GlobalTipsHelper.player_appearance_data[1])
+		_setTooltip("Where's my money Lebowski?")
+		_toggleTooltipLose()
 		return
+		
 	installment += installmentIncrement + (shozSizeAddition * global_shop.chunkNum)
 	label2.text = "Next instalment: " + str(installment)
 	_toggleTooltip()
@@ -73,7 +83,7 @@ func _payInstalment():
 
 func _toggleTooltip():
 	if !tooltipShown:
-		label.text = supportiveTexts.pick_random() + "\nBut I need more Kitcoin next time..."
+		_setTooltip(supportiveTexts.pick_random() + "\nBut I need more Kitcoin next time...")
 		transitionTimer.start(5)
 		tooltipShown = !tooltipShown
 	else:
@@ -83,3 +93,13 @@ func _toggleTooltip():
 	tween.set_trans(Tween.TRANS_QUAD)
 	tween.set_ease(Tween.EASE_OUT)
 	tween.tween_property(tooltip, "position", showPos if tooltipShown else hidePos, 0.5)
+
+func _toggleTooltipLose():
+	label2.text = "Loan unpaid"
+	var tween = create_tween()
+	tween.set_trans(Tween.TRANS_QUAD)
+	tween.set_ease(Tween.EASE_OUT)
+	tween.tween_property(tooltip, "position", showPos, 0.5)
+
+func _setTooltip(arg: String):
+	label.text = arg

@@ -2,6 +2,8 @@ extends CanvasLayer
 
 class_name LooseScreen
 
+@onready var kitty_display: KittyDisplay = $HomelessKitty/KittyDisplay
+
 @onready var scenes = [
 	"res://scenes/expansion_test.tscn",
 	"res://scenes/main_menu_concept.tscn"
@@ -10,6 +12,7 @@ class_name LooseScreen
 func pause():
 	visible = !get_tree().paused
 	get_tree().paused = !get_tree().paused
+	
 
 func _switchScenes(value: int = 0):
 	global_shop._clearShop()

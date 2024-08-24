@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bbvouelmrre6p"]
 
-[ext_resource type="Texture2D" uid="uid://cmrs3wr6m8wxb" path="res://textures/kitcoin.png" id="2_05r4v"]
 [ext_resource type="Script" path="res://scripts/ui/shopping_ui.gd" id="2_fwhm4"]
+[ext_resource type="PackedScene" uid="uid://bihyn40ms556l" path="res://scenes/ui/tooltip/simple_tip.tscn" id="3_6fg2y"]
 [ext_resource type="PackedScene" uid="uid://detigdvegld83" path="res://scenes/ui/shopping_ui_item.tscn" id="3_8qcce"]
 
 [node name="Shopping UI" type="Control" node_paths=PackedStringArray("gridContainer")]
@@ -23,100 +23,71 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -400.0
-offset_top = -225.0
-offset_right = 400.0
-offset_bottom = 225.0
+offset_top = -960.0
+offset_bottom = -735.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(2, 2)
 theme_type_variation = &"PanelSolidBlack"
 
-[node name="GridContainer" type="GridContainer" parent="Panel"]
+[node name="GridContainer" type="VBoxContainer" parent="Panel"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 350.0
 grow_horizontal = 2
-columns = 2
 
-[node name="Control" type="HBoxContainer" parent="Panel/GridContainer"]
+[node name="TopPanel" type="HBoxContainer" parent="Panel/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="Panel/GridContainer/Control"]
+[node name="Box" type="Label" parent="Panel/GridContainer/TopPanel"]
+custom_minimum_size = Vector2(23, 0)
 layout_mode = 2
-texture = ExtResource("2_05r4v")
-expand_mode = 2
+text = "BOX"
+horizontal_alignment = 1
 
-[node name="Label" type="Label" parent="Panel/GridContainer/Control"]
+[node name="Name" type="Label" parent="Panel/GridContainer/TopPanel"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 22
 text = "NAME"
+horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="Panel/GridContainer/Control"]
+[node name="Storage Unit" type="Label" parent="Panel/GridContainer/TopPanel"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 22
+text = "UNIT"
+horizontal_alignment = 1
+
+[node name="Buy" type="Label" parent="Panel/GridContainer/TopPanel"]
+layout_mode = 2
+size_flags_horizontal = 3
 text = "BUY"
+horizontal_alignment = 1
 
-[node name="Label3" type="Label" parent="Panel/GridContainer/Control"]
+[node name="Sell" type="Label" parent="Panel/GridContainer/TopPanel"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 22
 text = "SELL"
+horizontal_alignment = 1
 
-[node name="Label4" type="Label" parent="Panel/GridContainer/Control"]
+[node name="Confirm" type="Label" parent="Panel/GridContainer/TopPanel"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 22
-text = "CONFIRM"
+horizontal_alignment = 1
 
-[node name="Label5" type="Label" parent="Panel/GridContainer/Control"]
+[node name="Auto" type="Label" parent="Panel/GridContainer/TopPanel"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 22
-text = "AUTO"
+text = "AUTO-BUY"
 
-[node name="Shopping UI Item" type="HBoxContainer" parent="Panel/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="Panel/GridContainer/Shopping UI Item"]
-layout_mode = 2
-texture = ExtResource("2_05r4v")
-expand_mode = 2
-
-[node name="Label" type="Label" parent="Panel/GridContainer/Shopping UI Item"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 22
-text = "NAME"
-
-[node name="Label2" type="Label" parent="Panel/GridContainer/Shopping UI Item"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 22
-text = "BUY"
-
-[node name="Label3" type="Label" parent="Panel/GridContainer/Shopping UI Item"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 22
-text = "SELL"
-
-[node name="Label4" type="Label" parent="Panel/GridContainer/Shopping UI Item"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 22
-text = "CONFIRM"
-
-[node name="Label5" type="Label" parent="Panel/GridContainer/Shopping UI Item"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 22
-text = "AUTO"
+[node name="SimpleTip" parent="Panel/GridContainer/TopPanel/Auto" instance=ExtResource("3_6fg2y")]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 2.0
+offset_right = 50.0
+offset_bottom = 9.0
+tip = "Will auto buy boxes until the given number is met"
 
 [node name="Control" type="HBoxContainer" parent="Panel"]
 layout_mode = 1
@@ -124,31 +95,23 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -100.0
+offset_top = -23.0
 grow_horizontal = 2
 grow_vertical = 0
 alignment = 1
 
-[node name="Label" type="Label" parent="Panel/Control"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 22
-text = "Total:"
-
 [node name="Total" type="Label" parent="Panel/Control"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 22
-text = "0"
+text = "Total: 0"
 
 [node name="Button" type="Button" parent="Panel/Control"]
 layout_mode = 2
 size_flags_vertical = 4
-theme_override_font_sizes/font_size = 16
 text = "Purchase"
 
 [node name="Button2" type="Button" parent="Panel/Control"]
 layout_mode = 2
 size_flags_vertical = 4
-theme_override_font_sizes/font_size = 16
 text = "Clear"
 
 [node name="Timer" type="Timer" parent="."]

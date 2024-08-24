@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/Undead Pixel 11.ttf-f0cee3fb3e9e0bbd681fd857a
 [params]
 
 Rendering=null
-antialiasing=1
+antialiasing=0
 generate_mipmaps=false
 disable_embedded_bitmaps=true
 multichannel_signed_distance_field=false

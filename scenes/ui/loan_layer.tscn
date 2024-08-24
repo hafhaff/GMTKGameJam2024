@@ -9,14 +9,17 @@ font_size = 11
 font_color = Color(0, 0, 0, 1)
 
 [node name="Loan Layer" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_3jutd")
 
 [node name="Timer" type="Timer" parent="."]
+process_mode = 1
 wait_time = 90.0
 autostart = true
 
 [node name="Timer2" type="Timer" parent="."]
-wait_time = 5.0
+process_mode = 1
+wait_time = 10.0
 one_shot = true
 
 [node name="LoanGuy" type="Panel" parent="."]
@@ -44,8 +47,8 @@ layout_mode = 0
 offset_left = -0.5
 offset_top = -12.0
 offset_right = 62.5
-theme_override_colors/font_color = Color(0.0352941, 0.0392157, 0.0784314, 1)
-text = "Kitty Katerson"
+theme_override_colors/font_color = Color(0.201552, 0.212963, 0.321862, 1)
+text = "From: Kitty Katerson"
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="LoanGuy/Panel"]
 layout_mode = 0
@@ -59,8 +62,8 @@ stretch = true
 [node name="SubViewport" type="SubViewport" parent="LoanGuy/Panel/SubViewportContainer"]
 transparent_bg = true
 handle_input_locally = false
+canvas_item_default_texture_filter = 0
 size = Vector2i(15, 15)
-size_2d_override = Vector2i(100, 100)
 render_target_update_mode = 4
 
 [node name="KittyDisplay" parent="LoanGuy/Panel/SubViewportContainer/SubViewport" instance=ExtResource("4_imcmo")]

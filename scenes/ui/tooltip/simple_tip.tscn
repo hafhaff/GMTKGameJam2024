@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://bihyn40ms556l"]
+
+[ext_resource type="FontFile" uid="uid://081yyvpei5qw" path="res://textures/ui/Undead Pixel 11.ttf" id="1_cbjjg"]
+[ext_resource type="Script" path="res://scripts/ui/tooltip/simple_tip.gd" id="1_i3brf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_65p0i"]
+line_spacing = -3.0
+font = ExtResource("1_cbjjg")
+font_size = 11
+
+[node name="SimpleTip" type="Panel"]
+offset_right = 7.0
+offset_bottom = 7.0
+theme_type_variation = &"QWhite"
+script = ExtResource("1_i3brf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_left = -32.0
+offset_top = -74.0
+offset_right = 39.0
+offset_bottom = -4.0
+pivot_offset = Vector2(35, 70)
+alignment = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="TipText" type="Label" parent="VBoxContainer/PanelContainer"]
+custom_minimum_size = Vector2(65, 12)
+layout_mode = 2
+text = "A simple tooltip display!"
+label_settings = SubResource("LabelSettings_65p0i")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

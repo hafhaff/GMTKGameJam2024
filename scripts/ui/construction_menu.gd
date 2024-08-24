@@ -5,6 +5,8 @@ extends Node
 @onready var selectionPositioning: Node2D = $SelectionPositioning
 @onready var selectionSprite: Sprite2D = $SelectionPositioning/Sprite2D
 @onready var priceLabel: Label = $SelectionPositioning/Price
+@onready var desc: Label = $SelectionPositioning/Desc
+@onready var item_name: Label = $SelectionPositioning/Name
 
 @export var selections: Array[PackedScene]
 @export var selectionDisplay: SelectionDisplay
@@ -154,7 +156,10 @@ func _selectionChange(next: bool):
 			selection = selections[selectionNum]
 	selectionDisplay.selectionSprite.texture = selectionDisplay.selectionSprites[selection]
 	selectionSprite.texture = selectionDisplay.selectionSprite.texture
-	priceLabel.text = str(global_shop.prices[priceNames[selectionNum]]) + " Kitcoin"
+	priceLabel.text = "Cost: " + str(global_shop.prices[priceNames[selectionNum]]) + " Kitcoin"
+	desc.text = GlobalTipsHelper.shop_item_description[selectionNum]
+	item_name.text = GlobalTipsHelper.shop_item_names[selectionNum]
+	
 	if selectionNum == 3:
 		selectionDisplay.selectionSprite.scale = Vector2i(3,3)
 		selectionDisplay.selectionSprite.position = Vector2(48,48)

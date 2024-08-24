@@ -6,6 +6,7 @@ extends Node
 @onready var kittyDisplay: KittyDisplay = $SelectionPositioning/KittyDisplay
 @onready var nameLabel: RichTextLabel = $SelectionPositioning/RichTextLabel
 @onready var priceLabel: RichTextLabel = $SelectionPositioning/RichTextLabel2
+@onready var desc: Label = $SelectionPositioning/Desc
 
 @export var selections: Array[PackedScene]
 @export var selectionDisplay: KittyDisplay
@@ -38,8 +39,9 @@ func _ready():
 	if tilemap == null:
 		printerr("ERROR: HIRING SCENE DOES NOT HAVE A TILEMAP SET. SELF YEETING IMMINENT!")
 		queue_free()
-	priceLabel.text = "[center]" + str(global_shop.prices[priceNames[selectionNum - 1]]) + " Kitcoin"
-
+	priceLabel.text = "[center]Wages: " + str(global_shop.prices[priceNames[selectionNum - 1]]) + " Kitcoin"
+	desc.text = GlobalTipsHelper.hire_desc[selectionNum - 1]
+	
 func _process(_delta):
 	selectionDisplay.global_position = get_tree().root.get_child(2).get_global_mouse_position() + Vector2(0,9)
 	constPos = floor(get_tree().root.get_child(2).get_global_mouse_position()/32)
@@ -110,5 +112,6 @@ func _selectionChange(next: bool):
 		selectionNum = 1
 	selection = selections[selectionNum - 1]
 	kittyDisplay.set_role(selectionNum)
-	priceLabel.text = "[center]" + str(global_shop.prices[priceNames[selectionNum - 1]]) + " Kitcoin"
+	priceLabel.text = "[center]Wages: " + str(global_shop.prices[priceNames[selectionNum - 1]]) + " Kitcoin"
 	nameLabel.text = "[center]" + str(KittyDisplay.KittyRole.keys()[selectionNum])
+	desc.text = GlobalTipsHelper.hire_desc[selectionNum - 1]
