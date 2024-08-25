@@ -21,6 +21,7 @@ var rushHourNotHidePos: Vector2 = Vector2(-212, 331)
 
 func spawn_customer():
 	if activeShoppers.size() >= (maxShoppers * global_shop.chunkNum):
+		customersToSpawn -= 1
 		return
 	customersToSpawn -= 1
 	play_animation()
@@ -46,7 +47,7 @@ func _catExit(cat: ShoppingAI):
 
 func spawn_wave_chunk():
 	if customersToSpawn > 2:
-		for i in randi_range(1, customersToSpawn -1):
+		for i in randi_range(1, customersToSpawn/3):
 			spawn_customer()
 			
 
@@ -62,7 +63,7 @@ func _on_random_spawns_timeout() -> void:
 		random_spawns.start(randi_range(4, 10))
 		#Random spaws should be consistent, but increased by shop size, not lifetime spawns ~Hullahopp
 		#customersToSpawn += 12 *  round(lifetimeSpawns/5)
-		customersToSpawn += randi_range(2, 4) *  global_shop.chunkNum
+		customersToSpawn += randi_range(0.5, 5) *  global_shop.chunkNum
 		printt("Customers to spawn", customersToSpawn)
 
 func _on_next_wave_timer_timeout() -> void:
@@ -71,7 +72,7 @@ func _on_next_wave_timer_timeout() -> void:
 	#random_spawns.start(4 * lifetimeWaves)
 	#Waves should be multiplied by lifetime waves, otherwise the size grows unexpectedly out of control
 	#customersToSpawn += 50 * round(lifetimeSpawns/5)
-	customersToSpawn += 20 * lifetimeWaves
+	customersToSpawn += 25 * lifetimeWaves
 	lifetimeWaves += 1
 	_rushHourNotification()
 
@@ -79,6 +80,7 @@ func _on_next_wave_timer_timeout() -> void:
 func _on_initial_timer_timeout():
 	readyToSpawn = true
 	customersToSpawn += 5
+	random_spawns.start(20)
 	#print("HERE THEY COME")
 	pass # Replace with function body.
 
