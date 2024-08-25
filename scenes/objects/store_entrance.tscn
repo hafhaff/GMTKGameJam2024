@@ -117,12 +117,12 @@ libraries = {
 autoplay = "idle"
 
 [node name="MainSpawnTimer" type="Timer" parent="."]
+wait_time = 0.28
 autostart = true
 
 [node name="RandomSpawns" type="Timer" parent="."]
-wait_time = 30.0
+wait_time = 20.0
 one_shot = true
-autostart = true
 
 [node name="NextWaveTimer" type="Timer" parent="."]
 wait_time = 180.0
