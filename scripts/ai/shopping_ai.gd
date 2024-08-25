@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 class_name ShoppingAI
 
-@export var speed: float = 100
+@export var speed: float = 3
 @export var shelfHolder: Node
 @export var counterHolder: Node
 
@@ -18,6 +18,8 @@ var itemsHeld: Dictionary = {}
 var itemsTotal: int = 0
 var waitForCheckout: bool = false
 var attachedCamera: Camera2D	#For the experimental main menu
+var pathIndex: int = -1
+var nextPos: Vector2 = Vector2.ZERO
 
 signal leavingShop(shoppingAI)
 
@@ -30,6 +32,7 @@ func _ready():
 
 func _physics_process(_delta):
 	if navigation.is_navigation_finished():
+		pathIndex = -1
 		kittyDisplay.is_walking = false
 		if navigation.target_position == spawnPos:
 			leavingShop.emit(self)
@@ -47,10 +50,12 @@ func _physics_process(_delta):
 		shoppingTimer.start(1.5)
 		return
 	
-	var nextPos: Vector2 = navigation.get_next_path_position()
-	velocity = global_position.direction_to(nextPos) * speed
+	if navigation.get_current_navigation_path_index() != pathIndex:
+		pathIndex = navigation.get_current_navigation_path_index()
+		nextPos = navigation.get_next_path_position()
+	
 	kittyDisplay.is_flipped = velocity.x < 0
-	move_and_slide()
+	global_translate(global_position.direction_to(nextPos) * 1.5)
 
 #Temporary, will get refactored when the shop is finished
 func _generateTarget():
