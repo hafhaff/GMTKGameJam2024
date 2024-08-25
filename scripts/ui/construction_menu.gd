@@ -44,6 +44,7 @@ func _process(_delta):
 				var constPosCheck = constPos
 				constPosCheck = constPosCheck + Vector2(x, y)
 				if (
+					constPos == Vector2(2, 0) ||
 					global_shop.shopShelves.has(Vector2i(constPosCheck.x, constPosCheck.y- 1)) || 
 					global_shop.shopShelves.has(Vector2i(constPosCheck.x, constPosCheck.y + 1)) || 
 					global_shop.shopShelves.has(constPosCheck as Vector2i) ||
@@ -59,6 +60,7 @@ func _process(_delta):
 					selectionDisplay.selectionSprite.modulate = Color.GREEN
 	else:
 		if (
+			constPos == Vector2(2, 0) ||
 			global_shop.shopShelves.has(Vector2i(constPos.x, constPos.y- 1)) || 
 			global_shop.shopShelves.has(Vector2i(constPos.x -1, constPos.y- 1)) || 
 			global_shop.shopShelves.has(Vector2i(constPos.x +1, constPos.y- 1)) || 
