@@ -42,7 +42,6 @@ func _physics_process(_delta):
 	move_and_slide()
 
 func _lookForShelf():
-	printt("Looking for shelf", self, shelf)
 	if shelf != null:
 		return
 	for _shelf in global_shop.emptyShelves:
