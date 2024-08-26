@@ -36,41 +36,41 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -150.0
 offset_top = -130.0
-offset_right = 150.0
-offset_bottom = 130.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(2, 2)
 theme_type_variation = &"PanelSolidBlack"
 
 [node name="Button2" type="Button" parent="Panel/Panel"]
 layout_mode = 2
-offset_top = 109.0
-offset_right = 300.0
-offset_bottom = 149.0
+offset_left = 25.0
+offset_top = 60.0
+offset_right = 125.0
+offset_bottom = 80.0
+pivot_offset = Vector2(50, 0)
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 33
 text = "Options"
 
 [node name="Button4" type="Button" parent="Panel/Panel"]
 layout_mode = 2
-offset_top = 212.0
-offset_right = 300.0
-offset_bottom = 252.0
+offset_left = 25.0
+offset_top = 95.0
+offset_right = 125.0
+offset_bottom = 115.0
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 33
 text = "Exit"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/Panel"]
 layout_mode = 2
-offset_right = 300.0
+offset_right = 150.0
 offset_bottom = 34.0
 size_flags_horizontal = 3
 alignment = 1
 
 [node name="Label" type="Label" parent="Panel/Panel/HBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 33
 text = "Game Paused!"
+horizontal_alignment = 1
 
 [node name="Panel" type="Panel" parent="Panel/Panel"]
 visible = false
@@ -80,10 +80,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -150.0
-offset_top = -130.0
-offset_right = 150.0
-offset_bottom = 130.0
+offset_left = -70.0
+offset_top = -59.0
+offset_right = 70.0
+offset_bottom = 60.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_type_variation = &"PanelSolidBlack"
@@ -102,68 +102,53 @@ size_flags_horizontal = 3
 alignment = 1
 
 [node name="Label" type="Label" parent="Panel/Panel/Panel/Options/HBoxContainer"]
+custom_minimum_size = Vector2(0, 23)
 layout_mode = 2
-theme_override_font_sizes/font_size = 33
 text = "Options"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/Panel/Panel/Options"]
-layout_mode = 2
-size_flags_horizontal = 3
-alignment = 1
-
-[node name="Label" type="Label" parent="Panel/Panel/Panel/Options/HBoxContainer2"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 22
-text = " "
-
-[node name="HBoxContainer5" type="HBoxContainer" parent="Panel/Panel/Panel/Options"]
-layout_mode = 2
-size_flags_horizontal = 3
-alignment = 1
-
-[node name="Label" type="Label" parent="Panel/Panel/Panel/Options/HBoxContainer5"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 22
-text = "Master"
-
 [node name="HSlider" type="HSlider" parent="Panel/Panel/Panel/Options"]
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 min_value = -30.0
 max_value = 0.0
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="Panel/Panel/Panel/Options"]
+[node name="Label" type="Label" parent="Panel/Panel/Panel/Options/HSlider"]
 layout_mode = 2
-size_flags_horizontal = 3
-alignment = 1
-
-[node name="Label" type="Label" parent="Panel/Panel/Panel/Options/HBoxContainer3"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 22
-text = "Music"
+offset_top = -5.0
+offset_right = 140.0
+offset_bottom = 7.0
+text = "Master"
+horizontal_alignment = 1
 
 [node name="HSlider2" type="HSlider" parent="Panel/Panel/Panel/Options"]
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 min_value = -30.0
 max_value = 0.0
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="Panel/Panel/Panel/Options"]
-layout_mode = 2
-size_flags_horizontal = 3
-alignment = 1
-
-[node name="Label" type="Label" parent="Panel/Panel/Panel/Options/HBoxContainer4"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 22
-text = "SFX"
+[node name="Label2" type="Label" parent="Panel/Panel/Panel/Options/HSlider2"]
+offset_top = -5.0
+offset_right = 140.0
+offset_bottom = 7.0
+text = "Music"
+horizontal_alignment = 1
 
 [node name="HSlider3" type="HSlider" parent="Panel/Panel/Panel/Options"]
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 min_value = -30.0
 max_value = 0.0
 
+[node name="Label" type="Label" parent="Panel/Panel/Panel/Options/HSlider3"]
+offset_top = -5.0
+offset_right = 140.0
+offset_bottom = 7.0
+text = "SFX"
+horizontal_alignment = 1
+
 [node name="Button4" type="Button" parent="Panel/Panel/Panel/Options"]
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
-theme_override_font_sizes/font_size = 33
 text = "Back"
 
 [node name="SelectSound" type="AudioStreamPlayer" parent="."]
